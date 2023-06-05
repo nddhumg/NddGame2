@@ -5,20 +5,20 @@ using UnityEngine;
 public class DestroyByTime : NddBehaviour {
 
 	[SerializeField]protected float timeDestroy = 3f;
-	[SerializeField]protected float time = 0f;
+	[SerializeField]protected float timer = 0f;
 
-	void Update ()
+	void FixedUpdate()
 	{
 		this.DestroyObjByTime ();
 	}
 	public virtual void DestroyObj(){
-		time = 0f;
+		timer = 0f;
 		Destroy(transform.parent);
 	}
 
 	protected virtual bool CanDesTroy(){
-		time += Time.deltaTime;
-		if (time > timeDestroy)
+		timer += Time.fixedDeltaTime;
+		if (timer > timeDestroy)
 			return true;
 		return false;
 	}

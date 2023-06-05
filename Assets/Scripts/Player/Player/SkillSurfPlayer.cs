@@ -7,7 +7,7 @@ public class SkillSurfPlayer : SkillSurfByDistance {
 	[SerializeField] protected bool keySkillSurf;
 	[SerializeField] protected Vector4 keyMoving;
 	[SerializeField] protected float delayTime = 5f;
-	[SerializeField] protected float timer = 0f;
+	[SerializeField] protected float timer = 2f;
 
 	void Update(){
 		keyMoving = InputManager.Instance.KeyMoving;

@@ -29,9 +29,28 @@ public class SkillSurfByDistance : NddBehaviour {
 	}
     protected virtual void Surf()
     {
+		SpawnFXSurf ();
 		this.positionOld = transform.parent.parent.position;
 		rig.velocity = direction * speedSurf;
+
     } 
+	protected virtual void SpawnFXSurf(){
+		string nameFx = this.GetNameFx ();
+		SpawnFx.Instance.Spawn (nameFx, transform.position,GetRotationFx());
+	}
+	protected virtual string GetNameFx(){
+		return SpawnFx.Instance.FxSurf;
+	}
+	protected virtual Quaternion GetRotationFx(){
+		float angleByDirectionAndOx = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
+		Quaternion rotationNew = Quaternion.identity;
+		// Rotaion 360 Degree
+		if(angleByDirectionAndOx < 90 && angleByDirectionAndOx > -90)
+			rotationNew *= Quaternion.Euler(0, 0, angleByDirectionAndOx);
+		else 
+			rotationNew *= Quaternion.Euler(180, 0, -angleByDirectionAndOx);
+		return rotationNew;
+	}
 	protected virtual void StopSurf(){
 		direction = Vector2.zero;
 		rig.velocity = direction;

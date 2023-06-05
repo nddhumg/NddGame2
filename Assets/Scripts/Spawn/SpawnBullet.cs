@@ -18,5 +18,4 @@ public class SpawnBullet : SpawnsPoolOgj {
 		SpawnBullet.instance = this;
 	}	
 
-
 }

@@ -5,8 +5,14 @@ using UnityEngine;
 public class DestroyBullet : DestroyByTime {
 	public override void DestroyObj ()
 	{
-		time = 0f;
+		timer = 0f;
 		SpawnBullet.Instance.DesTroyPrefabs (transform.parent.transform);
+
+	}
+	protected override void ResetValue ()
+	{
+		base.ResetValue ();
+		this.timeDestroy = 5f;	
 	}
 
 }

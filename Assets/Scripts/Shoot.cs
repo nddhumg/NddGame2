@@ -18,8 +18,6 @@ public abstract class Shoot : NddBehaviour {
 			return null;
 		
 		BulletCtrl bulletCtrl= newBullet.GetComponent<BulletCtrl>();
-//		this.SetBulletTarget ();
-//		this.SetBulletRotation (bulletTarget);
 		bulletCtrl.FlyBullet.SetDirection(bulletTarget);
 		bulletCtrl.Shooter = transform.parent;
 		return newBullet;

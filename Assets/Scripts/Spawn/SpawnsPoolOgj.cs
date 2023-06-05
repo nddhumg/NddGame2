@@ -66,8 +66,8 @@ public class SpawnsPoolOgj : NddBehaviour {
 	protected Transform SpawnPool(string nameSpawn){
 		foreach (Transform obj in this.poolOgj) {
 			if (obj.name == nameSpawn) {
-				obj.gameObject.SetActive (true);
 				poolOgj.Remove (obj);
+				obj.gameObject.SetActive (true);
 				return obj;
 			}
 		}

@@ -14,10 +14,7 @@ public class DamageSenderBullet : DamageSender {
 		this.bulletCtrl= transform.parent.GetComponent<BulletCtrl>();
 		Debug.Log ("Add  BulletCtrl", gameObject);
 	}
-	protected override void Send(DamageReceiver receiver) {
-		bulletCtrl.DestroyBullet.DestroyObj ();
-		base.Send (receiver);
-	}
+
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();

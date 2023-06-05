@@ -33,8 +33,6 @@ public class ColliderBullet : NddBehaviour {
 			return;
 		if (col.transform.parent == bulletCtrl.Shooter)
 			return;
-		if (col.transform.parent.parent.name == "Grid")
-			bulletCtrl.DestroyBullet.DestroyObj ();
 		bulletCtrl.DamageSender.Send (col.transform.parent);
 	}
 }
