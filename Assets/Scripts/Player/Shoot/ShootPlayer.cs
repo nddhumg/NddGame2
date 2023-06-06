@@ -3,33 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootPlayer : Shoot {
-	[SerializeField] protected string bulletSkill = "Bullet1";
-	[SerializeField] protected string bulletNormal = "Bullet2";
-	[SerializeField] protected float DelayShotBulletNormal = 0.6f;
-	[SerializeField] protected float timerShotBulletNormal = 1f;
-	[SerializeField] protected float DelayShotBulletSkill = 7f;
-	[SerializeField] protected float timerShotBulletSkill = 10f;
-	protected virtual void UpdateKeyShot(){
-		shooting = InputManager.Instance.KeyShoot;
-	}
+	[SerializeField] protected float ranShotBullet1 =0.05f;
+	protected virtual void Update(){
 
-	protected virtual void Shot(string nameBullet,float isShot ,ref float timer,ref float delay){
-		timer += Time.deltaTime;
-		if (timer < delay || isShot !=1) 
+		this.GetKeyShot ();
+		this.Shoting ();
+	}
+	protected virtual void GetKeyShot(){
+		keyShot = (int)InputManager.Instance.KeyShoot.x;
+	}
+	protected virtual void Shoting(){
+		if (!CheckIsShoting()) {
 			return;
-		
-		ShootBullet (nameBullet, transform.position);
-		timer = 0f;
+		}
+		timerShot = 0f;
+		string nameBullet = RandomBullet();
+		ShootBullet(nameBullet,transform.position);
 	}
-	protected virtual void ShotNormal(){
-		Shot(bulletNormal,shooting.x,ref timerShotBulletNormal,ref DelayShotBulletNormal);
-
+	protected virtual string RandomBullet(){
+		float ran= Random.Range (0, 1f);
+		if (ran > ranShotBullet1) {
+			return SpawnBullet.Instance.Bullet2;
+		} else {
+			return SpawnBullet.Instance.Bullet1;
+		}
 	}
-	protected virtual void ShotSkill(){
-		Shot(bulletSkill,shooting.y,ref timerShotBulletSkill,ref DelayShotBulletSkill);
-		// TODO bulletname in shot skill
-	}
-		
 	protected override void SetBulletTarget(){
 		bulletTarget = InputManager.Instance.PosMouse;
 		bulletTarget -= transform.position;
@@ -42,11 +40,4 @@ public class ShootPlayer : Shoot {
 		return rotNew;
 
 	}
-	void Update(){
-		this.UpdateKeyShot ();
-		this.ShotNormal ();
-		this.ShotSkill ();
-	}
-
-
 }

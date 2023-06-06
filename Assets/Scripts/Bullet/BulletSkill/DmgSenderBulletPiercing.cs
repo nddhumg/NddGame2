@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageSenderBulletNormal : DamageSenderBullet {
+public class DmgSenderBulletPiercing : DmgSenderBullet {
 	protected override void Send(DamageReceiver receiver) {
-		bulletCtrl.DestroyBullet.DestroyObj ();
-		base.Send (receiver);
+		receiver?.Receiver(this.damage);
 	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageSenderBullet : DamageSender {
+public class DmgSenderBullet : DamageSender {
 	[SerializeField] protected BulletCtrl bulletCtrl;
 	protected override void LoadComponent(){
 		base.LoadComponent ();
@@ -19,5 +19,9 @@ public class DamageSenderBullet : DamageSender {
 	{
 		base.ResetValue ();
 		this.damage = bulletCtrl.BulletSO.damage;
+	}
+	protected override void Send(DamageReceiver receiver) {
+		receiver?.Receiver(this.damage);
+		SpawnBullet.Instance.DesTroyPrefabs (transform.parent);
 	}
 }
