@@ -5,13 +5,11 @@ public class InputManager : NddBehaviour {
 	[SerializeField] protected bool keySpace;
 	[SerializeField] protected Vector3 posMouse;
 	[SerializeField] protected Vector2 keyShoot;
-	//public Vector4 KeyMoving => keyMoving;
 	public Vector4 KeyMoving{
 		get{
 			return keyMoving;
 		}
 	}
-	//public bool KeySpace => keySpace;
 	public bool KeySpace{
 		get{
 			return keySpace;
@@ -28,7 +26,6 @@ public class InputManager : NddBehaviour {
 		}
 	}
 	private static InputManager instance;
-	//public static InputManager Instance => instance;
 	public static InputManager Instance{
 		get{
 			return instance;

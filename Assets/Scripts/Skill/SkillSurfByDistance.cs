@@ -44,6 +44,7 @@ public class SkillSurfByDistance : NddBehaviour {
 	protected virtual Quaternion GetRotationFx(){
 		float angleByDirectionAndOx = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
 		Quaternion rotationNew = Quaternion.identity;
+
 		// Rotaion 360 Degree
 		if(angleByDirectionAndOx < 90 && angleByDirectionAndOx > -90)
 			rotationNew *= Quaternion.Euler(0, 0, angleByDirectionAndOx);

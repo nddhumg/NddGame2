@@ -2,23 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootPlayer : Shoot {
+public class ShootPlayer : ShootAbility {
+	[Header ("Shoot Ability Player")]
+	[SerializeField] protected int keyShot;
 	[SerializeField] protected float ranShotBullet1 =0.05f;
-	protected virtual void Update(){
 
+	protected override void ResetValue(){
+		base.ResetValue ();
+		this.delayAbility = 0.6f;
+	}
+	protected override void Update(){
+		base.Update ();
 		this.GetKeyShot ();
-		this.Shoting ();
+		this.Shooting ();
 	}
 	protected virtual void GetKeyShot(){
 		keyShot = (int)InputManager.Instance.KeyShoot.x;
 	}
-	protected virtual void Shoting(){
-		if (!CheckIsShoting()) {
+	protected virtual void Shooting(){
+		if (!isReady )
 			return;
-		}
-		timerShot = 0f;
+		if (keyShot != 1)
+			return;
+		timerAbility = 0f;
 		string nameBullet = RandomBullet();
-		ShootBullet(nameBullet,transform.position);
+		Vector3 PosSpawn = transform.position + new Vector3 (0, -0.5f, 0);
+		ShootBullet(nameBullet,PosSpawn);
 	}
 	protected virtual string RandomBullet(){
 		float ran= Random.Range (0, 1f);
@@ -29,9 +38,9 @@ public class ShootPlayer : Shoot {
 		}
 	}
 	protected override void SetBulletTarget(){
-		bulletTarget = InputManager.Instance.PosMouse;
-		bulletTarget -= transform.position;
-		bulletTarget = new Vector3 (bulletTarget.x, bulletTarget.y, 0);
+		target = InputManager.Instance.PosMouse;
+		target -= transform.position;
+		target = new Vector3 (target.x, target.y, 0);
 	}
 	protected override Quaternion SetBulletRotation(Vector3 target){
 		Quaternion rotNew = Quaternion.identity;

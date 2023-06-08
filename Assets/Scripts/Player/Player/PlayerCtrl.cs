@@ -5,19 +5,20 @@ using UnityEngine;
 public class PlayerCtrl : NddBehaviour {
 	[SerializeField]protected BoxCollider2D box2D;
 	[SerializeField]protected Rigidbody2D rig2D;
-	[SerializeField]protected SkillSurfPlayer skillSurfPlayer;
 	[SerializeField]protected AnimationPlayer animationPlayer;
+	[SerializeField]protected MovingPlayer movingPlayer;
 
+	public MovingPlayer MovingPlayer{
+		get{
+			return movingPlayer;
+		}
+	}
 	public AnimationPlayer AnimationPlayer{
 		get{
 			return animationPlayer;
 		}
 	}
-	public SkillSurfPlayer SkillSurfPlayer{
-		get{
-			return skillSurfPlayer;
-		}
-	}
+
 	public BoxCollider2D Box2D{
 		get{
 			return box2D;
@@ -38,7 +39,6 @@ public class PlayerCtrl : NddBehaviour {
 	protected override void LoadSingleton() {
 		if (PlayerCtrl.instance != null) {
 			Debug.LogError("Only 1 PlayerCtrl allow to exist");
-
 		}
 		PlayerCtrl.instance = this;
 	}
@@ -47,9 +47,15 @@ public class PlayerCtrl : NddBehaviour {
 	protected override void LoadComponent(){
 		this.LoadBoxCollider2D ();
 		this.LoadRigidbody2D ();
-		this.LoadSkillSurfPlayer ();
 		this.LoadAnimationPlayer ();
+		this.LoadMovingPlayer ();
 
+	}
+	protected virtual void LoadMovingPlayer(){
+		if (this.movingPlayer != null)
+			return;
+		this.movingPlayer= GetComponentInChildren<MovingPlayer>();
+		Debug.Log ("Add MovingPlayer", gameObject);
 	}
 	protected virtual void LoadAnimationPlayer(){
 		if (this.animationPlayer != null)
@@ -57,12 +63,7 @@ public class PlayerCtrl : NddBehaviour {
 		this.animationPlayer= GetComponentInChildren<AnimationPlayer>();
 		Debug.Log ("Add AnimationPlayer", gameObject);
 	}
-	protected virtual void LoadSkillSurfPlayer(){
-		if (this.skillSurfPlayer != null)
-			return;
-		this.skillSurfPlayer= GetComponentInChildren<SkillSurfPlayer>();
-		Debug.Log ("Add SkillSurfPlayer", gameObject);
-	}
+
 	protected virtual void LoadBoxCollider2D(){
 		if (this.box2D != null)
 			return;
