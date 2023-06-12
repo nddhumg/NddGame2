@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerCtrl : NddBehaviour {
-	[SerializeField]protected BoxCollider2D box2D;
+
 	[SerializeField]protected Rigidbody2D rig2D;
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
+	[SerializeField]protected PlayerSO playerSO;
 
+	public PlayerSO PlayerSO{
+		get{
+			return playerSO;
+		}
+	}
 	public MovingPlayer MovingPlayer{
 		get{
 			return movingPlayer;
@@ -19,37 +25,26 @@ public class PlayerCtrl : NddBehaviour {
 		}
 	}
 
-	public BoxCollider2D Box2D{
-		get{
-			return box2D;
-		}
-	}
+
 	public Rigidbody2D Rig2D{
 		get{
 			return rig2D;
 		}
 	}
-
-	private static PlayerCtrl instance;
-	public static PlayerCtrl Instance{
-		get{
-			return instance;
-		}
-	}
-	protected override void LoadSingleton() {
-		if (PlayerCtrl.instance != null) {
-			Debug.LogError("Only 1 PlayerCtrl allow to exist");
-		}
-		PlayerCtrl.instance = this;
-	}
-
-
+		
 	protected override void LoadComponent(){
-		this.LoadBoxCollider2D ();
 		this.LoadRigidbody2D ();
 		this.LoadAnimationPlayer ();
 		this.LoadMovingPlayer ();
+		this.LoadPlayerSO ();
+	}
+	protected virtual void LoadPlayerSO(){
+		if (this.playerSO != null)
+			return;
+		string resPath = "ScriptableObject/Player/EnemyColliderCapsule/" +	transform.name;
+		this.playerSO = Resources.Load<PlayerSO> (resPath);
 
+		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
 	}
 	protected virtual void LoadMovingPlayer(){
 		if (this.movingPlayer != null)
@@ -64,12 +59,6 @@ public class PlayerCtrl : NddBehaviour {
 		Debug.Log ("Add AnimationPlayer", gameObject);
 	}
 
-	protected virtual void LoadBoxCollider2D(){
-		if (this.box2D != null)
-			return;
-		this.box2D= GetComponentInChildren<BoxCollider2D>();
-		Debug.Log ("Add BoxCollider2D", gameObject);
-	}
 	protected virtual void LoadRigidbody2D(){
 		if (this.rig2D != null)
 			return;

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemy : SpawnsPoolOgj {
-	[SerializeField] protected float delaySpawn = 1f;
-	[SerializeField] protected Vector3 posRan;
-	[SerializeField] protected Vector2 distance;
-	[SerializeField] protected string enemy_1 = "Enemy1";
-
+	[SerializeField] protected float delaySpawn = 3f;
+	[SerializeField] protected float timer =3f;
+	[SerializeField] protected int numberSpawn =10 ;
+	[SerializeField] protected int maxNumberSpawn = 200;
+	[SerializeField] protected List<Transform> posSpawns;
+	[SerializeField] protected bool isSpawnEnemy = true;
+	[SerializeField] protected int numberOfEnemy = 0;
+	[SerializeField] protected string enemy_1 = "Slime";
 
 	private static SpawnEnemy instance;
 	public static SpawnEnemy Instance{
@@ -21,29 +24,67 @@ public class SpawnEnemy : SpawnsPoolOgj {
 		}
 		SpawnEnemy.instance = this;
 	}
+
 	protected override void Start(){
-		distance = new Vector2 (4f,4f);
-		StartCoroutine (DelaySpawn ());
+		base.Start ();
+		StartCoroutine (CheckIsSpawnEnemy ());
+	}
+	void FixedUpdate(){
+		this.DelaySpawnEnemy ();
+	}
+	protected override void LoadComponent ()
+	{
+		base.LoadComponent ();
+		this.LoadPosSpawnEnemy ();
 	}
 
-	private IEnumerator DelaySpawn(){
-		
-		yield return new WaitForSeconds(delaySpawn); 
-		this.SpawnRandomPos ();
-		yield return StartCoroutine(DelaySpawn());
-	}
-	protected virtual Transform SpawnRandomPos(){
-		RandomPos ();
-		Transform newEnemy = this.Spawn (enemy_1, posRan, Quaternion.identity);
-		return newEnemy;
-	}
-	protected virtual void RandomPos(){
-		Vector3 posPlayer = GameObjManager.Player.position ;
-
-		posRan.x = Random.Range(posPlayer.x+ distance.x,posPlayer.x - distance.x );
-		posRan.y = Random.Range(posPlayer.y+ distance.y,posPlayer.y - distance.y );
-		posRan.z = 0;
+	protected virtual void LoadPosSpawnEnemy(){
+		if (posSpawns.Count > 0)
+			return;
+		Transform posSpawnEnemy = GameObject.Find ("PosSpawnEnemy").transform;
+		foreach (Transform posEnemy in posSpawnEnemy) {
+			posSpawns.Add (posEnemy);
+		}
 	}
 
+	protected virtual void  DelaySpawnEnemy(){
+		if (!isSpawnEnemy)
+			return;
+		timer += Time.fixedDeltaTime;
+		if (timer < delaySpawn) {
+			return;
+		}
+		int numberEnemySpawn = numberSpawn;
+		if(maxNumberSpawn - numberOfEnemy < numberSpawn )
+			numberEnemySpawn = maxNumberSpawn - numberOfEnemy;
+		for (int i = 0; i < numberEnemySpawn; i++) {
+			int randomPosSpawn = Random.Range (0, posSpawns.Count);
+			Vector3 posSpawn = posSpawns [randomPosSpawn].position;
+			Spawn (enemy_1, posSpawn, Quaternion.identity);
+			numberOfEnemy++;
+		}
+		timer = 0;
+	}
+	IEnumerator CheckIsSpawnEnemy(){
+		while (true) {
+			CheckCoditionSpawn ();
+			yield return new WaitForSeconds (1f);
+		}
+	}
+
+	public virtual void ReductTheNumberofEnemy(){
+		if (numberOfEnemy <= 0) {
+			numberOfEnemy = 0;
+			return;
+		}
+		numberOfEnemy--;
+	}
+	protected virtual void CheckCoditionSpawn(){
+		if (numberOfEnemy >= maxNumberSpawn)
+			isSpawnEnemy = false;
+		else {
+			isSpawnEnemy = true;
+		}
+	}	
 }
 

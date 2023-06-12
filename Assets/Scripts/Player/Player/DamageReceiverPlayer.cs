@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageReceiverPlayer : DamageReceiver {
-	
-	public override void ResetHp(){
-		base.ResetHp ();
+	[SerializeField] protected PlayerCtrl playerCtrl;
+	protected override void LoadComponent(){
+		base.LoadComponent ();
+		this.LoadPlayerCtrl ();
 	}
+	protected virtual void LoadPlayerCtrl(){
+		if (this.playerCtrl != null)
+			return;
+		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
+		Debug.Log ("Add PlayerCtrl", gameObject);
+	}
+
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
-		this.hpMax = 100f;
+		//if(PlayerCtrl)
+		this.hpMax = playerCtrl.PlayerSO.hpMax;
 	}
-	protected override void LoadComponent(){
-		base.LoadComponent ();
-	}
+
 
 	protected override void OnDead ()
 	{

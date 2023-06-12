@@ -8,7 +8,18 @@ public class DashPlayer : DashAbilityByDistance {
 	[SerializeField] protected Vector4 keyMoving;
 	[SerializeField] protected float delayTime = 5f;
 	[SerializeField] protected float timer = 2f;
+	[SerializeField] protected PlayerCtrl playerCtrl;
+	protected override void LoadComponent(){
+		base.LoadComponent ();
+		this.LoadPlayerCtrl (); 
+	}
 
+	protected virtual void LoadPlayerCtrl(){
+		if (this.playerCtrl != null)
+			return;
+		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
+		Debug.Log ("Add PlayerCtrl", gameObject);
+	}
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
@@ -50,16 +61,16 @@ public class DashPlayer : DashAbilityByDistance {
 		if (this.keyMoving == Vector4.zero)
 			return;
 		timerAbility = 0f;
-		PlayerCtrl.Instance.AnimationPlayer.SetAnimationSurf (true);
+		playerCtrl.AnimationPlayer.SetAnimationSurf (true);
 		CalculateDirection ();
 		StartCoroutine(Dash());
 	}
 	protected override void StopSurf(){
 		base.StopSurf ();
-		PlayerCtrl.Instance.AnimationPlayer.SetAnimationSurf (false);
+		playerCtrl.AnimationPlayer.SetAnimationSurf (false);
 	}
 	protected override void UnannouncedConditions(){
-		Vector2 limit =  PlayerCtrl.Instance.MovingPlayer.LimitPos;
+		Vector2 limit =  playerCtrl.MovingPlayer.LimitPos;
 		Vector3 pos = transform.position; 
 		if (pos.x > limit.x || pos.x < -limit.x || pos.y > limit.y || pos.y < -limit.y)
 			this.conflict = true;

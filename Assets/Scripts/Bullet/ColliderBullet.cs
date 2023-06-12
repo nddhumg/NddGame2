@@ -31,8 +31,9 @@ public class ColliderBullet : NddBehaviour {
 	void OnTriggerEnter2D(Collider2D col){
 		if (col.transform.name == transform.name )
 			return;
-		if (col.transform.parent == bulletCtrl.Shooter)
+		if (col.transform.parent.tag == bulletCtrl.BulletSO.tagShooter) {
 			return;
+		}
 		bulletCtrl.DamageSender.Send (col.transform.parent);
 	}
 }

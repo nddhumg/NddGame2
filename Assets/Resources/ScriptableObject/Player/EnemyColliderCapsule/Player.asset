@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745eff5b12c92c440bd77c5cb55ae1f9, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  offsetCollider: {x: 0, y: -0.44}
+  sizeCollider: {x: 0.7, y: 1}
+  namePlayer: Dragon
+  hpMax: 101
+  speed: 10
+  nameBullets:
+  - BulletPlayerSkill
+  - BulletPlayerNormal

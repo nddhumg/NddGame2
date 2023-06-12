@@ -1,20 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(BoxCollider2D))]
-public class CollisionPlayer : CollisionManager {
-	[SerializeField] protected BoxCollider2D boxCollider2D;
+
+[RequireComponent(typeof(CapsuleCollider2D))]
+public class CollisionPlayer : NddBehaviour {
+	[Header("ColliderPlayer")]
+	[SerializeField] protected CapsuleCollider2D capsuleCollider2D;
+	[SerializeField] protected PlayerCtrl playerCtrl;
 	protected override void LoadComponent(){
 		base.LoadComponent ();
-		this.LoadBoxCollider2D ();
+		this.LoadPlayerCtrl ();
+		this.LoadCapsuleCollider2D (); 
 	}
-	protected virtual void LoadBoxCollider2D(){
-		if(this.boxCollider2D != null)
+
+	protected virtual void LoadPlayerCtrl(){
+		if (this.playerCtrl != null)
 			return;
-		this.boxCollider2D = GetComponent<BoxCollider2D> ();
-		this.boxCollider2D.isTrigger = false;
-		this.boxCollider2D.offset = new Vector2 (0f,-0.4f);
-		this.boxCollider2D.size = new Vector2 (0.64f,1f);
-		Debug.Log("Add BoxCollider2D",gameObject);
+		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
+		Debug.Log ("Add PlayerCtrl", gameObject);
+	}
+	protected virtual void LoadCapsuleCollider2D(){
+		if(this.capsuleCollider2D != null)
+			return;
+		this.capsuleCollider2D = GetComponent<CapsuleCollider2D> ();
+		this.capsuleCollider2D.isTrigger = false;
+		this.capsuleCollider2D.offset = playerCtrl.PlayerSO.offsetCollider;
+		this.capsuleCollider2D.size = playerCtrl.PlayerSO.sizeCollider;
+		Debug.Log("Add CapsuleCollider2D",gameObject);
 	}
 }

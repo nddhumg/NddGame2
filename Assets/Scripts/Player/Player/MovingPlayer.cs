@@ -5,10 +5,19 @@ using UnityEngine;
 public class MovingPlayer : NddBehaviour {
     [SerializeField]protected Vector4 keyTarget ;
     [SerializeField]protected float speedMoving = 3f;
-//	[SerializeField]protected float limitPosX = 31.5f;
-//	[SerializeField]protected float limitPosY = 19.6f;
 	[SerializeField]protected Vector2 limitPos = new Vector2 (31.5f, 19.6f);
+	[SerializeField]protected PlayerCtrl playerCtrl;
+	protected override void LoadComponent(){
+		base.LoadComponent ();
+		this.LoadPlayerCtrl (); 
+	}
 
+	protected virtual void LoadPlayerCtrl(){
+		if (this.playerCtrl != null)
+			return;
+		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
+		Debug.Log ("Add PlayerCtrl", gameObject);
+	}
 	public Vector2 LimitPos{
 		get{
 			return limitPos;
@@ -70,9 +79,9 @@ public class MovingPlayer : NddBehaviour {
 	}
 	protected virtual void HandRunAnimation(){
 		if (this.keyTarget == Vector4.zero) {
-			PlayerCtrl.Instance.AnimationPlayer.SetAnimationRuning (false);
+			playerCtrl.AnimationPlayer.SetAnimationRuning (false);
 		} else {
-			PlayerCtrl.Instance.AnimationPlayer.SetAnimationRuning (true);
+			playerCtrl.AnimationPlayer.SetAnimationRuning (true);
 		}
 	}
 

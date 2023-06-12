@@ -8,7 +8,19 @@ public class SkillSurfPlayer : SkillSurfByDistance {
 	[SerializeField] protected Vector4 keyMoving;
 	[SerializeField] protected float delayTime = 5f;
 	[SerializeField] protected float timer = 2f;
+	[SerializeField]protected PlayerCtrl playerCtrl;
+	protected override void LoadComponent(){
+		base.LoadComponent ();
+		this.LoadPlayerCtrl (); 
+		this.LoadRigidbody2DParent (playerCtrl.Rig2D);
+	}
 
+	protected virtual void LoadPlayerCtrl(){
+		if (this.playerCtrl != null)
+			return;
+		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
+		Debug.Log ("Add PlayerCtrl", gameObject);
+	}
 	void Update(){
 		keyMoving = InputManager.Instance.KeyMoving;
 		this.SurfPlayer ();
@@ -31,13 +43,10 @@ public class SkillSurfPlayer : SkillSurfByDistance {
             direction.y += 1;
         }
     }
-	protected override void LoadComponent(){
-// @@
-		this.LoadRigidbody2DParent (PlayerCtrl.Instance.Rig2D);
-	}
+
 	protected override void StopSurf(){
 		base.StopSurf ();
-		PlayerCtrl.Instance.AnimationPlayer.SetAnimationSurf (false);
+		playerCtrl.AnimationPlayer.SetAnimationSurf (false);
 	}
 	protected virtual void SurfPlayer(){
 		if (distance <= 0) {
@@ -46,7 +55,7 @@ public class SkillSurfPlayer : SkillSurfByDistance {
 		timer += Time.deltaTime;
 		this.keySkillSurf = InputManager.Instance.KeySpace;
 		if (keySkillSurf && timer >= delayTime && keyMoving != Vector4.zero) {
-			PlayerCtrl.Instance.AnimationPlayer.SetAnimationSurf (true);
+			playerCtrl.AnimationPlayer.SetAnimationSurf (true);
 			CalculateDirection ();
 			this.Surf ();
 			timer = 0f;

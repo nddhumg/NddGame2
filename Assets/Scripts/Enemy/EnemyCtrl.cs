@@ -7,11 +7,22 @@ public class EnemyCtrl : NddBehaviour {
 	[SerializeField] protected DestroyEnemy destroyEnemy;
 	[SerializeField] protected DamageSenderEnemy damageSenderEnemy;
 	[SerializeField] protected DamageReceiverEnemy damageReceiverEnemy;
+	[SerializeField] protected EnemyFollow enemyFollow;
 	[SerializeField] protected EnemySO enemySO;
-
+	[SerializeField] protected EnemyArcSO enemyArcSO;
 	public EnemySO EnemySO{
 		get{
 			return enemySO;
+		}
+	}
+	public EnemyArcSO EnemyArcSO{
+		get{
+			return enemyArcSO;
+		}
+	}
+	public EnemyFollow EnemyFollow{
+		get{
+			return enemyFollow;
 		}
 	}
 	public DamageSenderEnemy DamageSenderEnemy{
@@ -37,6 +48,13 @@ public class EnemyCtrl : NddBehaviour {
 		this.LoadDamageSenderEnemy ();
 		this.LoadDamageReceiverEnemy ();
 		this.LoadRigidbody2D ();
+		this.LoadEnemyFollow ();
+	}
+	protected virtual void LoadEnemyFollow(){
+		if (this.enemyFollow != null)
+			return;
+		this.enemyFollow= GetComponentInChildren<EnemyFollow>();
+		Debug.Log ("Add EnemyFollow", gameObject);
 	}
 	protected virtual void LoadDamageReceiverEnemy(){
 		if (this.damageReceiverEnemy != null)
@@ -61,14 +79,18 @@ public class EnemyCtrl : NddBehaviour {
 			return;
 		string resPath = "ScriptableObject/Enemy/EnemyColliderCapsule/" +	transform.name;
 		this.enemySO = Resources.Load<EnemySO> (resPath);
+		enemyArcSO = Resources.Load<EnemyArcSO> (resPath);
 		Debug.LogWarning (transform.name + " LoadEnemySO " + resPath, gameObject);
 	}
+
 	protected virtual void LoadRigidbody2D(){
 		if (this.rig2d != null)
 		return;
 		rig2d = GetComponent<Rigidbody2D> ();
 		this.rig2d.bodyType = RigidbodyType2D.Dynamic;
 		this.rig2d.gravityScale = 0f;
+		this.rig2d.mass = 0.5f;
+		this.rig2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 		Debug.Log ("Add Rigidbody2DP", gameObject);
 	}
 }

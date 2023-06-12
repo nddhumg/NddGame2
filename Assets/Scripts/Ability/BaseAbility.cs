@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseAbility : NddBehaviour {
-	[Header("Abiliyy")]
+	[Header("Ability")]
 	[SerializeField] protected float delayAbility = 5f;
 	[SerializeField] protected float timerAbility = 10f;
 	[SerializeField] protected bool isReady = false;

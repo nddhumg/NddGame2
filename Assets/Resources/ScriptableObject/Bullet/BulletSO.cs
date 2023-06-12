@@ -6,4 +6,5 @@ public class BulletSO : SOColliderCapsule {
 	public string bulletName = "Bullet";
 	public float damage = 1;
 	public float speed = 10f;
+	public string tagShooter;
 }

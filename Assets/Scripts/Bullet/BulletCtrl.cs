@@ -6,18 +6,8 @@ public class BulletCtrl : NddBehaviour {
 	[SerializeField]protected FlyBullet flyBullet;
 	[SerializeField]protected DestroyBullet destroyBullet;
 	[SerializeField]protected DamageSender damageSender;
-	[SerializeField]protected BulletSO 
+	[SerializeField]protected BulletSO bulletSO;
 
-	bulletSO;
-	[SerializeField]protected Transform shooter;
-	public Transform Shooter{
-		get{
-			return shooter;
-		}
-		set{
-			shooter = value;
-		}
-	}
 	public BulletSO BulletSO{
 		get{
 			return bulletSO;
