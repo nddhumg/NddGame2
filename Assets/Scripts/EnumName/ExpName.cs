@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : FollowPlayer {
-	
+public enum ExpName  {
+	NoName = 0,
+	ExpType1,
+	ExpType2,
+	ExpType3,
 }

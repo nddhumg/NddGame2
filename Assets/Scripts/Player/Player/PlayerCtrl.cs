@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D))]
-public class PlayerCtrl : NddBehaviour {
 
-	[SerializeField]protected Rigidbody2D rig2D;
+public class PlayerCtrl : NddBehaviour {
+	[SerializeField]protected PhysicsPlayer physicsPlayer;
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
@@ -26,14 +25,14 @@ public class PlayerCtrl : NddBehaviour {
 	}
 
 
-	public Rigidbody2D Rig2D{
+	public PhysicsPlayer PhysicsPlayer{
 		get{
-			return rig2D;
+			return physicsPlayer;
 		}
 	}
 		
 	protected override void LoadComponent(){
-		this.LoadRigidbody2D ();
+		this.LoadPhysicsPlayer ();
 		this.LoadAnimationPlayer ();
 		this.LoadMovingPlayer ();
 		this.LoadPlayerSO ();
@@ -45,6 +44,12 @@ public class PlayerCtrl : NddBehaviour {
 		this.playerSO = Resources.Load<PlayerSO> (resPath);
 
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
+	}
+	protected virtual void LoadPhysicsPlayer(){
+		if (this.physicsPlayer != null)
+			return;
+		this.physicsPlayer= GetComponent<PhysicsPlayer>();
+		Debug.Log ("Add PhysicsPlayer", gameObject);
 	}
 	protected virtual void LoadMovingPlayer(){
 		if (this.movingPlayer != null)
@@ -59,14 +64,5 @@ public class PlayerCtrl : NddBehaviour {
 		Debug.Log ("Add AnimationPlayer", gameObject);
 	}
 
-	protected virtual void LoadRigidbody2D(){
-		if (this.rig2D != null)
-			return;
-		this.rig2D= GetComponent<Rigidbody2D>();
-		this.SetRigidbody2D ();
-		Debug.Log ("Add LoadRigidbody2D", gameObject);
-	}
-	protected virtual void SetRigidbody2D(){
-		this.rig2D.gravityScale = 0; 
-	}
+
 }

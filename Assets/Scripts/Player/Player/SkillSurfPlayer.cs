@@ -12,7 +12,7 @@ public class SkillSurfPlayer : SkillSurfByDistance {
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
-		this.LoadRigidbody2DParent (playerCtrl.Rig2D);
+		this.LoadRigidbody2DParent (playerCtrl.PhysicsPlayer.Rig2d);
 	}
 
 	protected virtual void LoadPlayerCtrl(){

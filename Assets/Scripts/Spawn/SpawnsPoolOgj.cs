@@ -97,5 +97,7 @@ public class SpawnsPoolOgj : NddBehaviour {
 		}
 		return newObj;
 	}
-
+	public virtual Transform Spawn(GameObject preafab, Vector3 pos, Quaternion rot){
+		return this.Spawn (preafab.name, pos, rot);
+	}
 }

@@ -8,14 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 745eff5b12c92c440bd77c5cb55ae1f9, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 3f8715c4b873e6c49b5c5a51c27b9dd2, type: 3}
+  m_Name: ExpType2
   m_EditorClassIdentifier: 
   offsetCollider: {x: 0, y: 0}
-  sizeCollider: {x: 0.7, y: 1}
-  namePlayer: Dragon
-  hpMax: 101
-  speed: 10
-  nameBullets:
-  - BulletPlayerSkill
-  - BulletPlayerNormal
+  sizeCollider: {x: 0.15, y: 0.25}
+  expName: 2
+  experience: 0

@@ -6,7 +6,7 @@ public class EnemyFollow : FollowPlayer {
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
-		this.speedFollow = 2f;
+		this.speedFollow = 2.5f;
 	}
 
 	protected override void Follow(){

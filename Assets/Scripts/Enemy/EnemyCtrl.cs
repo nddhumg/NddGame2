@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D))]
+
 public class EnemyCtrl : NddBehaviour {
 	[SerializeField] protected Rigidbody2D rig2d;
 	[SerializeField] protected DestroyEnemy destroyEnemy;
@@ -47,32 +47,31 @@ public class EnemyCtrl : NddBehaviour {
 		this.LoadEnemySO ();
 		this.LoadDamageSenderEnemy ();
 		this.LoadDamageReceiverEnemy ();
-		this.LoadRigidbody2D ();
 		this.LoadEnemyFollow ();
 	}
 	protected virtual void LoadEnemyFollow(){
 		if (this.enemyFollow != null)
 			return;
 		this.enemyFollow= GetComponentInChildren<EnemyFollow>();
-		Debug.Log ("Add EnemyFollow", gameObject);
+		Debug.LogWarning ("Add EnemyFollow", gameObject);
 	}
 	protected virtual void LoadDamageReceiverEnemy(){
 		if (this.damageReceiverEnemy != null)
 			return;
 		this.damageReceiverEnemy= GetComponentInChildren<DamageReceiverEnemy>();
-		Debug.Log ("Add DamageReceiverEnemy", gameObject);
+		Debug.LogWarning ("Add DamageReceiverEnemy", gameObject);
 	}
 	protected virtual void LoadDamageSenderEnemy(){
 		if (this.damageSenderEnemy != null)
 			return;
 		this.damageSenderEnemy= GetComponentInChildren<DamageSenderEnemy>();
-		Debug.Log ("Add DamageSenderEnemy", gameObject);
+		Debug.LogWarning ("Add DamageSenderEnemy", gameObject);
 	}
 	protected virtual void LoadDestroyEnemy(){
 		if (this.destroyEnemy != null)
 			return;
 		this.destroyEnemy= GetComponentInChildren<DestroyEnemy>();
-		Debug.Log ("Add DestroyEnemy", gameObject);
+		Debug.LogWarning ("Add DestroyEnemy", gameObject);
 	}
 	protected virtual void LoadEnemySO(){
 		if (this.enemySO != null)
@@ -83,14 +82,4 @@ public class EnemyCtrl : NddBehaviour {
 		Debug.LogWarning (transform.name + " LoadEnemySO " + resPath, gameObject);
 	}
 
-	protected virtual void LoadRigidbody2D(){
-		if (this.rig2d != null)
-		return;
-		rig2d = GetComponent<Rigidbody2D> ();
-		this.rig2d.bodyType = RigidbodyType2D.Dynamic;
-		this.rig2d.gravityScale = 0f;
-		this.rig2d.mass = 0.5f;
-		this.rig2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-		Debug.Log ("Add Rigidbody2DP", gameObject);
-	}
 }
