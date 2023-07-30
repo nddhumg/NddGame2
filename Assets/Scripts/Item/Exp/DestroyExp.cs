@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyExp : NddBehaviour {
+public class DestroyExp : DestroyItem {
 
-	public virtual void DestroyObj (){
+	public override void DestroyObject (){
 		SpawnerExp.Instance.DesTroyPrefabs (transform.parent);
 	}
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelPlayer : Level {
+	[SerializeField] protected float expCurrent = 0;
+	[SerializeField] protected float expLevelUp = 20;
+	[SerializeField] protected float expLevelUpIncreaseRate = 0.5f;
 	private static LevelPlayer instance;
 	public static LevelPlayer Instance{
 		get{
@@ -15,5 +18,21 @@ public class LevelPlayer : Level {
 
 		}
 		LevelPlayer.instance = this;
+	}
+
+	public virtual void IncreaseExp(float exp){
+		expCurrent += exp;
+		LevelUpByExp ();
+	}
+	protected virtual void LevelUpByExp(){
+		if (expCurrent <= expLevelUp)
+			return;
+		expCurrent -= expLevelUp;
+		LevelUp ();
+		IncreaseExpLevelup ();
+		SpawnFx.Instance.Spawn ("FxLevelUp", transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
+	}
+	protected virtual void IncreaseExpLevelup(){
+		expLevelUp += expLevelUpIncreaseRate*expLevelUp;
 	}
 }

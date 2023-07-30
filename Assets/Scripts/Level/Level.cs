@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Level : NddBehaviour {
-	[SerializeField] protected float levelCurrent = 0;
+	[SerializeField] protected float levelCurrent = 1;
 	[SerializeField] protected int levelMax = 99;
+
 	public float LevelCurrent{
 		get{
 			return levelCurrent;

@@ -6,19 +6,18 @@ public class ShotEnemy : ShotAbility {
 	[Header("Shot Enemy")]
 	[SerializeField] protected string nameTarget = "Player";
 	[SerializeField] protected float range = 20f;
-	[SerializeField] protected EnemyCtrl enemyCtrl;
+	[SerializeField] protected EnemyArcCtrl enemyArcCtrl;
 	protected override void LoadComponent(){
 		base.LoadComponent ();
-		this.LoadEnemyCtrl ();
+		this.LoadEnemyArcCtrl();
 	}
-	protected virtual void LoadEnemyCtrl(){
-		if (this.enemyCtrl != null)
+	protected virtual void LoadEnemyArcCtrl(){
+		if (this.enemyArcCtrl != null)
 			return;
-		this.enemyCtrl = transform.parent.parent.GetComponent<EnemyCtrl>();
-		Debug.Log ("Add EnemyCtrl", gameObject);
+		this.enemyArcCtrl = transform.parent.parent.GetComponent<EnemyArcCtrl>();
+		Debug.Log ("Add EnemyArcCtrl", gameObject);
 	}
-	protected override void Update(){
-		base.Update();
+	 void FixedUpdate(){
 		this.Shooting();
 	}
 	protected override void ResetValue(){
@@ -26,7 +25,7 @@ public class ShotEnemy : ShotAbility {
 		this.delayAbility = 2f;
 	}
 	protected virtual bool WithinFiringRange(){
-		if (enemyCtrl.EnemyFollow.IsFollowing)
+		if (enemyArcCtrl.EnemyFollow.IsFollowing)
 			return false;
 		else {
 			return true;
@@ -42,7 +41,7 @@ public class ShotEnemy : ShotAbility {
 	}
 
 	protected override string GetNameBullet(){
-		return enemyCtrl.EnemyArcSO.nameBulletShot;
+		return enemyArcCtrl.EnemyArcSO.nameBulletShot.ToString();
 	}
 	protected override void SetBulletTarget(){
 		Transform TfTarget = GameObject.Find (nameTarget).transform;

@@ -24,8 +24,8 @@ public class CollisionPlayer : NddBehaviour {
 			return;
 		this.capsuleCollider2D = GetComponent<CapsuleCollider2D> ();
 		this.capsuleCollider2D.isTrigger = false;
-		this.capsuleCollider2D.offset = playerCtrl.PlayerSO.offsetCollider;
-		this.capsuleCollider2D.size = playerCtrl.PlayerSO.sizeCollider;
+		this.capsuleCollider2D.offset = playerCtrl.PlayerSO.sizeCapsule.offsetCollider;
+		this.capsuleCollider2D.size = playerCtrl.PlayerSO.sizeCapsule.sizeCollider;
 		Debug.Log("Add CapsuleCollider2D",gameObject);
 	}
 }

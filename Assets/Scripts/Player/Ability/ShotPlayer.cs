@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotPlayer : ShotAbility {
-	[Header ("Shot Ability Player")]
+	[Header ("Shot Ability Player")]  
+	[SerializeField] protected bool shotByKey ;
+	[SerializeField] protected bool shotByAutoPosTarget = true;
 	[SerializeField] protected int keyShot;
 	[SerializeField] protected float ranShotBullet1 =0.05f;
 	[SerializeField] protected PlayerCtrl playerCtrl;
@@ -24,7 +26,7 @@ public class ShotPlayer : ShotAbility {
 	}
 	protected override void Update(){
 		base.Update ();
-		this.GetKeyShot ();
+
 		this.Shooting ();
 	}
 	protected virtual void GetKeyShot(){
@@ -33,12 +35,16 @@ public class ShotPlayer : ShotAbility {
 	protected virtual void Shooting(){
 		if (!isReady )
 			return;
-		if (keyShot != 1)
-			return;
+		if (this.shotByKey) {
+			GetKeyShot ();
+			if (keyShot != 1)
+				return;
+		}
 		timerAbility = 0f;
-		Vector3 PosSpawn = transform.position + new Vector3 (0, -0.5f, 0);
+		Vector3 PosSpawn = transform.position + new Vector3 (0, 0, 0);
 		ShootBullet(PosSpawn);
 	}
+
 	protected override string GetNameBullet(){
 		float ran= Random.Range (0, 1f);
 		if (ran > ranShotBullet1) {
@@ -48,9 +54,25 @@ public class ShotPlayer : ShotAbility {
 		}
 	}
 	protected override void SetBulletTarget(){
-		target = InputManager.Instance.PosMouse;
+		if (this.shotByKey || this.shotByAutoPosTarget) {
+			target = InputManager.Instance.PosMouse;
+		}
 		target -= transform.position;
 		target = new Vector3 (target.x, target.y, 0);
+	}
+	public virtual void SetStyleShootingPlayer(int style){
+		if (style == 0) {
+			this.shotByKey = true;
+			this.shotByAutoPosTarget = false;
+
+		} else if (style == 1) {
+			this.shotByKey = false;
+			this.shotByAutoPosTarget = true;
+
+		}
+		else {
+			Debug.LogError ("Not style shooting play: " + style, gameObject);
+		}
 	}
 	protected override Quaternion SetBulletRotation(Vector3 target){
 		Quaternion rotNew = Quaternion.identity;

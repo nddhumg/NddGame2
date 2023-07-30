@@ -6,7 +6,16 @@ using UnityEngine;
 	[SerializeField] protected float hp = 0f;
 	[SerializeField] protected float hpMax = 2f;
 	[SerializeField] protected bool isDead = false;
-
+	public float Hp{
+		get{
+			return hp;
+		}
+	}
+	public float HpMax{
+		get{
+			return hpMax;
+		}
+	}
 	protected override void Start ()
 	{
 		base.Start ();

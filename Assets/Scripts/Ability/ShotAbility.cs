@@ -11,10 +11,12 @@ public abstract class ShotAbility : BaseAbility {
 		this.SetBulletTarget ();
 		bulletRotation =  this.SetBulletRotation (target);
 		string nameBullet = GetNameBullet();
+		if (target == Vector3.zero) {
+			return null;
+		}
 		Transform newBullet = SpawnBullet.Instance.Spawn (nameBullet, pos, bulletRotation);
 		if (newBullet == null)
 			return null;
-
 		BulletCtrl bulletCtrl= newBullet.GetComponent<BulletCtrl>();
 		bulletCtrl.FlyBullet.SetDirection(target);
 		return newBullet;

@@ -61,13 +61,8 @@ public class DashPlayer : DashAbilityByDistance {
 		if (this.keyMoving == Vector4.zero)
 			return;
 		timerAbility = 0f;
-		playerCtrl.AnimationPlayer.SetAnimationSurf (true);
 		CalculateDirection ();
 		StartCoroutine(Dash());
-	}
-	protected override void StopSurf(){
-		base.StopSurf ();
-		playerCtrl.AnimationPlayer.SetAnimationSurf (false);
 	}
 	protected override void UnannouncedConditions(){
 		Vector2 limit =  playerCtrl.MovingPlayer.LimitPos;

@@ -24,8 +24,8 @@ public class ColliderBullet : NddBehaviour {
 			return;
 		this.capsuleCollider2D = GetComponent<CapsuleCollider2D> ();
 		this.capsuleCollider2D.isTrigger = true;
-		capsuleCollider2D.size = bulletCtrl.BulletSO.sizeCollider;
-		capsuleCollider2D.offset = bulletCtrl.BulletSO.offsetCollider;
+		capsuleCollider2D.size = bulletCtrl.BulletSO.sizeCapsule.sizeCollider;
+		capsuleCollider2D.offset = bulletCtrl.BulletSO.sizeCapsule.offsetCollider;
 		Debug.Log("Add CapsuleCollider2D",gameObject);
 	}
 	void OnTriggerEnter2D(Collider2D col){

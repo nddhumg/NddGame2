@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyFx : DestroyByTime {
-	public override void DestroyObj ()
+	protected override void ToDestroy ()
 	{
-		timer = 0f;
 		SpawnFx.Instance.DesTroyPrefabs (transform.parent.transform);
 	}
 

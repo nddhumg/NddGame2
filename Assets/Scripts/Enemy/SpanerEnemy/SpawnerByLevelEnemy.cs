@@ -13,6 +13,11 @@ public class SpawnerByLevelEnemy : NddBehaviour {
 		base.LoadComponent ();
 		this.LoadSpawnEnemyCtrl();
 	}
+	protected override void ResetValue ()
+	{
+		base.ResetValue ();
+
+	}
 	protected virtual void LoadSpawnEnemyCtrl(){
 		if (this.spawnEnemyCtrl != null)
 			return;

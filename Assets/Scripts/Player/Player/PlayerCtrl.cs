@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCtrl : NddBehaviour {
 	[SerializeField]protected PhysicsPlayer physicsPlayer;
+	[SerializeField]protected DamageReceiver damageReceiver;
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
@@ -11,6 +12,11 @@ public class PlayerCtrl : NddBehaviour {
 	public PlayerSO PlayerSO{
 		get{
 			return playerSO;
+		}
+	}
+	public DamageReceiver DamageReceiver{
+		get{
+			return damageReceiver;
 		}
 	}
 	public MovingPlayer MovingPlayer{
@@ -36,11 +42,12 @@ public class PlayerCtrl : NddBehaviour {
 		this.LoadAnimationPlayer ();
 		this.LoadMovingPlayer ();
 		this.LoadPlayerSO ();
+		this.LoadDamageReceiver ();
 	}
 	protected virtual void LoadPlayerSO(){
 		if (this.playerSO != null)
 			return;
-		string resPath = "ScriptableObject/Player/EnemyColliderCapsule/" +	transform.name;
+		string resPath = "ScriptableObject/Player/" +	transform.name;
 		this.playerSO = Resources.Load<PlayerSO> (resPath);
 
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
@@ -50,6 +57,12 @@ public class PlayerCtrl : NddBehaviour {
 			return;
 		this.physicsPlayer= GetComponent<PhysicsPlayer>();
 		Debug.Log ("Add PhysicsPlayer", gameObject);
+	}
+	protected virtual void LoadDamageReceiver(){
+		if (this.damageReceiver != null)
+			return;
+		this.damageReceiver= GetComponentInChildren<DamageReceiver>();
+		Debug.Log ("Add DamageReceiver", gameObject);
 	}
 	protected virtual void LoadMovingPlayer(){
 		if (this.movingPlayer != null)

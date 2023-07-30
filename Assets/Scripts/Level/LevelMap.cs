@@ -20,6 +20,6 @@ public class LevelMap : LevelByTime {
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
-		levelMax = 10;
+		levelMax = 5;
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnFx : SpawnsPoolOgj {
-	[SerializeField] protected string fxSurf = "FXSurf";
+	[SerializeField] protected string fxSurf = "FxDash";
 
 	public string FxSurf{
 		get{

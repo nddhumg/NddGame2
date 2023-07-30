@@ -38,24 +38,24 @@ public class BulletCtrl : NddBehaviour {
 		if (this.damageSender != null)
 			return;
 		this.damageSender= GetComponentInChildren<DamageSender>();
-		Debug.Log ("Add DamageSenderBullet", gameObject);
+		Debug.LogWarning ("Add DamageSenderBullet", gameObject);
 	}
 	protected virtual void LoadFlyBullet(){
 		if (this.flyBullet != null)
 			return;
 		this.flyBullet= GetComponentInChildren<FlyBullet>();
-		Debug.Log ("Add FlyBullet", gameObject);
+		Debug.LogWarning ("Add FlyBullet", gameObject);
 	}
 	protected virtual void LoadDestroyBullet(){
 		if (this.destroyBullet != null)
 			return;
 		this.destroyBullet= GetComponentInChildren<DestroyBullet>();
-		Debug.Log ("Add DestroyBullet", gameObject);
+		Debug.LogWarning ("Add DestroyBullet", gameObject);
 	}
 	protected virtual void LoadBulletSO(){
 		if (this.bulletSO != null)
 			return;
-		string resPath = "ScriptableObject/Bullet/BulletColliderCapsule/" +	transform.name;
+		string resPath = "ScriptableObject/Bullet/" +	transform.name;
 		this.bulletSO = Resources.Load<BulletSO> (resPath);
 		Debug.LogWarning (transform.name + " LoadBulletSO " + resPath, gameObject);
 	}

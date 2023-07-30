@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+[System.Serializable]
+public class PercentageByLevel
+{
+	public int level;
+	public float percentage;
+}
 
 [System.Serializable]
 public class EnemySpawnRate
 {
 	public EnemyName nameEnemyPrefab = EnemyName.NoName;
 	public GameObject prefab;
-	public float[] percentage ;
+	public List<PercentageByLevel> percentage ;
 }
 public class ManagerRatioEnemyLevel : NddBehaviour {
-	[SerializeField]protected EnemySpawnRate[] enemySpawnInThisLevel = new EnemySpawnRate[6];
+	
+	[SerializeField]public EnemySpawnRate[] enemySpawnInThisLevel = new EnemySpawnRate[5];
 	[SerializeField]protected List<Transform> listPrefabs;
 	[SerializeField]protected float numberRandom;
 	private static ManagerRatioEnemyLevel instance;
@@ -46,9 +53,13 @@ public class ManagerRatioEnemyLevel : NddBehaviour {
 		float temp = 0;
 		foreach (EnemySpawnRate enemy in enemySpawnInThisLevel) {
 			//TODO LevelNow >= max
-			temp += enemy.percentage [levelNow];
-			if (temp >= numberRandom)
-				return enemy.prefab;
+			foreach (PercentageByLevel percentage in enemy.percentage){
+				if (percentage.level != levelNow)
+					continue;
+				temp += percentage.percentage;
+				if (temp >= numberRandom)
+					return enemy.prefab;
+			}
 		}
 		return null;
 	}
@@ -60,9 +71,8 @@ public class ManagerRatioEnemyLevel : NddBehaviour {
 		enemySpawnInThisLevel [0].nameEnemyPrefab = EnemyName.Slime;
 		enemySpawnInThisLevel [1].nameEnemyPrefab = EnemyName.GoblinKing;
 		enemySpawnInThisLevel [2].nameEnemyPrefab = EnemyName.Ork1;
-		enemySpawnInThisLevel [3].nameEnemyPrefab = EnemyName.Minotaur;
-		enemySpawnInThisLevel [4].nameEnemyPrefab = EnemyName.Ork2;
-		enemySpawnInThisLevel [5].nameEnemyPrefab = EnemyName.Ork3;
+		enemySpawnInThisLevel [3].nameEnemyPrefab = EnemyName.Ork2;
+		enemySpawnInThisLevel [4].nameEnemyPrefab = EnemyName.Ork3;
 	}
 	protected virtual void SetArrPrefabsEnemy(){
 		foreach (EnemySpawnRate enemy in enemySpawnInThisLevel) {

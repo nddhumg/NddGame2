@@ -6,8 +6,7 @@ public enum EnemyName  {
 	NoName =0,
 	Slime,
 	GoblinKing,
-	Ork1,
-	Minotaur,
+	Ork1, 
 	Ork2,
 	Ork3,
 

@@ -14,7 +14,8 @@ public class ColiderExp : AbstractExp {
 			return;
 		this.capsuleCollider2D= GetComponent<CapsuleCollider2D>();
 		Debug.LogWarning ("Add CapsuleCollider2D", gameObject);
-		this.capsuleCollider2D.size =expCtrl.ExpSO.sizeCollider;
+		this.capsuleCollider2D.size =expCtrl.ExpSO.sizeCapsule.sizeCollider;
+		this.capsuleCollider2D.offset =expCtrl.ExpSO.sizeCapsule.offsetCollider;
 		this.capsuleCollider2D.isTrigger = true;
 	}
 

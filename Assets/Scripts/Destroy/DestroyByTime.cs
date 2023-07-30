@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyByTime : NddBehaviour {
+public class DestroyByTime : DestroyObj {
 
 	[SerializeField]protected float timeDestroy = 3f;
 	[SerializeField]protected float timer = 0f;
@@ -11,11 +11,13 @@ public class DestroyByTime : NddBehaviour {
 	{
 		this.DestroyObjByTime ();
 	}
-	public virtual void DestroyObj(){
+	public override void DestroyObject(){
 		timer = 0f;
+		ToDestroy ();
+	}
+	protected virtual void ToDestroy(){
 		Destroy(transform.parent);
 	}
-
 	protected virtual bool CanDesTroy(){
 		timer += Time.fixedDeltaTime;
 		if (timer > timeDestroy)
@@ -25,7 +27,7 @@ public class DestroyByTime : NddBehaviour {
 	protected virtual void DestroyObjByTime(){
 		if (!CanDesTroy ())
 			return;
-		this.DestroyObj ();
+		this.DestroyObject ();
 	}
 
 }

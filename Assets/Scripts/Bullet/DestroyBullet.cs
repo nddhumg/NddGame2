@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyBullet : DestroyByTime {
-	public override void DestroyObj ()
+	protected override void ToDestroy ()
 	{
-		timer = 0f;
 		SpawnBullet.Instance.DesTroyPrefabs (transform.parent.transform);
-
 	}
 	protected override void ResetValue ()
 	{
