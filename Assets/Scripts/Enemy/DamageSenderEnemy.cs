@@ -5,11 +5,16 @@ using UnityEngine;
 public class DamageSenderEnemy : DamageSender {
 	[SerializeField] protected EnemyWarriorCtrl enemyWarriorCtrl;
 	[SerializeField] protected CircleCollider2D circleCollider2D;
+	[SerializeField] protected float timer =1f;
+	[SerializeField] protected float timeDelayAttack = 1f;
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
 		this.LoadEnemyWarriorCtrl ();
 		this.LoadCircleCollider2D();
+	}
+	protected virtual void FixedUpdate(){
+		timer += Time.fixedDeltaTime;
 	}
 	protected virtual void LoadCircleCollider2D(){
 		if (this.circleCollider2D != null)
@@ -26,14 +31,23 @@ public class DamageSenderEnemy : DamageSender {
 		this.enemyWarriorCtrl= transform.parent.GetComponent<EnemyWarriorCtrl>();
 		Debug.LogWarning ("Add EnemyCtrl", gameObject);
 	}
+	protected override void Send (DamageReceiver receiver)
+	{
+		if (timer < timeDelayAttack)
+			return;
+		base.Send (receiver);
+		timer = 0;
+	}
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
 		this.damage = enemyWarriorCtrl.EnemyWarriorSO.damage;
 	}
-	protected virtual void OnCollisionStay2D(Collision2D col){
-		if (col.transform.CompareTag ("Enemy"))
+	protected virtual void OnTriggerStay2D(Collider2D col){
+		if (col.isTrigger)
 			return;
-		enemyWarriorCtrl.DamageSenderEnemy.Send (col.transform);
+		if (col.transform.parent.CompareTag ("Enemy"))
+			return;
+		Send (col.transform.parent);
 	}
 }

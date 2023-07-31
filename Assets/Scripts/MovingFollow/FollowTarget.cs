@@ -8,7 +8,7 @@ public abstract class FollowTarget : NddBehaviour {
 	[SerializeField] protected float speedFollow = 1f;
 	[SerializeField] protected Vector3 direction ;
 	[SerializeField] protected bool isFollowing = true;
-	[SerializeField] protected float distance = 0.5f;
+	[SerializeField] protected float distance = 0;
 	[SerializeField] protected Vector3 velocity = new Vector3 (0, 0, -20);
 	public bool IsFollowing{
 		get{

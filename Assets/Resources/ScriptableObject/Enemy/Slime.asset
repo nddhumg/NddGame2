@@ -15,7 +15,7 @@ MonoBehaviour:
   sizeCapsule:
     offsetCollider: {x: 0, y: -0.1}
     sizeCollider: {x: 0.43, y: 0.43}
-  attackRange: 0.5
+  attackRange: 0.6
   classify: 1
   hpMax: 100
   listDropExp:

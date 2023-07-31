@@ -89,7 +89,7 @@ public class MovingPlayer : NddBehaviour {
         transform.parent.position += direction;
     }
 	protected virtual void SwapScaleIsMoving(int direction){
-		transform.parent.localScale = new Vector3(direction ,transform.parent.localScale.y,transform.parent.localScale.z);	
+		playerCtrl.Model.transform.localScale = new Vector3(direction ,transform.parent.localScale.y,transform.parent.localScale.z);	
 	}
 
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCtrl : NddBehaviour {
+public class EnemyCtrl : GameObjCtrl {
 	[SerializeField] protected DestroyEnemy destroyEnemy;
 	[SerializeField] protected DamageReceiverEnemy damageReceiverEnemy;
 	[SerializeField] protected EnemyFollow enemyFollow;

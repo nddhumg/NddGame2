@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnBullet : SpawnsPoolOgj {
-	[SerializeField] protected string bullet1 = "Bullet1";
-	[SerializeField] protected string bullet2 = "Bullet2";
-
-	public string  Bullet1{
+	[SerializeField] protected string bulletDragonPiercing = "BulletDragonPiercing";
+	[SerializeField] protected string bulletDragonNormal = "BulletDragonNormal";
+	[SerializeField] protected string bulletGoblinKing = "BulletGoblinKing";
+	public string  BulletDragonPiercing{
 		get{
-			return bullet1;
+			return bulletDragonPiercing;
 		}
 	}
-	public string  Bullet2{
+	public string  BulletDragonNormal{
 		get{
-			return bullet2;
+			return bulletDragonNormal;
+		}
+	}
+	public string  BulletGoblinKing{
+		get{
+			return bulletGoblinKing;
 		}
 	}
 	private static SpawnBullet instance;

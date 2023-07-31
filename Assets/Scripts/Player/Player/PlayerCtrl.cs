@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCtrl : NddBehaviour {
+public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected PhysicsPlayer physicsPlayer;
 	[SerializeField]protected DamageReceiver damageReceiver;
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
+
 
 	public PlayerSO PlayerSO{
 		get{
@@ -52,6 +53,7 @@ public class PlayerCtrl : NddBehaviour {
 
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
 	}
+
 	protected virtual void LoadPhysicsPlayer(){
 		if (this.physicsPlayer != null)
 			return;

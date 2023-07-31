@@ -21,6 +21,9 @@ public class EnemyFollow : FollowPlayer {
 			yield return new WaitForSeconds (1f);
 		}
 	}
+	protected virtual void FixedUpdate(){
+		SetRotationByTarget ();
+	}
 	protected virtual void LoadEnemyCtrl(){
 		if (this.enemyCtrl != null)
 			return;
@@ -31,7 +34,7 @@ public class EnemyFollow : FollowPlayer {
 	{
 		base.ResetValue ();
 		this.speedFollow = 2.5f;
-		distanceStopFollow = enemyCtrl.EnemySO.attackRange - 0.2f;
+		distanceStopFollow = enemyCtrl.EnemySO.attackRange ;
 	}
 	protected override void ChangeIsFollowing(){
 		distanceFromPlayer = Vector3.Distance (transform.position, target.position);
@@ -49,6 +52,15 @@ public class EnemyFollow : FollowPlayer {
 			enemyCtrl.AnimationEnemy.SetAnimationAttack (false);
 		} else {
 			enemyCtrl.AnimationEnemy.SetAnimationAttack (true);
+		}
+	}
+	protected virtual void SetRotationByTarget(){
+		if (target == null)
+			return;
+		if (target.position.x > transform.position.x) {
+			enemyCtrl.Model.transform.localScale = new Vector3 (1f, 1f, 1f);
+		} else {
+			enemyCtrl.Model.transform.localScale = new Vector3 (-1f, 1f, 1f);
 		}
 	}
 }

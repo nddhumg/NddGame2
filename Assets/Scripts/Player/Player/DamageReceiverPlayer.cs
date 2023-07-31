@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class DamageReceiverPlayer : DamageReceiver {
 	[SerializeField] protected PlayerCtrl playerCtrl;
+
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl ();
 	}
+
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
@@ -18,10 +20,8 @@ public class DamageReceiverPlayer : DamageReceiver {
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
-		//if(PlayerCtrl)
 		this.hpMax = playerCtrl.PlayerSO.hpMax;
 	}
-
 
 	protected override void OnDead ()
 	{

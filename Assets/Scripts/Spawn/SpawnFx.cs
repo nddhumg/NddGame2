@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class SpawnFx : SpawnsPoolOgj {
 	[SerializeField] protected string fxSurf = "FxDash";
-
+	[SerializeField] protected string fxLevelUp = "FxLevelUp";
 	public string FxSurf{
 		get{
 			return fxSurf;
+		}
+	}
+	public string FxLevelUp{
+		get{
+			return fxLevelUp;
 		}
 	}
 	private static SpawnFx instance;

@@ -21,7 +21,7 @@ using UnityEngine;
 		base.Start ();
 		this.ResetHp ();
 	}
-	void FixedUpdate(){
+	protected virtual void FixedUpdate(){
 		this.IsDead ();
 		if(this.isDead)
 		this.OnDead ();

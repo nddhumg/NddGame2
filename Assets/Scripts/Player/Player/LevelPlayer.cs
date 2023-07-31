@@ -30,7 +30,8 @@ public class LevelPlayer : Level {
 		expCurrent -= expLevelUp;
 		LevelUp ();
 		IncreaseExpLevelup ();
-		SpawnFx.Instance.Spawn ("FxLevelUp", transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
+		Transform fxLevelUpNew = SpawnFx.Instance.Spawn (SpawnFx.Instance.FxLevelUp, transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
+		fxLevelUpNew.parent = transform.parent;
 	}
 	protected virtual void IncreaseExpLevelup(){
 		expLevelUp += expLevelUpIncreaseRate*expLevelUp;
