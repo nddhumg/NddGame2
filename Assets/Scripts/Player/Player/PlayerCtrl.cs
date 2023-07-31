@@ -8,8 +8,12 @@ public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
-
-
+	[SerializeField]protected DashPlayer dashPlayer;
+	public DashPlayer DashPlayer{
+		get{
+			return dashPlayer;
+		}
+	}
 	public PlayerSO PlayerSO{
 		get{
 			return playerSO;
@@ -30,8 +34,6 @@ public class PlayerCtrl : GameObjCtrl {
 			return animationPlayer;
 		}
 	}
-
-
 	public PhysicsPlayer PhysicsPlayer{
 		get{
 			return physicsPlayer;
@@ -44,6 +46,7 @@ public class PlayerCtrl : GameObjCtrl {
 		this.LoadMovingPlayer ();
 		this.LoadPlayerSO ();
 		this.LoadDamageReceiver ();
+		this.LoadDashPlayer ();
 	}
 	protected virtual void LoadPlayerSO(){
 		if (this.playerSO != null)
@@ -59,6 +62,12 @@ public class PlayerCtrl : GameObjCtrl {
 			return;
 		this.physicsPlayer= GetComponent<PhysicsPlayer>();
 		Debug.Log ("Add PhysicsPlayer", gameObject);
+	}
+	protected virtual void LoadDashPlayer(){
+		if (this.dashPlayer != null)
+			return;
+		this.dashPlayer= GetComponentInChildren<DashPlayer>();
+		Debug.Log ("Add DashPlayer", gameObject);
 	}
 	protected virtual void LoadDamageReceiver(){
 		if (this.damageReceiver != null)

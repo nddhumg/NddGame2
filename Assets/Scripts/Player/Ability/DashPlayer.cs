@@ -6,9 +6,17 @@ public class DashPlayer : DashAbilityByDistance {
 	[Header("Dash Ability Player")]
 	[SerializeField] protected bool keyDash;
 	[SerializeField] protected Vector4 keyMoving;
-	[SerializeField] protected float delayTime = 5f;
-	[SerializeField] protected float timer = 2f;
 	[SerializeField] protected PlayerCtrl playerCtrl;
+	public float TimerAbility{
+		get{
+			return timerAbility;
+		}
+	}
+	public float DelayAbility{
+		get{
+			return delayAbility;
+		}
+	}
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
