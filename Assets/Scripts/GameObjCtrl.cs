@@ -15,7 +15,7 @@ public class GameObjCtrl : NddBehaviour {
 	protected virtual void LoadModel(){
 		if (this.model != null)
 			return;
-		this.model = transform.Find ("Model")?.gameObject;
+		this.model = transform.Find ("Model").gameObject;
 		Debug.Log ("Add Model", gameObject);
 	}
 }

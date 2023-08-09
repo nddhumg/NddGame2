@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class TextLevel : BaseText {
+public class TextLevel : TextBase {
 	[SerializeField]protected string stringLevel = "Level";
 	protected int GetLevelPlayer(){
 		return (int)LevelPlayer.Instance.LevelCurrent;

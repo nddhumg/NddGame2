@@ -89,7 +89,7 @@ public class SpawnsPoolOgj : NddBehaviour {
 			newObj = SpawnInstantiate (namePrefab);
 		}
 		if (newObj == null) {
-			Debug.LogWarning ("Dont obj bu name: " +namePrefab, gameObject);
+			Debug.LogWarning ("Dont obj by name: " +namePrefab, gameObject);
 		}else{
 			newObj.gameObject.SetActive (true);
 			newObj.parent = this.holder;

@@ -7,7 +7,7 @@ public abstract class ShotAbility : BaseAbility {
 	[SerializeField] protected Vector3 target;
 	[SerializeField] protected Quaternion bulletRotation;
 
-	protected virtual Transform ShootBullet(Vector3 pos){
+	public virtual Transform ShootBullet(Vector3 pos){
 		this.SetBulletTarget ();
 		bulletRotation =  this.SetBulletRotation (target);
 		string nameBullet = GetNameBullet();

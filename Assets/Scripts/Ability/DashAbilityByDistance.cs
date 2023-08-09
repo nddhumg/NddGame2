@@ -39,7 +39,7 @@ public abstract class DashAbilityByDistance : BaseAbility {
 		SpawnFx.Instance.Spawn (nameFx, posFxSpawn,GetRotationFx());
 	}
 	protected virtual string GetNameFx(){
-		return SpawnFx.Instance.FxSurf;
+		return FxName.FxDash.ToString();
 	}
 	protected virtual Quaternion GetRotationFx(){
 		float angleByDirectionAndOx = Mathf.Atan2 (dashDirection.y, dashDirection.x) * Mathf.Rad2Deg;

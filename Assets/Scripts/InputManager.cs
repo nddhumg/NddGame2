@@ -3,8 +3,9 @@
 public class InputManager : NddBehaviour {
 	[SerializeField] protected Vector4 keyMoving;
 	[SerializeField] protected bool keySpace;
+	[SerializeField] protected bool keyEsc;
 	[SerializeField] protected Vector3 posMouse;
-	[SerializeField] protected Vector2 keyShoot;
+	[SerializeField] protected Vector2 downMouse;
 	public Vector4 KeyMoving{
 		get{
 			return keyMoving;
@@ -15,9 +16,14 @@ public class InputManager : NddBehaviour {
 			return keySpace;
 		}
 	}
-	public Vector2 KeyShoot{
+	public bool KeyEsc{
 		get{
-			return keyShoot;
+			return keyEsc;
+		}
+	}
+	public Vector2 DownMouse{
+		get{
+			return downMouse;
 		}
 	}
 	public Vector3 PosMouse{
@@ -35,9 +41,10 @@ public class InputManager : NddBehaviour {
 	// Update is called once per frame
 	void Update () {
 		this.InputKeyMoving();
-		this.InputKeySkill();
+		this.InputKeySpace();
 		this.InputPosMouse ();
-		this.InputMouseShoot ();
+		this.InputMouseDown ();
+		this.InputKeyEsc ();
 	}
 	protected override void LoadSingleton() {
 		if (InputManager.instance != null) {
@@ -58,15 +65,17 @@ public class InputManager : NddBehaviour {
         this.keyMoving.z = (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) ? 1 : 0;
         this.keyMoving.w = (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) ? 1 : 0;
     }
-	protected void InputKeySkill() {
+	protected void InputKeySpace() {
 		this.keySpace = Input.GetKeyDown(KeyCode.Space);
 	}
 	protected void InputPosMouse() {
 		this.posMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 	}
-	protected void InputMouseShoot(){
-		this.keyShoot.x =Input.GetMouseButton(0) ? 1  : 0;
-		this.keyShoot.y =Input.GetMouseButton(1) ? 1  : 0;
-
+	protected void InputKeyEsc(){
+		this.keyEsc =Input.GetKeyDown(KeyCode.Escape);
+	}
+	protected void InputMouseDown(){
+		this.downMouse.x =Input.GetMouseButton(0) ? 1  : 0;
+		this.downMouse.y =Input.GetMouseButton(1) ? 1  : 0;
 	}
 }

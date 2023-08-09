@@ -41,6 +41,7 @@ public class PlayerCtrl : GameObjCtrl {
 	}
 		
 	protected override void LoadComponent(){
+		base.LoadComponent ();
 		this.LoadPhysicsPlayer ();
 		this.LoadAnimationPlayer ();
 		this.LoadMovingPlayer ();

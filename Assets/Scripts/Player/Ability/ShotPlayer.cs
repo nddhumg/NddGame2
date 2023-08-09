@@ -30,7 +30,7 @@ public class ShotPlayer : ShotAbility {
 		this.Shooting ();
 	}
 	protected virtual void GetKeyShot(){
-		keyShot = (int)InputManager.Instance.KeyShoot.x;
+		keyShot = (int)InputManager.Instance.DownMouse.x;
 	}
 	protected virtual void Shooting(){
 		if (!isReady )

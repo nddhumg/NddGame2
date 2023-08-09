@@ -37,7 +37,8 @@ public class ShotEnemy : ShotAbility {
 		if (!WithinFiringRange ())
 			return;
 		timerAbility = 0f;
-		ShootBullet(transform.position);
+		enemyArcCtrl.AnimationEnemyArc.SetAnimationAttack ();
+		//ShootBullet(transform.position);
 	}
 
 	protected override string GetNameBullet(){

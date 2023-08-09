@@ -11,8 +11,7 @@ public class EnemyFollow : FollowPlayer {
 		base.LoadComponent ();
 		this.LoadEnemyCtrl ();
 	}
-	protected override void Start(){
-		base.Start ();
+	void OnEnable(){
 		StartCoroutine (Delay1Second());
 	}
 	IEnumerator Delay1Second(){
@@ -49,9 +48,9 @@ public class EnemyFollow : FollowPlayer {
 	}
 	protected virtual void ActiveAnimationEnemy(){
 		if (isFollowing) {
-			enemyCtrl.AnimationEnemy.SetAnimationAttack (false);
+			enemyCtrl.AnimationEnemy.SetAnimationFollow (true);
 		} else {
-			enemyCtrl.AnimationEnemy.SetAnimationAttack (true);
+			enemyCtrl.AnimationEnemy.SetAnimationFollow (false);
 		}
 	}
 	protected virtual void SetRotationByTarget(){

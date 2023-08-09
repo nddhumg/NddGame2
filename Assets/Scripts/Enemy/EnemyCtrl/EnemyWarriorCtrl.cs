@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyWarriorCtrl : EnemyCtrl {
 	[SerializeField] protected EnemyWarriorSO enemyWarriorSO;
 	[SerializeField] protected DamageSenderEnemy damageSenderEnemy;
+	//[SerializeField] protected AnimationEnemyWarrior animationEnemyWarrior;
 	public EnemyWarriorSO EnemyWarriorSO{
 		get{
 			return enemyWarriorSO;
@@ -17,7 +18,7 @@ public class EnemyWarriorCtrl : EnemyCtrl {
 	}
 	protected override void LoadComponent(){
 		base.LoadComponent ();
-		this.LoadEnemyWarriorSO ();
+		this.ConvertEnemyWarriorSO ();
 		this.LoadDamageSenderEnemy ();
 	}
 	protected virtual void LoadDamageSenderEnemy(){
@@ -26,10 +27,11 @@ public class EnemyWarriorCtrl : EnemyCtrl {
 		this.damageSenderEnemy= GetComponentInChildren<DamageSenderEnemy>();
 		Debug.LogWarning ("Add DamageSenderEnemy", gameObject);
 	}
-	protected virtual void LoadEnemyWarriorSO(){
+	protected virtual void ConvertEnemyWarriorSO(){
 		if (this.enemyWarriorSO != null)
 			return;
 		enemyWarriorSO = enemySO as EnemyWarriorSO;
 		Debug.LogWarning ("EnemySO convert to EnemyWarriorSO", gameObject);
 	}
+
 }
