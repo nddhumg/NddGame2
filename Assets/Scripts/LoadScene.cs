@@ -43,7 +43,7 @@ public class LoadScene : NddBehaviour {
 	}
 	public void LoadSceneByName(SceneName sceneName){
 		StartCoroutine (this.LoadSceneWithLoading (sceneName));
-		Main.Instance.ResumeGame ();
+		MainPlay.Instance.ResumeGame ();
 	}
 	public void LoadScenePlay(){
 		LoadSceneByName (SceneName.Play);

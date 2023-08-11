@@ -15,7 +15,6 @@ public class LevelPlayer : Level {
 	protected override void LoadSingleton() {
 		if (LevelPlayer.instance != null) {
 			Debug.LogError("Only 1 LevelPlayer allow to exist");
-
 		}
 		LevelPlayer.instance = this;
 	}
@@ -32,6 +31,11 @@ public class LevelPlayer : Level {
 		IncreaseExpLevelup ();
 		Transform fxLevelUpNew = SpawnFx.Instance.Spawn (SpawnFx.Instance.FxLevelUp, transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
 		fxLevelUpNew.parent = transform.parent;
+	}
+	public override void LevelUp ()
+	{
+		base.LevelUp ();
+		EnhancementCreateManager.Instance.CreateCard ();
 	}
 	protected virtual void IncreaseExpLevelup(){
 		expLevelUp += expLevelUpIncreaseRate*expLevelUp;

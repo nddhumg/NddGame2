@@ -20,7 +20,7 @@ public class ManagerRatioEnemyLevel : NddBehaviour {
 	
 	[SerializeField]public EnemySpawnRate[] enemySpawnInThisLevel = new EnemySpawnRate[5];
 	[SerializeField]protected List<Transform> listPrefabs;
-	[SerializeField]protected float numberRandom;
+
 	private static ManagerRatioEnemyLevel instance;
 	public static ManagerRatioEnemyLevel Instance{
 		get{
@@ -49,7 +49,7 @@ public class ManagerRatioEnemyLevel : NddBehaviour {
 	}
 	public virtual GameObject GetRandomEnemyInThisLevel(int levelNow)
 	{
-		numberRandom = Random.Range (0f, 1f);
+		float numberRandom = Random.Range (0f, 1f);
 		float temp = 0;
 		foreach (EnemySpawnRate enemy in enemySpawnInThisLevel) {
 			//TODO LevelNow >= max

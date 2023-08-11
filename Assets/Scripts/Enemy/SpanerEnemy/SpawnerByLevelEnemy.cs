@@ -60,6 +60,8 @@ public class SpawnerByLevelEnemy : NddBehaviour {
 		if (prefabSpawn == null) {
 			return;
 		}
+		if(prefabSpawn.name == EnemyName.GoblinKing.ToString())
+			spawnE.IncreaseTheNumberofEnemyArc();
 		spawnE.Spawn(prefabSpawn, posSpawn, Quaternion.identity);
 		spawnE.IncreaseTheNumberofEnemy();
 		

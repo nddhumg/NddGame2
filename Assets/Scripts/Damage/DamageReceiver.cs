@@ -42,6 +42,10 @@ using UnityEngine;
 			this.hp = this.hpMax;
 		}
 	}
+	public virtual void AddHpMaxAndHp(float valueHpUp){
+		this.AddHp (valueHpUp);
+		this.hpMax += valueHpUp;
+	}
 	public virtual void Receiver(float damage) {
 		this.hp -= damage;
 		if (this.hp <= 0) {

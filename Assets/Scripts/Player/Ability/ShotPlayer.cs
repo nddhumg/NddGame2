@@ -13,7 +13,6 @@ public class ShotPlayer : ShotAbility {
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
 	}
-
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
@@ -28,6 +27,10 @@ public class ShotPlayer : ShotAbility {
 		base.Update ();
 
 		this.Shooting ();
+	}
+
+	public virtual void BoostAttackSpeed(float value){
+		this.delayAbility -= value;
 	}
 	protected virtual void GetKeyShot(){
 		keyShot = (int)InputManager.Instance.DownMouse.x;

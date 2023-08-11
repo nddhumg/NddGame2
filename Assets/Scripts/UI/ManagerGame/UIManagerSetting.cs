@@ -11,7 +11,7 @@ public class UIManagerSetting : MonoBehaviour {
 	public void OnClickCloseSetting(){
 		SoundManager.Instance.OnPlaySound (SoundType.Click);
 		UIManagerGame.Instance.BtnOpenSetting.SetActive (true);
-		Main.Instance.ResumeGame ();
+		MainPlay.Instance.ResumeLastGame ();
 		gameObject.SetActive (false);
 	}
 }

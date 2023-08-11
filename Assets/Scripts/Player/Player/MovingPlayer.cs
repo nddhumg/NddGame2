@@ -7,11 +7,14 @@ public class MovingPlayer : NddBehaviour {
     [SerializeField]protected float speedMoving = 3f;
 	[SerializeField]protected Vector2 limitPos = new Vector2 (31.5f, 19.6f);
 	[SerializeField]protected PlayerCtrl playerCtrl;
+
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
 	}
-
+	public void SpeedUp(float valueSpeedUp){
+		speedMoving += valueSpeedUp;
+	}
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;

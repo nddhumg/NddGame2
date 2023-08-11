@@ -4,6 +4,7 @@ using UnityEngine;
 public class SpawnEnemy : SpawnsPoolOgj {
 	[SerializeField] protected bool isSpawnEnemy = true;
 	[SerializeField] protected int numberOfEnemy = 0;
+	[SerializeField] protected int numberOfEnemyArc = 0;
 	[SerializeField] protected int maxNumberSpawn = 200;
 	private static SpawnEnemy instance;
 	public static SpawnEnemy Instance{
@@ -59,6 +60,9 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	}
 	public virtual void IncreaseTheNumberofEnemy(){
 		numberOfEnemy++;
+	}
+	public virtual void IncreaseTheNumberofEnemyArc(){
+		numberOfEnemyArc++;
 	}
 	protected virtual void CheckCoditionSpawn(){
 		if (numberOfEnemy >= maxNumberSpawn)
