@@ -25,13 +25,13 @@ public class MainPlay : NddBehaviour {
 	}
 	public void PauseGame()
 	{
+		timeScaleRunTime = Time.timeScale;
 		Time.timeScale = 0f;
-		timeScaleRunTime = 0f;
 	}
 	public void ResumeGame()
 	{
+		timeScaleRunTime = Time.timeScale;
 		Time.timeScale = timeScalePlay; 
-		timeScaleRunTime = timeScalePlay;
 	}
 
 	public void ResumeLastGame()

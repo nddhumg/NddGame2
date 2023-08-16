@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class UIManagerGame : NddBehaviour {
 	[SerializeField] protected GameObject btnOpenSetting;
-	[SerializeField] protected GameObject setting;
+	[SerializeField] protected GameObject uiSetting;
 	[SerializeField] protected bool keyOpenSetting;
-
+	[SerializeField] protected bool isOpenUIGame  ;
 	public GameObject BtnOpenSetting{
 		get{
 			return btnOpenSetting;
 		}
 	}
-	public GameObject Setting{
+	public bool IsOpenUIGame{
 		get{
-			return setting;
+			return isOpenUIGame;
+		}
+		set{
+			isOpenUIGame = value;
+		}
+	}
+	public GameObject UISetting{
+		get{
+			return uiSetting;
 		}
 	}
 	private static UIManagerGame instance;
@@ -32,8 +40,9 @@ public class UIManagerGame : NddBehaviour {
 	}
 	void Update(){
 		keyOpenSetting = InputManager.Instance.KeyEsc;
-		if (keyOpenSetting && !setting.activeSelf)
+		if (keyOpenSetting && !uiSetting.activeSelf)
 			OnClickOpenSetting ();
+		
 	}
 	protected override void LoadComponent ()
 	{
@@ -48,16 +57,17 @@ public class UIManagerGame : NddBehaviour {
 		Debug.Log("Add BtnOpen",gameObject);
 	}
 	protected virtual void LoadUISetting(){
-		if (this.setting != null)
+		if (this.uiSetting != null)
 			return;
-		this.setting = GameObject.Find ("Setting");
-		setting.SetActive (false);
+		this.uiSetting = GameObject.Find ("Setting");
+		uiSetting.SetActive (false);
 		Debug.Log("Add UISetting",gameObject);
 	}
 	public virtual void OnClickOpenSetting(){
 		SoundManager.Instance.OnPlaySound (SoundType.Click);
 		MainPlay.Instance.PauseGame ();
-		setting.SetActive (true);
+		this.isOpenUIGame = true;
+		uiSetting.SetActive (true);
 		btnOpenSetting.SetActive (false);
 	}
 }

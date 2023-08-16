@@ -5,6 +5,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	[SerializeField] protected bool isSpawnEnemy = true;
 	[SerializeField] protected int numberOfEnemy = 0;
 	[SerializeField] protected int numberOfEnemyArc = 0;
+	[SerializeField] protected int maxNumberEnemyArc = 6;
 	[SerializeField] protected int maxNumberSpawn = 200;
 	private static SpawnEnemy instance;
 	public static SpawnEnemy Instance{
@@ -34,7 +35,16 @@ public class SpawnEnemy : SpawnsPoolOgj {
 			return maxNumberSpawn;
 		}
 	}
-
+	public  int MaxNumberEnemyArc{
+		get{
+			return maxNumberEnemyArc;
+		}
+	}
+	public  int NumberOfEnemyArc{
+		get{
+			return numberOfEnemyArc;
+		}
+	}
 	protected override void Start(){
 		base.Start ();
 		StartCoroutine (CheckIsSpawnEnemy ());
@@ -63,6 +73,13 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	}
 	public virtual void IncreaseTheNumberofEnemyArc(){
 		numberOfEnemyArc++;
+	}
+	public virtual void ReductTheNumberofEnemyArc(){
+		if (numberOfEnemyArc <= 0) {
+			numberOfEnemyArc = 0;
+			return;
+		}
+		numberOfEnemyArc--;
 	}
 	protected virtual void CheckCoditionSpawn(){
 		if (numberOfEnemy >= maxNumberSpawn)
