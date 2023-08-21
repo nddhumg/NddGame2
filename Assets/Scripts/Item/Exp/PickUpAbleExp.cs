@@ -12,8 +12,7 @@ public class PickUpAbleExp : PickUpAbleItem {
 
 	protected override void	 ActiveItemWhenPickUp ()
 	{
-		//SoundManager.Instance.OnPlayeSound (SoundType.PickUpItem);
-		SpawnSound.Instance.Spawn (SoundType.PickUpItem.ToString(),transform.position,Quaternion.identity);
+		SoundManager.Instance.OnPlaySound (SoundType.PickUpItem);
 		LevelPlayer.Instance.IncreaseExp (expCtrl.ExpSO.experience);
 	}
 }

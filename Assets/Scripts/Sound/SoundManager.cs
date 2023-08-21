@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum SoundType{
 	PickUpItem = 0,
 	Click,
@@ -8,6 +9,9 @@ public enum SoundType{
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : NddBehaviour {
 	[SerializeField] protected AudioSource audioFx;
+	[SerializeField] protected Queue<AudioClip> soundQueue = new Queue<AudioClip>();
+	[SerializeField] protected float delayTime = 0.1f;
+	[SerializeField] protected bool isPlayCoroutine;
 
 	private static SoundManager instance;
 	public static SoundManager Instance{
@@ -37,27 +41,32 @@ public class SoundManager : NddBehaviour {
 		Debug.Log("Add AudioSource",gameObject);
 	}
 	public void OnPlaySound(SoundType soundType){
-		
 		string resPath = "Sounds/" + soundType.ToString();
 		var audio = Resources.Load<AudioClip>(resPath);
-		audioFx.PlayOneShot(audio);
+		if(audioFx.isPlaying){
+			this.AddSoundByQueue(audio);
+			if(!isPlayCoroutine){
+				StartCoroutine(PlayDelaySoundInQueue(delayTime));
+			}
+		}
+		else{
+			audioFx.PlayOneShot(audio);
+		}
 	}
-//	IEnumerator FadeOutAndPlayNewSound(AudioSource audioSource, AudioClip newClip, float fadeDuration)
-//	{
-//		float startVolume = audioSource.volume;
-//		float timer = 0;
-//
-//		while (timer < fadeDuration)
-//		{
-//			timer += Time.deltaTime;
-//			audioSource.volume = Mathf.Lerp(startVolume, 0, timer / fadeDuration);
-//			yield return null;
-//		}
-//
-//		audioSource.Stop();
-//		audioSource.volume = startVolume;
-//		audioSource.clip = newClip;
-//		audioSource.Play();
-//	}
-
+	protected IEnumerator PlayDelaySoundInQueue(float delay){
+		isPlayCoroutine = true;
+		while (soundQueue.Count > 0)
+        {
+			if(audioFx.isPlaying){
+				yield return new WaitForSeconds(delay);
+			}
+            AudioClip nextClip = soundQueue.Dequeue();
+            audioFx.clip = nextClip;
+            audioFx.Play();
+		}
+		isPlayCoroutine = false;
+	}
+	protected void AddSoundByQueue(AudioClip sound){
+		soundQueue.Enqueue(sound);
+	}
 }

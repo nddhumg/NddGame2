@@ -25,6 +25,6 @@ public class DamageReceiverPlayer : DamageReceiver {
 
 	protected override void OnDead ()
 	{
-		Debug.Log (transform.parent.name + "Dead", gameObject);
+		//Debug.Log (transform.parent.name + "Dead", gameObject);
 	}
 }
