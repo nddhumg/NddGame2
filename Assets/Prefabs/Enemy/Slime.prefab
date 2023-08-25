@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4687822203405346}
-  - component: {fileID: 114876888070714500}
+  - component: {fileID: 114161820498224986}
   m_Layer: 0
   m_Name: FollowPlayer
   m_TagString: Untagged
@@ -35,9 +35,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4525067249433840}
-  - component: {fileID: 114468640623111068}
+  - component: {fileID: 114505856038526790}
+  - component: {fileID: 114910239816650384}
   - component: {fileID: 50428907189979640}
-  - component: {fileID: 114187306479588840}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -83,8 +83,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4149675333910332}
-  - component: {fileID: 114751949910068682}
   - component: {fileID: 58844812660511148}
+  - component: {fileID: 114251985831269264}
   m_Layer: 0
   m_Name: DamageSender
   m_TagString: Untagged
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4016670107277914}
-  - component: {fileID: 114235539388191822}
+  - component: {fileID: 114234577966133912}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4854968058031908}
-  - component: {fileID: 114083591452283002}
+  - component: {fileID: 114112540475817044}
   m_Layer: 0
   m_Name: Destroy
   m_TagString: Untagged
@@ -150,8 +150,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4222571427195530}
-  - component: {fileID: 114370128324833154}
   - component: {fileID: 70483248905309628}
+  - component: {fileID: 114826058532979626}
   m_Layer: 0
   m_Name: CollisionEnemy
   m_TagString: Untagged
@@ -351,7 +351,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114083591452283002
+--- !u!114 &114112540475817044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -359,29 +359,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1986866117559288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2954e1eb2fc14f49a3cdb68ea2f17c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f60aca9a57dc824ea49677c78bd4826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114187306479588840
+--- !u!114 &114161820498224986
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1467139342330046}
+  m_GameObject: {fileID: 1334512749427150}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9e8f86e8d575c4e86d0d0c870b56ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 48dbf67cd9a9fe2479aa9f92b119fa22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  model: {fileID: 1601512894186172}
-  destroyEnemy: {fileID: 114083591452283002}
-  damageReceiverEnemy: {fileID: 114235539388191822}
-  enemyFollow: {fileID: 114876888070714500}
-  animationEnemy: {fileID: 114725997290574862}
-  enemySO: {fileID: 11400000, guid: afc494d0380f787468c31ee01172a778, type: 2}
-  enemyWarriorSO: {fileID: 11400000, guid: afc494d0380f787468c31ee01172a778, type: 2}
-  damageSenderEnemy: {fileID: 114751949910068682}
---- !u!114 &114235539388191822
+  target: {fileID: 0}
+  speedFollow: 2.5
+  direction: {x: 0, y: 0, z: 0}
+  isFollowing: 1
+  distance: 0
+  velocity: {x: 0, y: 0, z: -20}
+  enemyCtrl: {fileID: 114910239816650384}
+  distanceStopFollow: 0.6
+  distanceFromPlayer: 0
+--- !u!114 &114234577966133912
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -389,27 +390,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1955303395495572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb7fdeaaddee6a4596b9a635032d443, type: 3}
+  m_Script: {fileID: 11500000, guid: b09e7d58b7614b14cbe4ab5c37424004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
   hpMax: 100
   isDead: 0
-  enemyCtrl: {fileID: 114187306479588840}
---- !u!114 &114370128324833154
+  enemyCtrl: {fileID: 114910239816650384}
+--- !u!114 &114251985831269264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997717618967840}
+  m_GameObject: {fileID: 1669507679979054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a729093f0384b44fbcc9c5f60840b26, type: 3}
+  m_Script: {fileID: 11500000, guid: c73bacdd1fd8ae2458a026aa3b7bc5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 114187306479588840}
-  capsuleCollider2D: {fileID: 70483248905309628}
---- !u!114 &114468640623111068
+  damage: 1
+  circleCollider2D: {fileID: 58844812660511148}
+  timer: 1
+  timeDelayAttack: 1
+  enemyWarriorCtrl: {fileID: 114910239816650384}
+--- !u!114 &114505856038526790
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -417,7 +421,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467139342330046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca32ec002272a3409da543c51a70d3c, type: 3}
+  m_Script: {fileID: 11500000, guid: cfbffe45f863f564c89ad5abc8c5d18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rig2d: {fileID: 50428907189979640}
@@ -433,42 +437,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 95124075230375096}
---- !u!114 &114751949910068682
+--- !u!114 &114826058532979626
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1669507679979054}
+  m_GameObject: {fileID: 1997717618967840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b91e9bf526453d4cba0792754f6d5cd, type: 3}
+  m_Script: {fileID: 11500000, guid: e0bc3c7b391daf94a8e6bca413b565a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  enemyWarriorCtrl: {fileID: 114187306479588840}
-  circleCollider2D: {fileID: 58844812660511148}
-  timer: 1
-  timeDelayAttack: 1
---- !u!114 &114876888070714500
+  enemyCtrl: {fileID: 114910239816650384}
+  capsuleCollider2D: {fileID: 70483248905309628}
+--- !u!114 &114910239816650384
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1334512749427150}
+  m_GameObject: {fileID: 1467139342330046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c45ed4520f7fa24d98f0aaea8545825, type: 3}
+  m_Script: {fileID: 11500000, guid: fd5225e7b18b297478c174d7c071ec39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speedFollow: 2.5
-  direction: {x: 0, y: 0, z: 0}
-  isFollowing: 1
-  distance: 0
-  velocity: {x: 0, y: 0, z: -20}
-  enemyCtrl: {fileID: 114187306479588840}
-  distanceStopFollow: 0.6
-  distanceFromPlayer: 0
+  model: {fileID: 1601512894186172}
+  destroyEnemy: {fileID: 114112540475817044}
+  damageReceiverEnemy: {fileID: 114234577966133912}
+  enemyFollow: {fileID: 114161820498224986}
+  animationEnemy: {fileID: 114725997290574862}
+  enemySO: {fileID: 11400000, guid: afc494d0380f787468c31ee01172a778, type: 2}
+  enemyWarriorSO: {fileID: 11400000, guid: afc494d0380f787468c31ee01172a778, type: 2}
+  damageSenderEnemy: {fileID: 114251985831269264}
 --- !u!212 &212597229987235248
 SpriteRenderer:
   m_ObjectHideFlags: 1

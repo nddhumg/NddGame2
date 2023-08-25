@@ -8,5 +8,6 @@ public class EnemySO : ScriptableObject {
 	public float attackRange ;
 	public ClassifyEnemy classify; 
 	public float hpMax = 100;
+	public float damage = 10;
 	public List<DropExpRate> listDropExp;
 }

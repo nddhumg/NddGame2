@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4227627570758264}
-  - component: {fileID: 114661907638055960}
+  - component: {fileID: 114305595395709584}
   - component: {fileID: 58840091176880152}
   m_Layer: 0
   m_Name: DamageSender
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4467011789517504}
-  - component: {fileID: 114489779343078010}
+  - component: {fileID: 114822554185372236}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -85,9 +85,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4592678066908952}
-  - component: {fileID: 114490136004952734}
+  - component: {fileID: 114747159569478538}
   - component: {fileID: 50243670061393138}
-  - component: {fileID: 114306848218537710}
+  - component: {fileID: 114584221118603872}
   m_Layer: 0
   m_Name: Ork2
   m_TagString: Enemy
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4770032428361552}
-  - component: {fileID: 114152963661520168}
+  - component: {fileID: 114924293176479556}
   m_Layer: 0
   m_Name: Destroy
   m_TagString: Untagged
@@ -134,8 +134,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4375613618482898}
-  - component: {fileID: 114661710090371600}
   - component: {fileID: 70988838504347038}
+  - component: {fileID: 114600433839738266}
   m_Layer: 0
   m_Name: CollisionEnemy
   m_TagString: Untagged
@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4851971923118978}
-  - component: {fileID: 114992105832749492}
+  - component: {fileID: 114028547719545372}
   m_Layer: 0
   m_Name: FollowPlayer
   m_TagString: Untagged
@@ -351,6 +351,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114028547719545372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764892063814730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48dbf67cd9a9fe2479aa9f92b119fa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speedFollow: 2.5
+  direction: {x: 0, y: 0, z: 0}
+  isFollowing: 1
+  distance: 0
+  velocity: {x: 0, y: 0, z: -20}
+  enemyCtrl: {fileID: 114584221118603872}
+  distanceStopFollow: 1
+  distanceFromPlayer: 0
 --- !u!114 &114055528027791306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,77 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 95988365086007908}
---- !u!114 &114152963661520168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1616513086347828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2954e1eb2fc14f49a3cdb68ea2f17c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114306848218537710
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309738595015328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9e8f86e8d575c4e86d0d0c870b56ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 1380515222021522}
-  destroyEnemy: {fileID: 114152963661520168}
-  damageReceiverEnemy: {fileID: 114489779343078010}
-  enemyFollow: {fileID: 114992105832749492}
-  animationEnemy: {fileID: 114055528027791306}
-  enemySO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
-  enemyWarriorSO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
-  damageSenderEnemy: {fileID: 114661907638055960}
---- !u!114 &114489779343078010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1070930659263816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb7fdeaaddee6a4596b9a635032d443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  hpMax: 300
-  isDead: 0
-  enemyCtrl: {fileID: 114306848218537710}
---- !u!114 &114490136004952734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309738595015328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca32ec002272a3409da543c51a70d3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rig2d: {fileID: 50243670061393138}
---- !u!114 &114661710090371600
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1746323079900148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a729093f0384b44fbcc9c5f60840b26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 114306848218537710}
-  capsuleCollider2D: {fileID: 70988838504347038}
---- !u!114 &114661907638055960
+--- !u!114 &114305595395709584
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -441,34 +391,84 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068102558609324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b91e9bf526453d4cba0792754f6d5cd, type: 3}
+  m_Script: {fileID: 11500000, guid: c73bacdd1fd8ae2458a026aa3b7bc5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 300
-  enemyWarriorCtrl: {fileID: 114306848218537710}
   circleCollider2D: {fileID: 58840091176880152}
   timer: 1
   timeDelayAttack: 1
---- !u!114 &114992105832749492
+  enemyWarriorCtrl: {fileID: 114584221118603872}
+--- !u!114 &114584221118603872
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764892063814730}
+  m_GameObject: {fileID: 1309738595015328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c45ed4520f7fa24d98f0aaea8545825, type: 3}
+  m_Script: {fileID: 11500000, guid: fd5225e7b18b297478c174d7c071ec39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speedFollow: 2.5
-  direction: {x: 0, y: 0, z: 0}
-  isFollowing: 1
-  distance: 0.5
-  velocity: {x: 0, y: 0, z: -20}
-  enemyCtrl: {fileID: 114306848218537710}
-  distanceStopFollow: 0.8
-  distanceFromPlayer: 0
+  model: {fileID: 1380515222021522}
+  destroyEnemy: {fileID: 114924293176479556}
+  damageReceiverEnemy: {fileID: 114822554185372236}
+  enemyFollow: {fileID: 114028547719545372}
+  animationEnemy: {fileID: 114055528027791306}
+  enemySO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
+  enemyWarriorSO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
+  damageSenderEnemy: {fileID: 114305595395709584}
+--- !u!114 &114600433839738266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1746323079900148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bc3c7b391daf94a8e6bca413b565a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCtrl: {fileID: 114584221118603872}
+  capsuleCollider2D: {fileID: 70988838504347038}
+--- !u!114 &114747159569478538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309738595015328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbffe45f863f564c89ad5abc8c5d18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rig2d: {fileID: 50243670061393138}
+--- !u!114 &114822554185372236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1070930659263816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09e7d58b7614b14cbe4ab5c37424004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  hpMax: 300
+  isDead: 0
+  enemyCtrl: {fileID: 114584221118603872}
+--- !u!114 &114924293176479556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1616513086347828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f60aca9a57dc824ea49677c78bd4826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212209068120309314
 SpriteRenderer:
   m_ObjectHideFlags: 1

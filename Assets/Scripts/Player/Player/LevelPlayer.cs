@@ -29,7 +29,7 @@ public class LevelPlayer : Level {
 		expCurrent -= expLevelUp;
 		LevelUp ();
 		IncreaseExpLevelup ();
-		Transform fxLevelUpNew = SpawnFx.Instance.Spawn (SpawnFx.Instance.FxLevelUp, transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
+		Transform fxLevelUpNew = SpawnFx.Instance.Spawn (FxName.FxLevelUp.ToString(), transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
 		fxLevelUpNew.parent = transform.parent;
 	}
 	public override void LevelUp ()

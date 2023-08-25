@@ -13,6 +13,7 @@ public class ShotPlayer : ShotAbility {
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
 	}
+
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
@@ -21,6 +22,7 @@ public class ShotPlayer : ShotAbility {
 	}
 	protected override void ResetValue(){
 		base.ResetValue ();
+		this.damage = playerCtrl.PlayerSO.damage;
 		this.delayAbility = 0.6f;
 	}
 	protected override void Update(){
@@ -58,10 +60,10 @@ public class ShotPlayer : ShotAbility {
 	}
 	protected override void SetBulletTarget(){
 		if (this.shotByKey || this.shotByAutoPosTarget) {
-			target = InputManager.Instance.PosMouse;
+			firingDirection = InputManager.Instance.PosMouse;
 		}
-		target -= transform.position;
-		target = new Vector3 (target.x, target.y, 0);
+		firingDirection -= transform.position;
+		firingDirection = new Vector3(firingDirection.x,firingDirection.y, 0);
 	}
 	public virtual void SetStyleShootingPlayer(int style){
 		if (style == 0) {

@@ -37,8 +37,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4667156411906852}
-  - component: {fileID: 114483729448129504}
   - component: {fileID: 70833539067789746}
+  - component: {fileID: 114558543197522668}
   m_Layer: 0
   m_Name: CollisionEnemy
   m_TagString: Untagged
@@ -54,9 +54,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4697324098636250}
-  - component: {fileID: 114924460067791244}
+  - component: {fileID: 114863094263172082}
   - component: {fileID: 50656253448276122}
-  - component: {fileID: 114365034170894214}
+  - component: {fileID: 114153507988702028}
   m_Layer: 0
   m_Name: Ork3
   m_TagString: Enemy
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4024475307988908}
-  - component: {fileID: 114644175510638238}
+  - component: {fileID: 114766595527498754}
   - component: {fileID: 58935402468657798}
   m_Layer: 0
   m_Name: DamageSender
@@ -89,7 +89,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4373552081949966}
-  - component: {fileID: 114828578387358950}
+  - component: {fileID: 114898337784010114}
   m_Layer: 0
   m_Name: FollowPlayer
   m_TagString: Untagged
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4865953210413638}
-  - component: {fileID: 114916815628146192}
+  - component: {fileID: 114737906840155416}
   m_Layer: 0
   m_Name: Destroy
   m_TagString: Untagged
@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4606188216026884}
-  - component: {fileID: 114628155267458502}
+  - component: {fileID: 114710644612352256}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -351,6 +351,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114153507988702028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301075179331866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5225e7b18b297478c174d7c071ec39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 1921615469711088}
+  destroyEnemy: {fileID: 114737906840155416}
+  damageReceiverEnemy: {fileID: 114710644612352256}
+  enemyFollow: {fileID: 114898337784010114}
+  animationEnemy: {fileID: 114160024134194082}
+  enemySO: {fileID: 11400000, guid: f2d848ad6d2e2384f931f4c0037fb826, type: 2}
+  enemyWarriorSO: {fileID: 11400000, guid: f2d848ad6d2e2384f931f4c0037fb826, type: 2}
+  damageSenderEnemy: {fileID: 114766595527498754}
 --- !u!114 &114160024134194082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,26 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 95371143353461844}
---- !u!114 &114365034170894214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1301075179331866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f9e8f86e8d575c4e86d0d0c870b56ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 1921615469711088}
-  destroyEnemy: {fileID: 114916815628146192}
-  damageReceiverEnemy: {fileID: 114628155267458502}
-  enemyFollow: {fileID: 114828578387358950}
-  animationEnemy: {fileID: 114160024134194082}
-  enemySO: {fileID: 11400000, guid: f2d848ad6d2e2384f931f4c0037fb826, type: 2}
-  enemyWarriorSO: {fileID: 11400000, guid: f2d848ad6d2e2384f931f4c0037fb826, type: 2}
-  damageSenderEnemy: {fileID: 114644175510638238}
---- !u!114 &114483729448129504
+--- !u!114 &114558543197522668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -390,12 +390,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1104644585988080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a729093f0384b44fbcc9c5f60840b26, type: 3}
+  m_Script: {fileID: 11500000, guid: e0bc3c7b391daf94a8e6bca413b565a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 114365034170894214}
+  enemyCtrl: {fileID: 114153507988702028}
   capsuleCollider2D: {fileID: 70833539067789746}
---- !u!114 &114628155267458502
+--- !u!114 &114710644612352256
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -403,50 +403,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1918052503676346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb7fdeaaddee6a4596b9a635032d443, type: 3}
+  m_Script: {fileID: 11500000, guid: b09e7d58b7614b14cbe4ab5c37424004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 0
   hpMax: 500
   isDead: 0
-  enemyCtrl: {fileID: 114365034170894214}
---- !u!114 &114644175510638238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1319339249457196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b91e9bf526453d4cba0792754f6d5cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 300
-  enemyWarriorCtrl: {fileID: 114365034170894214}
-  circleCollider2D: {fileID: 58935402468657798}
-  timer: 1
-  timeDelayAttack: 1
---- !u!114 &114828578387358950
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1530369088220036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c45ed4520f7fa24d98f0aaea8545825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speedFollow: 2.5
-  direction: {x: 0, y: 0, z: 0}
-  isFollowing: 1
-  distance: 0.5
-  velocity: {x: 0, y: 0, z: -20}
-  enemyCtrl: {fileID: 114365034170894214}
-  distanceStopFollow: 0.84999996
-  distanceFromPlayer: 0
---- !u!114 &114916815628146192
+  enemyCtrl: {fileID: 114153507988702028}
+--- !u!114 &114737906840155416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -454,10 +418,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1715561164608210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2954e1eb2fc14f49a3cdb68ea2f17c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f60aca9a57dc824ea49677c78bd4826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114924460067791244
+--- !u!114 &114766595527498754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319339249457196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73bacdd1fd8ae2458a026aa3b7bc5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 300
+  circleCollider2D: {fileID: 58935402468657798}
+  timer: 1
+  timeDelayAttack: 1
+  enemyWarriorCtrl: {fileID: 114153507988702028}
+--- !u!114 &114863094263172082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -465,10 +445,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1301075179331866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca32ec002272a3409da543c51a70d3c, type: 3}
+  m_Script: {fileID: 11500000, guid: cfbffe45f863f564c89ad5abc8c5d18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rig2d: {fileID: 50656253448276122}
+--- !u!114 &114898337784010114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1530369088220036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48dbf67cd9a9fe2479aa9f92b119fa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speedFollow: 2.5
+  direction: {x: 0, y: 0, z: 0}
+  isFollowing: 1
+  distance: 0
+  velocity: {x: 0, y: 0, z: -20}
+  enemyCtrl: {fileID: 114153507988702028}
+  distanceStopFollow: 1.05
+  distanceFromPlayer: 0
 --- !u!212 &212171533072895116
 SpriteRenderer:
   m_ObjectHideFlags: 1

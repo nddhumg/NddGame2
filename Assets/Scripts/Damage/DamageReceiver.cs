@@ -23,7 +23,7 @@ using UnityEngine;
 	}
 	protected virtual void FixedUpdate(){
 		if(isDead)
-		this.OnDead ();
+			this.OnDead ();
 	}
 	protected virtual void IsDead(){
 		if (this.hp <= 0)
@@ -33,25 +33,25 @@ using UnityEngine;
 	}
 	protected abstract void OnDead ();
 	public virtual void ResetHp() {
-		this.IsDead ();
 		this.hp = this.hpMax;
+		this.IsDead ();
 	}
 	public virtual void AddHp(float addHp) {
-		this.IsDead ();
 		this.hp += addHp;
 		if (this.hp >= hpMax) {
 			this.hp = this.hpMax;
 		}
+		this.IsDead ();
 	}
 	public virtual void AddHpMaxAndHp(float valueHpUp){
 		this.AddHp (valueHpUp);
 		this.hpMax += valueHpUp;
 	}
 	public virtual void Receiver(float damage) {
-		this.IsDead ();
 		this.hp -= damage;
 		if (this.hp <= 0) {
 			this.hp = 0;
 		} 
+		this.IsDead ();
 	}
 }

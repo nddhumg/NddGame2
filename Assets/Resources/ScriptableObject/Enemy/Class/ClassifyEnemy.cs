@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ClassifyEnemy  {
 	NoClassify =0,
-	Warrior ,
-	Archer
+	Warrior = 1,
+	Archer= 2,
+	Boss = 100,
 }

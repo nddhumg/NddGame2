@@ -15,11 +15,6 @@ public class DmgSenderBullet : DamageSender {
 		Debug.Log ("Add  BulletCtrl", gameObject);
 	}
 
-	protected override void ResetValue ()
-	{
-		base.ResetValue ();
-		this.damage = bulletCtrl.BulletSO.damage;
-	}
 	protected override void Send(DamageReceiver receiver) {
 		receiver?.Receiver(this.damage);
 		SpawnBullet.Instance.DesTroyPrefabs (transform.parent);

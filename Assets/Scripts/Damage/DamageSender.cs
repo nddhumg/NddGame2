@@ -12,4 +12,7 @@ public class DamageSender : NddBehaviour {
 	protected virtual void Send(DamageReceiver receiver) {
         receiver?.Receiver(this.damage);
     }
+	public virtual void SetDamage(float damage){
+		this.damage = damage;
+	}
 }

@@ -16,6 +16,6 @@ public class GameObjCtrl : NddBehaviour {
 		if (this.model != null)
 			return;
 		this.model = transform.Find ("Model").gameObject;
-		Debug.Log ("Add Model", gameObject);
+		Debug.LogWarning ("Add Model", gameObject);
 	}
 }
