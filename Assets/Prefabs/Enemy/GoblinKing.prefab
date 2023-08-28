@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4351476635974998}
-  - component: {fileID: 114465920821580144}
+  - component: {fileID: 114367964139415662}
   m_Layer: 0
   m_Name: Shot
   m_TagString: Untagged
@@ -100,8 +100,24 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4675342775822322}
+  - component: {fileID: 114429997476164866}
   m_Layer: 0
   m_Name: Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1655298189600250
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4749846864215752}
+  m_Layer: 0
+  m_Name: ActiveAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,12 +232,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108633660986276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4675342775822322}
-  m_RootOrder: 1
+  m_Father: {fileID: 4749846864215752}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4472376998887122
 Transform:
@@ -261,9 +277,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4346838615140012}
-  - {fileID: 4351476635974998}
+  - {fileID: 4749846864215752}
   m_Father: {fileID: 4951086937438508}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4749846864215752
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655298189600250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4351476635974998}
+  m_Father: {fileID: 4675342775822322}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4951086937438508
 Transform:
@@ -368,7 +398,7 @@ MonoBehaviour:
   animationEnemy: {fileID: 114281856215374926}
   enemySO: {fileID: 11400000, guid: bdc62f82d5fe9bc4c97977d5f926964b, type: 2}
   enemyArcSO: {fileID: 11400000, guid: bdc62f82d5fe9bc4c97977d5f926964b, type: 2}
-  shotEnemy: {fileID: 114465920821580144}
+  shotEnemy: {fileID: 114367964139415662}
   animationEnemyArc: {fileID: 114281856215374926}
 --- !u!114 &114136795334908056
 MonoBehaviour:
@@ -414,6 +444,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 95191791700430798}
   enemyArcCtrl: {fileID: 114032560019687594}
+--- !u!114 &114367964139415662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108633660986276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a213f131fb312444b61538d44f70c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 114429997476164866}
+  delayAbility: 2
+  timerAbility: 10
+  isReady: 0
+  firingDirection: {x: 0, y: 0, z: 0}
+  bulletRotation: {x: 0, y: 0, z: 0, w: 0}
+  damage: 50
+  nameTarget: Player
+  range: 20
+  enemyArcCtrl: {fileID: 114032560019687594}
 --- !u!114 &114394293210956772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,25 +477,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rig2d: {fileID: 50853753984454426}
---- !u!114 &114465920821580144
+--- !u!114 &114429997476164866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1108633660986276}
+  m_GameObject: {fileID: 1494408709551136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2941785e540104940bac8b584ba40896, type: 3}
+  m_Script: {fileID: 11500000, guid: 46cd6a231b38c184583a7d9fb6705e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayAbility: 2
-  timerAbility: 10
-  isReady: 0
-  target: {x: 0, y: 0, z: 0}
-  bulletRotation: {x: 0, y: 0, z: 0, w: 0}
-  nameTarget: Player
-  range: 20
-  enemyArcCtrl: {fileID: 114032560019687594}
+  objectCtrl: {fileID: 114032560019687594}
 --- !u!114 &114746827309649422
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloneAbility : PassiveAbility {
+public class AbilityClone : PassiveAbility {
 	public virtual void StartCloneAbility (int numberOfClone,GameObject objectClone,Vector3 locationClone,Quaternion rotClone){
 		for (int i = 0; i < numberOfClone; i++) {
 			SpawnClone (objectClone, locationClone,rotClone);

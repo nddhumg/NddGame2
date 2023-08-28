@@ -8,14 +8,14 @@ public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
-	[SerializeField]protected DashPlayer dashPlayer;
-	[SerializeField]protected ShotPlayer shotPlayer;
-	public DashPlayer DashPlayer{
+	[SerializeField]protected AbilityDashPlayer dashPlayer;
+	[SerializeField]protected AbilityShotPlayer shotPlayer;
+	public AbilityDashPlayer DashPlayer{
 		get{
 			return dashPlayer;
 		}
 	}
-	public ShotPlayer ShotPlayer{
+	public AbilityShotPlayer ShotPlayer{
 		get{
 			return shotPlayer;
 		}
@@ -74,13 +74,13 @@ public class PlayerCtrl : GameObjCtrl {
 	protected virtual void LoadShotPlayer(){
 		if (this.shotPlayer != null)
 			return;
-		this.shotPlayer= GetComponentInChildren<ShotPlayer>();
+		this.shotPlayer= GetComponentInChildren<AbilityShotPlayer>();
 		Debug.Log ("Add ShotPlayer", gameObject);
 	}
 	protected virtual void LoadDashPlayer(){
 		if (this.dashPlayer != null)
 			return;
-		this.dashPlayer= GetComponentInChildren<DashPlayer>();
+		this.dashPlayer= GetComponentInChildren<AbilityDashPlayer>();
 		Debug.Log ("Add DashPlayer", gameObject);
 	}
 	protected virtual void LoadDamageReceiver(){

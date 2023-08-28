@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBossCloneAbility : CloneAbility {
+public class SlimeBossCloneAbility : AbilityClone {
 	[Header("SlimeBossCloneAbility")]
 	[SerializeField] protected EnemyName enemyClone = EnemyName.SlimeClone;
 	[SerializeField] protected int numberOfSpawnClone = 2;

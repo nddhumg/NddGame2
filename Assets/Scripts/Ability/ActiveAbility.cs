@@ -7,7 +7,16 @@ public abstract class ActiveAbility : BaseAbility {
 	[SerializeField] protected float delayAbility = 5f;
 	[SerializeField] protected float timerAbility = 10f;
 	[SerializeField] protected bool isReady = false;
-
+	public float DelayAbility{
+		get{
+			return delayAbility;
+		}
+	}
+	public float TimerAbility{
+		get{
+			return timerAbility;
+		}
+	}
 	protected virtual void Update(){
 		this.Timing ();
 	}

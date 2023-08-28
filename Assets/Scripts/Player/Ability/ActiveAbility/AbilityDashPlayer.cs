@@ -2,21 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashPlayer : DashAbilityByDistance {
+public class AbilityDashPlayer : AbilityDashByDistance {
 	[Header("Dash Ability Player")]
 	[SerializeField] protected bool keyDash;
 	[SerializeField] protected Vector4 keyMoving;
 	[SerializeField] protected PlayerCtrl playerCtrl;
-	public float TimerAbility{
-		get{
-			return timerAbility;
-		}
-	}
-	public float DelayAbility{
-		get{
-			return delayAbility;
-		}
-	}
+
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
@@ -25,8 +16,8 @@ public class DashPlayer : DashAbilityByDistance {
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
-		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
-		Debug.Log ("Add PlayerCtrl", gameObject);
+		this.playerCtrl=ability.ObjectCtrl as PlayerCtrl;
+		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
 	protected override void ResetValue ()
 	{

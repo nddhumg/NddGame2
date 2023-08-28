@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotEnemy : ShotAbility {
+public class AbilityShotEnemy : AbilityShot {
 	[Header("Shot Enemy")]
 	[SerializeField] protected string nameTarget = "Player";
 	[SerializeField] protected float range = 20f;
@@ -14,8 +14,8 @@ public class ShotEnemy : ShotAbility {
 	protected virtual void LoadEnemyArcCtrl(){
 		if (this.enemyArcCtrl != null)
 			return;
-		this.enemyArcCtrl = transform.parent.parent.GetComponent<EnemyArcCtrl>();
-		Debug.Log ("Add EnemyArcCtrl", gameObject);
+		this.enemyArcCtrl = transform.parent.parent.parent.GetComponent<EnemyArcCtrl>();
+		Debug.LogWarning ("Add EnemyArcCtrl", gameObject);
 	}
 	 void FixedUpdate(){
 		this.Shooting();

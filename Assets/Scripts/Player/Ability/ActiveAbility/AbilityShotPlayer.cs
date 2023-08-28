@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotPlayer : ShotAbility {
+public class AbilityShotPlayer : AbilityShot {
 	[Header ("Shot Ability Player")]  
 	[SerializeField] protected bool shotByKey ;
 	[SerializeField] protected bool shotByAutoPosTarget = true;
@@ -17,8 +17,8 @@ public class ShotPlayer : ShotAbility {
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
-		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
-		Debug.Log ("Add PlayerCtrl", gameObject);
+		this.playerCtrl=ability.ObjectCtrl as PlayerCtrl;
+		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
 	protected override void ResetValue(){
 		base.ResetValue ();
@@ -31,9 +31,6 @@ public class ShotPlayer : ShotAbility {
 		this.Shooting ();
 	}
 
-	public virtual void BoostAttackSpeed(float value){
-		this.delayAbility -= value;
-	}
 	protected virtual void GetKeyShot(){
 		keyShot = (int)InputManager.Instance.DownMouse.x;
 	}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class DashAbilityByDistance : ActiveAbility {
+public abstract class AbilityDashByDistance : ActiveAbility {
 	[Header("Dash Ability")]
 	[SerializeField] protected Vector2 dashDirection;
 	[SerializeField] protected float dashDistance = 3f;

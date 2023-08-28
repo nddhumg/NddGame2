@@ -18,7 +18,6 @@ public class AnimationEnemyArc : AnimationEnemy {
 	public void ShootEnemyArc(){
 		enemyArcCtrl.ShotEnemy.ShootBullet (transform.position);
 	}
-
 	public void SetAnimationAttack(){
 		ani.SetTrigger ("Attack");
 	}

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyArcCtrl : EnemyCtrl {
 	[SerializeField] protected EnemyArcSO enemyArcSO;
-	[SerializeField] protected ShotEnemy shotEnemy;
+	[SerializeField] protected AbilityShotEnemy shotEnemy;
 	[SerializeField] protected AnimationEnemyArc animationEnemyArc;
 	public EnemyArcSO EnemyArcSO{
 		get{
 			return enemyArcSO;
 		}
 	}
-	public ShotEnemy ShotEnemy{
+	public AbilityShotEnemy ShotEnemy{
 		get{
 			return shotEnemy;
 		}
@@ -30,7 +30,7 @@ public class EnemyArcCtrl : EnemyCtrl {
 	protected virtual void LoadShotEnemy(){
 		if (this.shotEnemy != null)
 			return;
-		this.shotEnemy = GetComponentInChildren<ShotEnemy> ();
+		this.shotEnemy = GetComponentInChildren<AbilityShotEnemy> ();
 		Debug.LogWarning ("Add ShotEnemy", gameObject);
 	}
 	protected virtual void ConvertEnemyArcSO(){
