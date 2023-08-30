@@ -14,5 +14,5 @@ MonoBehaviour:
   nameCard: 4
   typeCard: 1
   image: {fileID: 21300008, guid: 44450f0004ac5ac46ad992762e360fe2, type: 3}
-  explain: Add speed attack Level 1
+  explain: Add speed attack
   attribute: 0.1

@@ -14,5 +14,5 @@ MonoBehaviour:
   nameCard: 2
   typeCard: 1
   image: {fileID: 21300018, guid: 44450f0004ac5ac46ad992762e360fe2, type: 3}
-  explain: Add Hp Level1
+  explain: Add Hp
   attribute: 100

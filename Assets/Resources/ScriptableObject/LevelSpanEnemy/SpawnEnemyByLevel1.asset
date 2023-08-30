@@ -8,11 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5838f3c78cf2f48af0f2a18e9270c4, type: 3}
-  m_Name: BoostDamage
+  m_Script: {fileID: 11500000, guid: c2793518db6b07f48b12709cd55152d6, type: 3}
+  m_Name: SpawnEnemyByLevel1
   m_EditorClassIdentifier: 
-  nameCard: 1
-  typeCard: 1
-  image: {fileID: 21300000, guid: 44450f0004ac5ac46ad992762e360fe2, type: 3}
-  explain: Add Damage
-  attribute: 10
+  level: 
+  ArrEnemySpawn: []

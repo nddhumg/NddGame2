@@ -8,6 +8,7 @@ public class EnemyCtrl : GameObjCtrl {
 	[SerializeField] protected EnemyFollow enemyFollow;
 	[SerializeField] protected AnimationEnemy animationEnemy;
 	[SerializeField] protected EnemySO enemySO;
+	[SerializeField] protected string folderNameSO = "ScriptableObject/Enemy/";
 
 	public EnemySO EnemySO{
 		get{
@@ -74,7 +75,7 @@ public class EnemyCtrl : GameObjCtrl {
 	protected virtual void LoadEnemySO(){
 		if (this.enemySO != null)
 			return;
-		string resPath = "ScriptableObject/Enemy/" +	transform.name;
+		string resPath = folderNameSO +	transform.name;
 		enemySO = Resources.Load<EnemySO> (resPath);
 		Debug.LogWarning (transform.name + " LoadEnemySO " + resPath, gameObject);
 	}

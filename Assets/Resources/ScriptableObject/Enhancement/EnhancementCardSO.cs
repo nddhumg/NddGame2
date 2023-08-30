@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "EnhancementCard", menuName = "EnhancementCard" +"")]
+[CreateAssetMenu(fileName = "EnhancementCard", menuName = "SO/EnhancementCard" +"")]
 public class EnhancementCardSO : ScriptableObject {
 	public EnhancementCode nameCard = EnhancementCode.NoName;
 	public EnhancementType typeCard = EnhancementType.Enhancement;

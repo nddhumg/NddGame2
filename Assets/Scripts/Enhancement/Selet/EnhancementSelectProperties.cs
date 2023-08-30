@@ -16,7 +16,7 @@ public class EnhancementSelectProperties : BaseEnhancementSelect {
 			enhancementCard = Resources.Load<EnhancementCardSO> (resPath);
 			nameEnhancementSelect = enhancementCard.nameCard;
 			enhancementSelectCtrl.ImgIcon.sprite = enhancementCard.image;
-			enhancementSelectCtrl.TextEnhancementSelect.text = enhancementCard.explain;
+			enhancementSelectCtrl.TextEnhancementSelect.text = enhancementCard.explain + " +"+enhancementCard.attribute;
 		}
 		catch{
 			Debug.LogError ("Error LoadInfo Select", gameObject);
