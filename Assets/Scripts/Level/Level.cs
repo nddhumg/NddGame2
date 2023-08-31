@@ -20,8 +20,8 @@ public abstract class Level : NddBehaviour {
 		levelCurrent++;
 		this.LimitLevel ();	
 	}
-	public virtual void LevelUp(float expUp){
-		levelCurrent += expUp;
+	public virtual void LevelUp(float valueLevelUp){
+		levelCurrent += valueLevelUp;
 		this.LimitLevel ();	
 	}
 	protected void LimitLevel(){
@@ -30,8 +30,8 @@ public abstract class Level : NddBehaviour {
 		if (levelCurrent < 0)
 			levelCurrent = 0;
 	}
-	public virtual void LevelSet(int valueLevel){
-		levelCurrent = valueLevel;
+	public virtual void LevelSet(float valueLevelSet){
+		levelCurrent = valueLevelSet;
 		this.LimitLevel ();
 	}
 	public virtual void LevelDown(){

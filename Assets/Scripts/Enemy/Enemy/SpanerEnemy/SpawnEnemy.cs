@@ -7,6 +7,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	[SerializeField] protected int numberOfEnemyArc = 0;
 	[SerializeField] protected int maxNumberEnemyArc = 6;
 	[SerializeField] protected int maxNumberSpawn = 200;
+
 	private static SpawnEnemy instance;
 	public static SpawnEnemy Instance{
 		get{

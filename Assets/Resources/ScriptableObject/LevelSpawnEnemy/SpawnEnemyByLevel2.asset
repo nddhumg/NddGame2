@@ -9,7 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2793518db6b07f48b12709cd55152d6, type: 3}
-  m_Name: SpawnEnemyByLevel1
+  m_Name: SpawnEnemyByLevel2
   m_EditorClassIdentifier: 
-  level: 
-  ArrEnemySpawn: []
+  level: 2
+  ArrEnemySpawn:
+  - nameEnemyPrefab: 1
+    percentage: 0.5
+  - nameEnemyPrefab: 2
+    percentage: 0.3
+  - nameEnemyPrefab: 3
+    percentage: 0.2

@@ -6,10 +6,11 @@ public class SpawnEnemyCtrl : NddBehaviour {
 	
 	[SerializeField] protected SpawnEnemy spawnEnemy;
 	[SerializeField] protected SpawnEnemyPoint spawnEnemyPoint;
-	[SerializeField] protected ManagerRatioEnemyLevel managerRatioEnemyLevel;
-	public ManagerRatioEnemyLevel ManagerRatioEnemyLevel{
+	[SerializeField] protected ManagerEnemySpawnByLevel managerEnemySpawnByLevel;
+		
+	public ManagerEnemySpawnByLevel ManagerEnemySpawnByLevel{
 		get{
-			return managerRatioEnemyLevel;
+			return managerEnemySpawnByLevel;
 		}
 	}
 	public SpawnEnemy SpawnEnemy{
@@ -26,13 +27,14 @@ public class SpawnEnemyCtrl : NddBehaviour {
 	protected override void LoadComponent(){
 		this.LoadSpawnEnemy ();
 		this.LoadSpawnEnemyPoint ();
-		this.LoadManagerRatioEnemyLevel ();
+		this.LoadManagerEnemySpawnByLevel ();
 	}
-	protected virtual void LoadManagerRatioEnemyLevel(){
-		if (this.managerRatioEnemyLevel != null)
+
+	protected virtual void LoadManagerEnemySpawnByLevel(){
+		if (this.managerEnemySpawnByLevel != null)
 			return;
-		this.managerRatioEnemyLevel= GetComponentInChildren<ManagerRatioEnemyLevel>();
-		Debug.Log ("Add ManagerRatioEnemyLevel", gameObject);
+		this.managerEnemySpawnByLevel= GetComponentInChildren<ManagerEnemySpawnByLevel>();
+		Debug.Log ("Add ManagerEnemySpawnByLevel", gameObject);
 	}
 	protected virtual void LoadSpawnEnemy(){
 		if (this.spawnEnemy != null)

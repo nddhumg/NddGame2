@@ -41,28 +41,38 @@ public class SpawnerByLevelEnemy : NddBehaviour {
 			numberEnemySpawn = spawnE.MaxNumberSpawn - spawnE.NumberOfEnemy;
 		}
 		for (int i = 0; i < numberEnemySpawn; i++) {
-			SpawnByLevel ();
+			SpawnByLevel();
 		}
 		 
 	}
+
 	protected virtual void SpawnByLevel(){
-		
-		List<Transform> listPointSpawn = spawnEnemyCtrl.SpawnEnemyPoint.PointSpawn;
 		SpawnEnemy spawnE = spawnEnemyCtrl.SpawnEnemy;
-		int randomPosSpawn = Random.Range (0, listPointSpawn.Count);
-		Vector3 posSpawn = listPointSpawn[randomPosSpawn].position;
-		GameObject prefabSpawn = spawnEnemyCtrl.ManagerRatioEnemyLevel.GetRandomEnemyInThisLevel (this.levelNow);
-		if (prefabSpawn == null) {
+		Vector3 posSpawn = this.GetPosisionRandomSpawnEnemy();
+		string prefabNameSpawn = spawnEnemyCtrl.ManagerEnemySpawnByLevel.GetRandomEnemyNameSpawnByLevel (this.levelNow);
+		if (prefabNameSpawn == null) {
+			Debug.LogWarning ("Dont enemy spawn in level" + this.levelNow, gameObject);
 			return;
 		}
-		if (prefabSpawn.name == EnemyName.GoblinKing.ToString ()) {
-			if (spawnE.NumberOfEnemyArc >= spawnE.MaxNumberEnemyArc)
+		if (prefabNameSpawn == EnemyName.GoblinKing.ToString ()) {
+			if (this.isMaxEnemyArc (spawnE)) {
 				return;
+			}
 			spawnE.IncreaseTheNumberofEnemyArc ();
 		}
-		spawnE.Spawn(prefabSpawn, posSpawn, Quaternion.identity);
-		spawnE.IncreaseTheNumberofEnemy();
-		
+		Spawn (spawnE,prefabNameSpawn,posSpawn,Quaternion.identity);
+	}
+	protected virtual bool isMaxEnemyArc(SpawnEnemy spawnEnemy){
+		return spawnEnemy.NumberOfEnemyArc >= spawnEnemy.MaxNumberEnemyArc;
+	}
+	protected virtual void Spawn(SpawnEnemy spawnEnemy,string enemyName,Vector3 posSpawn,Quaternion rotSpawn){
+		spawnEnemy.Spawn(enemyName, posSpawn,rotSpawn);
+		spawnEnemy.IncreaseTheNumberofEnemy();
+	}
+	protected virtual Vector3 GetPosisionRandomSpawnEnemy(){
+		List<Transform> listPointSpawn = spawnEnemyCtrl.SpawnEnemyPoint.PointSpawn;
+		int randomPosSpawn = Random.Range (0, listPointSpawn.Count);
+		return listPointSpawn[randomPosSpawn].position;
 	}
 }
 

@@ -393,11 +393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleCollider2D: {fileID: 57200467}
   rigid2D: {fileID: 57200466}
---- !u!1 &60437579 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1467139342330046, guid: abec126f71c2fbc499dd10ff99c39972,
-    type: 2}
-  m_PrefabInternal: {fileID: 507860700}
 --- !u!4 &60437580 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4525067249433840, guid: abec126f71c2fbc499dd10ff99c39972,
@@ -568,11 +563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274af40be277d6b4fac21783ccdd2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &202079605 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1309738595015328, guid: aab03c6e270e6c949b9987ae30308a58,
-    type: 2}
-  m_PrefabInternal: {fileID: 1709078478}
 --- !u!4 &202079606 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4592678066908952, guid: aab03c6e270e6c949b9987ae30308a58,
@@ -605,6 +595,7 @@ MonoBehaviour:
   enemyFollow: {fileID: 1945061832}
   animationEnemy: {fileID: 1177479869}
   enemySO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
+  folderNameSO: ScriptableObject/Enemy/
   bossSO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
   slimeBossAbilityCtrl: {fileID: 1001036866}
 --- !u!1 &223565319
@@ -1143,7 +1134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnemy: {fileID: 1612749839}
   spawnEnemyPoint: {fileID: 498456950}
-  managerRatioEnemyLevel: {fileID: 1313672460}
+  managerEnemySpawnByLevel: {fileID: 1313672462}
 --- !u!1 &368494073
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,6 +5105,16 @@ Prefab:
       propertyPath: enemyCtrl
       value: 
       objectReference: {fileID: 202604957}
+    - target: {fileID: 114682487540043518, guid: 548625fbf85b581459369ff186a70aff,
+        type: 2}
+      propertyPath: bossCtrl
+      value: 
+      objectReference: {fileID: 202604957}
+    - target: {fileID: 58372137749959282, guid: 548625fbf85b581459369ff186a70aff,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114898184052312978, guid: 548625fbf85b581459369ff186a70aff, type: 2}
     - {fileID: 114360777352505738, guid: 548625fbf85b581459369ff186a70aff, type: 2}
@@ -5765,7 +5766,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1313672461}
-  - component: {fileID: 1313672460}
+  - component: {fileID: 1313672462}
   m_Layer: 0
   m_Name: ManagerSpawnRatio
   m_TagString: Untagged
@@ -5773,49 +5774,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1313672460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1313672459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c69e42b56357e4984fcfe0cb88c6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySpawnInThisLevel:
-  - nameEnemyPrefab: 1
-    prefab: {fileID: 60437579}
-    percentage:
-    - level: 1
-      percentage: 1
-  - nameEnemyPrefab: 2
-    prefab: {fileID: 1365505253}
-    percentage:
-    - level: 2
-      percentage: 1
-  - nameEnemyPrefab: 3
-    prefab: {fileID: 1972019590}
-    percentage:
-    - level: 3
-      percentage: 1
-  - nameEnemyPrefab: 4
-    prefab: {fileID: 202079605}
-    percentage:
-    - level: 4
-      percentage: 1
-  - nameEnemyPrefab: 5
-    prefab: {fileID: 2009852095}
-    percentage:
-    - level: 5
-      percentage: 1
-  listPrefabs:
-  - {fileID: 60437580}
-  - {fileID: 1365505254}
-  - {fileID: 1972019591}
-  - {fileID: 202079606}
-  - {fileID: 2009852096}
 --- !u!4 &1313672461
 Transform:
   m_ObjectHideFlags: 0
@@ -5829,6 +5787,20 @@ Transform:
   m_Father: {fileID: 367810705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1313672462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1313672459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d11247c92e79a54e97834d44bb716b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrEnemySpawn: []
+  levelPast: 1
+  overallSpawnRate: 0
 --- !u!1 &1315530474
 GameObject:
   m_ObjectHideFlags: 0
@@ -6038,11 +6010,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1355004687}
---- !u!1 &1365505253 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1714878642076080, guid: 79c7d7e586433ed4d9d9d74620117f61,
-    type: 2}
-  m_PrefabInternal: {fileID: 251291608}
 --- !u!4 &1365505254 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4951086937438508, guid: 79c7d7e586433ed4d9d9d74620117f61,
@@ -7180,6 +7147,7 @@ MonoBehaviour:
   enemyFollow: {fileID: 782990361}
   animationEnemy: {fileID: 1760062426}
   enemySO: {fileID: 11400000, guid: a9b979a283161e6469eb5d170645a0c8, type: 2}
+  folderNameSO: ScriptableObject/Enemy/
   bossSO: {fileID: 11400000, guid: a9b979a283161e6469eb5d170645a0c8, type: 2}
   slimeBossAbilityCtrl: {fileID: 347173018}
 --- !u!4 &1627966971 stripped
@@ -49878,11 +49846,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1972019590 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1789861553943690, guid: 48591ca24c6505e4d97b408b8fdd2678,
-    type: 2}
-  m_PrefabInternal: {fileID: 2122016085}
 --- !u!4 &1972019591 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4553613068207606, guid: 48591ca24c6505e4d97b408b8fdd2678,
@@ -50054,11 +50017,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2000205218}
---- !u!1 &2009852095 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1301075179331866, guid: 17c3c8de89a5d6141ab615ace946e930,
-    type: 2}
-  m_PrefabInternal: {fileID: 1344732823}
 --- !u!4 &2009852096 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4697324098636250, guid: 17c3c8de89a5d6141ab615ace946e930,
