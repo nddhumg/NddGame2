@@ -41,7 +41,6 @@ public class EnemyCtrl : GameObjCtrl {
 		base.LoadComponent ();
 		this.LoadDestroyEnemy ();
 		this.LoadEnemySO ();
-
 		this.LoadDamageReceiverEnemy ();
 		this.LoadEnemyFollow ();
 		this.LoadAnimationEnemy ();
@@ -76,6 +75,7 @@ public class EnemyCtrl : GameObjCtrl {
 		if (this.enemySO != null)
 			return;
 		string resPath = folderNameSO +	transform.name;
+		Debug.Log (resPath);
 		enemySO = Resources.Load<EnemySO> (resPath);
 		Debug.LogWarning (transform.name + " LoadEnemySO " + resPath, gameObject);
 	}

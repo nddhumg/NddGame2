@@ -39,7 +39,6 @@ public class AbilityShotEnemy : AbilityShot {
 			return;
 		timerAbility = 0f;
 		enemyArcCtrl.AnimationEnemyArc.SetAnimationAttack ();
-		//ShootBullet(transform.position);
 	}
 
 	protected override string GetNameBullet(){

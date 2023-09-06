@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4123886307751420}
   - component: {fileID: 114622424159995526}
   - component: {fileID: 50454508316730698}
-  - component: {fileID: 114898184052312978}
+  - component: {fileID: 114205356573413740}
   m_Layer: 0
   m_Name: SlimeBoss
   m_TagString: Enemy
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4238969884370498}
-  - component: {fileID: 114334545247997734}
+  - component: {fileID: 114261879117006598}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4033932912526752}
-  - component: {fileID: 114360777352505738}
+  - component: {fileID: 114366673455771016}
   m_Layer: 0
   m_Name: Destroy
   m_TagString: Untagged
@@ -351,7 +351,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114334545247997734
+--- !u!114 &114205356573413740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1039512071216772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c19958d44503645bad33997f1418f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 1506175055799792}
+  destroyEnemy: {fileID: 114366673455771016}
+  damageReceiverEnemy: {fileID: 114261879117006598}
+  enemyFollow: {fileID: 114481766801945080}
+  animationEnemy: {fileID: 114492600630174092}
+  enemySO: {fileID: 11400000, guid: a9b979a283161e6469eb5d170645a0c8, type: 2}
+  folderNameSO: ScriptableObject/Enemy/Boss/
+  bossSO: {fileID: 11400000, guid: a9b979a283161e6469eb5d170645a0c8, type: 2}
+--- !u!114 &114261879117006598
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -365,8 +384,8 @@ MonoBehaviour:
   hp: 0
   hpMax: 50000
   isDead: 0
-  enemyCtrl: {fileID: 114898184052312978}
---- !u!114 &114360777352505738
+  enemyCtrl: {fileID: 114205356573413740}
+--- !u!114 &114366673455771016
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -374,7 +393,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1421123344176284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e687187c491cc7c4d8e3b19acd25f5c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 274af40be277d6b4fac21783ccdd2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114481766801945080
@@ -394,7 +413,7 @@ MonoBehaviour:
   isFollowing: 1
   distance: 0
   velocity: {x: 0, y: 0, z: -20}
-  enemyCtrl: {fileID: 114898184052312978}
+  enemyCtrl: {fileID: 114205356573413740}
   distanceStopFollow: 0
   distanceFromPlayer: 0
 --- !u!114 &114492600630174092
@@ -420,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bc3c7b391daf94a8e6bca413b565a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 114898184052312978}
+  enemyCtrl: {fileID: 114205356573413740}
   capsuleCollider2D: {fileID: 70586510066757434}
 --- !u!114 &114622424159995526
 MonoBehaviour:
@@ -449,25 +468,7 @@ MonoBehaviour:
   circleCollider2D: {fileID: 58372137749959282}
   timer: 1
   timeDelayAttack: 1
-  bossCtrl: {fileID: 114898184052312978}
---- !u!114 &114898184052312978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1039512071216772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2c19958d44503645bad33997f1418f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  model: {fileID: 1506175055799792}
-  destroyEnemy: {fileID: 114360777352505738}
-  damageReceiverEnemy: {fileID: 114334545247997734}
-  enemyFollow: {fileID: 114481766801945080}
-  animationEnemy: {fileID: 114492600630174092}
-  enemySO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
-  bossSO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
+  bossCtrl: {fileID: 114205356573413740}
 --- !u!212 &212193445011178654
 SpriteRenderer:
   m_ObjectHideFlags: 1

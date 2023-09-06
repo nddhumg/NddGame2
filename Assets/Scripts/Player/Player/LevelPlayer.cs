@@ -6,6 +6,16 @@ public class LevelPlayer : Level {
 	[SerializeField] protected float expCurrent = 0;
 	[SerializeField] protected float expLevelUp = 20;
 	[SerializeField] protected float expLevelUpIncreaseRate = 0.5f;
+	public float ExpCurrent{
+		get{
+			return expCurrent;
+		}
+	}
+	public float ExpLevelUp{
+		get{
+			return expLevelUp;
+		}
+	}
 	private static LevelPlayer instance;
 	public static LevelPlayer Instance{
 		get{

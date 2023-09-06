@@ -15,8 +15,8 @@ public class NddBehaviour : MonoBehaviour {
 	// Update is called once per frame
 
 	protected virtual void Reset() {
-		this.LoadComponent ();
 		this.ResetValue();
+		this.LoadComponent ();
 	}
 	protected virtual void LoadComponent() {
         //Override

@@ -43,12 +43,10 @@ public class SpawnerByLevelEnemy : NddBehaviour {
 		for (int i = 0; i < numberEnemySpawn; i++) {
 			SpawnByLevel();
 		}
-		 
 	}
-
 	protected virtual void SpawnByLevel(){
 		SpawnEnemy spawnE = spawnEnemyCtrl.SpawnEnemy;
-		Vector3 posSpawn = this.GetPosisionRandomSpawnEnemy();
+		Vector3 posSpawn = SpawnEnemyPoint.Instance.GetRandomPoinSpawn().position;
 		string prefabNameSpawn = spawnEnemyCtrl.ManagerEnemySpawnByLevel.GetRandomEnemyNameSpawnByLevel (this.levelNow);
 		if (prefabNameSpawn == null) {
 			Debug.LogWarning ("Dont enemy spawn in level" + this.levelNow, gameObject);
@@ -69,10 +67,6 @@ public class SpawnerByLevelEnemy : NddBehaviour {
 		spawnEnemy.Spawn(enemyName, posSpawn,rotSpawn);
 		spawnEnemy.IncreaseTheNumberofEnemy();
 	}
-	protected virtual Vector3 GetPosisionRandomSpawnEnemy(){
-		List<Transform> listPointSpawn = spawnEnemyCtrl.SpawnEnemyPoint.PointSpawn;
-		int randomPosSpawn = Random.Range (0, listPointSpawn.Count);
-		return listPointSpawn[randomPosSpawn].position;
-	}
+
 }
 

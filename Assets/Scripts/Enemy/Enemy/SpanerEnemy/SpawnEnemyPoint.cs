@@ -35,4 +35,8 @@ public class SpawnEnemyPoint : NddBehaviour {
 			pointSpawn.Add (posEnemy);
 		}
 	}
+	public virtual Transform GetRandomPoinSpawn(){
+		int indexRandomPoint = Random.Range (0, pointSpawn.Count);
+		return pointSpawn [indexRandomPoint];
+	}
 }
