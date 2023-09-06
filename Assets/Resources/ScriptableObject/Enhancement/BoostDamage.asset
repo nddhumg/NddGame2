@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCard: 1
   typeCard: 1
-  image: {fileID: 21300000, guid: 44450f0004ac5ac46ad992762e360fe2, type: 3}
+  image: {fileID: 21300000, guid: 1ff1175d56df9eb4f8cfa0ba429d9254, type: 3}
   explain: Add Damage
   attribute: 10

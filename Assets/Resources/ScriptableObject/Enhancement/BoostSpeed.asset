@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCard: 3
   typeCard: 1
-  image: {fileID: 21300000, guid: 659bf6b6b6eab954bb69ee476cbd12e2, type: 3}
+  image: {fileID: 21300000, guid: 4a59607811bc1f9459591856511467a5, type: 3}
   explain: Add speed
   attribute: 0.3

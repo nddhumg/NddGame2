@@ -391,7 +391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 693789091}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &57200466
 Rigidbody2D:
@@ -441,6 +441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleCollider2D: {fileID: 57200467}
   rigid2D: {fileID: 57200466}
+  maxRangePickUp: 3
+  currentRangePickUp: 0.8
 --- !u!4 &60437580 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4525067249433840, guid: abec126f71c2fbc499dd10ff99c39972,
@@ -2309,7 +2311,6 @@ Transform:
   - {fileID: 1527846603}
   - {fileID: 274819180}
   - {fileID: 1166414914}
-  - {fileID: 1075585485}
   - {fileID: 57200465}
   - {fileID: 1315530475}
   m_Father: {fileID: 0}
@@ -4268,34 +4269,6 @@ MonoBehaviour:
   - {fileID: 1025871022}
   - {fileID: 2069437810}
   enhancementSelect: {fileID: 719342025}
---- !u!1 &1075585484
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1075585485}
-  m_Layer: 0
-  m_Name: Inventory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1075585485
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1075585484}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 693789091}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1091700062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4986,6 +4959,7 @@ Transform:
   - {fileID: 1739627451}
   - {fileID: 2097455076}
   - {fileID: 14476021}
+  - {fileID: 1995831395}
   m_Father: {fileID: 1609267510}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5664,7 +5638,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 693789091}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1315530476
 MonoBehaviour:
@@ -6853,6 +6827,7 @@ MonoBehaviour:
   abilityFireDamageCustomization: {fileID: 1739627450}
   abilityHpMaxCustomization: {fileID: 2097455077}
   abilitySpeedCustomization: {fileID: 14476022}
+  abilityRangePickUpCustomization: {fileID: 1995831396}
 --- !u!114 &1609267512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49732,6 +49707,50 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1995831394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1995831395}
+  - component: {fileID: 1995831396}
+  m_Layer: 0
+  m_Name: AbilityRangePickUpCustomization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995831395
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995831394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1220433227}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995831396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995831394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a0dac67669a8747a41ea2f1e6de42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 1609267512}
+  parameter: 0
+  parameterCompleted: 0
+  pickUpItem: {fileID: 57200468}
 --- !u!1 &2000205218
 GameObject:
   m_ObjectHideFlags: 0

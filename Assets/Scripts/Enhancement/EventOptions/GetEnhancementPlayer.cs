@@ -36,6 +36,9 @@ public class GetEnhancementPlayer : GetEnhancement{
 			case EnhancementCode.BoostDamage:
 				EventBoostDamageAttack(enhancementCard.attribute);
 				break;
+			case EnhancementCode.BoostRangePickUp:
+				abilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+				break;
 			default:
 				Debug.LogWarning("Dont event select "+EventSelect.ToString(),gameObject);
 				break;

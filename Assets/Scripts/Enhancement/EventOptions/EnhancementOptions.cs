@@ -11,6 +11,7 @@ public enum EnhancementCode{
 	BoostHp =2,
 	BoostSpeed =3,
 	BoostSpeedAttack =4,
+	BoostRangePickUp =5,
 }
 public class EnhancementOptions : NddBehaviour {
 	private static EnhancementOptions instance;

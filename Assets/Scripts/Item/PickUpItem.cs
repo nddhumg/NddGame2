@@ -6,6 +6,13 @@ using UnityEngine;
 public  class PickUpItem : NddBehaviour {
 	[SerializeField]private CircleCollider2D circleCollider2D;
 	[SerializeField]private Rigidbody2D rigid2D;
+	[SerializeField] protected float maxRangePickUp = 3f;
+	[SerializeField] protected float currentRangePickUp = 0.8f;
+	public float CurrentRangePickUp{
+		get{
+			return currentRangePickUp;
+		}
+	}
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadCircleCollider2D ();
@@ -32,5 +39,13 @@ public  class PickUpItem : NddBehaviour {
 			return;
 		pickupItem.PickUpAble ();
 	}
-	
+	public virtual void SetRangePickUp(float rangePickUpNew){
+		if (rangePickUpNew > maxRangePickUp) {
+			currentRangePickUp = maxRangePickUp;
+			this.circleCollider2D.radius = currentRangePickUp;
+			return;
+		}
+		currentRangePickUp = rangePickUpNew;
+		this.circleCollider2D.radius = currentRangePickUp;
+	}
 }
