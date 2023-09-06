@@ -16,6 +16,6 @@ MonoBehaviour:
   - nameEnemyPrefab: 2
     percentage: 0.3
   - nameEnemyPrefab: 3
-    percentage: 0.4
+    percentage: 0.5
   - nameEnemyPrefab: 4
-    percentage: 0.3
+    percentage: 0.2

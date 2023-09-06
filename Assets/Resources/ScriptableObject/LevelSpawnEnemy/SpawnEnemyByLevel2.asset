@@ -14,8 +14,8 @@ MonoBehaviour:
   level: 2
   ArrEnemySpawn:
   - nameEnemyPrefab: 1
-    percentage: 0.5
+    percentage: 0.7
   - nameEnemyPrefab: 2
-    percentage: 0.3
-  - nameEnemyPrefab: 3
     percentage: 0.2
+  - nameEnemyPrefab: 3
+    percentage: 0.1
