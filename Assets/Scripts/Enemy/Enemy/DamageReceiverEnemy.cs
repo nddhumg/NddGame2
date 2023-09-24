@@ -27,22 +27,38 @@ public class DamageReceiverEnemy : DamageReceiver {
 	}
 	protected virtual void DropItemWhenDead(){
 		this.DropExp ();
+		DropItem ();
 	}
 	protected virtual void DropExp(){
+		List<DropExpRate> listExpDrop = enemyCtrl.EnemySO.listDropExp;
+		string nameExpDrop = GetNameDrop (listExpDrop);
+		if (nameExpDrop == null)
+			return;
+		SpawnExp.Instance.Spawn (nameExpDrop, transform.position, Quaternion.identity);
+	}
+	protected virtual void DropItem(){
+		List<DropItemRate> listItemDrop = enemyCtrl.EnemySO.ListDropItem;
+		string nameItemDrop = GetNameDrop (listItemDrop);
+		if (nameItemDrop == null)
+			return;
+		SpawnItem.Instance.Spawn (nameItemDrop, transform.position, Quaternion.identity);
+	}
+	protected virtual string GetNameDrop<T>(List<T> dropList) where T : IDropItem
+	{
 		try{
-		float rand = Random.Range (0f, 1f);
-		float temp = 0;
-		foreach (DropExpRate percentageItemDrop in enemyCtrl.EnemySO.listDropExp) {
-			temp += percentageItemDrop.percentage;
-			if (temp >= rand){
-				string expDropName = percentageItemDrop.expName.ToString ();
-				SpawnerExp.Instance.Spawn (expDropName, transform.position, Quaternion.identity);
-				return;
+			float rand = Random.Range (0f, 1f);
+			float temp = 0;
+			foreach (T percentageDrop in dropList) {
+				temp += percentageDrop.GetPercentage();
+				if (temp >= rand){
+					return percentageDrop.GetName ();
+				}
 			}
-		}
+			return null;
 		}
 		catch{
-			Debug.LogWarning ("Error Drop Exp");
+			Debug.LogWarning ("Error dont get name drop");
+			return null;
 		}
 	}
 

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public enum ItemType  {
 	NoType = 0,
-	Exp,
 	Gold,
-	Equipment,
+	Equipment, 
 	Consumables
 }

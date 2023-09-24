@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1454544907db8ab49997b105efd0268f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCtrl: {fileID: 114749353413114374}
   expCtrl: {fileID: 114749353413114374}
 --- !u!114 &114628962352917090
 MonoBehaviour:
@@ -240,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6ada644d289784ca160b0a582067fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expCtrl: {fileID: 0}
+  expCtrl: {fileID: 114749353413114374}
   capsuleCollider2D: {fileID: 70690354365163262}
 --- !u!114 &114749353413114374
 MonoBehaviour:
@@ -253,8 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5755e4e49c5c914e974695ceaa58bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyItem: {fileID: 114038524594572970}
+  model: {fileID: 1212027522036196}
   expSO: {fileID: 11400000, guid: 6cbc144835b2f364babc95cf001ffeb1, type: 2}
+  destroyExp: {fileID: 114038524594572970}
 --- !u!212 &212184946293532210
 SpriteRenderer:
   m_ObjectHideFlags: 1

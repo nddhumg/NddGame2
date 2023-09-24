@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpAbleExp : PickUpAbleItem {
+public class PickUpAbleExp : PickUpAble {
 	[SerializeField]protected ExpCtrl expCtrl;
-	protected override void LoadItemCtrl(){
-		
-		base.LoadItemCtrl ();
-		expCtrl = itemCtrl as ExpCtrl;
+	protected override void LoadComponent ()
+	{
+		base.LoadComponent ();
+		this.LoadExpCtrl ();
+
+	}
+	protected virtual void LoadExpCtrl(){
+		if (this.expCtrl != null)
+			return;
+		this.expCtrl= transform.parent.GetComponent<ExpCtrl>();
+		Debug.LogWarning ("Add ExpCtrl", gameObject);
 	}
 
-	protected override void	 ActiveItemWhenPickUp ()
+	public override void PickUp(PlayerCtrl playerCtrl){	
+		expCtrl.DestroyExp.DestroyObject ();
+		base.PickUp (playerCtrl);
+	}
+	protected override void	 ActiveItemWhenPickUp(PlayerCtrl playerCtrl)
 	{
 		SoundManager.Instance.OnPlaySound (SoundType.PickUpItem);
-		LevelPlayer.Instance.IncreaseExp (expCtrl.ExpSO.experience);
+		playerCtrl.LevelPlayer.IncreaseExp (expCtrl.ExpSO.experience);
 	}
 }

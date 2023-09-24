@@ -24,4 +24,9 @@ MonoBehaviour:
     percentage: 0.8
   - expName: 2
     percentage: 0.2
+  ListDropItem:
+  - itemName: 1
+    percentage: 0.05
+  - itemName: 2
+    percentage: 0.01
   nameBulletShot: 3

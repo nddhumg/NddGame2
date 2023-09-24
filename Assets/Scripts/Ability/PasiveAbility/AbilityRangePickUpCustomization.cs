@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityRangePickUpCustomization : AbilityCustomizableObject {
-	[SerializeField] protected PickUpItem pickUpItem;
+	[SerializeField] protected PickUp pickUp;
 
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPickUpItem ();
 	}
 	protected virtual void LoadPickUpItem(){
-		if (this.pickUpItem != null)
+		if (this.pickUp != null)
 			return;
-		this.pickUpItem = transform.parent.parent.parent.GetComponentInChildren<PickUpItem>();
+		this.pickUp = transform.parent.parent.parent.GetComponentInChildren<PickUp>();
 		Debug.LogWarning ("Add PickUpItem", gameObject);
 	}
 	protected override void GetParameter(){
-		this.parameter = pickUpItem.CurrentRangePickUp;
+		this.parameter = pickUp.CurrentRangePickUp;
 	}
 	protected override void ParameterIcrease (float rangePickUpModified){
 		this.parameterCompleted = parameter + rangePickUpModified;
@@ -25,6 +25,6 @@ public class AbilityRangePickUpCustomization : AbilityCustomizableObject {
 		this.parameterCompleted = parameter - rangePickUpModified;
 	}
 	protected override void SetParameter (){
-		pickUpItem.SetRangePickUp(this.parameterCompleted);
+		pickUp.SetRangePickUp(this.parameterCompleted);
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public  class PickUpItem : NddBehaviour {
+public abstract class PickUp : NddBehaviour {
 	[SerializeField]private CircleCollider2D circleCollider2D;
 	[SerializeField]private Rigidbody2D rigid2D;
 	[SerializeField] protected float maxRangePickUp = 3f;
@@ -34,11 +34,9 @@ public  class PickUpItem : NddBehaviour {
 		this.rigid2D.isKinematic = true;
 	}
 	protected  virtual void OnTriggerEnter2D(Collider2D col){
-		PickUpAbleItem pickupItem = col.transform.parent.GetComponentInChildren<PickUpAbleItem> ();
-		if (pickupItem == null)
-			return;
-		pickupItem.PickUpAble ();
+		PickAble(col.transform);
 	}
+	protected abstract void PickAble (Transform col);
 	public virtual void SetRangePickUp(float rangePickUpNew){
 		if (rangePickUpNew > maxRangePickUp) {
 			currentRangePickUp = maxRangePickUp;

@@ -240,8 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5755e4e49c5c914e974695ceaa58bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyItem: {fileID: 114175977713405688}
+  model: {fileID: 1381194423722468}
   expSO: {fileID: 11400000, guid: 87199b23701eda546871697ac893288d, type: 2}
+  destroyExp: {fileID: 114175977713405688}
 --- !u!114 &114682083495312094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1454544907db8ab49997b105efd0268f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCtrl: {fileID: 114308453655235732}
   expCtrl: {fileID: 114308453655235732}
 --- !u!212 &212440992219969882
 SpriteRenderer:

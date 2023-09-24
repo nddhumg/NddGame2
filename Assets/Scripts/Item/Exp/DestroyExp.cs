@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyExp : DestroyItem {
+public class DestroyExp : DestroyObj {
 
 	public override void DestroyObject (){
-		SpawnerExp.Instance.DesTroyPrefabs (transform.parent);
+		SpawnExp.Instance.DesTroyPrefabs (transform.parent);
 	}
 }

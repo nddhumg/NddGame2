@@ -18,8 +18,11 @@ MonoBehaviour:
   attackRange: 0.6
   classify: 1
   hpMax: 100
+  damage: 1
   listDropExp:
   - expName: 1
     percentage: 0.9
-  damage: 1
+  ListDropItem:
+  - itemName: 1
+    percentage: 0.05
   offsetZoneAttack: {x: 0, y: 0}

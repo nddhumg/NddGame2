@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class DestroyItem : DestroyObj {
 	public override void DestroyObject (){
-		//Override abstract
+		SpawnItem.Instance.DesTroyPrefabs (transform.parent);
 	}
 }

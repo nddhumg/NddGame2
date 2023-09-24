@@ -7,4 +7,5 @@ public class ExpSO : ScriptableObject {
 	public ExpName expName = ExpName.NoName;
 	public SizeCapsule sizeCapsule;
 	public float experience = 0;
+
 }

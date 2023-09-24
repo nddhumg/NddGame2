@@ -10,6 +10,12 @@ public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected PlayerSO playerSO;
 	[SerializeField]protected AbilityDashPlayer dashPlayer;
 	[SerializeField]protected AbilityShotPlayer shotPlayer;
+	[SerializeField]protected LevelPlayer levelPlayer;
+	public LevelPlayer LevelPlayer{
+		get{
+			return levelPlayer;
+		}
+	}
 	public AbilityDashPlayer DashPlayer{
 		get{
 			return dashPlayer;
@@ -55,6 +61,7 @@ public class PlayerCtrl : GameObjCtrl {
 		this.LoadDamageReceiver ();
 		this.LoadDashPlayer ();
 		this.LoadShotPlayer ();
+		this.LoadLevelPlayer ();
 	}
 	protected virtual void LoadPlayerSO(){
 		if (this.playerSO != null)
@@ -64,7 +71,12 @@ public class PlayerCtrl : GameObjCtrl {
 
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
 	}
-
+	protected virtual void LoadLevelPlayer(){
+		if (this.levelPlayer != null)
+			return;
+		this.levelPlayer= GetComponentInChildren<LevelPlayer>();
+		Debug.Log ("Add LevelPlayer", gameObject);
+	}
 	protected virtual void LoadPhysicsPlayer(){
 		if (this.physicsPlayer != null)
 			return;

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum FxName  {
 	FxDash = 0,
-	FxLevelUp = 0,
+	FxLevelUp = 1,
 }

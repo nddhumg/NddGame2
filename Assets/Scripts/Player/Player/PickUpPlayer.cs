@@ -1,0 +1,28 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PickUpPlayer : PickUp {
+	[SerializeField]protected PlayerCtrl playerCtrl;
+	protected override void PickAble(Transform col){
+		PickUpItem (col.transform);
+	} 
+
+	protected virtual void PickUpItem(Transform collision){
+		PickUpAble pickUpAbleItem = collision.parent.GetComponentInChildren<PickUpAble> ();
+		if (pickUpAbleItem == null)
+			return;
+		pickUpAbleItem.PickUp (playerCtrl);
+	}
+	protected override void LoadComponent(){
+		base.LoadComponent ();
+		this.LoadPlayerCtrl ();
+	}
+
+	protected virtual void LoadPlayerCtrl(){
+		if (this.playerCtrl != null)
+			return;
+		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
+		Debug.Log ("Add PlayerCtrl", gameObject);
+	}
+}
