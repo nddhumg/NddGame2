@@ -15,9 +15,9 @@ public class DamageReceiverEnemy : DamageReceiver {
 		this.enemyCtrl= transform.parent.GetComponent<EnemyCtrl>();
 		Debug.LogWarning ("Add EnemyCtrl", gameObject);
 	}
-	protected override void ResetValue ()
+	protected override void ResetValueComponent ()
 	{
-		base.ResetValue ();
+		base.ResetValueComponent ();
 		this.hpMax = enemyCtrl.EnemySO.hpMax;	
 	}
 	protected override void OnDead(){

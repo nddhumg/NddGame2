@@ -11,9 +11,9 @@ public abstract class DamageSenderEnemy : DamageSender {
 		base.LoadComponent ();
 		this.LoadCircleCollider2D();
 	}
-	protected override void ResetValue ()
+	protected override void ResetValueComponent ()
 	{
-		base.ResetValue ();
+		base.ResetValueComponent ();
 		SetDamageWhenReset ();
 	}
 	protected virtual void FixedUpdate(){

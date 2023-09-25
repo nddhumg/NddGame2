@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class HealthBar : BarUI {
+public class HealthBarPlayer : BarUI {
 	[SerializeField]protected PlayerCtrl playerCtrl;
 	[SerializeField]protected Text textHp;
 	protected override void LoadComponent ()

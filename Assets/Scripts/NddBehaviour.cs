@@ -17,10 +17,14 @@ public class NddBehaviour : MonoBehaviour {
 	protected virtual void Reset() {
 		this.ResetValue();
 		this.LoadComponent ();
+		this.ResetValueComponent();
 	}
 	protected virtual void LoadComponent() {
         //Override
     }
+	protected virtual void ResetValueComponent() {
+		//Override
+	}
     protected virtual void ResetValue() {
         //Override
 	}
