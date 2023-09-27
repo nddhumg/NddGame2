@@ -33,6 +33,10 @@ public class EnemyFollow : FollowPlayer {
 	{
 		base.ResetValue ();
 		this.speedFollow = 2.5f;
+	}
+	protected override void ResetValueComponent ()
+	{
+		base.ResetValueComponent ();
 		distanceStopFollow = enemyCtrl.EnemySO.attackRange ;
 	}
 	protected override void ChangeIsFollowing(){

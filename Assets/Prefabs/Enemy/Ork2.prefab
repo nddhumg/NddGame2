@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4227627570758264}
-  - component: {fileID: 114305595395709584}
-  - component: {fileID: 58840091176880152}
+  - component: {fileID: 114678468863320754}
+  - component: {fileID: 70978232015017448}
   m_Layer: 0
   m_Name: DamageSender
   m_TagString: Untagged
@@ -304,8 +304,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58840091176880152
-CircleCollider2D:
+--- !u!70 &70978232015017448
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -317,8 +317,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.46}
-  serializedVersion: 2
-  m_Radius: 1
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!70 &70988838504347038
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -383,22 +383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 95988365086007908}
---- !u!114 &114305595395709584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1068102558609324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c73bacdd1fd8ae2458a026aa3b7bc5b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 300
-  circleCollider2D: {fileID: 58840091176880152}
-  timer: 1
-  timeDelayAttack: 1
-  enemyWarriorCtrl: {fileID: 114584221118603872}
 --- !u!114 &114584221118603872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,8 +400,9 @@ MonoBehaviour:
   enemyFollow: {fileID: 114028547719545372}
   animationEnemy: {fileID: 114055528027791306}
   enemySO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
+  folderNameSO: ScriptableObject/Enemy/
   enemyWarriorSO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
-  damageSenderEnemy: {fileID: 114305595395709584}
+  damageSenderEnemy: {fileID: 114678468863320754}
 --- !u!114 &114600433839738266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,6 +416,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCtrl: {fileID: 114584221118603872}
   capsuleCollider2D: {fileID: 70988838504347038}
+--- !u!114 &114678468863320754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068102558609324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73bacdd1fd8ae2458a026aa3b7bc5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 300
+  capsuleCollider2D: {fileID: 70978232015017448}
+  timer: 1
+  timeDelayAttack: 1
+  enemyWarriorCtrl: {fileID: 114584221118603872}
 --- !u!114 &114747159569478538
 MonoBehaviour:
   m_ObjectHideFlags: 1

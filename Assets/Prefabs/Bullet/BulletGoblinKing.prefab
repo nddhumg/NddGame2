@@ -99,26 +99,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4768747090072170}
-  - component: {fileID: 114603799300450318}
+  - component: {fileID: 114433278131977960}
+  - component: {fileID: 70389233280260212}
   m_Layer: 0
   m_Name: DamageSender
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1972008319011210
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4351355869880426}
-  - component: {fileID: 114745576685815322}
-  - component: {fileID: 70903643185584704}
-  m_Layer: 0
-  m_Name: ColliderBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +122,6 @@ Transform:
   - {fileID: 4935744625329094}
   - {fileID: 4799039315879832}
   - {fileID: 4768747090072170}
-  - {fileID: 4351355869880426}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,19 +138,6 @@ Transform:
   - {fileID: 4617941408326748}
   m_Father: {fileID: 4114809379184996}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4351355869880426
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1972008319011210}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4114809379184996}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4617941408326748
 Transform:
@@ -221,12 +191,12 @@ Transform:
   m_Father: {fileID: 4114809379184996}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &70903643185584704
+--- !u!70 &70389233280260212
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1972008319011210}
+  m_GameObject: {fileID: 1842059149594364}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -253,7 +223,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114603799300450318
+--- !u!114 &114433278131977960
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -264,8 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1299aa339eb0044eb69214d7060c18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
   bulletCtrl: {fileID: 114648642704168766}
+  capsuleCollider2D: {fileID: 70389233280260212}
 --- !u!114 &114648642704168766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,21 +250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyBullet: {fileID: 114767996929683144}
   destroyBullet: {fileID: 114764300099110676}
-  damageSender: {fileID: 114603799300450318}
+  damageSender: {fileID: 114433278131977960}
   bulletSO: {fileID: 11400000, guid: 313094cee321a8e4aabf5d8d939d9f81, type: 2}
---- !u!114 &114745576685815322
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1972008319011210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b64660cea313bd4e930c3aed9a891e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletCtrl: {fileID: 114648642704168766}
-  capsuleCollider2D: {fileID: 70903643185584704}
 --- !u!114 &114764300099110676
 MonoBehaviour:
   m_ObjectHideFlags: 1

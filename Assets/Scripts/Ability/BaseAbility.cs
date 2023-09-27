@@ -5,6 +5,11 @@ using UnityEngine;
 public abstract class BaseAbility : NddBehaviour {
 	[Header("Base Ability")]
 	[SerializeField] protected Ability ability;
+	public Ability Ability{
+		get{ 
+			return ability;
+		}
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();

@@ -125,7 +125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1479354071236146
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +150,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4194478922665012}
-  - component: {fileID: 58863942534256540}
-  - component: {fileID: 114224706087728342}
+  - component: {fileID: 114893138545743158}
+  - component: {fileID: 70308790671719216}
   m_Layer: 0
   m_Name: DamageSender
   m_TagString: Untagged
@@ -358,8 +358,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58863942534256540
-CircleCollider2D:
+--- !u!70 &70308790671719216
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -371,8 +371,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.19}
-  serializedVersion: 2
-  m_Radius: 0.59
+  m_Size: {x: 0.59, y: 0.59}
+  m_Direction: 0
 --- !u!70 &70464945714788630
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -421,22 +421,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114224706087728342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1685752776997002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebae39de0ad1894693c4706a260ea58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 50
-  circleCollider2D: {fileID: 58863942534256540}
-  timer: 1
-  timeDelayAttack: 1
-  bossCtrl: {fileID: 114741632506718780}
 --- !u!114 &114291954000345556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -615,6 +599,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114893138545743158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685752776997002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ebae39de0ad1894693c4706a260ea58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+  capsuleCollider2D: {fileID: 70308790671719216}
+  timer: 1
+  timeDelayAttack: 1
+  bossCtrl: {fileID: 114741632506718780}
 --- !u!114 &114894628710774362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -785,7 +785,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.51, y: 1}
   m_AnchoredPosition: {x: -0.00024795532, y: 0}
   m_SizeDelta: {x: 0.00049591, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

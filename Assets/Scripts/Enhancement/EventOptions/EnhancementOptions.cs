@@ -27,6 +27,8 @@ public class EnhancementOptions : NddBehaviour {
 		}
 		EnhancementOptions.instance = this;
 	}
+
+	//Obsever pattern
 	private List<IEvenetEnhancementSelection> obsevers = new List<IEvenetEnhancementSelection>();
 
 	public void AddObsever(IEvenetEnhancementSelection obsever){

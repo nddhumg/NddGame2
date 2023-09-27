@@ -10,10 +10,10 @@ public class DamageSenderBoss : DamageSenderEnemy {
 		this.LoadEnemyWarriorCtrl ();
 		base.LoadComponent ();
 	}
-	protected override void SetCircleCollider2D ()
+	protected override void SetCapsuleCollider2D ()
 	{
-		circleCollider2D.offset = bossCtrl.BossSO.offsetZoneAttack;
-		circleCollider2D.radius = bossCtrl.BossSO.attackRange;
+		capsuleCollider2D.offset = bossCtrl.BossSO.offsetZoneAttack;
+		capsuleCollider2D.size = new Vector2(bossCtrl.BossSO.attackRange, bossCtrl.BossSO.attackRange);
 	}
 	protected virtual void LoadEnemyWarriorCtrl(){
 		if (this.bossCtrl != null)

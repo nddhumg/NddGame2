@@ -60,6 +60,6 @@ public class GetEnhancementPlayer : GetEnhancement{
 		abilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(speedAttackUp,true);
 	}
 	protected virtual void EventBoostDamageAttack(float damageAttackUp){
-		abilityPlayerCtrl.AbilityFireDamageCustomization.ParamemterCustomization(damageAttackUp,true);
+		abilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(damageAttackUp,true);
 	}
 }

@@ -8,7 +8,13 @@ public class AbilityPlayerCtrl : AbilityObjShotCtrl {
 	[SerializeField] protected AbilityHpMaxCustomization abilityHpMaxCustomization;
 	[SerializeField] protected AbilitySpeedCustomization abilitySpeedCustomization;
 	[SerializeField] protected AbilityRangePickUpCustomization abilityRangePickUpCustomization;
+	[SerializeField] protected AbilityDamageCustomization abilityDamageCustomization;
 
+	public AbilityDamageCustomization AbilityDamageCustomization{
+		get{
+			return abilityDamageCustomization;
+		}
+	}
 	public AbilityHpMaxCustomization AbilityHpMaxCustomization{
 		get{
 			return abilityHpMaxCustomization;
@@ -42,6 +48,13 @@ public class AbilityPlayerCtrl : AbilityObjShotCtrl {
 		this.LoadAbilitySpeedCustomization ();
 		this.LoadAbilityHpMaxCustomization ();
 		this.LoadAbilityRangePickUpCustomization ();
+		this.LoadAbilityDamageCustomization ();
+	}
+	protected virtual void LoadAbilityDamageCustomization(){
+		if (this.abilityDamageCustomization != null)
+			return;
+		this.abilityDamageCustomization = GetComponentInChildren<AbilityDamageCustomization> ();
+		Debug.LogWarning ("Add AbilityDamageCustomization", gameObject);
 	}
 	protected virtual void LoadAbilityRangePickUpCustomization(){
 		if (this.abilityRangePickUpCustomization != null)

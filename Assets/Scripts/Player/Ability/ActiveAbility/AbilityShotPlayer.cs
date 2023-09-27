@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityShotPlayer : AbilityShot {
+public class AbilityShotPlayer : AbilityShot,ISetDamagePlayer{
 	[Header ("Shot Ability Player")]  
 	[SerializeField] protected bool shotByKey ;
 	[SerializeField] protected bool shotByAutoPosTarget = true;
@@ -13,21 +13,30 @@ public class AbilityShotPlayer : AbilityShot {
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
 	}
-
+	protected override void Start(){
+		base.Start ();
+		playerCtrl.AttributesPlayer.AddObsever (this);
+	}
+	public void OnSetDamage(float damage){
+		this.damage = damage;
+	}
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
 		this.playerCtrl=ability.ObjectCtrl as PlayerCtrl;
 		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
-	protected override void ResetValue(){
+	protected override void ResetValueComponent(){
+		base.ResetValueComponent ();
+		this.damage = playerCtrl.AttributesPlayer.Damage;
+	}
+	protected override void ResetValue ()
+	{
 		base.ResetValue ();
-		this.damage = playerCtrl.PlayerSO.damage;
 		this.delayAbility = 0.6f;
 	}
 	protected override void Update(){
 		base.Update ();
-
 		this.Shooting ();
 	}
 
