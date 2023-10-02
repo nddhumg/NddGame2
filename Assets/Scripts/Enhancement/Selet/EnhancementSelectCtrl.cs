@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class EnhancementSelectCtrl : NddBehaviour {
 	[SerializeField] protected Image imgIcon;
-	[SerializeField] protected Text textEnhancementSelect;
+	[SerializeField] protected Text textExplainEnhancementSelect;
+	[SerializeField] protected Text textLevelEnhancementSelect;
 	[SerializeField] protected EnhancementSelectProperties enhancementSelectProperties;
 	public Image ImgIcon{
 		get{
@@ -14,7 +15,12 @@ public class EnhancementSelectCtrl : NddBehaviour {
 	}
 	public Text TextEnhancementSelect{
 		get{
-			return textEnhancementSelect;
+			return textExplainEnhancementSelect;
+		}
+	}
+	public Text TextLevelEnhancementSelect{
+		get{
+			return textLevelEnhancementSelect;
 		}
 	}
 	public EnhancementSelectProperties EnhancementSelectProperties{
@@ -26,8 +32,9 @@ public class EnhancementSelectCtrl : NddBehaviour {
 	{
 		base.LoadComponent ();
 		this.LoadImgIcon ();
-		this.LoadTextEnhancementSelect ();
+		this.LoadTextExplainEnhancementSelect ();
 		this.LoadEnhancementSelectManager ();
+		LoadTextLevelEnhancementSelect ();
 	}
 	protected virtual void LoadImgIcon(){
 		if (this.imgIcon != null)
@@ -35,11 +42,17 @@ public class EnhancementSelectCtrl : NddBehaviour {
 		this.imgIcon= transform.Find("Icon").GetComponent<Image>();
 		Debug.LogWarning ("Add Image Icone", gameObject);
 	}
-	protected virtual void LoadTextEnhancementSelect(){
-		if (this.textEnhancementSelect != null)
+	protected virtual void LoadTextExplainEnhancementSelect(){
+		if (this.textExplainEnhancementSelect != null)
 			return;
-		this.textEnhancementSelect= GetComponentInChildren<Text>();
-		Debug.LogWarning ("Add Text EnhancementSelect", gameObject);
+		this.textExplainEnhancementSelect= transform.Find("Explain").GetComponent<Text>();
+		Debug.LogWarning ("Add Text Explain EnhancementSelect", gameObject);
+	}
+	protected virtual void LoadTextLevelEnhancementSelect(){
+		if (this.textLevelEnhancementSelect != null)
+			return;
+		this.textLevelEnhancementSelect= transform.Find("Level").GetComponent<Text>();
+		Debug.LogWarning ("Add Text Level EnhancementSelect", gameObject);
 	}
 	protected virtual void LoadEnhancementSelectManager(){
 		if (this.enhancementSelectProperties != null)

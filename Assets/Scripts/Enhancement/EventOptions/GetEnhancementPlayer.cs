@@ -5,6 +5,7 @@ using UnityEngine;
 public class GetEnhancementPlayer : GetEnhancement{
 	[Header("Get Enhancement Player")]
 	[SerializeField] protected AbilityPlayerCtrl abilityPlayerCtrl;
+	[SerializeField] protected UnlockAbilityPlayer unlockAbilityPlayer;
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -25,20 +26,33 @@ public class GetEnhancementPlayer : GetEnhancement{
 			switch (EventSelect) 
 			{
 			case EnhancementCode.BoostHp:
-				EventBoostHpMax (enhancementCard.attribute);
+				abilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 				break;
+
 			case EnhancementCode.BoostSpeed:
-				EventBoostSpeed (enhancementCard.attribute);
+				abilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 				break;
+
 			case EnhancementCode.BoostSpeedAttack:
-				EventBoostSpeedAttack(enhancementCard.attribute);
+				abilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 				break;
+
 			case EnhancementCode.BoostDamage:
-				EventBoostDamageAttack(enhancementCard.attribute);
+				abilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 				break;
+
 			case EnhancementCode.BoostRangePickUp:
 				abilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 				break;
+			case EnhancementCode.AbilityCircular:
+				UnlockAbilityPlayer.NameAbilityUnlock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock(EnhancementCode.AbilityCircular);
+				if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
+					unlockAbilityPlayer.UnlockAbility(nameAbility);
+				else{
+					unlockAbilityPlayer.GetTfByKeyListAbilityTf(nameAbility.ToString())?.GetComponentInChildren<LevelAbility>().LevelAbilityUp();
+				}
+				break;
+				
 			default:
 				Debug.LogWarning("Dont event select "+EventSelect.ToString(),gameObject);
 				break;
@@ -50,16 +64,4 @@ public class GetEnhancementPlayer : GetEnhancement{
 		}
 	}
 
-	protected virtual void EventBoostHpMax(float hpBoost){
-		abilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(hpBoost,true);
-	}
-	protected virtual void EventBoostSpeed(float speedUp){
-		abilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(speedUp,true);
-	}
-	protected virtual void EventBoostSpeedAttack(float speedAttackUp){
-		abilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(speedAttackUp,true);
-	}
-	protected virtual void EventBoostDamageAttack(float damageAttackUp){
-		abilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(damageAttackUp,true);
-	}
 }

@@ -4,14 +4,19 @@ using UnityEngine;
 public enum EnhancementType{
 	NoType = 0,
 	Enhancement = 1,
+	Ability =2,
 }
 public enum EnhancementCode{
 	NoName = 0,
+
 	BoostDamage = 1,
 	BoostHp =2,
 	BoostSpeed =3,
-	BoostSpeedAttack =4,
+	BoostSpeedAttack =4, 
 	BoostRangePickUp =5,
+
+
+	AbilityCircular = 100,
 }
 public class EnhancementOptions : NddBehaviour {
 	private static EnhancementOptions instance;
