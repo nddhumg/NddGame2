@@ -748,8 +748,8 @@ MonoBehaviour:
   isFollowing: 1
   distance: 0
   velocity: {x: 0, y: 0, z: -20}
-  enemyCtrl: {fileID: 0}
-  distanceStopFollow: 0
+  enemyCtrl: {fileID: 114884871482463946}
+  distanceStopFollow: 0.83
   distanceFromPlayer: 0
 --- !u!212 &212015702938951306
 SpriteRenderer:

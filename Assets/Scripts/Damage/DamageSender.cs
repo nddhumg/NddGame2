@@ -22,11 +22,19 @@ public abstract class DamageSender : NddBehaviour {
 	protected abstract void SetCapsuleCollider2D ();
 	public virtual void Send(Transform objRecever) { 
         DamageReceiver receiver = objRecever.GetComponentInChildren<DamageReceiver>();
+		if (receiver == null)
+			return;
 		Send (receiver);  
     }
 	protected virtual void Send(DamageReceiver receiver) {
-        receiver?.Receiver(this.damage);
+        receiver.Receiver(this.damage);
+		SpawnDamagePopUp ();
     }
+	protected virtual void SpawnDamagePopUp(){
+		Transform fxDamagePopUp = SpawnFx.Instance.Spawn (FxName.FxDamagePopUp.ToString(),transform.position,Quaternion.identity);
+		DamagePopUp popUp = fxDamagePopUp.GetComponent<DamagePopUp>();
+		popUp.SetUp (damage);
+	}
 	public virtual void SetDamage(float damage){
 		this.damage = damage;
 	}

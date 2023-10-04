@@ -20,7 +20,7 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 		switch (nextLevel) 
 		{
 		case 2:
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.DamageRatio = 1.2f;	
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.SetDamageRatio (1.2f);
 			break;
 
 		case 3:
@@ -34,7 +34,7 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 
 		case 5:
 			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.DamageRatio = 2f;	
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.SetDamageRatio (2f);	
 			break;
 		default:
 			return;

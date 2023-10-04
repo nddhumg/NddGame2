@@ -16,6 +16,7 @@ public class EnhancementSelectProperties : BaseEnhancementSelect {
 			enhancementCard = Resources.Load<EnhancementCardSO> (resPath);
 			nameEnhancementSelect = enhancementCard.nameCard;
 			enhancementSelectCtrl.ImgIcon.sprite = enhancementCard.image;
+			enhancementSelectCtrl.TextLevelEnhancementSelect.text= "";
 			enhancementSelectCtrl.TextEnhancementSelect.text = enhancementCard.explain + " +"+enhancementCard.attribute;
 		}
 		catch{

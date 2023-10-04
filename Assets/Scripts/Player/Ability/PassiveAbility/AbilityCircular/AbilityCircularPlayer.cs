@@ -6,15 +6,12 @@ public class AbilityCircularPlayer : AbilityCircular,ISetDamagePlayer  {
 	[Header("AbilityCircularPlayer")]
 	[SerializeField] protected PlayerCtrl playerCtrl;
 	[SerializeField] protected float damage;
+	[SerializeField] protected float damagePlayer;
 	[SerializeField] protected float damageRatio =1f;
 
 	public float DamageRatio{
 		get{
 			return damageRatio;
-		}
-		set
-		{
-			damageRatio = value;
 		}
 	}
 	public float Damage{
@@ -24,11 +21,15 @@ public class AbilityCircularPlayer : AbilityCircular,ISetDamagePlayer  {
 	}
 	void OnEnable(){
 		playerCtrl.AttributesPlayer.AddObsever (this);
-		damage = playerCtrl.AttributesPlayer.Damage;
+		damagePlayer = playerCtrl.AttributesPlayer.Damage;
+		damage = damagePlayer;
 	}
-
+	public void SetDamageRatio(float damageRatio){
+		damage = damagePlayer * damageRatio;
+	}
 	public void OnSetDamage(float damage){
 		this.damage = damage * damageRatio;
+		damagePlayer = damage;
 	}
 	protected override void LoadComponent ()
 	{
