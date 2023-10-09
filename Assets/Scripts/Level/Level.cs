@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Level : NddBehaviour {
 	[SerializeField] protected float levelCurrent = 1;
 	[SerializeField] protected int levelMax = 99;
-
+	[SerializeField] protected int levelMin = 0;
 	public float LevelCurrent{
 		get{
 			return levelCurrent;
@@ -27,8 +27,8 @@ public abstract class Level : NddBehaviour {
 	protected void LimitLevel(){
 		if (levelCurrent > levelMax)
 			levelCurrent = levelMax;
-		if (levelCurrent < 0)
-			levelCurrent = 0;
+		if (levelCurrent < levelMin)
+			levelCurrent = levelMin;
 	}
 	public virtual void LevelSet(float valueLevelSet){
 		levelCurrent = valueLevelSet;

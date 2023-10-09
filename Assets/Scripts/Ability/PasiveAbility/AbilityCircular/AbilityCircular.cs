@@ -24,6 +24,9 @@ public abstract class AbilityCircular : PassiveAbility {
 		get{ 
 			return speed;
 		}
+		set{ 
+			speed = value;
+		}
 	}
 	protected override void LoadComponent ()
 	{
@@ -45,7 +48,7 @@ public abstract class AbilityCircular : PassiveAbility {
 		Debug.LogWarning ("Add Prefab", gameObject);
 	}
 	protected abstract void SetCenterPosition ();
-	protected virtual void InstantiatePrab(){
+	public virtual void InstantiatePrab(){
 		if (IsMaxPrefab())
 			return;
 		GameObject newPrefab = Instantiate(ObjAbility[0].gameObject);

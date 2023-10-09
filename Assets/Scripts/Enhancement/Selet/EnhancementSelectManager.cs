@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnhancementSelectManager : NddBehaviour {
 	[SerializeField] protected List<EnhancementSelectProperties> listSelectProperties;
 	[SerializeField] protected Transform enhancementSelect;
+	[SerializeField] protected UnlockAbilityPlayer unlockAbilityPlayer;
 	private static EnhancementSelectManager instance;
 	public static EnhancementSelectManager Instance{
 		get{
@@ -52,9 +54,23 @@ public class EnhancementSelectManager : NddBehaviour {
 	public virtual void SetProperties(EnhancementCode[] arrEnhancementCode){
 		int i = 0;
 		foreach (EnhancementSelectProperties properties in listSelectProperties) {
-			properties.LoadInfoEnhancementSelect (arrEnhancementCode[i]);
+			if (IsEnhancementAbility(arrEnhancementCode [i])) {
+				properties.LoadInfoEnhancementSelect (arrEnhancementCode [i],GetLevelEnhancementAbility(arrEnhancementCode [i]));
+			} else {
+				properties.LoadInfoEnhancementSelect (arrEnhancementCode [i]);
+			}
 			i++;
 		}	
+	}
+	private bool IsEnhancementAbility(EnhancementCode enhancementCode){
+		return (int)enhancementCode >= 100;
+	}
+	private int GetLevelEnhancementAbility(EnhancementCode enhancementCode){
+		UnlockAbilityPlayer.NameAbilityUnlock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 	if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
+		{
+			return 0;
+		}
+		return (int)unlockAbilityPlayer.GetTfByKeyListAbilityTf(nameAbility.ToString())?.GetComponentInChildren<LevelAbility>().LevelCurrent;
 	}
 	public virtual void SetActiveEnhancementSelect(bool active){
 		enhancementSelect.gameObject.SetActive (active);

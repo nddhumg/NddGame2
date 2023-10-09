@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class DmgSenderObjAbilityCircular : DamageSender,ISetDamagePlayer {
-	[SerializeField]protected AbilityCircular abilityCircular;
+public class DmgSenderObjAbilityCircular : DamageSender {
+	[SerializeField]protected AbilityCircularPlayer abilityCircularPlayer;
 	[SerializeField] protected Vector2 offsetCapsule = new Vector2(0f, 0f);
 	[SerializeField] protected Vector2 sizeCapsule = new Vector2(0.56f, 0.9f);
 
@@ -12,28 +12,18 @@ public class DmgSenderObjAbilityCircular : DamageSender,ISetDamagePlayer {
 		base.LoadComponent ();
 		this.LoadAbilityCircular ();
 	}
-	void OnEnable(){
-		PlayerCtrl playerCtrl = abilityCircular.Ability.ObjectCtrl as PlayerCtrl;
-		playerCtrl.AttributesPlayer.AddObsever (this);
-	}
-	protected override void ResetValueComponent ()
-	{
-		base.ResetValueComponent ();
-		PlayerCtrl playerCtrl = abilityCircular.Ability.ObjectCtrl as PlayerCtrl;
-		damage = playerCtrl.AttributesPlayer.Damage;
+	void FixedUpdate(){
+		damage = abilityCircularPlayer.Damage;
 	}
 	protected override void SetCapsuleCollider2D(){
 		capsuleCollider2D.offset = offsetCapsule;
 		capsuleCollider2D.size = sizeCapsule;
 	}
 	protected virtual void LoadAbilityCircular(){
-		if (this.abilityCircular != null)
+		if (this.abilityCircularPlayer != null)
 			return;
-		this.abilityCircular= transform.GetComponentInParent<AbilityCircular>();
+		this.abilityCircularPlayer= transform.GetComponentInParent<AbilityCircularPlayer>();
 		Debug.LogWarning ("Add AbilityCircular", gameObject);
-	}
-	public void OnSetDamage(float damage){
-		this.damage = damage;
 	}
 	void OnTriggerEnter2D(Collider2D col){
 		Send (col.transform.parent);

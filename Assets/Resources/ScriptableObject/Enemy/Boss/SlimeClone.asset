@@ -17,7 +17,7 @@ MonoBehaviour:
     sizeCollider: {x: 1, y: 1}
   attackRange: 0.59
   classify: 100
-  hpMax: 20000
+  hpMax: 3000
   damage: 50
   listDropExp:
   - expName: 2
