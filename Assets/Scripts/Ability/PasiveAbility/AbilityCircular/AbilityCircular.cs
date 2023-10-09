@@ -19,9 +19,6 @@ public abstract class AbilityCircular : PassiveAbility {
 		get{ 
 			return radius;
 		}
-		set{ 
-			radius = value;
-		}
 	}
 	public float Speed{
 		get{ 

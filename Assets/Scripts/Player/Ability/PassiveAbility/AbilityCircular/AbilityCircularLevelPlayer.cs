@@ -29,7 +29,7 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 
 		case 4:
 			abilityCircularPlayerCtrl.AbilityCircularPlayer.Speed = 2.3f;
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.Radius = 3.5f;
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.SetDamageRatio(3.5f);
 			break;
 
 		case 5:
