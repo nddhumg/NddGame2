@@ -5,6 +5,6 @@ using UnityEngine;
 public class DamagePopUp : TextMeshBase {
 	public void SetUp(float damage)
 	{
-		textMesh.text = damage.ToString ();
+		textMesh.text = "-" + damage.ToString ();
 	}
 }

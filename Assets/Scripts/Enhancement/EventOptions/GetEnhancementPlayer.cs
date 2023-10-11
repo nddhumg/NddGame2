@@ -19,49 +19,64 @@ public class GetEnhancementPlayer : GetEnhancement{
 	}
 	public override void OnSelectionEnhancement(EnhancementCode select){
 		try{
-			string resPath = "ScriptableObject/Enhancement/" +	select.ToString();;
-			EnhancementCardSO enhancementCard = Resources.Load<EnhancementCardSO> (resPath);
-
-			EnhancementCode EventSelect = select;
-			switch (EventSelect) 
-			{
-			case EnhancementCode.BoostHp:
-				abilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-				break;
-
-			case EnhancementCode.BoostSpeed:
-				abilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-				break;
-
-			case EnhancementCode.BoostSpeedAttack:
-				abilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-				break;
-
-			case EnhancementCode.BoostDamage:
-				abilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-				break;
-
-			case EnhancementCode.BoostRangePickUp:
-				abilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-				break;
-			case EnhancementCode.AbilityCircular:
-				UnlockAbilityPlayer.NameAbilityUnlock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock(EnhancementCode.AbilityCircular);
-				if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
-					unlockAbilityPlayer.UnlockAbility(nameAbility);
-				else{
-					unlockAbilityPlayer.GetTfByKeyListAbilityTf(nameAbility.ToString())?.GetComponentInChildren<LevelAbility>().LevelAbilityUp();
-				}
-				break;
-				
-			default:
-				Debug.LogWarning("Dont event select "+EventSelect.ToString(),gameObject);
-				break;
-			}
+			OnSelectionEnhancementAbility(select);
+			OnSelectionEnhancementParameters(select);
 		}
 		catch
 		{
 			Debug.LogError("Error OnSelectionEnhancement in Player",gameObject);
 		}
 	}
+	protected void OnSelectionEnhancementParameters(EnhancementCode select){
+		if (!IsSelectionParameters (select))
+			return;
+		string resPath = "ScriptableObject/Enhancement/" +	select.ToString();;
+		EnhancementCardSO enhancementCard = Resources.Load<EnhancementCardSO> (resPath);
 
+		switch (select) 
+		{
+		case EnhancementCode.BoostHp:
+			abilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			break;
+
+		case EnhancementCode.BoostSpeed:
+			abilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			break;
+
+		case EnhancementCode.BoostSpeedAttack:
+			abilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			break;
+
+		case EnhancementCode.BoostDamage:
+			abilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			break;
+
+		case EnhancementCode.BoostRangePickUp:
+			abilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			break;
+		default:
+			Debug.LogWarning("Dont event select Parameters "+select.ToString(),gameObject);
+			break;
+		}
+	} 
+	protected void OnSelectionEnhancementAbility(EnhancementCode select){
+		if (!IsSelectionAbility (select))
+			return;
+		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock(select);
+		if (nameAbility == UnlockAbilityPlayer.NameAbilityLock.NoAbility) {
+			Debug.LogWarning("Dont event select Ability "+select.ToString(),gameObject);
+			return;
+		}
+		if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
+			unlockAbilityPlayer.UnlockAbility(nameAbility);
+		else{
+			unlockAbilityPlayer.GetTfByKeyListAbilityTf(nameAbility.ToString())?.GetComponentInChildren<LevelAbility>().LevelAbilityUp();
+		}
+	}
+	private bool IsSelectionParameters(EnhancementCode select){
+		return (int)select < 100;
+	}
+	private bool IsSelectionAbility(EnhancementCode select){
+		return (int)select  >= 100;
+	}
 }

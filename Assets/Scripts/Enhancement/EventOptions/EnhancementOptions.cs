@@ -17,6 +17,7 @@ public enum EnhancementCode{
 
 
 	AbilityCircular = 100,
+	AbilityPlayerWaterTornado =101,
 }
 public class EnhancementOptions : NddBehaviour {
 	private static EnhancementOptions instance;

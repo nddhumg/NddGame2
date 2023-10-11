@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
-public abstract class DamageSender : NddBehaviour {
+public  class DamageSender : NddBehaviour {
     [SerializeField] protected float damage = 1f;
 	[SerializeField] protected CapsuleCollider2D capsuleCollider2D;
+	[SerializeField] protected Vector2 offsetCapsuleColliser = new Vector2(0f,0f);
+	[SerializeField] protected Vector2 sizeCapsuleColliser = new Vector2(1f,1f);
 
 	protected override void LoadComponent ()
 	{
@@ -19,19 +21,28 @@ public abstract class DamageSender : NddBehaviour {
 		SetCapsuleCollider2D ();
 		Debug.Log("Add CapsuleCollider2D",gameObject);
 	}
-	protected abstract void SetCapsuleCollider2D ();
-	public virtual void Send(Transform objRecever) { 
-        DamageReceiver receiver = objRecever.GetComponentInChildren<DamageReceiver>();
+	protected virtual void SetCapsuleCollider2D (){
+		if (this.capsuleCollider2D == null) {
+			Debug.LogError ("Dont collision",gameObject);
+			return;
+		}
+		capsuleCollider2D.offset = offsetCapsuleColliser;
+		capsuleCollider2D.size = sizeCapsuleColliser;
+	}
+	public virtual void Send(Transform objReceiver) { 
+        DamageReceiver receiver = objReceiver.GetComponentInChildren<DamageReceiver>();
 		if (receiver == null)
 			return;
 		Send (receiver);  
     }
 	protected virtual void Send(DamageReceiver receiver) {
         receiver.Receiver(this.damage);
-		SpawnDamagePopUp ();
+		SpawnDamagePopUp (receiver.transform.position);
+
     }
-	protected virtual void SpawnDamagePopUp(){
-		Transform fxDamagePopUp = SpawnFx.Instance.Spawn (FxName.FxDamagePopUp.ToString(),transform.position,Quaternion.identity);
+	protected virtual void SpawnDamagePopUp(Vector3 position){
+		Vector3 positionSpawn = position;
+		Transform fxDamagePopUp = SpawnFx.Instance.Spawn (FxName.FxDamagePopUp.ToString(),positionSpawn,Quaternion.identity);
 		DamagePopUp popUp = fxDamagePopUp.GetComponent<DamagePopUp>();
 		popUp.SetUp (damage);
 	}

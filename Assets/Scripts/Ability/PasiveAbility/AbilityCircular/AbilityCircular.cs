@@ -32,7 +32,7 @@ public abstract class AbilityCircular : PassiveAbility {
 	{
 		base.LoadComponent ();
 		LoadObjAbility ();
-		SetCenterPosition ();
+		SetCenterPositionCircular ();
 	}
 	protected virtual void LoadObjAbility(){
 		if (this.ObjAbility.Count != 0)
@@ -47,7 +47,7 @@ public abstract class AbilityCircular : PassiveAbility {
 		}
 		Debug.LogWarning ("Add Prefab", gameObject);
 	}
-	protected abstract void SetCenterPosition ();
+	protected abstract void SetCenterPositionCircular ();
 	public virtual void InstantiatePrab(){
 		if (IsMaxPrefab())
 			return;

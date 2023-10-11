@@ -7,6 +7,11 @@ public class EnemyFollow : FollowPlayer {
 	protected bool followingSateTransition;
 	[SerializeField] protected float distanceStopFollow = 15;
 	[SerializeField] protected float distanceFromPlayer;
+	public float DistanceFromPlayer{
+		get{
+			return distanceFromPlayer;
+		}
+	}
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadEnemyCtrl ();

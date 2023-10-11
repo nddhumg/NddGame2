@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyBullet : FlyInTheDirection {
+public class FlyBullet : MoveInTheDirection {
 	[SerializeField] protected BulletCtrl bulletCtrl;
 	protected override void LoadComponent(){
 		this.LoadBulletCtrl ();
@@ -17,9 +17,9 @@ public class FlyBullet : FlyInTheDirection {
 	public virtual void SetDirection(Vector3 direction){
 		this.direction = direction;
 	}
-	protected override void ResetValue ()
+	protected override void ResetValueComponent ()
 	{
 		base.ResetValue ();
-		this.speedFly = bulletCtrl.BulletSO.speed;
+		this.speed = bulletCtrl.BulletSO.speed;
 	}
 }

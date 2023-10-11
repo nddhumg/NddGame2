@@ -66,7 +66,7 @@ public class EnhancementSelectManager : NddBehaviour {
 		return (int)enhancementCode >= 100;
 	}
 	private int GetLevelEnhancementAbility(EnhancementCode enhancementCode){
-		UnlockAbilityPlayer.NameAbilityUnlock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 	if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
+		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 	if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
 		{
 			return 0;
 		}

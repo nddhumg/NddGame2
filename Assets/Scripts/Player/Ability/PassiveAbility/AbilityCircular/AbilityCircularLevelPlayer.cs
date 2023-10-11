@@ -13,14 +13,14 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 		if (abilityCircularPlayerCtrl != null)
 			return;
 		abilityCircularPlayerCtrl = transform.parent.GetComponent<AbilityCircularPlayerCtrl> ();
-		Debug.Log ("Add AbilityCircularPlayerCtrl", gameObject);
+		Debug.LogWarning ("Add AbilityCircularPlayerCtrl", gameObject);
 	}
 	public override void LevelAbilityUp(){
 		int nextLevel = (int)levelCurrent+1;
 		switch (nextLevel) 
 		{
 		case 2:
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.SetDamageRatio (1.2f);
+			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (1.2f);
 			break;
 
 		case 3:
@@ -29,12 +29,12 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 
 		case 4:
 			abilityCircularPlayerCtrl.AbilityCircularPlayer.Speed = 2.3f;
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.SetDamageRatio(3.5f);
+			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio(3.5f);
 			break;
 
 		case 5:
 			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.SetDamageRatio (2f);	
+			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (2f);	
 			break;
 		default:
 			return;

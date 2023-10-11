@@ -16,16 +16,18 @@ public class UnlockAbilityPlayer : NddBehaviour {
 	}
 
 	[SerializeField]protected List<MyDictionaryTransform> listAbilityTf = new List<MyDictionaryTransform>();
+	[SerializeField]private List<NameAbilityLock> listAbilityUnlock = new List<NameAbilityLock>();
+
 	public  List<MyDictionaryTransform> ListAbilityTf{
 		get{
 			return listAbilityTf;
 		}
 	}
-	[SerializeField]private List<NameAbilityUnlock> listAbilityUnlock = new List<NameAbilityUnlock>();
-
-	public enum NameAbilityUnlock
+	public enum NameAbilityLock
 	{
+		NoAbility =0,
 		AbilityCircular =1,
+		AbilityPlayerWaterTornado = 2,
 	}
 
 	public Transform GetTfByKeyListAbilityTf(string key){
@@ -35,8 +37,18 @@ public class UnlockAbilityPlayer : NddBehaviour {
 		}
 		return null;
 	}
-	public NameAbilityUnlock SwithFormEnhancementCodetoNameAbilityUnlock(EnhancementCode enhancementCode){
-		return  (UnlockAbilityPlayer.NameAbilityUnlock)Enum.Parse(typeof(UnlockAbilityPlayer.NameAbilityUnlock), enhancementCode.ToString());
+	public NameAbilityLock SwithFormEnhancementCodetoNameAbilityUnlock(EnhancementCode enhancementCode){
+		string enhancementCodeString = enhancementCode.ToString();
+		UnlockAbilityPlayer.NameAbilityLock result;
+
+		if (Enum.TryParse(enhancementCodeString, out result))
+		{
+			return result;
+		}
+		else
+		{
+			return UnlockAbilityPlayer.NameAbilityLock.NoAbility; 
+		}
 	}
 	protected override void LoadComponent ()
 	{
@@ -53,14 +65,17 @@ public class UnlockAbilityPlayer : NddBehaviour {
 		}
 		Debug.Log ("Add dictionaryAbilityTf", gameObject);
 	}
-	public void UnlockAbility(NameAbilityUnlock nameAbility){
+	public void UnlockAbility(NameAbilityLock nameAbility){
 		if (IsAbilityUnlocked (nameAbility))
 			return;
 		listAbilityUnlock.Add (nameAbility);
 		GetTfByKeyListAbilityTf(nameAbility.ToString()).gameObject.SetActive (true);
 	}
 
-	public bool IsAbilityUnlocked(NameAbilityUnlock nameAbility){
+	public bool IsAbilityUnlocked(NameAbilityLock nameAbility){
 		return listAbilityUnlock.Contains(nameAbility);
+	}
+	public bool IsPlayerAbilityLock(string nameAbility){
+		return Enum.IsDefined (typeof(NameAbilityLock), nameAbility);
 	}
 }

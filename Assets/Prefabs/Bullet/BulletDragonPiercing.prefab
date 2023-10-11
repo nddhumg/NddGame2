@@ -235,8 +235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  bulletCtrl: {fileID: 114556630517017902}
   capsuleCollider2D: {fileID: 70180315991441550}
+  offsetCapsuleColliser: {x: 0, y: 0}
+  sizeCapsuleColliser: {x: 0, y: 0}
+  bulletCtrl: {fileID: 114556630517017902}
 --- !u!114 &114556630517017902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd91283f0947af94a94523bdbd55c4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedFly: 10
-  direction: {x: 0, y: 0, z: 0}
+  speed: 10
+  direction: {x: 1, y: 1, z: 0}
   bulletCtrl: {fileID: 114556630517017902}
 --- !u!114 &114730914556026130
 MonoBehaviour:

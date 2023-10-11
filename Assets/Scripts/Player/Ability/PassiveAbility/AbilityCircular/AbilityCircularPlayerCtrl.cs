@@ -5,6 +5,12 @@ using UnityEngine;
 public class AbilityCircularPlayerCtrl : NddBehaviour {
 	[SerializeField] protected AbilityCircularPlayer abilityCircularPlayer;
 	[SerializeField] protected AbilityCircularLevelPlayer abilityCircularLevelPlayer;
+	[SerializeField] protected DamagePlayerAbility damagePlayerAbility;
+	public DamagePlayerAbility DamagePlayerAbility{
+		get{
+			return damagePlayerAbility;
+		}
+	}
 	public AbilityCircularPlayer AbilityCircularPlayer{
 		get{
 			return abilityCircularPlayer;
@@ -20,6 +26,13 @@ public class AbilityCircularPlayerCtrl : NddBehaviour {
 		base.LoadComponent ();
 		LoadAbilityCircularPlayer ();
 		LoadAbilityCircularLevelPlayer ();
+		LoadDamagePlayerAbility ();
+	}
+	protected virtual void LoadDamagePlayerAbility(){
+		if (this.damagePlayerAbility != null)
+			return;
+		this.damagePlayerAbility= GetComponentInChildren<DamagePlayerAbility>();
+		Debug.Log ("Add DamagePlayerAbility", gameObject);
 	}
 	protected virtual void LoadAbilityCircularPlayer(){
 		if (this.abilityCircularPlayer != null)

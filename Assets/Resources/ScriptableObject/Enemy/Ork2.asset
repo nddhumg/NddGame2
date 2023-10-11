@@ -29,6 +29,6 @@ MonoBehaviour:
     percentage: 0.15
   - itemName: 2
     percentage: 0.1
-  - itemName: 0
+  - itemName: 3
     percentage: 0.05
   offsetZoneAttack: {x: 0, y: -0.46}

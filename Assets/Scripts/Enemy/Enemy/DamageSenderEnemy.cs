@@ -11,12 +11,10 @@ public abstract class DamageSenderEnemy : DamageSender {
 		SetDamageWhenReset ();
 	}
 	protected virtual void FixedUpdate(){
+		if(timer <=  timeDelayAttack)
 		timer += Time.fixedDeltaTime;
 	}
 
-	protected  override void SetCapsuleCollider2D (){
-		//abstract
-	}
 	protected abstract void SetDamageWhenReset ();
 	protected override void Send (DamageReceiver receiver)
 	{
