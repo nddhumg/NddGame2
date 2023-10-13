@@ -56,11 +56,11 @@ public class EnemyFollow : FollowPlayer {
 		transform.parent.parent.position += direction * speedFollow * Time.deltaTime;
 	}
 	protected virtual void ActiveAnimationEnemy(){
-		if (isFollowing) {
-			enemyCtrl.AnimationEnemy.SetAnimationFollow (true);
-		} else {
-			enemyCtrl.AnimationEnemy.SetAnimationFollow (false);
-		}
+//		if (isFollowing) {
+//			enemyCtrl.AnimationEnemy.SetAnimationFollow (true);
+//		} else {
+//			enemyCtrl.AnimationEnemy.SetAnimationFollow (false);
+//		}
 	}
 	protected virtual void SetRotationByTarget(){
 		if (target == null)

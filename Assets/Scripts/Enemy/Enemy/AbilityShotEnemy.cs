@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AbilityShotEnemy : AbilityShot {
 	[Header("Shot Enemy")]
-	[SerializeField] protected string nameTarget = "Player";
-	[SerializeField] protected float range = 20f;
 	[SerializeField] protected EnemyArcCtrl enemyArcCtrl;
 	protected override void LoadComponent(){
 		base.LoadComponent ();
@@ -17,36 +15,21 @@ public class AbilityShotEnemy : AbilityShot {
 		this.enemyArcCtrl = transform.parent.parent.parent.GetComponent<EnemyArcCtrl>();
 		Debug.LogWarning ("Add EnemyArcCtrl", gameObject);
 	}
-	 void FixedUpdate(){
-		this.Shooting();
-	}
 	protected override void ResetValue(){
 		base.ResetValue ();
 		this.delayAbility = 2f;
+	}
+	protected override void ResetValueComponent ()
+	{
+		base.ResetValueComponent ();
 		this.damage = enemyArcCtrl.EnemySO.damage;
 	}
-	protected virtual bool WithinFiringRange(){
-		if (enemyArcCtrl.EnemyFollow.IsFollowing)
-			return false;
-		else {
-			return true;
-		}
-	}
-	protected virtual void Shooting(){
-		if (!isReady )
-			return;
-		if (!WithinFiringRange ())
-			return;
-		timerAbility = 0f;
-		enemyArcCtrl.AnimationEnemyArc.SetAnimationAttack ();
-	}
-
 	protected override string GetNameBullet(){
 		return enemyArcCtrl.EnemyArcSO.nameBulletShot.ToString();
 	}
 	protected override void SetBulletTarget(){
-		Transform TfTarget = GameObject.Find (nameTarget).transform;
-		firingDirection = TfTarget.position;
+		Vector3 targetPosition = Player.Instance.GetPosition();
+		firingDirection = targetPosition;
 		firingDirection -= transform.position;
 		firingDirection = new Vector3(firingDirection.x,firingDirection.y, 0);
 	}

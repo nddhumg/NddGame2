@@ -13,7 +13,8 @@ public class DmgSenderBullet : DamageSender {
 	{
 		base.ResetValueComponent ();
 		offsetCapsuleColliser = bulletCtrl.BulletSO.sizeCapsule.offsetCollider;
-		sizeCapsuleColliser = bulletCtrl.BulletSO.sizeCapsule.sizeCollider;
+			sizeCapsuleColliser = bulletCtrl.BulletSO.sizeCapsule.sizeCollider;
+			SetCapsuleCollider2D ();
 	}
 	protected virtual void LoadBulletCtrl(){
 		if (this.bulletCtrl != null)

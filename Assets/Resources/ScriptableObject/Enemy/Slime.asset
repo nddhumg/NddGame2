@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   enemyName: 1
+  classify: 1
   sizeCapsule:
     offsetCollider: {x: 0, y: -0.1}
     sizeCollider: {x: 0.43, y: 0.43}
   attackRange: 0.6
-  classify: 1
   hpMax: 100
   damage: 1
+  speed: 3
   listDropExp:
   - expName: 1
     percentage: 0.9

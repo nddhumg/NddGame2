@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyWarriorCtrl : EnemyCtrl {
 	[SerializeField] protected EnemyWarriorSO enemyWarriorSO;
 	[SerializeField] protected DamageSenderEnemy damageSenderEnemy;
-	//[SerializeField] protected AnimationEnemyWarrior animationEnemyWarrior;
 	public EnemyWarriorSO EnemyWarriorSO{
 		get{
 			return enemyWarriorSO;

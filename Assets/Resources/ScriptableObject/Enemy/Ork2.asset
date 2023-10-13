@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Name: Ork2
   m_EditorClassIdentifier: 
   enemyName: 4
+  classify: 1
   sizeCapsule:
     offsetCollider: {x: 0, y: -0.51}
     sizeCollider: {x: 1, y: 1.35}
   attackRange: 1
-  classify: 1
   hpMax: 300
   damage: 300
+  speed: 3
   listDropExp:
   - expName: 2
     percentage: 0.6

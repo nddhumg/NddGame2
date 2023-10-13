@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelPlayer : Level {
 	[SerializeField] protected float expCurrent = 0;
 	[SerializeField] protected float expLevelUp = 20;
-	[SerializeField] protected float expLevelUpIncreaseRate = 0.5f;
+	[SerializeField] protected float expLevelUpIncreaseRate = 0.2f;
 	public float ExpCurrent{
 		get{
 			return expCurrent;

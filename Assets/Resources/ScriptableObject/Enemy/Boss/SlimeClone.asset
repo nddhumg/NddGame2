@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Name: SlimeClone
   m_EditorClassIdentifier: 
   enemyName: 101
+  classify: 100
   sizeCapsule:
     offsetCollider: {x: 0, y: -0.21}
     sizeCollider: {x: 1, y: 1}
-  attackRange: 0.59
-  classify: 100
-  hpMax: 3000
+  attackRange: 1.1
+  hpMax: 1000
   damage: 50
+  speed: 3
   listDropExp:
   - expName: 2
     percentage: 1

@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyCtrl : GameObjCtrl {
 	[SerializeField] protected DestroyEnemy destroyEnemy;
 	[SerializeField] protected DamageReceiverEnemy damageReceiverEnemy;
-	[SerializeField] protected EnemyFollow enemyFollow;
-	[SerializeField] protected AnimationEnemy animationEnemy;
-	[SerializeField] protected EnemySO enemySO;
+	[SerializeField] protected Animator ani;
+	[SerializeField] 
+	protected EnemySO enemySO;
 	[SerializeField] protected string folderNameSO = "ScriptableObject/Enemy/";
 
 	public EnemySO EnemySO{
@@ -15,17 +15,11 @@ public class EnemyCtrl : GameObjCtrl {
 			return enemySO;
 		}
 	}
-	public AnimationEnemy AnimationEnemy{
+	public Animator Animator{
 		get{
-			return animationEnemy;
+			return ani;
 		}
 	}
-	public EnemyFollow EnemyFollow{
-		get{
-			return enemyFollow;
-		}
-	}
-
 	public DamageReceiverEnemy DamageReceiverEnemy{
 		get{
 			return damageReceiverEnemy;
@@ -42,20 +36,13 @@ public class EnemyCtrl : GameObjCtrl {
 		this.LoadDestroyEnemy ();
 		this.LoadEnemySO ();
 		this.LoadDamageReceiverEnemy ();
-		this.LoadEnemyFollow ();
-		this.LoadAnimationEnemy ();
+		LoadAnimator ();
 	}
-	protected virtual void LoadAnimationEnemy(){
-		if (this.animationEnemy != null)
+	protected virtual void LoadAnimator(){
+		if (this.ani != null)
 			return;
-		this.animationEnemy= GetComponentInChildren<AnimationEnemy>();
-		Debug.LogWarning ("Add AnimationEnemy", gameObject);
-	}
-	protected virtual void LoadEnemyFollow(){
-		if (this.enemyFollow != null)
-			return;
-		this.enemyFollow= GetComponentInChildren<EnemyFollow>();
-		Debug.LogWarning ("Add EnemyFollow", gameObject);
+		this.ani= GetComponentInChildren<Animator>();
+		Debug.LogWarning ("Add Animator", gameObject);
 	}
 	protected virtual void LoadDamageReceiverEnemy(){
 		if (this.damageReceiverEnemy != null)
@@ -75,7 +62,6 @@ public class EnemyCtrl : GameObjCtrl {
 		if (this.enemySO != null)
 			return;
 		string resPath = folderNameSO +	transform.name;
-		Debug.Log (resPath);
 		enemySO = Resources.Load<EnemySO> (resPath);
 		Debug.LogWarning (transform.name + " LoadEnemySO " + resPath, gameObject);
 	}

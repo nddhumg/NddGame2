@@ -5,15 +5,28 @@ using UnityEngine;
 public class MainPlay : NddBehaviour {
 	[SerializeField]protected float timeScalePlay = 1f;
 	[SerializeField]protected float timeScaleRunTime ;
+
+	//Debug
+	[SerializeField] protected float currentTimeScale;
+	public bool debug;
+	//
 	private static MainPlay instance;
 	public static MainPlay Instance{
 		get{
 			return instance;
 		}
 	}
+	void Update(){
+		if (debug) {
+			Time.timeScale = currentTimeScale;
+			timeScaleRunTime = currentTimeScale;
+			debug = false;
+		}
+	}
+
 	protected override void Start ()
 	{
-		base.Start ();
+		base.Start (); 
 		timeScaleRunTime = timeScalePlay;
 	}
 	protected override void LoadSingleton() {

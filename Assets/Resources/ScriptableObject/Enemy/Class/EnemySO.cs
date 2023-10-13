@@ -31,12 +31,18 @@ public class DropItemRate : IDropItem  {
 }
 [CreateAssetMenu(fileName = "Enemy", menuName = "SOCollider/Enemy")]
 public class EnemySO : ScriptableObject {
+	[Header("Info")]
 	public EnemyName enemyName = EnemyName.NoName;
+	public ClassifyEnemy classify; 
+
+	[Header("Attributes")]
 	public SizeCapsule sizeCapsule;
 	public float attackRange ;
-	public ClassifyEnemy classify; 
 	public float hpMax = 100;
 	public float damage = 10;
+	public float speed = 5;
+
+	[Header("Drop")]
 	public List<DropExpRate> listDropExp;
 	public List<DropItemRate> ListDropItem;
 }
