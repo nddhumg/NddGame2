@@ -16,7 +16,7 @@ public abstract class DamageSenderEnemy : DamageSender {
 	}
 
 	protected abstract void SetDamageWhenReset ();
-	protected override void Send (DamageReceiver receiver)
+	public override void Send (DamageReceiver receiver)
 	{
 		if (timer < timeDelayAttack)
 			return;

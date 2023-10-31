@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class AbilityShotEnemy : AbilityShot {
 	[Header("Shot Enemy")]
-	[SerializeField] protected EnemyArcCtrl enemyArcCtrl;
+	[SerializeField] protected EnemyCtrl enemyCtrl;
+	[SerializeField] protected SONameBulletShot nameBulletSO;
+
 	protected override void LoadComponent(){
 		base.LoadComponent ();
-		this.LoadEnemyArcCtrl();
+		this.LoadEnemyCtrl();
 	}
-	protected virtual void LoadEnemyArcCtrl(){
-		if (this.enemyArcCtrl != null)
+	protected virtual void LoadEnemyCtrl(){
+		if (this.enemyCtrl != null)
 			return;
-		this.enemyArcCtrl = transform.parent.parent.parent.GetComponent<EnemyArcCtrl>();
-		Debug.LogWarning ("Add EnemyArcCtrl", gameObject);
+		this.enemyCtrl = transform.parent.parent.parent.GetComponent<EnemyCtrl>();
+		Debug.LogWarning ("Add EnemyCtrl", gameObject);
 	}
 	protected override void ResetValue(){
 		base.ResetValue ();
@@ -22,10 +24,14 @@ public class AbilityShotEnemy : AbilityShot {
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValueComponent ();
-		this.damage = enemyArcCtrl.EnemySO.damage;
+		this.damage = enemyCtrl.EnemySO.damage;
 	}
 	protected override string GetNameBullet(){
-		return enemyArcCtrl.EnemyArcSO.nameBulletShot.ToString();
+		if (nameBulletSO == null) {
+			Debug.LogError("Null SONameBulletShot",gameObject);
+			return null;
+		}
+		return nameBulletSO.bulletName.ToString();
 	}
 	protected override void SetBulletTarget(){
 		Vector3 targetPosition = Player.Instance.GetPosition();

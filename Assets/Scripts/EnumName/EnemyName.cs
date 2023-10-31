@@ -12,4 +12,5 @@ public enum EnemyName  {
 
 	SlimeBoss = 100,
 	SlimeClone = 101,
+	GoblinKingBoss = 102,
 }

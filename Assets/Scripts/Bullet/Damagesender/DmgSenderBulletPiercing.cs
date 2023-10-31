@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DmgSenderBulletPiercing : DmgSenderBullet {
-	protected override void Send(DamageReceiver receiver) {
+	public override void Send(DamageReceiver receiver) {
 		receiver?.Receiver(this.damage);
 		SpawnDamagePopUp (receiver.transform.position);
 	}

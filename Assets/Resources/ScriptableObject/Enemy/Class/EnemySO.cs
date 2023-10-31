@@ -40,7 +40,6 @@ public class EnemySO : ScriptableObject {
 	public float attackRange ;
 	public float hpMax = 100;
 	public float damage = 10;
-	public float speed = 5;
 
 	[Header("Drop")]
 	public List<DropExpRate> listDropExp;

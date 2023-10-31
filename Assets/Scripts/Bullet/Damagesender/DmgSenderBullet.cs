@@ -31,7 +31,7 @@ public class DmgSenderBullet : DamageSender {
 		Send (col.transform.parent);
 	}
 
-	protected override void Send(DamageReceiver receiver) {
+	public override void Send(DamageReceiver receiver) {
 		base.Send (receiver);
 		SpawnBullet.Instance.DesTroyPrefabs (transform.parent);
 	}

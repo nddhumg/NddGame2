@@ -35,12 +35,27 @@ public  class DamageSender : NddBehaviour {
 			return;
 		Send (receiver);  
     }
-	protected virtual void Send(DamageReceiver receiver) {
+	public virtual void Send(Transform objReceiver,float damage) { 
+		DamageReceiver receiver = objReceiver.GetComponentInChildren<DamageReceiver>();
+		if (receiver == null)
+			return;
+		Send (receiver,damage);  
+	}
+	public virtual void Send(DamageReceiver receiver) {
         receiver.Receiver(this.damage);
 		SpawnDamagePopUp (receiver.transform.position);
-
     }
+	public virtual void Send(DamageReceiver receiver,float damage){
+		receiver.Receiver(damage);
+		SpawnDamagePopUp (receiver.transform.position,damage);
+	}
 	protected virtual void SpawnDamagePopUp(Vector3 position){
+		Vector3 positionSpawn = position;
+		Transform fxDamagePopUp = SpawnFx.Instance.Spawn (FxName.FxDamagePopUp.ToString(),positionSpawn,Quaternion.identity);
+		DamagePopUp popUp = fxDamagePopUp.GetComponent<DamagePopUp>();
+		popUp.SetUp (damage);
+	}
+	protected virtual void SpawnDamagePopUp(Vector3 position,float damage){
 		Vector3 positionSpawn = position;
 		Transform fxDamagePopUp = SpawnFx.Instance.Spawn (FxName.FxDamagePopUp.ToString(),positionSpawn,Quaternion.identity);
 		DamagePopUp popUp = fxDamagePopUp.GetComponent<DamagePopUp>();

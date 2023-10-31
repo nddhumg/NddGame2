@@ -16,15 +16,6 @@ public class EnemyFollow : FollowPlayer {
 		base.LoadComponent ();
 		this.LoadEnemyCtrl ();
 	}
-	void OnEnable(){
-		StartCoroutine (Delay1Second());
-	}
-	IEnumerator Delay1Second(){
-		while (true) {
-			this.ActiveAnimationEnemy ();
-			yield return new WaitForSeconds (1f);
-		}
-	}
 	protected virtual void FixedUpdate(){
 		SetRotationByTarget ();
 	}
@@ -54,13 +45,6 @@ public class EnemyFollow : FollowPlayer {
 	}
 	protected override void Follow(){
 		transform.parent.parent.position += direction * speedFollow * Time.deltaTime;
-	}
-	protected virtual void ActiveAnimationEnemy(){
-//		if (isFollowing) {
-//			enemyCtrl.AnimationEnemy.SetAnimationFollow (true);
-//		} else {
-//			enemyCtrl.AnimationEnemy.SetAnimationFollow (false);
-//		}
 	}
 	protected virtual void SetRotationByTarget(){
 		if (target == null)

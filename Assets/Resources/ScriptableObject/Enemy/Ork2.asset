@@ -16,7 +16,7 @@ MonoBehaviour:
   sizeCapsule:
     offsetCollider: {x: 0, y: -0.51}
     sizeCollider: {x: 1, y: 1.35}
-  attackRange: 1
+  attackRange: 1.5
   hpMax: 300
   damage: 300
   speed: 3
@@ -32,4 +32,4 @@ MonoBehaviour:
     percentage: 0.1
   - itemName: 3
     percentage: 0.05
-  offsetZoneAttack: {x: 0, y: -0.46}
+  offsetZoneAttack: {x: 0.23, y: -0.58}
