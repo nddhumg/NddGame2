@@ -15,7 +15,7 @@ public class ManagerEnemySpawnByLevel : NddBehaviour {
 	}
 
 	protected virtual EnemySpawnRateTest[] GetSpawnEnemyByLevelSO(int level){
-		string resPath = "ScriptableObject/LevelSpawnEnemy/" + "SpawnEnemyByLevel" + level;
+		string resPath = "ScriptableObject/Spawn/Enemy/" + "SpawnEnemyByLevel" + level;
 		SpawnEnemyByLevelSO spawnEnemyByLevelSO = Resources.Load<SpawnEnemyByLevelSO> (resPath);
 		return spawnEnemyByLevelSO?.ArrEnemySpawn;
 	}

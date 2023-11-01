@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cd6a231b38c184583a7d9fb6705e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCtrl: {fileID: 0}
+  objectCtrl: {fileID: 1607045992}
 --- !u!4 &146281409
 Transform:
   m_ObjectHideFlags: 0
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bc3c7b391daf94a8e6bca413b565a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 970285358}
   capsuleCollider2D: {fileID: 172429021}
 --- !u!70 &172429021
 CapsuleCollider2D:
@@ -8883,7 +8883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bc3c7b391daf94a8e6bca413b565a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 1607045992}
   capsuleCollider2D: {fileID: 1270862405}
 --- !u!70 &1270862405
 CapsuleCollider2D:
@@ -10387,9 +10387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1439524701}
-  dataMove: {fileID: 11400000, guid: b17bb41c7ee439541a2462b29d2bbf6b, type: 2}
-  dataEnemy: {fileID: 11400000, guid: 13fddf42855cd3a46b1bed31724073e8, type: 2}
-  dataShot: {fileID: 11400000, guid: 89143a9e0d2651846aea8defa3561792, type: 2}
+  dataMove: {fileID: 11400000, guid: ef9f1b5f180790549a73df50badbd5c5, type: 2}
+  dataEnemy: {fileID: 11400000, guid: 28d322c391271424a927ef23a9419602, type: 2}
+  dataShot: {fileID: 11400000, guid: 9aae406ab411c4b4388cc245353a0eb2, type: 2}
   dataSkill1: {fileID: 11400000, guid: e860f2eab6fe4e844b29b642e07fce39, type: 2}
   dataIdle: {fileID: 11400000, guid: d2866e6eedeeb0141b852376bf0067f2, type: 2}
   WhatAreSendDamageSkill:
@@ -11082,7 +11082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1569947478
 Transform:
   m_ObjectHideFlags: 0
@@ -11118,8 +11118,10 @@ MonoBehaviour:
   holder: {fileID: 494905216}
   waiter: {fileID: 533646496}
   poolOgj: []
-  delayMinutesSpawn: 5
-  timerMinutesSpawn: 5
+  delayMinutesSpawn: 0.5
+  timerMinutesSpawn: 0.5
+  arrayBoss: 6400000066000000
+  SOArrayBoss: {fileID: 11400000, guid: 24e4d9bec6e33f146a1c13d2ed2840aa, type: 2}
 --- !u!1 &1570993144
 GameObject:
   m_ObjectHideFlags: 0
@@ -11152,7 +11154,7 @@ MonoBehaviour:
   hp: 0
   hpMax: 200
   isDead: 0
-  enemyCtrl: {fileID: 0}
+  enemyCtrl: {fileID: 1607045992}
 --- !u!4 &1570993146
 Transform:
   m_ObjectHideFlags: 0
@@ -56946,7 +56948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cd6a231b38c184583a7d9fb6705e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCtrl: {fileID: 0}
+  objectCtrl: {fileID: 970285358}
 --- !u!4 &2095721014
 Transform:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2bc3760c02b3df48b02613087858db3, type: 3}
-  m_Name: Skill1
+  m_Script: {fileID: 11500000, guid: a7cbfddcb391f0d45b860807bd8afe71, type: 3}
+  m_Name: GoblinKingBShot
   m_EditorClassIdentifier: 
-  delaySkill: 5
+  timeDelay: 4

@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13325838911de14b8e8db3f63fff521, type: 3}
-  m_Name: GoblinKingIdle
+  m_Script: {fileID: 11500000, guid: e2bc3760c02b3df48b02613087858db3, type: 3}
+  m_Name: GoblinKingBSkill1
   m_EditorClassIdentifier: 
-  idleTime: 2
+  delaySkill: 11
