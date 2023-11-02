@@ -283,7 +283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: 109}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 108.8, y: 39.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &371151941
@@ -652,7 +652,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1083895443}
-  - component: {fileID: 1083895442}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -660,17 +659,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1083895442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1083895441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f62fad20644a981439a228555becbc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1083895443
 Transform:
   m_ObjectHideFlags: 0
@@ -780,7 +768,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1672780143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1054,6 +1042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioFx: {fileID: 1909848854}
+  delayTime: 0.1
+  isPlayCoroutine: 0
 --- !u!4 &1909848856
 Transform:
   m_ObjectHideFlags: 0

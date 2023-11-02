@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManagerSetting : MonoBehaviour {
+public class UIManagerSetting : NddBehaviour {
+	protected override void LoadComponent ()
+	{
+		base.LoadComponent ();
+	}
+
 	void OnEnable(){
 		UIManagerGame.Instance.BtnOpenSetting.SetActive (false);
 	}
@@ -15,8 +20,8 @@ public class UIManagerSetting : MonoBehaviour {
 			OnClickCloseSetting ();
 	}
 	public void OnClickExit(){
-//		SoundManager.Instance.OnPlaySound (SoundType.Click);
-//		LoadScene.Instance.LoadSceneByName (SceneName.GameStart);
+		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		UIManagerGame.Instance.UiExitGame.SetActive (true);
 	}
 	public void OnClickCloseSetting(){
 		SoundManager.Instance.OnPlaySound (SoundType.Click);

@@ -6,6 +6,7 @@ public class UIManagerGame : NddBehaviour {
 	[SerializeField] protected GameObject btnOpenSetting;
 	[SerializeField] protected GameObject uiSetting;
 	[SerializeField] protected GameObject uiEndGame;
+	[SerializeField] protected GameObject uiExitGame;
 	[SerializeField] protected bool keyOpenSetting;
 	[SerializeField] protected bool isOpenUIGame;
 	public GameObject BtnOpenSetting{
@@ -24,6 +25,11 @@ public class UIManagerGame : NddBehaviour {
 	public GameObject UISetting{
 		get{
 			return uiSetting;
+		}
+	}
+	public GameObject UiExitGame{
+		get{
+			return uiExitGame;
 		}
 	}
 	private static UIManagerGame instance;
@@ -56,6 +62,14 @@ public class UIManagerGame : NddBehaviour {
 		this.LoadBtnOpenSetting ();
 		this.LoadUISetting ();
 		LoadUIEndGame ();
+		LoadExitGameUI ();
+	}
+	protected void LoadExitGameUI(){
+		if (uiExitGame != null)
+			return;
+		uiExitGame = GameObject.Find ("UIExitGame");
+		uiExitGame?.SetActive (false);
+		Debug.LogWarning("Add ui Exit Game",gameObject);
 	}
 	protected virtual void LoadBtnOpenSetting(){
 		if (this.btnOpenSetting != null)
@@ -83,13 +97,13 @@ public class UIManagerGame : NddBehaviour {
 		this.isOpenUIGame = true;
 		uiSetting.SetActive (true);
 	}
-	private void OpenUIEndGameLose(){
+	public void OpenUIEndGameLose(){
 		OpenUIEndGame ("Game Lose");
 	}
 	public void OpenUIEndGameWin(){
 		OpenUIEndGame ("Win");
 	}
-	private void OpenUIEndGame(string status){
+	private  void OpenUIEndGame(string status){
 		uiEndGame.GetComponent<UIManagerEndGame>().TextStatusSetup(status);
 		uiEndGame.SetActive (true);
 	}
