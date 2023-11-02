@@ -37,4 +37,10 @@ public class InRunTime : NddBehaviour {
 	protected void SwapTimeMinutes(){
 		timeInMinutes = timer/60f;
 	}
+	public virtual string ChangeTimerToString(float timer){
+		int  minutes, seconds;
+		minutes = (int)((timer % 3600) / 60);
+		seconds = (int)(timer % 60);
+		return minutes.ToString() + ":" + seconds.ToString();
+	}
 }

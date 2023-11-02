@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class DamageReceiverPlayer : DamageReceiver {
 	[SerializeField] protected PlayerCtrl playerCtrl;
+	public static event Action OnDeadPlayer = delegate { };
 
 	protected override void LoadComponent(){
 		base.LoadComponent ();
@@ -23,8 +24,8 @@ public class DamageReceiverPlayer : DamageReceiver {
 		this.hpMax = playerCtrl.PlayerSO.hpMax;
 	}
 
-	protected override void OnDead ()
+	protected override void OnDead()
 	{
-		//Debug.Log (transform.parent.name + "Dead", gameObject);
+		OnDeadPlayer?.Invoke ();
 	}
 }

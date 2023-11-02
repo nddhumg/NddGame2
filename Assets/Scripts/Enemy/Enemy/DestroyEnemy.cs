@@ -6,6 +6,6 @@ public class DestroyEnemy : DestroyObj
 {
 	public override void DestroyObject (){
 		SpawnEnemy.Instance.DesTroyPrefabs (transform.parent);
-		
+		Achievements.Instance.enemyKill++;
 	}
 }

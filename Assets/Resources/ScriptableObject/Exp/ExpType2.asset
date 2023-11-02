@@ -15,4 +15,4 @@ MonoBehaviour:
   sizeCapsule:
     offsetCollider: {x: 0, y: 0}
     sizeCollider: {x: 0.15, y: 0.25}
-  experience: 3
+  experience: 8
