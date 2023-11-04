@@ -6,11 +6,8 @@ public class InputManager : NddBehaviour {
 	[SerializeField] protected bool keyEsc;
 	[SerializeField] protected Vector3 posMouse;
 	[SerializeField] protected Vector2 downMouse;
-	public Vector4 KeyMoving{
-		get{
-			return keyMoving;
-		}
-	}
+	public Vector4 KeyMoving => keyMoving;
+
 	public bool KeySpace{
 		get{
 			return keySpace;

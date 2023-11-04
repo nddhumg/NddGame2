@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+public class UIManagerEndGame : UIBehaviour {
+	[Header("UI End Game")]
+	[SerializeField] private Text textKill;
+	[SerializeField] private Text textClock;
+	[SerializeField] private Text textStatus;
 
-public class UIManagerEndGame : NddBehaviour {
-	[SerializeField]protected Text textKill;
-	[SerializeField]protected Text textClock;
-	[SerializeField] protected Text textStatus;
-
-	void OnEnable(){
+	protected override void OnEnable(){
+		base.OnEnable ();
 		SetUpTextClock ();
 		SetUpTextKill ();
 		UIManagerGame.Instance.BtnOpenSetting.SetActive (false);
@@ -20,19 +22,24 @@ public class UIManagerEndGame : NddBehaviour {
 		LoadTextClock ();
 		LoadTextStatus ();
 	}
-	protected virtual void LoadTextKill(){
+	protected override void Appear(){
+		transform.localPosition = startAppear;
+		Tween tween = rect.DOAnchorPos (endAppear, speedAnimation, false).SetEase(Ease.OutBounce);
+		tween.SetUpdate (true);
+	}
+	private  void LoadTextKill(){
 		if (textKill != null)
 			return;
 		textKill = transform.Find ("Kill").GetComponentInChildren<Text> ();
 		Debug.LogWarning("Add Text Kill",gameObject);
 	}
-	protected virtual void LoadTextStatus(){
+	private void LoadTextStatus(){
 		if (textStatus != null)
 			return;
 		textStatus = transform.Find ("Status").GetComponent<Text> ();
 		Debug.LogWarning("Add Text Status",gameObject);
 	}
-	protected virtual void LoadTextClock(){
+	private void LoadTextClock(){
 		if (textClock != null)
 			return;
 		textClock = transform.Find ("Time").GetComponentInChildren<Text> ();
@@ -56,6 +63,10 @@ public class UIManagerEndGame : NddBehaviour {
 	public void OnClickBtnExitGame(){
 		SoundManager.Instance.OnPlaySound (SoundType.Click);
 		LoadScene.Instance.LoadSceneByName (SceneName.GameStart);
+	}
+	public void OnClickBtnRestart(){
+		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		LoadScene.Instance.LoadScenePlay ();
 	}
 	public void TextStatusSetup(string status){
 		textStatus.text = status;

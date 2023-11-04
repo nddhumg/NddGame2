@@ -9,11 +9,6 @@ public class UIManagerGame : NddBehaviour {
 	[SerializeField] protected GameObject uiExitGame;
 	[SerializeField] protected bool keyOpenSetting;
 	[SerializeField] protected bool isOpenUIGame;
-	public GameObject BtnOpenSetting{
-		get{
-			return btnOpenSetting;
-		}
-	}
 	public bool IsOpenUIGame{
 		get{
 			return isOpenUIGame;
@@ -22,19 +17,25 @@ public class UIManagerGame : NddBehaviour {
 			isOpenUIGame = value;
 		}
 	}
-	public GameObject UISetting{
-		get{
+	public GameObject BtnOpenSetting {
+		get {
+			return btnOpenSetting;
+		}
+	}
+	public GameObject UISettingget {
+		get {
 			return uiSetting;
 		}
 	}
 	public GameObject UiExitGame{
-		get{
+		get {
 			return uiExitGame;
 		}
 	}
+
 	private static UIManagerGame instance;
 	public static UIManagerGame Instance{
-		get{
+		get {
 			return instance;
 		}
 	}

@@ -1,23 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class UIManagerSetting : NddBehaviour {
-	protected override void LoadComponent ()
+using DG.Tweening;
+public class UIManagerSetting : UIBehaviour {
+	protected override void ResetValue ()
 	{
-		base.LoadComponent ();
+		base.ResetValue ();
+		speedAnimation = 0.3f;
 	}
-
-	void OnEnable(){
+	protected override void OnEnable(){
+		base.OnEnable ();
 		UIManagerGame.Instance.BtnOpenSetting.SetActive (false);
 	}
 	void OnDisable(){
 		UIManagerGame.Instance.BtnOpenSetting.SetActive (true);
 	}
-	void Update(){
+	void FixedUpdate(){
 		bool keyOpenSetting = InputManager.Instance.KeyEsc;
 		if (keyOpenSetting && gameObject.activeSelf)
 			OnClickCloseSetting ();
+	}
+	protected override void Appear(){
+		transform.localPosition = startAppear;
+		Tween tween = rect.DOAnchorPos (endAppear, speedAnimation, false);
+		tween.SetUpdate (true);
 	}
 	public void OnClickExit(){
 		SoundManager.Instance.OnPlaySound (SoundType.Click);
@@ -29,4 +35,5 @@ public class UIManagerSetting : NddBehaviour {
 		MainPlay.Instance.ResumeLastGame ();
 		gameObject.SetActive (false);
 	}
+
 }
