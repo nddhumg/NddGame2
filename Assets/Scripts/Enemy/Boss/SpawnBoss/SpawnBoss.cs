@@ -8,6 +8,8 @@ public class SpawnBoss : SpawnsPoolOgj {
 	[SerializeField] protected float timerMinutesSpawn = 5f;
 	[SerializeField] protected EnemyName[] arrayBoss;
 	[SerializeField] protected SOArrayBoss SOArrayBoss;
+	[SerializeField] private GameObject healthBar;
+	[SerializeField] private Transform canvasHealthBar;
 	private int bossNumber = 0;
 	private static SpawnBoss instance;
 	public static SpawnBoss Instance{
@@ -59,8 +61,23 @@ public class SpawnBoss : SpawnsPoolOgj {
 		if (InRunTime.Instance.TimeInMinutes < timerMinutesSpawn)
 			return;
 		Spawn (GetNameBossSpawn(), SpawnEnemyPoint.Instance.GetRandomPoinSpawn ().position, Quaternion.identity);
+//		if (boss != null) {
+//			GameObject barBoss= Instantiate (healthBar);
+//			barBoss.GetComponent<HealthBarBoss> ().SetEnemyCtrl (boss.GetComponent<BossCtrl>());
+//			barBoss.SetActive (true);
+//			barBoss.transform.SetParent(canvasHealthBar,false);
+//		}
 		bossNumber++;
 		timerMinutesSpawn += delayMinutesSpawn;
+	}
+	public override Transform Spawn(string namePrefab, Vector3 pos, Quaternion rot){
+		Transform boss = base.Spawn (namePrefab, pos, rot);
+		if (boss != null) {
+			GameObject barBoss= Instantiate (healthBar);
+			barBoss.GetComponent<HealthBarBoss> ().SetEnemyCtrl (boss.GetComponent<BossCtrl>());
+			barBoss.transform.SetParent(canvasHealthBar,false);
+		}
+		return boss;
 	}
 	protected virtual string GetNameBossSpawn(){
 		string nameBoss = null;

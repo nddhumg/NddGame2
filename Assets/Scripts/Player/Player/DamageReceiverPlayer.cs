@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 public class DamageReceiverPlayer : DamageReceiver {
 	[SerializeField] protected PlayerCtrl playerCtrl;
-	public static event Action OnDeadPlayer = delegate { };
+	public static event Action OnDeadEvent = delegate { };
 
 	protected override void LoadComponent(){
 		base.LoadComponent ();
@@ -26,6 +26,6 @@ public class DamageReceiverPlayer : DamageReceiver {
 
 	protected override void OnDead()
 	{
-		OnDeadPlayer?.Invoke ();
+		OnDeadEvent?.Invoke ();
 	}
 }

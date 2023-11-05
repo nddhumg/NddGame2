@@ -7,9 +7,10 @@ public class SlimeBossCloneAbility : AbilityClone {
 	[SerializeField] protected EnemyName enemyClone = EnemyName.SlimeClone;
 	[SerializeField] protected int numberOfSpawnClone = 2;
 
-	protected override void SpawnClone(string objectNameClone,Vector3 locationClone,Quaternion rotClone){
+	protected override GameObject SpawnClone(string objectNameClone,Vector3 locationClone,Quaternion rotClone){
 		GameObject cloneGameObj = SpawnBoss.Instance.Spawn (objectNameClone, locationClone, rotClone)?.gameObject;
 		cloneGameObj.SetActive (true);
+		return cloneGameObj;
 	}
 	public virtual void AbilityCloneSlimeBoss(){
 		StartCloneAbility(numberOfSpawnClone,enemyClone.ToString(),transform.position,Quaternion.identity);

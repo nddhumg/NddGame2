@@ -15,7 +15,7 @@ public abstract class BarUI : NddBehaviour {
 	}
 	protected virtual void FixedUpdate(){
 		this.GetValue ();
-		this.SliderUpdate ();
+		this.ImageFillUpdate ();
 	}
 	protected virtual void LoadSlider(){
 		if (this.slider != null)
@@ -24,7 +24,7 @@ public abstract class BarUI : NddBehaviour {
 		Debug.LogWarning ("Add Slider", gameObject);
 	}
 	protected abstract void GetValue();
-	protected virtual void SliderUpdate(){
+	protected virtual void ImageFillUpdate(){
 		valuePercentage = valueCurrent / valueMax;
 		slider.value = valuePercentage;
 	}

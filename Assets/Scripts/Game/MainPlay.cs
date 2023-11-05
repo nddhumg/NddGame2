@@ -28,7 +28,7 @@ public class MainPlay : NddBehaviour {
 	{
 		base.Start (); 
 		timeScaleRunTime = timeScalePlay;
-		DamageReceiverPlayer.OnDeadPlayer += PauseGame;
+		DamageReceiverPlayer.OnDeadEvent += PauseGame;
 	}
 	protected override void LoadSingleton() {
 		if (MainPlay.instance != null) {

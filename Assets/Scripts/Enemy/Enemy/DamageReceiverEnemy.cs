@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class DamageReceiverEnemy : DamageReceiver {
 	[SerializeField] protected EnemyCtrl enemyCtrl;
+	public event Action OnDeadEvent = delegate { };
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -21,6 +22,7 @@ public class DamageReceiverEnemy : DamageReceiver {
 		this.hpMax = enemyCtrl.EnemySO.hpMax;	
 	}
 	protected override void OnDead(){
+		OnDeadEvent?.Invoke ();
 		this.DropItemWhenDead ();
 		ResetHp ();
 		enemyCtrl?.DestroyEnemy?.DestroyObject ();
@@ -46,7 +48,7 @@ public class DamageReceiverEnemy : DamageReceiver {
 	protected virtual string GetNameDrop<T>(List<T> dropList) where T : IDropItem
 	{
 		try{
-			float rand = Random.Range (0f, 1f);
+			float rand = UnityEngine.Random.Range (0f, 1f);
 			float temp = 0;
 			foreach (T percentageDrop in dropList) {
 				temp += percentageDrop.GetPercentage();

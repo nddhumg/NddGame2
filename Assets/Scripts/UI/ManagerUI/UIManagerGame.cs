@@ -49,7 +49,7 @@ public class UIManagerGame : NddBehaviour {
 	protected override void Start ()
 	{
 		base.Start ();
-		DamageReceiverPlayer.OnDeadPlayer += OpenUIEndGameLose;
+		DamageReceiverPlayer.OnDeadEvent += OpenUIEndGameLose;
 	}
 	void Update(){
 		keyOpenSetting = InputManager.Instance.KeyEsc;
