@@ -69,4 +69,10 @@ public class SoundManager : NddBehaviour {
 	protected void AddSoundByQueue(AudioClip sound){
 		soundQueue.Enqueue(sound);
 	}
+	public void Toggle(){
+		audioFx.mute = !audioFx.mute;
+	}
+	public void SetVolume(float volume){
+		audioFx.volume = volume;
+	}
 }

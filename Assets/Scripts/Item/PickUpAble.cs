@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class PickUpAble : NddBehaviour {
 	
-	public virtual void PickUp(PlayerCtrl playerCtrl){
+	public virtual void Collect(PlayerCtrl playerCtrl){
 		this.ActiveItemWhenPickUp (playerCtrl);
+	}
+	public virtual void Collect(){
 	}
 	protected abstract void ActiveItemWhenPickUp (PlayerCtrl playerCtrl);
 }

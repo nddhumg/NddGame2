@@ -34,9 +34,9 @@ public abstract class PickUp : NddBehaviour {
 		this.rigid2D.isKinematic = true;
 	}
 	protected  virtual void OnTriggerEnter2D(Collider2D col){
-		PickAble(col.transform);
+		PickUpItem(col.transform);
 	}
-	protected abstract void PickAble (Transform col);
+	protected abstract void PickUpItem (Transform transformItem);
 	public virtual void SetRangePickUp(float rangePickUpNew){
 		if (rangePickUpNew > maxRangePickUp) {
 			currentRangePickUp = maxRangePickUp;

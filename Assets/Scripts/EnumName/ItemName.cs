@@ -6,5 +6,7 @@ public enum ItemName{
 	NoName = 0,
 	PoitionHp1 = 1,
 	PoitionHp2 = 2,
-	PoitionHp3 = 3,
+	PoitionHp3 = 3, 
+
+	ExpMagnet = 100,
 }

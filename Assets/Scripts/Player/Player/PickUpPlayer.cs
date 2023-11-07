@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PickUpPlayer : PickUp {
 	[SerializeField]protected PlayerCtrl playerCtrl;
-	protected override void PickAble(Transform col){
-		PickUpItem (col.transform);
-	} 
-
-	protected virtual void PickUpItem(Transform collision){
-		PickUpAble pickUpAbleItem = collision.parent.GetComponentInChildren<PickUpAble> ();
+	protected override void PickUpItem(Transform transformItem){
+		PickUpAble pickUpAbleItem = transformItem.parent.GetComponentInChildren<PickUpAble> ();
 		if (pickUpAbleItem == null)
 			return;
-		pickUpAbleItem.PickUp (playerCtrl);
-	}
+		pickUpAbleItem.Collect (playerCtrl);
+		pickUpAbleItem.Collect ();
+	} 
+
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl ();

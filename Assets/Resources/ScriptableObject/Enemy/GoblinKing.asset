@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: GoblinKing
   m_EditorClassIdentifier: 
   enemyName: 2
+  classify: 2
   sizeCapsule:
     offsetCollider: {x: 0, y: -0.39}
     sizeCollider: {x: 0.61, y: 1.14}
   attackRange: 17
-  classify: 2
   hpMax: 200
   damage: 50
   listDropExp:
@@ -28,5 +28,7 @@ MonoBehaviour:
   - itemName: 1
     percentage: 0.05
   - itemName: 2
+    percentage: 0.01
+  - itemName: 100
     percentage: 0.01
   nameBulletShot: 3

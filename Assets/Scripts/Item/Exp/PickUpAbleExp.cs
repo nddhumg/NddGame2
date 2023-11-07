@@ -17,9 +17,9 @@ public class PickUpAbleExp : PickUpAble {
 		Debug.LogWarning ("Add ExpCtrl", gameObject);
 	}
 
-	public override void PickUp(PlayerCtrl playerCtrl){	
+	public override void Collect(PlayerCtrl playerCtrl){	
 		expCtrl.DestroyExp.DestroyObject ();
-		base.PickUp (playerCtrl);
+		base.Collect (playerCtrl);
 	}
 	protected override void	 ActiveItemWhenPickUp(PlayerCtrl playerCtrl)
 	{

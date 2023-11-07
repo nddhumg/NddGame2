@@ -75,4 +75,10 @@ public class MusicManager : NddBehaviour {
 
 		audioMusic.volume = volumMaxMusic;
 	}
+	public void Toggle(){
+		audioMusic.mute = !audioMusic.mute;
+	}
+	public void SetVolume(float volume){
+		audioMusic.volume = volume;
+	}
 }
