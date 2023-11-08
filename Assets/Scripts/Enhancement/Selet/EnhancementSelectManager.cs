@@ -54,10 +54,11 @@ public class EnhancementSelectManager : NddBehaviour {
 	public virtual void SetProperties(EnhancementCode[] arrEnhancementCode){
 		int i = 0;
 		foreach (EnhancementSelectProperties properties in listSelectProperties) {
-			if (IsEnhancementAbility(arrEnhancementCode [i])) {
-				properties.LoadInfoEnhancementSelect (arrEnhancementCode [i],GetLevelEnhancementAbility(arrEnhancementCode [i]));
+			EnhancementCode enhancementCode = arrEnhancementCode [i];
+			if (IsEnhancementAbility(enhancementCode)) {
+				properties.LoadInfoEnhancementSelect (enhancementCode,GetLevelEnhancementAbility(enhancementCode));
 			} else {
-				properties.LoadInfoEnhancementSelect (arrEnhancementCode [i]);
+				properties.LoadInfoEnhancementSelect (enhancementCode);
 			}
 			i++;
 		}	
@@ -66,11 +67,14 @@ public class EnhancementSelectManager : NddBehaviour {
 		return (int)enhancementCode >= 100;
 	}
 	private int GetLevelEnhancementAbility(EnhancementCode enhancementCode){
-		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 	if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
+		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 	
+		if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
 		{
 			return 0;
 		}
-		return (int)unlockAbilityPlayer.GetTfByKeyListAbilityTf(nameAbility.ToString())?.GetComponentInChildren<LevelAbility>().LevelCurrent;
+		Transform abilityTransform = unlockAbilityPlayer.GetTfByKeyListAbilityTf (nameAbility.ToString ());
+		LevelAbility levelAbility = abilityTransform?.GetComponentInChildren<LevelAbility> ();
+		return (int)levelAbility.LevelCurrent;
 	}
 	public virtual void SetActiveEnhancementSelect(bool active){
 		enhancementSelect.gameObject.SetActive (active);

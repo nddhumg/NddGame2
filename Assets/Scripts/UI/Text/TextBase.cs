@@ -5,9 +5,9 @@ using UnityEngine.UI;
 public class TextBase : NddBehaviour {
 	[SerializeField] protected Text text;
 	protected override void LoadComponent(){
-		LoadTex ();
+		LoadText ();
 	}
-	protected virtual void LoadTex(){
+	protected virtual void LoadText(){
 		if (this.text != null)
 			return;
 		this.text= GetComponentInChildren<Text>();

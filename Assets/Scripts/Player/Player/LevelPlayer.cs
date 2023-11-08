@@ -46,6 +46,7 @@ public class LevelPlayer : Level {
 	{
 		base.LevelUp ();
 		EnhancementCreateManager.Instance.CreateCard ();
+		SoundManager.Instance.OnPlaySound (SoundType.LevelUp);
 	}
 	protected virtual void IncreaseExpLevelup(){
 		expLevelUp += expLevelUpIncreaseRate*expLevelUp;

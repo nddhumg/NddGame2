@@ -19,6 +19,9 @@ public abstract class AbilityCircular : PassiveAbility {
 		get{ 
 			return radius;
 		}
+		set{ 
+			radius = value;
+		}
 	}
 	public float Speed{
 		get{ 
@@ -26,8 +29,7 @@ public abstract class AbilityCircular : PassiveAbility {
 		}
 		set{ 
 			speed = value;
-		}
-	}
+		}	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -48,15 +50,22 @@ public abstract class AbilityCircular : PassiveAbility {
 		Debug.LogWarning ("Add Prefab", gameObject);
 	}
 	protected abstract void SetCenterPositionCircular ();
-	public virtual void InstantiatePrab(){
+	public virtual bool InstantiatePrab(){
 		if (IsMaxPrefab())
-			return;
+			return false;
 		GameObject newPrefab = Instantiate(ObjAbility[0].gameObject);
 		newPrefab.transform.parent = holder;
 		ObjAbility.Add (newPrefab.transform);
 		CreateOrbitObj ();
+		return true;
 	}
-
+	public virtual void InstantiatePrab(int value){
+		for(int temp = 1;temp <= value; temp++){
+			if (!InstantiatePrab ()) {
+				break;
+			}
+		}
+	}
 	private void CreateOrbitObj(){
 		for (int i = 0; i < ObjAbility.Count; i++)
 		{

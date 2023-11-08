@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: 1
   level: 2
-  explain: A fireball that deals 120% damage
+  explain: A fireball increase damage

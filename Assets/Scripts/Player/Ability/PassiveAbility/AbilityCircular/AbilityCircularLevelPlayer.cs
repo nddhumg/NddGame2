@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbilityCircularLevelPlayer : LevelAbility {
 	[SerializeField] protected AbilityCircularPlayerCtrl abilityCircularPlayerCtrl;
+
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -20,21 +21,25 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 		switch (nextLevel) 
 		{
 		case 2:
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
 			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (1.2f);
 			break;
 
 		case 3:
 			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
+			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (2f);
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.Speed = 2.3f;
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.Radius = 4;
 			break;
 
 		case 4:
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.Speed = 2.3f;
 			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio(3.5f);
 			break;
 
 		case 5:
-			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
-			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (2f);	
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab (3);
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.Speed = 2.5f;
+			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (5);	
 			break;
 		default:
 			return;

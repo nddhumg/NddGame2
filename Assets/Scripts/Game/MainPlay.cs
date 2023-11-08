@@ -16,11 +16,15 @@ public class MainPlay : NddBehaviour {
 			return instance;
 		}
 	}
-	void Update(){
-		if (debug) {
-			Time.timeScale = currentTimeScale;
-			timeScaleRunTime = currentTimeScale;
-			debug = false;
+	protected override void LoadSingleton() {
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
 		}
 	}
 
@@ -29,13 +33,6 @@ public class MainPlay : NddBehaviour {
 		base.Start (); 
 		timeScaleRunTime = timeScalePlay;
 		DamageReceiverPlayer.OnDeadEvent += PauseGame;
-	}
-	protected override void LoadSingleton() {
-		if (MainPlay.instance != null) {
-			Debug.LogError("Only 1 Main allow to exist");
-
-		}
-		MainPlay.instance = this;
 	}
 	public void PauseGame()
 	{

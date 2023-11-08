@@ -64,13 +64,15 @@ public class GetEnhancementPlayer : GetEnhancement{
 			return;
 		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock(select);
 		if (nameAbility == UnlockAbilityPlayer.NameAbilityLock.NoAbility) {
-			Debug.LogWarning("Dont event select Ability "+select.ToString(),gameObject);
+			Debug.LogWarning("Dont event select Ability " + select.ToString(),gameObject);
 			return;
 		}
 		if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
 			unlockAbilityPlayer.UnlockAbility(nameAbility);
 		else{
-			unlockAbilityPlayer.GetTfByKeyListAbilityTf(nameAbility.ToString())?.GetComponentInChildren<LevelAbility>().LevelAbilityUp();
+			Transform abilityTF = unlockAbilityPlayer.GetTfByKeyListAbilityTf (nameAbility.ToString ());
+			LevelAbility level = abilityTF?.GetComponentInChildren<LevelAbility> ();
+			level.LevelAbilityUp();
 		}
 	}
 	private bool IsSelectionParameters(EnhancementCode select){

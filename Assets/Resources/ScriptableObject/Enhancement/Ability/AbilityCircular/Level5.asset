@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: 1
   level: 5
-  explain: Summon three fireballs, each dealing 200% damage
+  explain: Summon an additional fireball, increase damage

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: 1
   level: 1
-  explain: Create a fireball that flies around causing 100% damage.
+  explain: Sumon a fireball that flies around causing 100% damage.

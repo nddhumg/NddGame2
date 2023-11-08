@@ -7,7 +7,7 @@ public abstract class LevelAbility : Level {
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
-		levelMax = 10;
+		levelMax = 5;
 	}
 	public abstract void LevelAbilityUp();
 }

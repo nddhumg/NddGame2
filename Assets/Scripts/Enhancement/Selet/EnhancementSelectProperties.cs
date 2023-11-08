@@ -31,7 +31,7 @@ public class EnhancementSelectProperties : BaseEnhancementSelect {
 			CardAbilitySO abilityCard = Resources.Load<CardAbilitySO> (resPath2);
 			if(abilityCard == null)
 			{
-				enhancementSelectCtrl.TextEnhancementSelect.text = "Level 6 TODO FIX Error";
+				Debug.LogError("Error LoadInfo Ability, SO null",gameObject);
 				return;
 			}
 			nameEnhancementSelect = enhancementCard.nameCard;

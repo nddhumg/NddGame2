@@ -8,6 +8,7 @@ public class AbilityCircularPlayer : AbilityCircular  {
 	{
 		base.ResetValue ();
 		speed = 1.5f;
+		maxPrefab = 5;
 	}
 	protected override void SetCenterPositionCircular ()
 	{

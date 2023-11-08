@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelAbilityPlayerWaterTornado : LevelAbility {
 	[SerializeField] protected AbilityPlayerWaterTornadoCtrl abilityPlayerWaterTornadoCtrl;
+
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -20,17 +21,20 @@ public class LevelAbilityPlayerWaterTornado : LevelAbility {
 		switch (nextLevel) 
 		{
 			case 2:
-				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (1.2f);
+				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (2f);
 				break;
 			case 3:
 				abilityPlayerWaterTornadoCtrl.AbilityPlayerWaterTornado.QuantityObj = 2;
+				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (3f);
+				abilityPlayerWaterTornadoCtrl.AbilityPlayerWaterTornado.TimeSpawn -=  1f;
 				break;
 			case 4:
-				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (1.5f);
+				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (5f);
 				abilityPlayerWaterTornadoCtrl.AbilityPlayerWaterTornado.TimeSpawn -=  1f;
 				break;
 			case 5:
-				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (2f);
+				abilityPlayerWaterTornadoCtrl.AbilityPlayerWaterTornado.QuantityObj = 3;
+				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (8f);
 				break;
 			default:
 				return;
