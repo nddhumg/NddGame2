@@ -18,12 +18,12 @@ public class UIManagerExitGame : UIBehaviour {
 	}
 
 	public void OnClickYes(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		UIManagerGame.Instance.OpenUIEndGameLose ();
 		gameObject.SetActive (false);
 	}
 	public void OnClickNo(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		gameObject.SetActive (false);
 	}
 }

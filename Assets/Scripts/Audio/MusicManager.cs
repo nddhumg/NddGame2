@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum MusicType{
+public enum MusicName{
 	MusicGameStart,
 	Battle,
 }
@@ -11,6 +11,14 @@ public class MusicManager : NddBehaviour {
 	[SerializeField] private AudioSource audioMusic;
 	[SerializeField] private float fadeDuration = 0.5f;
 	public float volumMaxMusic  = 1;
+
+	[System.Serializable]
+	public class MusicAudioClip
+	{
+		public MusicName name;
+		public AudioClip clip;
+	}
+	[SerializeField]private MusicAudioClip[] musics;
 	private static MusicManager instance;
 	public static MusicManager Instance{
 		get{
@@ -19,7 +27,7 @@ public class MusicManager : NddBehaviour {
 	}
 	protected override void Start(){
 		base.Start ();
-		OnPlayMusic (MusicType.MusicGameStart);
+		OnPlayMusic (MusicName.MusicGameStart);
 	}
 	protected override void LoadSingleton() {
 		if (instance == null)
@@ -42,9 +50,18 @@ public class MusicManager : NddBehaviour {
 		this.audioMusic = GetComponent<AudioSource>();
 		Debug.Log("Add AudioSource",gameObject);
 	}
-	public void OnPlayMusic(MusicType musicType){
-		string resPath = "Music/" + musicType.ToString();
-		var audio = Resources.Load<AudioClip>(resPath);
+	public void OnPlayMusic(MusicName musicType){
+		AudioClip audio = null;
+		foreach(MusicAudioClip music in musics){
+			if (music.name == musicType) {
+				audio = music.clip;
+				break;
+			}
+		}
+		if (audio == null) {
+			Debug.LogError ("Dont Music Name" + musicType, gameObject);
+			return;
+		}
 		if (audioMusic.isPlaying) {
 			StartCoroutine (SmoothMusicSwap (audio, fadeDuration));
 		} else {

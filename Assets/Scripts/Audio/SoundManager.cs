@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SoundType{
+public enum SoundName{
 	PickUpItem = 0,
 	Click,
 	LevelUp,
@@ -10,10 +10,13 @@ public enum SoundType{
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : NddBehaviour {
 	[SerializeField] protected AudioSource audioFx;
-	[SerializeField] protected Queue<AudioClip> soundQueue = new Queue<AudioClip>();
-	[SerializeField] protected float delayTime = 0.1f;
-	[SerializeField] protected bool isPlayCoroutine;
-
+	[System.Serializable]
+	public class SoundAudioClip
+	{
+		public SoundName name;
+		public AudioClip clip;
+	}
+	[SerializeField]private SoundAudioClip[] sounds;
 	private static SoundManager instance;
 	public static SoundManager Instance{
 		get{
@@ -41,35 +44,21 @@ public class SoundManager : NddBehaviour {
 		this.audioFx = GetComponent<AudioSource>();
 		Debug.Log("Add AudioSource",gameObject);
 	}
-	public void OnPlaySound(SoundType soundType){
-		string resPath = "Sounds/" + soundType.ToString();
-		var audio = Resources.Load<AudioClip>(resPath);
-		if(audioFx.isPlaying){
-			this.AddSoundByQueue(audio);
-			if(!isPlayCoroutine){
-				StartCoroutine(PlayDelaySoundInQueue(delayTime));
+	public void OnPlaySound(SoundName soundName){
+		AudioClip audio = null;
+		foreach(SoundAudioClip sound in sounds){
+			if (sound.name == soundName) {
+				audio = sound.clip;
+				break;
 			}
 		}
-		else{
-			audioFx.PlayOneShot(audio);
+		if (audio != null) {
+			audioFx.PlayOneShot (audio);
+		} else {
+			Debug.LogError ("Dont Audio sound " + soundName, gameObject);
 		}
 	}
-	protected IEnumerator PlayDelaySoundInQueue(float delay){
-		isPlayCoroutine = true;
-		while (soundQueue.Count > 0)
-        {
-			if(audioFx.isPlaying){
-				yield return new WaitForSeconds(delay);
-			}
-            AudioClip nextClip = soundQueue.Dequeue();
-            audioFx.clip = nextClip;
-            audioFx.Play();
-		}
-		isPlayCoroutine = false;
-	}
-	protected void AddSoundByQueue(AudioClip sound){
-		soundQueue.Enqueue(sound);
-	}
+
 	public void Toggle(){
 		audioFx.mute = !audioFx.mute;
 	}

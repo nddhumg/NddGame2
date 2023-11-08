@@ -27,11 +27,11 @@ public class UIManagerSetting : UIBehaviour {
 		tween.SetUpdate (true);
 	}
 	public void OnClickExit(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		UIManagerGame.Instance.UiExitGame.SetActive (true);
 	}
 	public void OnClickCloseSetting(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		UIManagerGame.Instance.IsOpenUIGame = false;
 		MainPlay.Instance.ResumeLastGame ();
 		gameObject.SetActive (false);

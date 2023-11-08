@@ -34,11 +34,11 @@ public class LoadScene : NddBehaviour {
 	}
 	public void LoadScenePlay(){
 		LoadSceneByName (SceneName.Play);
-		MusicManager.Instance.OnPlayMusic (MusicType.Battle);
+		MusicManager.Instance.OnPlayMusic (MusicName.Battle);
 	}
 	public void LoadSceneStartGame(){
 		LoadSceneByName (SceneName.GameStart);
-		MusicManager.Instance.OnPlayMusic (MusicType.MusicGameStart);
+		MusicManager.Instance.OnPlayMusic (MusicName.MusicGameStart);
 	}
 	IEnumerator LoadSceneWithLoading(SceneName sceneName){
 		string scene = sceneName.ToString ();

@@ -93,7 +93,7 @@ public class UIManagerGame : NddBehaviour {
 		Debug.Log("Add UIEndGame",gameObject);
 	}
 	public virtual void OnClickOpenSetting(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		MainPlay.Instance.PauseGame ();
 		this.isOpenUIGame = true;
 		uiSetting.SetActive (true);

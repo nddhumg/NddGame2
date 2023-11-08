@@ -61,11 +61,11 @@ public class UIManagerEndGame : UIBehaviour {
 		text.text = content;
 	}
 	public void OnClickBtnExitGame(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		LoadScene.Instance.LoadSceneByName (SceneName.GameStart);
 	}
 	public void OnClickBtnRestart(){
-		SoundManager.Instance.OnPlaySound (SoundType.Click);
+		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		LoadScene.Instance.LoadScenePlay ();
 	}
 	public void TextStatusSetup(string status){
