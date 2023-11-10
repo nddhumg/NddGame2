@@ -17,8 +17,8 @@ MonoBehaviour:
     offsetCollider: {x: 0, y: -0.59}
     sizeCollider: {x: 1.1, y: 2.1}
   attackRange: 1.83
-  hpMax: 5000
-  damage: 150
+  hpMax: 50000
+  damage: 200
   listDropExp: []
   ListDropItem: []
   offsetZoneAttack: {x: 0, y: -0.74}

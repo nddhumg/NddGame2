@@ -17,7 +17,7 @@ MonoBehaviour:
     offsetCollider: {x: 0, y: -0.21}
     sizeCollider: {x: 1.3, y: 1.1}
   attackRange: 1.7
-  hpMax: 3000
+  hpMax: 30000
   damage: 100
   listDropExp:
   - expName: 3

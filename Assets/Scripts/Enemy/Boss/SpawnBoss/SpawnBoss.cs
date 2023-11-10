@@ -4,8 +4,8 @@ using UnityEngine;
 public class SpawnBoss : SpawnsPoolOgj {
 	[Header("Boss Spawn")]
 
-	[SerializeField] protected float delayMinutesSpawn = 5f;
-	[SerializeField] protected float timerMinutesSpawn = 5f;
+	[SerializeField] protected float delayMinutesSpawn = 3f;
+	[SerializeField] protected float timerMinutesSpawn = 2.5f;
 	[SerializeField] protected EnemyName[] arrayBoss;
 	[SerializeField] protected SOArrayBoss SOArrayBoss;
 	[SerializeField] private GameObject healthBar;
@@ -60,13 +60,8 @@ public class SpawnBoss : SpawnsPoolOgj {
 	protected virtual void SpawnDelay(){ 
 		if (InRunTime.Instance.TimeInMinutes < timerMinutesSpawn)
 			return;
+		Debug.Log ("test2");
 		Spawn (GetNameBossSpawn(), SpawnEnemyPoint.Instance.GetRandomPoinSpawn ().position, Quaternion.identity);
-//		if (boss != null) {
-//			GameObject barBoss= Instantiate (healthBar);
-//			barBoss.GetComponent<HealthBarBoss> ().SetEnemyCtrl (boss.GetComponent<BossCtrl>());
-//			barBoss.SetActive (true);
-//			barBoss.transform.SetParent(canvasHealthBar,false);
-//		}
 		bossNumber++;
 		timerMinutesSpawn += delayMinutesSpawn;
 	}

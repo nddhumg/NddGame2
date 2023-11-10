@@ -25,12 +25,10 @@ MonoBehaviour:
   - expName: 3
     percentage: 0.6
   ListDropItem:
-  - itemName: 1
-    percentage: 0.05
   - itemName: 2
-    percentage: 0.1
+    percentage: 0.01
   - itemName: 3
-    percentage: 0.15
+    percentage: 0.05
   - itemName: 100
     percentage: 0.01
   offsetZoneAttack: {x: 0.12, y: -0.54}
