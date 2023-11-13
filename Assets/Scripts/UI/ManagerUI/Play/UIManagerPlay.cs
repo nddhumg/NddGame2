@@ -2,13 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManagerGame : NddBehaviour {
-	[SerializeField] protected GameObject btnOpenSetting;
-	[SerializeField] protected GameObject uiSetting;
-	[SerializeField] protected GameObject uiEndGame;
-	[SerializeField] protected GameObject uiExitGame;
-	[SerializeField] protected bool keyOpenSetting;
-	[SerializeField] protected bool isOpenUISetting;
+public class UIManagerPlay : NddBehaviour {
+	[Header("UI")]
+	[SerializeField] private GameObject btnOpenSetting;
+	[SerializeField] private GameObject uiSetting;
+	[SerializeField] private GameObject uiEndGame;
+	[SerializeField] private GameObject uiExitGame;
+	[SerializeField] private GameObject uiFinal;
+
+	[Header("UI Status")]
+	[SerializeField] private bool keyOpenSetting;
+
+	[SerializeField] private bool isOpenUISetting;
+	[SerializeField] private bool isOpenUIExit;
+
+	public bool IsOpenUIExit{
+		get{
+			return isOpenUIExit;
+		}
+		set{
+			isOpenUIExit = value;
+		}
+	}
 	public bool IsOpenUISetting{
 		get{
 			return isOpenUISetting;
@@ -17,6 +32,7 @@ public class UIManagerGame : NddBehaviour {
 			isOpenUISetting = value;
 		}
 	}
+
 	public GameObject BtnOpenSetting {
 		get {
 			return btnOpenSetting;
@@ -27,24 +43,29 @@ public class UIManagerGame : NddBehaviour {
 			return uiSetting;
 		}
 	}
+	public GameObject UIFinal {
+		get {
+			return uiFinal;
+		}
+	}
 	public GameObject UiExitGame{
 		get {
 			return uiExitGame;
 		}
 	}
 
-	private static UIManagerGame instance;
-	public static UIManagerGame Instance{
+	private static UIManagerPlay instance;
+	public static UIManagerPlay Instance{
 		get {
 			return instance;
 		}
 	}
 	protected override void LoadSingleton() {
-		if (UIManagerGame.instance != null) {
+		if (UIManagerPlay.instance != null) {
 			Debug.LogError("Only 1 UIManagerGame allow to exist");
 
 		}
-		UIManagerGame.instance = this;
+		UIManagerPlay.instance = this;
 	}
 	protected override void Start ()
 	{
@@ -61,36 +82,12 @@ public class UIManagerGame : NddBehaviour {
 	{
 		base.LoadComponent ();
 		this.LoadBtnOpenSetting ();
-		this.LoadUISetting ();
-		LoadUIEndGame ();
-		LoadExitGameUI ();
-	}
-	protected void LoadExitGameUI(){
-		if (uiExitGame != null)
-			return;
-		uiExitGame = GameObject.Find ("UIExitGame");
-		uiExitGame?.SetActive (false);
-		Debug.LogWarning("Add ui Exit Game",gameObject);
 	}
 	protected virtual void LoadBtnOpenSetting(){
 		if (this.btnOpenSetting != null)
 			return;
 		this.btnOpenSetting = GameObject.Find ("BtnOpenSetting");
 		Debug.Log("Add BtnOpen",gameObject);
-	}
-	protected virtual void LoadUISetting(){
-		if (this.uiSetting != null)
-			return;
-		this.uiSetting = GameObject.Find ("Setting");
-		uiSetting.SetActive (false);
-		Debug.Log("Add UISetting",gameObject);
-	}
-	protected virtual void LoadUIEndGame(){
-		if (this.uiEndGame != null)
-			return;
-		this.uiEndGame = GameObject.Find ("UIEndGame");
-		uiEndGame.SetActive (false);
-		Debug.Log("Add UIEndGame",gameObject);
 	}
 	public virtual void OnClickOpenSetting(){
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
@@ -99,13 +96,11 @@ public class UIManagerGame : NddBehaviour {
 		uiSetting.SetActive (true);
 	}
 	public void OpenUIEndGameLose(){
-		OpenUIEndGame ("Game Lose");
+		uiEndGame.SetActive (true);
+		uiEndGame.GetComponent<UIManagerEndGame>().Lose();
 	}
 	public void OpenUIEndGameWin(){
-		OpenUIEndGame ("Win");
-	}
-	private  void OpenUIEndGame(string status){
-		uiEndGame.GetComponent<UIManagerEndGame>().Lose();
 		uiEndGame.SetActive (true);
+		uiEndGame.GetComponent<UIManagerEndGame>().Win();
 	}
 }

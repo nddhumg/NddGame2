@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 public enum MusicName{
 	MusicGameStart,
 	Battle,
@@ -10,15 +11,25 @@ public enum MusicName{
 public class MusicManager : NddBehaviour {
 	[SerializeField] private AudioSource audioMusic;
 	[SerializeField] private float fadeDuration = 0.5f;
-	public float volumMaxMusic  = 1;
+	[SerializeField] private float volumMaxMusic  = 1f;
 
+	public float VolumMaxMusic{
+		set{ 
+			volumMaxMusic = value;
+		}
+	}
 	[System.Serializable]
 	public class MusicAudioClip
 	{
 		public MusicName name;
 		public AudioClip clip;
+
+		public MusicAudioClip(MusicName name,AudioClip clip){
+			this.name = name;
+			this.clip = clip;
+		}
 	}
-	[SerializeField]private MusicAudioClip[] musics;
+	[SerializeField]private List<MusicAudioClip> musics;
 	private static MusicManager instance;
 	public static MusicManager Instance{
 		get{
@@ -28,6 +39,7 @@ public class MusicManager : NddBehaviour {
 	protected override void Start(){
 		base.Start ();
 		OnPlayMusic (MusicName.MusicGameStart);
+		volumMaxMusic = audioMusic.volume;
 	}
 	protected override void LoadSingleton() {
 		if (instance == null)
@@ -43,11 +55,25 @@ public class MusicManager : NddBehaviour {
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadAudioSource ();
+		LoadMusics ();
 	}
 	protected virtual void LoadAudioSource(){
 		if (this.audioMusic != null)
 			return;
 		this.audioMusic = GetComponent<AudioSource>();
+		Debug.LogWarning("Add AudioSource",gameObject);
+	}
+	protected virtual void LoadMusics(){
+		if (musics.Count > 0)
+			return;
+		foreach (MusicName enumValue in Enum.GetValues(typeof(MusicName)))
+		{
+			string stringValue = Enum.GetName(typeof(MusicName), enumValue);
+			string resPath = "Audio/Musics/" + stringValue;
+			AudioClip clip = Resources.Load<AudioClip> (resPath);
+			MusicAudioClip sound = new MusicAudioClip(enumValue,clip);
+			musics.Add(sound);
+		}
 		Debug.Log("Add AudioSource",gameObject);
 	}
 	public void OnPlayMusic(MusicName musicType){

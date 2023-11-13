@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public enum SoundName{
 	PickUpItem = 0,
 	Click,
@@ -15,8 +15,12 @@ public class SoundManager : NddBehaviour {
 	{
 		public SoundName name;
 		public AudioClip clip;
+		public SoundAudioClip(SoundName name,AudioClip clip){
+			this.name = name;
+			this.clip = clip;
+		}
 	}
-	[SerializeField]private SoundAudioClip[] sounds;
+	[SerializeField]private List<SoundAudioClip> sounds;
 	private static SoundManager instance;
 	public static SoundManager Instance{
 		get{
@@ -37,6 +41,20 @@ public class SoundManager : NddBehaviour {
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadAudioSource ();
+		LoadSounds ();
+	}
+	protected virtual void LoadSounds(){
+		if (sounds.Count > 0)
+			return;
+		foreach (SoundName enumValue in Enum.GetValues(typeof(SoundName)))
+		{
+			string stringValue = Enum.GetName(typeof(SoundName), enumValue);
+			string resPath = "Audio/Sounds/" + stringValue;
+			AudioClip clip = Resources.Load<AudioClip> (resPath);
+			SoundAudioClip sound = new SoundAudioClip(enumValue,clip);
+			sounds.Add(sound);
+		}
+		Debug.Log("Add AudioSource",gameObject);
 	}
 	protected virtual void LoadAudioSource(){
 		if (this.audioFx != null)

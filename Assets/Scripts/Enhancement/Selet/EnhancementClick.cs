@@ -17,7 +17,7 @@ public class EnhancementClick :  BaseEnhancementSelect {
 		Debug.LogWarning ("Add Collider2D",gameObject);
 	}
 	protected void OnMouseDown(){
-		if (UIManagerGame.Instance.IsOpenUISetting)
+		if (UIManagerPlay.Instance.IsOpenUISetting)
 			return;
 		EnhancementCode nameEnhancementSelect = enhancementSelectCtrl.EnhancementSelectProperties.NameEnhancementSelect;
 		EnhancementOptions.Instance.SelectEnhacement (nameEnhancementSelect);

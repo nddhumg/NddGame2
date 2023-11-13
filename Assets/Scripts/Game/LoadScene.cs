@@ -28,6 +28,17 @@ public class LoadScene : NddBehaviour {
 		}
 	}
 
+	protected override void LoadComponent ()
+	{
+		base.LoadComponent ();
+		LoadAnimLoadScene ();
+	}
+	protected virtual void LoadAnimLoadScene(){
+		if (animLoadScene != null)
+			return;
+		animLoadScene = transform.GetComponentInChildren<Animator> ();
+		Debug.LogWarning ("Add Animator Load Scene", gameObject);
+	}
 	public void LoadSceneByName(SceneName sceneName){
 		StartCoroutine (this.LoadSceneWithLoading (sceneName));
 		MainPlay.Instance.ResumeGame ();

@@ -16,10 +16,17 @@ public class UIManagerExitGame : UIBehaviour {
 		Tween tween = rect.DOScale(endAppear,speedAnimation);
 		tween.SetUpdate (true);
 	}
-
+	protected override void OnEnable ()
+	{
+		base.OnEnable ();
+		UIManagerPlay.Instance.IsOpenUIExit = true;
+	}
+	void OnDisable(){
+		UIManagerPlay.Instance.IsOpenUIExit = false;
+	}
 	public void OnClickYes(){
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
-		UIManagerGame.Instance.OpenUIEndGameLose ();
+		UIManagerPlay.Instance.OpenUIEndGameLose ();
 		gameObject.SetActive (false);
 	}
 	public void OnClickNo(){

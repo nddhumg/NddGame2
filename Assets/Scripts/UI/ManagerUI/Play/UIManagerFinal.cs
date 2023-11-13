@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 public class UIManagerFinal : UIBehaviour {
-	[SerializeField] private GameObject UIEndGame;
 	protected override void OnEnable(){
 		base.OnEnable ();
-		MainPlay.Instance.PauseGame ();
+//		MainPlay.Instance.PauseGame ();
+//		UIManagerPlay.Instance.BtnOpenSetting.SetActive (false);
+	}
+	protected override void ResetValue ()
+	{
+		startAppear = Vector3.zero;
+		endAppear = Vector3.one;
 	}
 	protected override void Appear ()
 	{
@@ -21,7 +26,6 @@ public class UIManagerFinal : UIBehaviour {
 
 	public void OnClickNo(){
 		gameObject.SetActive (false);
-		UIEndGame.SetActive (true);
-		UIEndGame.GetComponent<UIManagerEndGame> ().Win();
+		UIManagerPlay.Instance.OpenUIEndGameWin ();
 	}
 }

@@ -13,7 +13,7 @@ public class UIManagerEndGame : UIBehaviour {
 		base.OnEnable ();
 		SetUpTextClock ();
 		SetUpTextKill ();
-		UIManagerGame.Instance.BtnOpenSetting.SetActive (false);
+		UIManagerPlay.Instance.BtnOpenSetting.SetActive (false);
 	}
 	protected override void LoadComponent ()
 	{

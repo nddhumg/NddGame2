@@ -9,17 +9,12 @@ public class SpawnBoss : SpawnNdd {
 	[SerializeField] protected EnemyName[] arrayBoss;
 	[SerializeField] protected SODataBossSpawn SOArrayBoss;
 
-	[Header("UI")]
+
 	[SerializeField] private GameObject healthBar;
 	[SerializeField] private Transform canvasHealthBar;
-	[SerializeField] private GameObject uIFinal;
 	[SerializeField] private int numberOfBoss;
 
-	public GameObject UIFinal{
-		get{ 
-			return uIFinal;
-		}
-	}
+
 	private int bossNumber = 0;
 
 	private static SpawnBoss instance;
@@ -115,7 +110,14 @@ public class SpawnBoss : SpawnNdd {
 	IEnumerator  CheckFinalGame(){
 		yield return new WaitForSeconds (1);
 		if(numberOfBoss <= 0){
-			uIFinal.SetActive (true);
+			UIManagerPlay.Instance.UIFinal.SetActive (true);
+		}
+	}
+	public bool debug;
+	void Update(){
+		if (debug) {
+			UIManagerPlay.Instance.UIFinal.SetActive (true);
+			debug = false;
 		}
 	}
 }

@@ -8,10 +8,10 @@ public class SliderMusic : SliderBase {
 		base.Start ();
 		slider.onValueChanged.AddListener (delegate {
 			MusicVolume ();
+			MusicManager.Instance.VolumMaxMusic = slider.value;
 		});
 		LoadValueMusic();
 	}
-
 	private void LoadValueMusic(){
 		slider.value = MusicManager.Instance.GetVolume ();
 	}

@@ -11,10 +11,10 @@ public class UIManagerSetting : UIBehaviour {
 	}
 	protected override void OnEnable(){
 		base.OnEnable ();
-		UIManagerGame.Instance.BtnOpenSetting.SetActive (false);
+		UIManagerPlay.Instance.BtnOpenSetting.SetActive (false);
 	}
 	void OnDisable(){
-		UIManagerGame.Instance.BtnOpenSetting.SetActive (true);
+		UIManagerPlay.Instance.BtnOpenSetting.SetActive (true);
 	}
 	void FixedUpdate(){
 		bool keyOpenSetting = InputManager.Instance.KeyEsc;
@@ -27,13 +27,19 @@ public class UIManagerSetting : UIBehaviour {
 		tween.SetUpdate (true);
 	}
 	public void OnClickExit(){
+		if (UIManagerPlay.Instance.IsOpenUIExit) {
+			return;
+		}
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
-		UIManagerGame.Instance.UiExitGame.SetActive (true);
+		UIManagerPlay.Instance.UiExitGame.SetActive (true);
 
 	}
 	public void OnClickCloseSetting(){
+		if (UIManagerPlay.Instance.IsOpenUIExit) {
+			return;
+		}
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
-		UIManagerGame.Instance.IsOpenUISetting = false;
+		UIManagerPlay.Instance.IsOpenUISetting = false;
 		MainPlay.Instance.ResumeLastGame ();
 		gameObject.SetActive (false);
 	}
