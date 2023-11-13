@@ -30,8 +30,8 @@ public class InRunTime : NddBehaviour {
 		}
 	}
 
-	void Update () {
-		timer += Time.deltaTime;
+	void FixedUpdate () {
+		timer += Time.fixedDeltaTime;
 		this.SwapTimeMinutes ();
 	}
 	protected void SwapTimeMinutes(){

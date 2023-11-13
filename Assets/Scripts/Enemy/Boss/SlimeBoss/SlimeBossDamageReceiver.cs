@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeBossDamageReceiver : DamageReceiverEnemy{
+public class SlimeBossDamageReceiver : DamageReceiverBoss{
 	[Header("SlimeBossDamageReceiver")]
 	[SerializeField] protected SlimeBossCtrl slimeBossCtrl;
 
 	protected override void OnDead(){
-		base.OnDead();
 		slimeBossCtrl.SlimeBossAbilityCtrl.SlimeBossCloneAbility.AbilityCloneSlimeBoss();
+		base.OnDead();
 	}
 	protected override void LoadComponent ()
 	{

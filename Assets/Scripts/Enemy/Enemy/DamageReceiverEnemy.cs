@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 public class DamageReceiverEnemy : DamageReceiver {
 	[SerializeField] protected EnemyCtrl enemyCtrl;
-	public event Action OnDeadEvent = delegate { };
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -22,7 +21,6 @@ public class DamageReceiverEnemy : DamageReceiver {
 		this.hpMax = enemyCtrl.EnemySO.hpMax;	
 	}
 	protected override void OnDead(){
-		OnDeadEvent?.Invoke ();
 		this.DropItemWhenDead ();
 		ResetHp ();
 		enemyCtrl?.DestroyEnemy?.DestroyObject ();

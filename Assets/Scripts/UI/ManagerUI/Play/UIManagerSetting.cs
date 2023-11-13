@@ -29,10 +29,11 @@ public class UIManagerSetting : UIBehaviour {
 	public void OnClickExit(){
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		UIManagerGame.Instance.UiExitGame.SetActive (true);
+
 	}
 	public void OnClickCloseSetting(){
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
-		UIManagerGame.Instance.IsOpenUIGame = false;
+		UIManagerGame.Instance.IsOpenUISetting = false;
 		MainPlay.Instance.ResumeLastGame ();
 		gameObject.SetActive (false);
 	}

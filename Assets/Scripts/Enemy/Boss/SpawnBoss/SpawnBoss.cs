@@ -1,16 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class SpawnBoss : SpawnsPoolOgj {
+public class SpawnBoss : SpawnNdd {
 	[Header("Boss Spawn")]
 
 	[SerializeField] protected float delayMinutesSpawn = 3f;
-	[SerializeField] protected float timerMinutesSpawn = 2.5f;
+	[SerializeField] protected float timeStartMinutesSpawn = 2.5f;
 	[SerializeField] protected EnemyName[] arrayBoss;
-	[SerializeField] protected SOArrayBoss SOArrayBoss;
+	[SerializeField] protected SODataBossSpawn SOArrayBoss;
+
+	[Header("UI")]
 	[SerializeField] private GameObject healthBar;
 	[SerializeField] private Transform canvasHealthBar;
+	[SerializeField] private GameObject uIFinal;
+	[SerializeField] private int numberOfBoss;
+
+	public GameObject UIFinal{
+		get{ 
+			return uIFinal;
+		}
+	}
 	private int bossNumber = 0;
+
 	private static SpawnBoss instance;
 	public static SpawnBoss Instance{
 		get{
@@ -20,7 +31,7 @@ public class SpawnBoss : SpawnsPoolOgj {
 	protected override void Start ()
 	{
 		base.Start ();
-		StartCoroutine (Delay1Second());
+		StartCoroutine (SpawnDelay());
 	}
 	protected override void LoadSingleton() {
 		if (SpawnBoss.instance != null) {
@@ -48,42 +59,63 @@ public class SpawnBoss : SpawnsPoolOgj {
 		if (SOArrayBoss != null)
 			return;
 		string resPath = "ScriptableObject/Spawn/Boss/" + "SpawnBoss";
-		SOArrayBoss = Resources.Load<SOArrayBoss> (resPath);
+		SOArrayBoss = Resources.Load<SODataBossSpawn> (resPath);
 		Debug.LogWarning ("Add SO ArrayBoss", gameObject);
 	}
-	IEnumerator Delay1Second(){
-		while (true) {
-			this.SpawnDelay ();
-			yield return new WaitForSeconds (1f);
-		}
+	public void Destroy(Transform tf){
+		tf.gameObject.SetActive (false);
+		numberOfBoss--;
+		StartCoroutine (CheckFinalGame ());
 	}
-	protected virtual void SpawnDelay(){ 
-		if (InRunTime.Instance.TimeInMinutes < timerMinutesSpawn)
-			return;
-		Debug.Log ("test2");
-		Spawn (GetNameBossSpawn(), SpawnEnemyPoint.Instance.GetRandomPoinSpawn ().position, Quaternion.identity);
-		bossNumber++;
-		timerMinutesSpawn += delayMinutesSpawn;
+	IEnumerator SpawnDelay(){ 
+		while (true) {
+			if (InRunTime.Instance.TimeInMinutes < timeStartMinutesSpawn) {
+				yield return new WaitForSeconds (1f);
+			} 
+			else {
+				Transform boss = Spawn (GetNameBossSpawn (), SpawnEnemyPoint.Instance.GetRandomPoinSpawn ().position, Quaternion.identity);
+				if (boss == null) {
+					Debug.Log ("Stop Spawn Boss", gameObject);
+					yield break;
+				}
+				bossNumber++;
+				timeStartMinutesSpawn += delayMinutesSpawn;
+				yield return new WaitForSeconds (1f);
+			}
+		}
 	}
 	public override Transform Spawn(string namePrefab, Vector3 pos, Quaternion rot){
 		Transform boss = base.Spawn (namePrefab, pos, rot);
+		if (healthBar == null) {
+			Debug.LogWarning ("Health Bar Boss Null",gameObject);
+			return boss;
+		}
 		if (boss != null) {
-			GameObject barBoss= Instantiate (healthBar);
-			barBoss.GetComponent<HealthBarBoss> ().SetEnemyCtrl (boss.GetComponent<BossCtrl>());
-			barBoss.transform.SetParent(canvasHealthBar,false);
+			SpawnHeathBarBoss (boss);
+			numberOfBoss++;
 		}
 		return boss;
+	}
+	private void SpawnHeathBarBoss(Transform boss){
+		GameObject barBoss= Instantiate (healthBar);
+		barBoss.GetComponent<HealthBarBoss> ().SetEnemyCtrl (boss.GetComponent<BossCtrl>());
+		barBoss.transform.SetParent(canvasHealthBar,false);
 	}
 	protected virtual string GetNameBossSpawn(){
 		string nameBoss = null;
 		try{
-		nameBoss = arrayBoss[bossNumber].ToString();
+			nameBoss = arrayBoss[bossNumber].ToString();
 		}
 		catch
 		{
-			StopCoroutine(Delay1Second());
-			Debug.Log ("Stop Spawn Boss",gameObject);
+			
 		}
 		return nameBoss;	
+	}
+	IEnumerator  CheckFinalGame(){
+		yield return new WaitForSeconds (1);
+		if(numberOfBoss <= 0){
+			uIFinal.SetActive (true);
+		}
 	}
 }

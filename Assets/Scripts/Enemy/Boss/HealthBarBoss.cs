@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class HealthBarBoss : NddBehaviour {
-	[SerializeField]protected EnemyCtrl enemyCtrl;
+	[SerializeField]protected BossCtrl bossCtrl;
 	[SerializeField] private Image imageHealth;
 	[SerializeField] private Text textName;
 	[SerializeField] private Text textHealth;
@@ -14,10 +14,10 @@ public class HealthBarBoss : NddBehaviour {
 	protected override void Start ()
 	{
 		base.Start ();
-		enemyCtrl.DamageReceiverEnemy.OnDeadEvent += DestroyBar;
+		bossCtrl.DamageReceiverBoss.OnDeadEvent += DestroyBar;
 	}
 	void OnDestroy(){
-		enemyCtrl.DamageReceiverEnemy.OnDeadEvent -= DestroyBar;
+		bossCtrl.DamageReceiverBoss.OnDeadEvent -= DestroyBar;
 	}
 	protected virtual void FixedUpdate(){
 		this.GetValue ();
@@ -36,9 +36,9 @@ public class HealthBarBoss : NddBehaviour {
 		Debug.LogWarning ("Add TextNameBoss", gameObject);
 	}
 	private void GetValue(){
-		if (enemyCtrl == null)
+		if (bossCtrl == null)
 			return;
-		valueCurrent = enemyCtrl.DamageReceiverEnemy.Hp;
+		valueCurrent = bossCtrl.DamageReceiverEnemy.Hp;
 	}
 	private void DestroyBar(){
 		Destroy (gameObject);
@@ -50,9 +50,9 @@ public class HealthBarBoss : NddBehaviour {
 	protected virtual void TextHealthNow(){
 		textHealth.text = valueCurrent + "/" + valueMax;
 	}
-	public void SetEnemyCtrl(EnemyCtrl ctrl){
-		enemyCtrl = ctrl;
-		valueMax = enemyCtrl.DamageReceiverEnemy.HpMax;
-		textName.text = enemyCtrl.transform.name;
+	public void SetEnemyCtrl(BossCtrl ctrl){
+		bossCtrl = ctrl;
+		valueMax = bossCtrl.DamageReceiverEnemy.HpMax;
+		textName.text = bossCtrl.transform.name;
 	}
 }

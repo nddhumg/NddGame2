@@ -168,7 +168,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4589026736369234}
-  - component: {fileID: 114070496113427602}
+  - component: {fileID: 114659573273938112}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -382,22 +382,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114070496113427602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989363153686876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee5dbd46901e0045b9c22373eb61b94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  hpMax: 1200
-  isDead: 0
-  enemyCtrl: {fileID: 114975095117408594}
-  slimeBossCtrl: {fileID: 114975095117408594}
 --- !u!114 &114138209047829028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,6 +446,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274af40be277d6b4fac21783ccdd2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114659573273938112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989363153686876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee5dbd46901e0045b9c22373eb61b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  hpMax: 30000
+  isDead: 0
+  enemyCtrl: {fileID: 114975095117408594}
+  slimeBossCtrl: {fileID: 114975095117408594}
 --- !u!114 &114774892381081404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,11 +505,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 1558389701167356}
   destroyEnemy: {fileID: 114635753053710472}
-  damageReceiverEnemy: {fileID: 114070496113427602}
+  damageReceiverEnemy: {fileID: 114659573273938112}
   ani: {fileID: 95973145595963614}
   enemySO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
   folderNameSO: ScriptableObject/Enemy/Boss/
   bossSO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
+  damageReceiverBoss: {fileID: 114659573273938112}
   slimeBossAbilityCtrl: {fileID: 114774892381081404}
 --- !u!114 &114993813002920944
 MonoBehaviour:

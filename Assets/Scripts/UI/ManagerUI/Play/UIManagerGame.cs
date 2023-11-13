@@ -8,13 +8,13 @@ public class UIManagerGame : NddBehaviour {
 	[SerializeField] protected GameObject uiEndGame;
 	[SerializeField] protected GameObject uiExitGame;
 	[SerializeField] protected bool keyOpenSetting;
-	[SerializeField] protected bool isOpenUIGame;
-	public bool IsOpenUIGame{
+	[SerializeField] protected bool isOpenUISetting;
+	public bool IsOpenUISetting{
 		get{
-			return isOpenUIGame;
+			return isOpenUISetting;
 		}
 		set{
-			isOpenUIGame = value;
+			isOpenUISetting = value;
 		}
 	}
 	public GameObject BtnOpenSetting {
@@ -95,7 +95,7 @@ public class UIManagerGame : NddBehaviour {
 	public virtual void OnClickOpenSetting(){
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		MainPlay.Instance.PauseGame ();
-		this.isOpenUIGame = true;
+		this.isOpenUISetting = true;
 		uiSetting.SetActive (true);
 	}
 	public void OpenUIEndGameLose(){
@@ -105,7 +105,7 @@ public class UIManagerGame : NddBehaviour {
 		OpenUIEndGame ("Win");
 	}
 	private  void OpenUIEndGame(string status){
-		uiEndGame.GetComponent<UIManagerEndGame>().TextStatusSetup(status);
+		uiEndGame.GetComponent<UIManagerEndGame>().Lose();
 		uiEndGame.SetActive (true);
 	}
 }

@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4301974116706952}
-  - component: {fileID: 114718913245742540}
+  - component: {fileID: 114270620396674982}
   m_Layer: 0
   m_Name: DamageReceiver
   m_TagString: Untagged
@@ -405,6 +405,22 @@ MonoBehaviour:
   damageSender: {fileID: 114758635567640118}
   timerSkill1: 0
   timerShot: 0
+--- !u!114 &114270620396674982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049610969553574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9666323bf746f54ebc0c46000411064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 0
+  hpMax: 50000
+  isDead: 0
+  enemyCtrl: {fileID: 114961501905805116}
+  UIFinal: {fileID: 0}
 --- !u!114 &114593633281065890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274af40be277d6b4fac21783ccdd2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentObj: {fileID: 1947649089841392}
 --- !u!114 &114630302850012238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,21 +446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCtrl: {fileID: 114961501905805116}
   capsuleCollider2D: {fileID: 70570691702989136}
---- !u!114 &114718913245742540
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049610969553574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09e7d58b7614b14cbe4ab5c37424004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 0
-  hpMax: 5000
-  isDead: 0
-  enemyCtrl: {fileID: 114961501905805116}
 --- !u!114 &114758635567640118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -518,12 +520,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 1156147192122732}
-  destroyEnemy: {fileID: 0}
-  damageReceiverEnemy: {fileID: 114718913245742540}
+  destroyEnemy: {fileID: 114593633281065890}
+  damageReceiverEnemy: {fileID: 114270620396674982}
   ani: {fileID: 95726444495543114}
   enemySO: {fileID: 11400000, guid: 41ea7d858791ec64798572c37cb1768a, type: 2}
   folderNameSO: ScriptableObject/Enemy/Boss/
   bossSO: {fileID: 11400000, guid: 41ea7d858791ec64798572c37cb1768a, type: 2}
+  damageReceiverBoss: {fileID: 114270620396674982}
 --- !u!212 &212873210609902104
 SpriteRenderer:
   m_ObjectHideFlags: 1

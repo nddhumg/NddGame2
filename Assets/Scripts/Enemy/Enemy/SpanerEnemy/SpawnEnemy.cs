@@ -26,7 +26,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	[SerializeField] private int numberSpawn = 10;
 	[SerializeField] private float delaySpawn = 3f;
 	[SerializeField] private LevelSpawnEnemy levelSpawnEnemy;
-	[SerializeField] private  EnemySpawnRateTest[] arrEnemySpawn; 
+	[SerializeField] private  EnemySpawnRate[] arrEnemySpawn; 
 	private float overallSpawnRate = 0;
 
 	protected override void Start ()
@@ -49,7 +49,6 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	}
 	IEnumerator  DelaySpawn(){
 		while (true) {
-			Debug.Log ("test");
 			if (CanSpawn ()) {
 				SpawnByTurn ();
 			}
@@ -87,7 +86,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 		float ran = Random.Range (0f, 1f);
 		float temp = 0;
 
-		foreach (EnemySpawnRateTest enemySpawn in arrEnemySpawn) {
+		foreach (EnemySpawnRate enemySpawn in arrEnemySpawn) {
 			temp += (enemySpawn.percentage / overallSpawnRate);
 			if (ran <= temp) {
 				return enemySpawn.nameEnemyPrefab.ToString ();
@@ -100,7 +99,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 		if (arrEnemySpawn.Length <= 0) {
 			return;
 		}
-		foreach (EnemySpawnRateTest enemySpawn in arrEnemySpawn) {
+		foreach (EnemySpawnRate enemySpawn in arrEnemySpawn) {
 			this.overallSpawnRate += enemySpawn.percentage;
 		}
 	}

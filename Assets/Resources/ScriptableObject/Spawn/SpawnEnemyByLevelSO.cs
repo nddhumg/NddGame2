@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class EnemySpawnRateTest
+public class EnemySpawnRate
 {
 	public EnemyName nameEnemyPrefab = EnemyName.NoName;
 	public float percentage;
@@ -10,5 +10,5 @@ public class EnemySpawnRateTest
 [CreateAssetMenu(fileName = "SpawnEnemyByLevel", menuName = "SO/Spawn/Enemy" +"")]
 public class SpawnEnemyByLevelSO : ScriptableObject {
 	public string level ;
-	public EnemySpawnRateTest[] ArrEnemySpawn;
+	public EnemySpawnRate[] ArrEnemySpawn;
 }

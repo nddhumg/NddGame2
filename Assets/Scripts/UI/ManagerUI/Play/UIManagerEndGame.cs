@@ -68,7 +68,13 @@ public class UIManagerEndGame : UIBehaviour {
 		SoundManager.Instance.OnPlaySound (SoundName.Click);
 		LoadScene.Instance.LoadScenePlay ();
 	}
-	public void TextStatusSetup(string status){
+	private void TextStatusSetup(string status){
 		textStatus.text = status;
 	}	
+	public void Win(){
+		TextStatusSetup ("Win");
+	}
+	public void Lose(){
+		TextStatusSetup ("Lose");
+	}
 }

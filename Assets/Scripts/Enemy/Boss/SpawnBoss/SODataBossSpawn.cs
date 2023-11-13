@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "SpawnBoss", menuName = "SO/Spawn/Boss" +"")]
-public class SOArrayBoss : ScriptableObject {
+public class SODataBossSpawn : ScriptableObject {
 	public EnemyName[] bossName;
 }

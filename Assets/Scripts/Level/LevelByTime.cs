@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelByTime : Level {
-	[SerializeField] protected float timeLevelUp =1;
+	[SerializeField] protected float timeLevelUpByMinutes =1;
 
 	protected virtual void FixedUpdate(){
 		Levling ();
 	}
 
 	protected virtual void Levling(){
-		if (InRunTime.Instance.TimeInMinutes <= timeLevelUp)
+		if (InRunTime.Instance.TimeInMinutes <= timeLevelUpByMinutes)
 			return; 
+		if (IsMaxLevel ())
+			return;
 		LevelUp ();
-		timeLevelUp += InRunTime.Instance.TimeInMinutes;
+		timeLevelUpByMinutes += InRunTime.Instance.TimeInMinutes;
 	}
-
+	protected bool IsMaxLevel(){
+		return levelCurrent >= levelMax;
+	}
 }
 	
