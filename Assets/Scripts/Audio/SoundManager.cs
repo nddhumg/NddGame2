@@ -73,7 +73,7 @@ public class SoundManager : NddBehaviour {
 		if (audio != null) {
 			audioFx.PlayOneShot (audio);
 		} else {
-			Debug.LogError ("Dont Audio sound " + soundName, gameObject);
+			Debug.LogError ("Dont Audio sound name: " + soundName, gameObject);
 		}
 	}
 

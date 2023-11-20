@@ -8,9 +8,9 @@ public class EnemyArcStateManager : EnemyStateManager {
 	public EnemyState shotState;
 
 	[SerializeField]protected AbilityShot shot;
-	[SerializeField] protected SOShot dataShot;
-
+	[SerializeField]protected SOShot dataShot;
 	[SerializeField]private float timerShot=0;
+
 	protected override void Awake(){
 		idleState = new EnemyArcIdle (this,stateMachine,"Idle",this);
 		moveState = new EnemyArcMove (this,stateMachine,"Move",this);

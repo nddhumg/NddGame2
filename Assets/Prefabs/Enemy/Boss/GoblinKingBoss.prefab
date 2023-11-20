@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4085644084232956
 Transform:
   m_ObjectHideFlags: 1
@@ -395,16 +395,16 @@ MonoBehaviour:
   anim: {fileID: 95726444495543114}
   dataMove: {fileID: 11400000, guid: ef9f1b5f180790549a73df50badbd5c5, type: 2}
   dataEnemy: {fileID: 11400000, guid: 28d322c391271424a927ef23a9419602, type: 2}
-  dataShot: {fileID: 11400000, guid: 9aae406ab411c4b4388cc245353a0eb2, type: 2}
-  dataSkill1: {fileID: 11400000, guid: e860f2eab6fe4e844b29b642e07fce39, type: 2}
   dataIdle: {fileID: 11400000, guid: d2866e6eedeeb0141b852376bf0067f2, type: 2}
-  WhatAreSendDamageSkill:
+  dataShot: {fileID: 11400000, guid: 9aae406ab411c4b4388cc245353a0eb2, type: 2}
+  timerShot: 0
+  shot: {fileID: 114924472424217028}
+  dataSkill1: {fileID: 11400000, guid: e860f2eab6fe4e844b29b642e07fce39, type: 2}
+  whatAreSendDamageSkill:
     serializedVersion: 2
     m_Bits: 256
-  shot: {fileID: 114924472424217028}
-  damageSender: {fileID: 114758635567640118}
   timerSkill1: 0
-  timerShot: 0
+  collision: {fileID: 70570691702989136}
 --- !u!114 &114270620396674982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,9 +418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   hpMax: 50000
-  isDead: 0
+  isDead: 1
   enemyCtrl: {fileID: 114961501905805116}
-  UIFinal: {fileID: 0}
 --- !u!114 &114593633281065890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -432,7 +431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 274af40be277d6b4fac21783ccdd2703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentObj: {fileID: 1947649089841392}
 --- !u!114 &114630302850012238
 MonoBehaviour:
   m_ObjectHideFlags: 1

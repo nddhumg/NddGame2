@@ -13,7 +13,8 @@ public class SpawnBoss : SpawnNdd {
 	[SerializeField] private GameObject healthBar;
 	[SerializeField] private Transform canvasHealthBar;
 	[SerializeField] private int numberOfBoss;
-
+	[SerializeField] private int numberOfCurrentBoss = 0;
+	 
 
 	private int bossNumber = 0;
 
@@ -48,6 +49,7 @@ public class SpawnBoss : SpawnNdd {
 			return;
 		}
 		arrayBoss = SOArrayBoss.bossName;
+		numberOfBoss = arrayBoss.Length;
 		Debug.LogWarning ("Add ArrayBoss", gameObject);
 	}
 	protected virtual void LoadSOArrayBoss(){
@@ -59,7 +61,7 @@ public class SpawnBoss : SpawnNdd {
 	}
 	public void Destroy(Transform tf){
 		tf.gameObject.SetActive (false);
-		numberOfBoss--;
+		numberOfCurrentBoss--;
 		StartCoroutine (CheckFinalGame ());
 	}
 	IEnumerator SpawnDelay(){ 
@@ -87,7 +89,7 @@ public class SpawnBoss : SpawnNdd {
 		}
 		if (boss != null) {
 			SpawnHeathBarBoss (boss);
-			numberOfBoss++;
+			numberOfCurrentBoss++;
 		}
 		return boss;
 	}
@@ -109,9 +111,12 @@ public class SpawnBoss : SpawnNdd {
 	}
 	IEnumerator  CheckFinalGame(){
 		yield return new WaitForSeconds (1);
-		if(numberOfBoss <= 0){
+		if(numberOfCurrentBoss <= 0 && TheFinalBossHasSpawned() ){
 			UIManagerPlay.Instance.UIFinal.SetActive (true);
 		}
+	}
+	private bool TheFinalBossHasSpawned(){
+		return numberOfBoss >= bossNumber-1;
 	}
 	public bool debug;
 	void Update(){

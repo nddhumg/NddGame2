@@ -14,6 +14,7 @@ public class GoblinKingBossSkill1Jump : EnemySkill {
 	public override void Enter ()
 	{
 		base.Enter ();
+		enemy.SetIsTrigger(true);
 	}
 	public override void Exit ()
 	{

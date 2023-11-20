@@ -685,8 +685,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeScalePlay: 1
   timeScaleRunTime: 0
-  currentTimeScale: 0
-  debug: 0
 --- !u!4 &127398705
 Transform:
   m_ObjectHideFlags: 0
@@ -1634,7 +1632,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349650419}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e3d15c0f7f2e08468238c2e3637124a, type: 3}
   m_Name: 
@@ -2024,7 +2022,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 413126978}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b37043054822414f8ae0ec35e86f806, type: 3}
   m_Name: 
@@ -3651,7 +3649,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 693789090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -59.79}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716333542}
@@ -5639,7 +5637,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 954573121}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b309f7fe5820a684d9171f0035d2b9be, type: 3}
   m_Name: 
@@ -7567,15 +7565,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114270620396674982, guid: a70dac2fd4e1a6e41b9881ae30b86f25,
-        type: 2}
-      propertyPath: UIFinal
-      value: 
-      objectReference: {fileID: 995604972}
-    - target: {fileID: 114270620396674982, guid: a70dac2fd4e1a6e41b9881ae30b86f25,
-        type: 2}
-      propertyPath: isDead
-      value: 1
+    - target: {fileID: 1947649089841392, guid: a70dac2fd4e1a6e41b9881ae30b86f25, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a70dac2fd4e1a6e41b9881ae30b86f25, type: 2}
@@ -9904,7 +9896,8 @@ MonoBehaviour:
   SOArrayBoss: {fileID: 11400000, guid: 68e164bc3e3042a499ea5e510f733a44, type: 2}
   healthBar: {fileID: 1212259499017502, guid: 97a4abd793a6ae54c836bc948bdca6a9, type: 2}
   canvasHealthBar: {fileID: 1286108199}
-  numberOfBoss: 0
+  numberOfBoss: 2
+  numberOfCurrentBoss: 0
   debug: 0
 --- !u!1 &1582293213
 GameObject:
@@ -53012,7 +53005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1899375966
 Transform:
   m_ObjectHideFlags: 0
@@ -54034,7 +54027,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -50
+  m_SortingOrder: -99
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -54933,7 +54926,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2135298029}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68417d6aa2203cf4f98a553183fc8074, type: 3}
   m_Name: 

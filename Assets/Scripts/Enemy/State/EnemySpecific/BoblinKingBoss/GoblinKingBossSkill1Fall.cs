@@ -30,7 +30,8 @@ public class GoblinKingBossSkill1Fall : EnemySkill {
 		base.Exit ();
 		groundingPosition = Vector3.zero;
 		isFinishState = false;
-		enemy.timerSkill1 = 0f;
+		enemy.ResetTimeSkill1 ();
+		enemy.SetIsTrigger(false);
 	}
 	private Vector3 GetGroundingPosition(){
 		Vector3 grounding = Player.Instance.GetPosition ();

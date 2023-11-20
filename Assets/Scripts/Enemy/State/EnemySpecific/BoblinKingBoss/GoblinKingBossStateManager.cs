@@ -10,17 +10,24 @@ public class GoblinKingBossStateManager : EnemyStateManager {
 	public GoblinKingBossSkill1Jump skill1JumbState;
 	public GoblinKingBossSkill1Fall skill1FallState;
 
+	[Header("Idle")]
+	[SerializeField]private SOIdle dataIdle;
 
-	public SOShot dataShot;
-	public SOSkill dataSkill1;
-	public SOIdle dataIdle;
-
-	public LayerMask WhatAreSendDamageSkill;
-	[SerializeField]protected AbilityShot shot;
-	public DamageSender damageSender;
-	public float timerSkill1;
+	[Header("Shot")]
+	[SerializeField]private SOShot dataShot;
 	[SerializeField]protected float timerShot;
+	[SerializeField]protected AbilityShot shot;
 
+	[Header("Skill1")]
+	[SerializeField]private SOSkill dataSkill1;
+	[SerializeField]private LayerMask whatAreSendDamageSkill;
+	[SerializeField]private float timerSkill1;
+	[SerializeField]private CapsuleCollider2D collision;
+	public LayerMask WhatAreSendDamageSkill{
+		get{ 
+			return whatAreSendDamageSkill;
+		}
+	}
 	protected override void Start ()
 	{
 		base.Start ();
@@ -57,5 +64,11 @@ public class GoblinKingBossStateManager : EnemyStateManager {
 	}
 	public virtual void StartJumbSkill1(){
 		skill1JumbState.StartJumb ();
+	}
+	public void ResetTimeSkill1(){
+		timerShot = 0;
+	}
+	public void SetIsTrigger(bool isTrigger){
+		collision.isTrigger = isTrigger;
 	}
 }
