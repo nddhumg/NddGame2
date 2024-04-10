@@ -1125,6 +1125,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 95148970694700132, guid: cb111724cccdd2747931cf8cfe2649ab,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb111724cccdd2747931cf8cfe2649ab, type: 2}
   m_IsPrefabParent: 0
@@ -2906,6 +2911,11 @@ Prefab:
     - target: {fileID: 4333512152145890, guid: 9621cb85afc6efc4cb795183e47c001d, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95537685270334780, guid: 9621cb85afc6efc4cb795183e47c001d,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9621cb85afc6efc4cb795183e47c001d, type: 2}
@@ -5918,6 +5928,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 95982604126773778, guid: 8c5cf7d1ad609d04097109dd9a8e2bfc,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c5cf7d1ad609d04097109dd9a8e2bfc, type: 2}
   m_IsPrefabParent: 0
@@ -7523,6 +7538,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 95271631731005292, guid: af52464fefcb3514ea4bbfe5d7615c0f,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af52464fefcb3514ea4bbfe5d7615c0f, type: 2}
   m_IsPrefabParent: 0
@@ -8208,6 +8228,11 @@ Prefab:
     - target: {fileID: 4503996583394492, guid: a7c0b4b569a5d7545b7dcf1b49533087, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95006864337068158, guid: a7c0b4b569a5d7545b7dcf1b49533087,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7c0b4b569a5d7545b7dcf1b49533087, type: 2}
@@ -9543,7 +9568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8776e69f5d2b94f833a7e2965b021c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  hp: 1000
   hpMax: 1000
   isDead: 0
   playerCtrl: {fileID: 693789094}
@@ -10914,6 +10939,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95036427799576688, guid: b05f6f59390c07f468432ebb2e8cbdf9,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b05f6f59390c07f468432ebb2e8cbdf9, type: 2}
   m_IsPrefabParent: 0
@@ -11150,7 +11180,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1810960052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -11, y: -10.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1813993350}
@@ -53264,6 +53294,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 95691711389063088, guid: 4d5f7fb0ce38c284aad7c40762289de4,
+        type: 2}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d5f7fb0ce38c284aad7c40762289de4, type: 2}
   m_IsPrefabParent: 0
@@ -53332,6 +53367,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4984227649136522, guid: aa72831c2919c2a4a948998fc62afd23, type: 2}
       propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95580601947130554, guid: aa72831c2919c2a4a948998fc62afd23,
+        type: 2}
+      propertyPath: m_CullingMode
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

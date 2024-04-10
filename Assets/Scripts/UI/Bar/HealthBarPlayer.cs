@@ -5,6 +5,12 @@ using UnityEngine.UI;
 public class HealthBarPlayer : BarUI {
 	[SerializeField]protected PlayerCtrl playerCtrl;
 	[SerializeField]protected Text textHp;
+
+	protected override void Start(){
+		base.Start ();
+		playerCtrl.DamageReceiver.OnReceiverEvent += UpdateBarHpPlayerUI;
+		UpdateBarHpPlayerUI ();
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -23,15 +29,17 @@ public class HealthBarPlayer : BarUI {
 		this.textHp= GetComponentInChildren<Text>();
 		Debug.LogWarning ("Add Text", gameObject);
 	}
-	protected override void FixedUpdate(){
-		base.FixedUpdate ();
-		this.TextHpPlayer ();
+	protected virtual void UpdateBarHpPlayerUI(){
+		GetValue ();
+		ImageFillUpdate ();
+		UpdateTextHpPlayer ();
 	}
+
 	protected override void GetValue(){
 		valueCurrent = playerCtrl.DamageReceiver.Hp;
 		valueMax = playerCtrl.DamageReceiver.HpMax;
 	}
-	protected void TextHpPlayer(){
+	protected void UpdateTextHpPlayer(){
 		string textPercentageHp = valueCurrent.ToString() +"/"+ valueMax.ToString ();
 		this.textHp.text = textPercentageHp;
 	}

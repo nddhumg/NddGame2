@@ -39,16 +39,22 @@ public class UnlockAbilityPlayer : NddBehaviour {
 	}
 	public NameAbilityLock SwithFormEnhancementCodetoNameAbilityUnlock(EnhancementCode enhancementCode){
 		string enhancementCodeString = enhancementCode.ToString();
-		UnlockAbilityPlayer.NameAbilityLock result;
+		foreach (UnlockAbilityPlayer.NameAbilityLock name in Enum.GetValues(typeof(UnlockAbilityPlayer.NameAbilityLock))) {
+			if (name.ToString () == enhancementCodeString)
+				return name;
+		}
+		return UnlockAbilityPlayer.NameAbilityLock.NoAbility;
 
-		if (Enum.TryParse(enhancementCodeString, out result))
-		{
-			return result;
-		}
-		else
-		{
-			return UnlockAbilityPlayer.NameAbilityLock.NoAbility; 
-		}
+//		UnlockAbilityPlayer.NameAbilityLock result;
+//
+//		if (Enum.TryParse(enhancementCodeString, out result))
+//		{
+//			return (UnlockAbilityPlayer.NameAbilityLock)result;
+//		}
+//		else
+//		{
+//			return UnlockAbilityPlayer.NameAbilityLock.NoAbility;
+//		}
 	}
 	protected override void LoadComponent ()
 	{

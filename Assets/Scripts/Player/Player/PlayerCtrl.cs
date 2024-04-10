@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected PhysicsPlayer physicsPlayer;
-	[SerializeField]protected DamageReceiver damageReceiver;
+	[SerializeField]protected DamageReceiverPlayer damageReceiver;
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
@@ -37,7 +37,7 @@ public class PlayerCtrl : GameObjCtrl {
 			return playerSO;
 		}
 	}
-	public DamageReceiver DamageReceiver{
+	public DamageReceiverPlayer DamageReceiver{
 		get{
 			return damageReceiver;
 		}
@@ -111,7 +111,7 @@ public class PlayerCtrl : GameObjCtrl {
 	protected virtual void LoadDamageReceiver(){
 		if (this.damageReceiver != null)
 			return;
-		this.damageReceiver= GetComponentInChildren<DamageReceiver>();
+		this.damageReceiver= GetComponentInChildren<DamageReceiverPlayer>();
 		Debug.Log ("Add DamageReceiver", gameObject);
 	}
 	protected virtual void LoadMovingPlayer(){
