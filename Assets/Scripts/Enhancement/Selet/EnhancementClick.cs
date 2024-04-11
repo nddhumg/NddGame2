@@ -2,26 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnhancementClick :  BaseEnhancementSelect {
-	[SerializeField] protected Collider2D collider2d;
+public class EnhancementClick :  ButtonBase {
+	[SerializeField] protected EnhancementSelectCtrl enhancementSelectCtrl;
+	void OnEnable(){
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
-		this.LoadCollider ();
+		LoadEnhancementSelectCtrl ();
 	}
-	protected virtual void LoadCollider(){
-		if (collider2d != null)
+
+	protected virtual void LoadEnhancementSelectCtrl(){
+		if (enhancementSelectCtrl != null)
 			return;
-		collider2d = GetComponent<Collider2D> ();
-		collider2d.isTrigger = true;
-		Debug.LogWarning ("Add Collider2D",gameObject);
+		enhancementSelectCtrl = transform.GetComponent<EnhancementSelectCtrl> ();
+		Debug.LogWarning ("Add EnhancementSelectCtrl", gameObject);
 	}
-	protected void OnMouseDown(){
+
+	protected override void OnClick ()
+	{
+		SendNameEnhancementSelect ();
+	}
+	public void SendNameEnhancementSelect(){
+		if (transform.rotation.eulerAngles != Vector3.zero)
+			return;
 		if (UIManagerPlay.Instance.IsOpenUISetting)
 			return;
 		EnhancementCode nameEnhancementSelect = enhancementSelectCtrl.EnhancementSelectProperties.NameEnhancementSelect;
 		EnhancementOptions.Instance.SelectEnhacement (nameEnhancementSelect);
-		EnhancementSelectManager.Instance.SetActiveEnhancementSelect (false);
+		EnhancementSelectManager.Instance.SelectClick ();
 	}	
 
 }

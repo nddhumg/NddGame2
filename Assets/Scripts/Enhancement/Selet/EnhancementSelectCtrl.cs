@@ -4,10 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnhancementSelectCtrl : NddBehaviour {
+	[SerializeField] protected GameObject backGround;
 	[SerializeField] protected Image imgIcon;
 	[SerializeField] protected Text textExplainEnhancementSelect;
 	[SerializeField] protected Text textLevelEnhancementSelect;
 	[SerializeField] protected EnhancementSelectProperties enhancementSelectProperties;
+	[SerializeField] protected EnhacementSelectAnimation enhacementSelectAnimation;
+	public EnhacementSelectAnimation EnhacementSelectAnimation{
+		get{
+			return enhacementSelectAnimation;
+		}
+	}
+	public GameObject BackGround{
+		get{
+			return backGround;
+		}
+	}
 	public Image ImgIcon{
 		get{
 			return imgIcon;
@@ -31,10 +43,25 @@ public class EnhancementSelectCtrl : NddBehaviour {
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
+		ActiveTfChild (true);
 		this.LoadImgIcon ();
 		this.LoadTextExplainEnhancementSelect ();
 		this.LoadEnhancementSelectManager ();
 		LoadTextLevelEnhancementSelect ();
+		LoadBackGround ();
+		LoadEnhacementSelectAnimation ();
+		ActiveTfChild (false);
+	}
+	public void ActiveTfChild(bool isActive){
+		foreach (Transform tf in transform) {
+			tf.gameObject.SetActive (isActive);
+		}
+	}
+	protected virtual void LoadBackGround(){
+		if (this.backGround != null)
+			return;
+		this.backGround= transform.Find("BG").gameObject;
+		Debug.LogWarning ("Add BackGround", gameObject);
 	}
 	protected virtual void LoadImgIcon(){
 		if (this.imgIcon != null)
@@ -59,6 +86,12 @@ public class EnhancementSelectCtrl : NddBehaviour {
 			return;
 		this.enhancementSelectProperties= GetComponentInChildren<EnhancementSelectProperties>();
 		Debug.LogWarning ("Add EnhancementSelectManager", gameObject);
+	}
+	protected virtual void LoadEnhacementSelectAnimation(){
+		if (this.enhacementSelectAnimation != null)
+			return;
+		this.enhacementSelectAnimation= GetComponent<EnhacementSelectAnimation>();
+		Debug.LogWarning ("Add EnhacementSelectAnimation", gameObject);
 	}
 }
 

@@ -22,7 +22,7 @@ public class EnhancementCreateManager : NddBehaviour {
 
 	public virtual void CreateCard(){
 		EnhancementSelectManager.Instance.SetProperties (CreateEnhancementRandom());
-		EnhancementSelectManager.Instance.SetActiveEnhancementSelect (true);
+		EnhancementSelectManager.Instance.EnableEnhancementSelect();
 	}
 	protected virtual EnhancementCode[] CreateEnhancementRandom(){
 		EnhancementCode[] arrEnhancementRandom = new EnhancementCode[3];

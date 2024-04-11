@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetEnhancementPlayer : GetEnhancement{
-	[Header("Get Enhancement Player")]
+public class GetEnhancementPlayer : NddBehaviour,IEvenetEnhancementSelection{
 	[SerializeField] protected AbilityPlayerCtrl abilityPlayerCtrl;
 	[SerializeField] protected UnlockAbilityPlayer unlockAbilityPlayer;
+
+	protected virtual void OnEnable(){
+		EnhancementOptions.Instance.AddObsever (this);
+	}
+	protected virtual void OnDisable(){
+		EnhancementOptions.Instance.RemoveObsever (this);
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -14,25 +20,22 @@ public class GetEnhancementPlayer : GetEnhancement{
 	protected virtual void LoadAbilityPlayerCtrl(){
 		if (this.abilityPlayerCtrl != null)
 			return;
-		this.abilityPlayerCtrl= this.abilityCtrl as AbilityPlayerCtrl;
+		this.abilityPlayerCtrl= transform.parent.GetComponentInChildren<AbilityPlayerCtrl>();;
 		Debug.LogWarning ("Add AbilityPlayerCtrl", gameObject);
 	}
-	public override void OnSelectionEnhancement(EnhancementCode select){
-		try{
+	public void OnSelectionEnhancement(EnhancementCode select){
 			OnSelectionEnhancementAbility(select);
 			OnSelectionEnhancementParameters(select);
-		}
-		catch
-		{
-			Debug.LogError("Error OnSelectionEnhancement in Player",gameObject);
-		}
 	}
 	protected void OnSelectionEnhancementParameters(EnhancementCode select){
 		if (!IsSelectionParameters (select))
 			return;
 		string resPath = "ScriptableObject/Enhancement/" +	select.ToString();;
 		EnhancementCardSO enhancementCard = Resources.Load<EnhancementCardSO> (resPath);
-
+		if (enhancementCard == null) {
+			Debug.LogError("Dont resources load: "+ resPath );
+			return;
+		}
 		switch (select) 
 		{
 		case EnhancementCode.BoostHp:
