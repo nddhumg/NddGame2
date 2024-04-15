@@ -37,7 +37,7 @@ public class SpawnsPoolOgj : SpawnNdd {
 		foreach (Transform obj in this.listPrefabs) {
 			if (obj.name == nameSpawn) {
 				Transform newObj = Instantiate (obj);
-				newObj.name = nameSpawn;
+				SetUpOnjSpawn (newObj, nameSpawn);
 				return newObj;
 			}
 		}
@@ -50,11 +50,20 @@ public class SpawnsPoolOgj : SpawnNdd {
 		}
 
 		if (newObj == null) {
-			Debug.LogWarning ("Dont prefab by name in list: " + namePrefab, gameObject);
+			Debug.LogError ("Dont prefab by name in list: " + namePrefab, gameObject);
 		}else{
-			newObj.gameObject.SetActive (true);
-			newObj.parent = this.holder;
 			newObj.SetPositionAndRotation (pos, rot);
+		}
+		return newObj;
+	}
+	public override Transform Spawn (string namePrefab)
+	{
+		Transform newObj = this.SpawnPool(namePrefab);
+		if (newObj == null) {
+			newObj = SpawnInstantiate (namePrefab);
+		}
+		if (newObj == null) {
+			Debug.LogError ("Dont prefab by name in list: " + namePrefab, gameObject);
 		}
 		return newObj;
 	}

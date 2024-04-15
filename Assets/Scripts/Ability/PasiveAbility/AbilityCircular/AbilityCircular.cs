@@ -4,11 +4,13 @@ using UnityEngine;
 
 public abstract class AbilityCircular : PassiveAbility {
 	[SerializeField] protected List<Transform> ObjAbility = new List<Transform>();
+	[SerializeField] protected GameObject prefab;
 	[SerializeField] protected Transform centerPosition;
 	[SerializeField] protected Transform holder;
 	[SerializeField] protected float radius = 2f;
 	[SerializeField] protected float speed = 1f;
-	[SerializeField] protected int maxPrefab = 4;
+	[SerializeField] protected int maxPrefab = 5;
+	[SerializeField] protected Vector3 rotationHolder = new Vector3 (0, 0, 0);
 
 	public Transform CenterPosition{
 		get{ 
@@ -29,34 +31,47 @@ public abstract class AbilityCircular : PassiveAbility {
 		}
 		set{ 
 			speed = value;
-		}	}
+		}	
+	}
+
+	protected override void Start ()
+	{
+		base.Start ();
+	}
+	void Update(){
+		RotateHolder ();
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
-		LoadObjAbility ();
-		SetCenterPositionCircular ();
+		LoadPrefab ();
+		LoadHolder ();
+		LoadCenterPositionCircular ();
 	}
-	protected virtual void LoadObjAbility(){
-		if (this.ObjAbility.Count != 0)
-			return;
-		holder= transform.Find("Holder");
-		if (holder == null) {
-			Debug.LogError ("Not holder in Ability Circular", gameObject);
+	protected virtual void LoadHolder(){
+		if (holder != null) {
 			return;
 		}
-		foreach(Transform obj in holder){
-			ObjAbility.Add (obj);
-		}
-		Debug.LogWarning ("Add Prefab", gameObject);
+		holder = transform.Find ("Holder");
+		Debug.LogWarning ("Add Holder", gameObject);
 	}
-	protected abstract void SetCenterPositionCircular ();
+	protected virtual void LoadPrefab(){
+		if(prefab != null)
+			return;
+		prefab = transform.Find ("Prefab").gameObject;
+		Debug.LogWarning ("Add prefab", gameObject);
+	}
+	protected abstract void LoadCenterPositionCircular ();
 	public virtual bool InstantiatePrab(){
-		if (IsMaxPrefab())
+		if (IsMaxPrefab ()){
+			Debug.LogWarning("Maximum obj prefab.Dont Instantiate obj",gameObject);
 			return false;
-		GameObject newPrefab = Instantiate(ObjAbility[0].gameObject);
+		}
+		GameObject newPrefab = Instantiate(prefab);
 		newPrefab.transform.parent = holder;
+		newPrefab.SetActive (true);
 		ObjAbility.Add (newPrefab.transform);
-		CreateOrbitObj ();
+		SetPositionObj();
 		return true;
 	}
 	public virtual void InstantiatePrab(int value){
@@ -66,16 +81,23 @@ public abstract class AbilityCircular : PassiveAbility {
 			}
 		}
 	}
-	private void CreateOrbitObj(){
+	protected virtual void RotateHolder(){
+		rotationHolder.z += Time.deltaTime * speed * 100;
+		if (rotationHolder.z >= 360) {
+			rotationHolder.z -= 360;
+		}
+		holder.localRotation = Quaternion.Euler (rotationHolder);
+	}
+	private void SetPositionObj(){
 		for (int i = 0; i < ObjAbility.Count; i++)
 		{
 			float angle = i * (360f / ObjAbility.Count) * Mathf.Deg2Rad;
-			ObjAbilityCircularMoving objAbilityCircular = ObjAbility [i].GetComponentInChildren<ObjAbilityCircularMoving> ();
-			objAbilityCircular.SetAngle (angle);
+			ObjAbility [i].localPosition = new Vector2 (Mathf.Sin (angle) * radius, Mathf.Cos (angle) * radius);
 		}
 	}
 	protected virtual bool IsMaxPrefab(){
 		return ObjAbility.Count >= maxPrefab;
 	}
 
+	 
 }

@@ -5,6 +5,11 @@ using UnityEngine;
 public class LevelAbilityPlayerWaterTornado : LevelAbility {
 	[SerializeField] protected AbilityPlayerWaterTornadoCtrl abilityPlayerWaterTornadoCtrl;
 
+	protected override void ResetValue ()
+	{
+		base.ResetValue ();
+		levelCurrent = 0;
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
@@ -20,6 +25,10 @@ public class LevelAbilityPlayerWaterTornado : LevelAbility {
 		int nextLevel = (int)levelCurrent+1;
 		switch (nextLevel) 
 		{
+			case 1:
+				abilityPlayerWaterTornadoCtrl.AbilityPlayerWaterTornado.QuantityObj = 1;
+				break;
+			
 			case 2:
 				abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.SetDamageRatio (2f);
 				break;

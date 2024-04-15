@@ -8,7 +8,7 @@ public class HealthBarPlayer : BarUI {
 
 	protected override void Start(){
 		base.Start ();
-		playerCtrl.DamageReceiver.OnReceiverEvent += UpdateBarHpPlayerUI;
+		playerCtrl.DamageReceiver.OnAleterHpEvent += UpdateBarHpPlayerUI;
 		UpdateBarHpPlayerUI ();
 	}
 	protected override void LoadComponent ()

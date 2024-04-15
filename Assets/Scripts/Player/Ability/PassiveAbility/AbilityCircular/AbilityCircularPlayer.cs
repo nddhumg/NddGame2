@@ -7,11 +7,14 @@ public class AbilityCircularPlayer : AbilityCircular  {
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
-		speed = 1.5f;
+		speed = 1f;
 		maxPrefab = 5;
 	}
-	protected override void SetCenterPositionCircular ()
+	protected override void LoadCenterPositionCircular ()
 	{
+		if (centerPosition != null)
+			return;
 		centerPosition = transform;
+		Debug.LogWarning ("Add centerPosition", gameObject);
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AbilityCreateObjAround : NddBehaviour {
-	[SerializeField] protected int quantityObj = 1;
+	[SerializeField] protected int quantityObj = 0;
 	[SerializeField] protected Vector2 positionSpawnMax = new Vector2(1f,1f);
 	[SerializeField] protected float timeSpawn = 1f;
 
