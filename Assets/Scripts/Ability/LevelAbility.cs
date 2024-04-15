@@ -8,6 +8,7 @@ public abstract class LevelAbility : Level {
 	{
 		base.ResetValue ();
 		levelMax = 5;
+		levelCurrent = 0;
 	}
 	public abstract void LevelAbilityUp();
 }

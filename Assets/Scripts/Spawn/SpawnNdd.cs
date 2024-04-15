@@ -39,13 +39,16 @@ public class SpawnNdd : NddBehaviour {
 		this.prefabs = transform.Find ("Prefabs");
 		Debug.LogWarning ("Add Prefabs", gameObject);
 	}
+	protected void SetUpOnjSpawn(Transform newObj,string name){
+		newObj.name = name;
+		newObj.gameObject.SetActive (true);
+		newObj.parent = this.holder;
+	}
 	public virtual Transform Spawn(string namePrefab, Vector3 pos, Quaternion rot){
 		foreach (Transform obj in this.listPrefabs) {
 			if (obj.name == namePrefab) {
 				Transform newObj = Instantiate (obj,pos,rot);
-				newObj.name = namePrefab;
-				newObj.gameObject.SetActive (true);
-				newObj.parent = this.holder;
+				SetUpOnjSpawn (newObj, namePrefab);
 				return newObj;
 			}
 		}
@@ -54,5 +57,15 @@ public class SpawnNdd : NddBehaviour {
 	}
 	public virtual Transform Spawn(GameObject gameObjectPrefab, Vector3 pos, Quaternion rot){
 		return Spawn (gameObjectPrefab.name, pos, rot);
+	}
+	public virtual Transform Spawn(string namePrefab){
+		foreach (Transform obj in this.listPrefabs) {
+			if (obj.name == namePrefab) {
+				Transform newObj = Instantiate (obj);
+				SetUpOnjSpawn (newObj, namePrefab);
+				return newObj;
+			}
+		}
+		return null;
 	}
 }

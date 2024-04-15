@@ -20,6 +20,9 @@ public class AbilityCircularLevelPlayer : LevelAbility {
 		int nextLevel = (int)levelCurrent+1;
 		switch (nextLevel) 
 		{
+		case 1:
+			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
+			break;
 		case 2:
 			abilityCircularPlayerCtrl.AbilityCircularPlayer.InstantiatePrab ();
 			abilityCircularPlayerCtrl.DamagePlayerAbility.SetDamageRatio (1.2f);

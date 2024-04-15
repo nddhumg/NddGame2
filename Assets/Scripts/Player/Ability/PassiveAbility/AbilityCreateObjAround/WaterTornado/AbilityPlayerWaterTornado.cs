@@ -22,11 +22,11 @@ public class AbilityPlayerWaterTornado : AbilityCreateObjAround {
 		positionSpawnMax = new Vector2 (5f, 5f);
 	}
 	protected override GameObject CreateObj (Vector3 position, Quaternion rotation){
-		Transform WaterTornadoObj = SpawnFx.Instance.Spawn (GetFxSkillName(), position, rotation);
+		Transform WaterTornadoObj = ObjSkillSpawner.Instance.Spawn (GetObjSkillName(), position, rotation);
 		WaterTornadoObj.GetComponentInChildren<DamageSender> ().SetDamage(abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.Damage);
 		return WaterTornadoObj.gameObject ;
 	}
-	protected virtual string GetFxSkillName(){
-		return FxName.WaterTornado.ToString ();
+	protected virtual string GetObjSkillName(){
+		return ObjSkillSpawner.ObjSkillName.WaterTornado.ToString();
 	}
 }

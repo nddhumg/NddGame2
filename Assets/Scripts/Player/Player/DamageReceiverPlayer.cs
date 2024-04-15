@@ -5,11 +5,21 @@ using System;
 public class DamageReceiverPlayer : DamageReceiver {
 	[SerializeField] protected PlayerCtrl playerCtrl;
 	public static event Action OnDeadEvent = delegate { };
-	public  event Action OnReceiverEvent = delegate { };
+	public  event Action OnAleterHpEvent = delegate { };
 
 	public override void Receiver(float damage){
 		base.Receiver (damage);
-		OnReceiverEvent?.Invoke ();
+		OnAleterHpEvent?.Invoke ();
+	}
+	public override void AddHp (float addHp)
+	{
+		base.AddHp (addHp);
+		OnAleterHpEvent?.Invoke ();
+	}
+	public override void ResetHp ()
+	{
+		base.ResetHp ();
+		OnAleterHpEvent?.Invoke ();
 	}
 
 	protected override void LoadComponent(){
