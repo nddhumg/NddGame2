@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityPlayerWaterTornado : AbilityCreateObjAround {
-	[SerializeField] protected AbilityPlayerWaterTornadoCtrl abilityPlayerWaterTornadoCtrl;
+	[SerializeField] protected AbilityPlayerWaterTornadoCtrl ctrl;
 
+	protected override void Start ()
+	{
+		base.Start ();
+		ctrl.LevelAbility.LevelAbilityUp ();
+	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
 		LoadAbilityPlayerWaterTornadoCtrl ();
 	}
 	protected virtual void LoadAbilityPlayerWaterTornadoCtrl(){
-		if (abilityPlayerWaterTornadoCtrl != null)
+		if (ctrl != null)
 			return;
-		abilityPlayerWaterTornadoCtrl = transform.GetComponent<AbilityPlayerWaterTornadoCtrl>();
+		ctrl = transform.GetComponent<AbilityPlayerWaterTornadoCtrl>();
 		Debug.LogWarning ("Add AbilityPlayerWaterTornadoCtrl", gameObject);
 	}
 	protected override void ResetValue ()
@@ -23,7 +28,7 @@ public class AbilityPlayerWaterTornado : AbilityCreateObjAround {
 	}
 	protected override GameObject CreateObj (Vector3 position, Quaternion rotation){
 		Transform WaterTornadoObj = ObjSkillSpawner.Instance.Spawn (GetObjSkillName(), position, rotation);
-		WaterTornadoObj.GetComponentInChildren<DamageSender> ().SetDamage(abilityPlayerWaterTornadoCtrl.DamagePlayerAbility.Damage);
+		WaterTornadoObj.GetComponentInChildren<DamageSender> ().SetDamage(ctrl.DamagePlayerAbility.Damage);
 		return WaterTornadoObj.gameObject ;
 	}
 	protected virtual string GetObjSkillName(){

@@ -5,6 +5,7 @@ public enum EnhancementType{
 	NoType = 0,
 	Enhancement = 1,
 	Ability =2,
+	LevelAbility = 3,
 }
 public enum EnhancementCode{
 	NoName = 0,
@@ -18,6 +19,7 @@ public enum EnhancementCode{
 
 	AbilityCircular = 100,
 	AbilityPlayerWaterTornado =101,
+	AbilityHolySword = 102
 }
 public class EnhancementOptions : NddBehaviour {
 	private static EnhancementOptions instance;

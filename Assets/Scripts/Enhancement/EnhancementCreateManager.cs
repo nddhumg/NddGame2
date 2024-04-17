@@ -36,19 +36,15 @@ public class EnhancementCreateManager : NddBehaviour {
 	}
 	private int RetrieveDistinctValueInList(List<int> listValue){
 		int ran = UnityEngine.Random.Range (1, arrayEnhancementNameAll.Length);
-		while (listValue.Contains (ran) || isMaxLevelMaxEnhancementAbility(arrayEnhancementNameAll [ran])) {
+		while (listValue.Contains (ran) || IsMaximumLevelEnhancementAbility(arrayEnhancementNameAll [ran])) {
 			ran = UnityEngine.Random.Range (1, arrayEnhancementNameAll.Length);	
 		}
-		listValue.Add (ran);
 		return ran;
 	}
-	private bool isMaxLevelMaxEnhancementAbility(EnhancementCode enhancementCode){
-		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 
-		if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
-		{
+	private bool IsMaximumLevelEnhancementAbility(EnhancementCode enhancementCode){
+		Transform abilityTransform = unlockAbilityPlayer.GetAbilityUnLock (enhancementCode.ToString ());
+		if (abilityTransform == null)
 			return false;
-		}
-		Transform abilityTransform = unlockAbilityPlayer.GetTfByKeyListAbilityTf (nameAbility.ToString ());
 		LevelAbility levelAbility = abilityTransform?.GetComponentInChildren<LevelAbility> ();
 		return levelAbility.LevelCurrent >= levelAbility.LevelMax;
 	}

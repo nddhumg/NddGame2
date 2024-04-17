@@ -4,84 +4,43 @@ using UnityEngine;
 using System;
 
 public class UnlockAbilityPlayer : NddBehaviour {
-	[System.Serializable]
-	public class MyDictionaryTransform
-	{
-		public string key;
-		public Transform value;
-		public MyDictionaryTransform(string key,Transform value){
-			this.key = key;
-			this.value = value;
-		}
-	}
+	[SerializeField] protected List<Transform> listAbilityLock = new List<Transform>();
+	[SerializeField] protected List<Transform> listAbilityUnLock = new List<Transform>();
 
-	[SerializeField]protected List<MyDictionaryTransform> listAbilityTf = new List<MyDictionaryTransform>();
-	[SerializeField]private List<NameAbilityLock> listAbilityUnlock = new List<NameAbilityLock>();
 
-	public  List<MyDictionaryTransform> ListAbilityTf{
-		get{
-			return listAbilityTf;
-		}
-	}
-	public enum NameAbilityLock
-	{
-		NoAbility =0,
-		AbilityCircular =1,
-		AbilityPlayerWaterTornado = 2,
-	}
-
-	public Transform GetTfByKeyListAbilityTf(string key){
-		foreach (MyDictionaryTransform myDictionary in listAbilityTf) {
-			if (myDictionary.key == key)
-				return myDictionary.value;
-		}
-		return null;
-	}
-	public NameAbilityLock SwithFormEnhancementCodetoNameAbilityUnlock(EnhancementCode enhancementCode){
-		string enhancementCodeString = enhancementCode.ToString();
-		foreach (UnlockAbilityPlayer.NameAbilityLock name in Enum.GetValues(typeof(UnlockAbilityPlayer.NameAbilityLock))) {
-			if (name.ToString () == enhancementCodeString)
-				return name;
-		}
-		return UnlockAbilityPlayer.NameAbilityLock.NoAbility;
-
-//		UnlockAbilityPlayer.NameAbilityLock result;
-//
-//		if (Enum.TryParse(enhancementCodeString, out result))
-//		{
-//			return (UnlockAbilityPlayer.NameAbilityLock)result;
-//		}
-//		else
-//		{
-//			return UnlockAbilityPlayer.NameAbilityLock.NoAbility;
-//		}
-	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
-		LoadListAbility ();
+		LoadListAbilityLock();
 	}
-
-	protected virtual void LoadListAbility(){
-		if (listAbilityTf.Count != 0)
+	protected virtual void LoadListAbilityLock(){
+		if (listAbilityLock.Count > 0)
 			return;
-		foreach (Transform obj in transform) {
-			listAbilityTf.Add (new MyDictionaryTransform(obj.name, obj));
-			obj.gameObject.SetActive (false);
+		foreach (Transform ability in transform) {
+			listAbilityLock.Add (ability);
+			ability.gameObject.SetActive (false);
 		}
-		Debug.Log ("Add dictionaryAbilityTf", gameObject);
-	}
-	public void UnlockAbility(NameAbilityLock nameAbility){
-		if (IsAbilityUnlocked (nameAbility))
-			return;
-		listAbilityUnlock.Add (nameAbility);
-		GetTfByKeyListAbilityTf(nameAbility.ToString()).gameObject.SetActive (true);
+		Debug.LogWarning ("Add ListAbilityLock", gameObject);
 	}
 
-	public bool IsAbilityUnlocked(NameAbilityLock nameAbility){
-		return listAbilityUnlock.Contains(nameAbility);
+	public Transform UnlockAbility(string nameAbility){
+		foreach (Transform ability in listAbilityLock) {
+			if (ability.name == nameAbility) {
+				ability.gameObject.SetActive (true);
+				listAbilityLock.Remove (ability);
+				listAbilityUnLock.Add (ability);
+				return ability;
+			}
+		}
+		return null;
 	}
-	public bool IsPlayerAbilityLock(string nameAbility){
-		return Enum.IsDefined (typeof(NameAbilityLock), nameAbility);
+	public Transform GetAbilityUnLock(string nameAbility){
+		foreach (Transform ability in listAbilityUnLock) {
+			if (ability.name == nameAbility) {
+				return ability;
+			}
+		}
+		return null;
 	}
+
 }

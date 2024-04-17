@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityCircularPlayer : AbilityCircular  {
-
+	[Header("Player Ability")]
+	[SerializeField] protected AbilityCircularPlayerCtrl ctrl;
+	protected override void Start ()
+	{
+		base.Start ();
+		ctrl.LevelAbility.LevelAbilityUp ();
+	}
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
 		speed = 1f;
-		maxPrefab = 5;
+		maxPrefab = 6;
+	}
+	protected override void LoadComponent ()
+	{
+		base.LoadComponent ();
+		LoadAbilityCircularPlayerCtrl ();
 	}
 	protected override void LoadCenterPositionCircular ()
 	{
@@ -16,5 +27,17 @@ public class AbilityCircularPlayer : AbilityCircular  {
 			return;
 		centerPosition = transform;
 		Debug.LogWarning ("Add centerPosition", gameObject);
+	}
+	protected virtual void LoadAbilityCircularPlayerCtrl(){
+		if (ctrl != null)
+			return;
+		ctrl = transform.GetComponent<AbilityCircularPlayerCtrl>();
+		Debug.LogWarning ("Add AbilityCircularPlayerCtrl", gameObject);
+	}
+	public virtual void SetDamageObj(){
+		foreach (Transform child in holder) {
+			DamageSender damageSender = child.GetComponentInChildren<DamageSender> ();
+			damageSender.SetDamage (ctrl.DamagePlayerAbility.Damage);
+		}
 	}
 }

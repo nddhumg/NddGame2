@@ -6,14 +6,6 @@ public class AttributesPlayer : NddBehaviour{
 	[SerializeField] protected PlayerCtrl playerCtrl;
 	[SerializeField]protected float damage =1;
 	protected float minDamage =1;
-	public bool test;
-	public float test1;
-	void Update(){
-		if (test) {
-			SetDamage (test1);
-			test = false;
-		}
-	}
 	public float Damage{
 		get{ 
 			return damage;

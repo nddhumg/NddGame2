@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbilityCircular : PassiveAbility {
-	[SerializeField] protected List<Transform> ObjAbility = new List<Transform>();
-	[SerializeField] protected GameObject prefab;
+public abstract class AbilityCircular : AbilityCreatePrefab {
 	[SerializeField] protected Transform centerPosition;
 	[SerializeField] protected Transform holder;
 	[SerializeField] protected float radius = 2f;
 	[SerializeField] protected float speed = 1f;
-	[SerializeField] protected int maxPrefab = 5;
 	[SerializeField] protected Vector3 rotationHolder = new Vector3 (0, 0, 0);
 
 	public Transform CenterPosition{
@@ -44,7 +41,6 @@ public abstract class AbilityCircular : PassiveAbility {
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
-		LoadPrefab ();
 		LoadHolder ();
 		LoadCenterPositionCircular ();
 	}
@@ -55,31 +51,14 @@ public abstract class AbilityCircular : PassiveAbility {
 		holder = transform.Find ("Holder");
 		Debug.LogWarning ("Add Holder", gameObject);
 	}
-	protected virtual void LoadPrefab(){
-		if(prefab != null)
-			return;
-		prefab = transform.Find ("Prefab").gameObject;
-		Debug.LogWarning ("Add prefab", gameObject);
-	}
 	protected abstract void LoadCenterPositionCircular ();
-	public virtual bool InstantiatePrab(){
-		if (IsMaxPrefab ()){
-			Debug.LogWarning("Maximum obj prefab.Dont Instantiate obj",gameObject);
-			return false;
-		}
-		GameObject newPrefab = Instantiate(prefab);
-		newPrefab.transform.parent = holder;
-		newPrefab.SetActive (true);
-		ObjAbility.Add (newPrefab.transform);
+	public override GameObject InstantiatePrab(){
+		GameObject newGameObj = base.InstantiatePrab ();
+		if (newGameObj == null)
+			return null;
+		newGameObj.transform.parent = holder;
 		SetPositionObj();
-		return true;
-	}
-	public virtual void InstantiatePrab(int value){
-		for(int temp = 1;temp <= value; temp++){
-			if (!InstantiatePrab ()) {
-				break;
-			}
-		}
+		return newGameObj;
 	}
 	protected virtual void RotateHolder(){
 		rotationHolder.z += Time.deltaTime * speed * 100;
@@ -94,9 +73,6 @@ public abstract class AbilityCircular : PassiveAbility {
 			float angle = i * (360f / ObjAbility.Count) * Mathf.Deg2Rad;
 			ObjAbility [i].localPosition = new Vector2 (Mathf.Sin (angle) * radius, Mathf.Cos (angle) * radius);
 		}
-	}
-	protected virtual bool IsMaxPrefab(){
-		return ObjAbility.Count >= maxPrefab;
 	}
 
 	 

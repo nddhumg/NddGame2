@@ -21,8 +21,8 @@ public class DamagePlayerAbility : DamageAbility,ISetDamagePlayer {
 		playerCtrl = transform.root.GetComponent<PlayerCtrl>();
 		Debug.LogWarning ("Add PlayerCtrl",gameObject);
 	}
-	public void OnSetDamage(float damagePlayer){
-		this.damage = damage * damageRatio;
-		baseDamage = damage;
+	public virtual void OnSetDamage(float damagePlayer){
+		baseDamage = damagePlayer;
+		damage = baseDamage * damageRatio;
 	}
 }

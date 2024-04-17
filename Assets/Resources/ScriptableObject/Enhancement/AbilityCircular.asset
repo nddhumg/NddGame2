@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: AbilityCircular
   m_EditorClassIdentifier: 
   nameCard: 100
-  typeCard: 1
+  typeCard: 2
   image: {fileID: 21300000, guid: 6e8e68d19da4a5646b52a4b1b5b1452f, type: 3}
   explain: 
   attribute: 0

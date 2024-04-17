@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23c2fdad973d3d499510214e7da0e86, type: 3}
   m_Name: Level4
   m_EditorClassIdentifier: 
-  nameAbility: 2
+  nameCard: 101
+  typeCard: 3
   level: 4
   explain: Water tornado causing 150% damage and Reduce the cooldown by 1 second

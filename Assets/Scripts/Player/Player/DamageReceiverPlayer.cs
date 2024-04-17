@@ -21,7 +21,11 @@ public class DamageReceiverPlayer : DamageReceiver {
 		base.ResetHp ();
 		OnAleterHpEvent?.Invoke ();
 	}
-
+	public override void SetHpMax (float setHpMax)
+	{
+		base.SetHpMax (setHpMax);
+		OnAleterHpEvent?.Invoke ();
+	}
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl ();

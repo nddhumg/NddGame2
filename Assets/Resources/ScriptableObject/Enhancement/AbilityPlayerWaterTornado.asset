@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: AbilityPlayerWaterTornado
   m_EditorClassIdentifier: 
   nameCard: 101
-  typeCard: 1
+  typeCard: 2
   image: {fileID: 21300010, guid: 573a01f17482e4d4da91d3ce6c28a3b0, type: 3}
   explain: 
   attribute: 0

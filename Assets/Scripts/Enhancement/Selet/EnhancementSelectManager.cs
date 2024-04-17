@@ -64,12 +64,11 @@ public class EnhancementSelectManager : NddBehaviour {
 		return (int)enhancementCode >= 100;
 	}
 	private int GetLevelEnhancementAbility(EnhancementCode enhancementCode){
-		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock (enhancementCode); 	
-		if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
+		Transform abilityTransform = unlockAbilityPlayer.GetAbilityUnLock (enhancementCode.ToString ());
+		if(abilityTransform == null)
 		{
 			return 0;
 		}
-		Transform abilityTransform = unlockAbilityPlayer.GetTfByKeyListAbilityTf (nameAbility.ToString ());
 		LevelAbility levelAbility = abilityTransform?.GetComponentInChildren<LevelAbility> ();
 		return (int)levelAbility.LevelCurrent;
 	}

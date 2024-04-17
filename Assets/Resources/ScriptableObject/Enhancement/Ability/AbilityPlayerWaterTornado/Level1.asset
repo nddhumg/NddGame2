@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23c2fdad973d3d499510214e7da0e86, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  nameAbility: 2
+  nameCard: 101
+  typeCard: 3
   level: 1
   explain: Create a water tornado causing  100% damage in 8 seconds

@@ -17,7 +17,8 @@ public class DamageAbility : NddBehaviour {
 			return damage;
 		}
 	}
-	public void SetDamageRatio(float damageRatio){
+	public virtual void SetDamageRatio(float damageRatio){
+		this.damageRatio = damageRatio;
 		damage = baseDamage * damageRatio;
 	}
 }

@@ -65,17 +65,11 @@ public class GetEnhancementPlayer : NddBehaviour,IEvenetEnhancementSelection{
 	protected void OnSelectionEnhancementAbility(EnhancementCode select){
 		if (!IsSelectionAbility (select))
 			return;
-		UnlockAbilityPlayer.NameAbilityLock nameAbility = unlockAbilityPlayer.SwithFormEnhancementCodetoNameAbilityUnlock(select);
-		if (nameAbility == UnlockAbilityPlayer.NameAbilityLock.NoAbility) {
-			Debug.LogWarning("Dont event select Ability " + select.ToString(),gameObject);
-			return;
-		}
-		if(!unlockAbilityPlayer.IsAbilityUnlocked(nameAbility))
-			unlockAbilityPlayer.UnlockAbility(nameAbility);
-		else{
-			Transform abilityTF = unlockAbilityPlayer.GetTfByKeyListAbilityTf (nameAbility.ToString ());
-			LevelAbility level = abilityTF?.GetComponentInChildren<LevelAbility> ();
-			level.LevelAbilityUp();
+		Transform ability = unlockAbilityPlayer.UnlockAbility (select.ToString ());
+		if(ability == null){
+			Transform abilityTF = unlockAbilityPlayer.GetAbilityUnLock(select.ToString());
+			LevelAbility level = abilityTF.GetComponentInChildren<LevelAbility> ();
+			level?.LevelAbilityUp();
 		}
 	}
 	private bool IsSelectionParameters(EnhancementCode select){
