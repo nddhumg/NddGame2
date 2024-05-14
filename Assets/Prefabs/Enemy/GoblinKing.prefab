@@ -19,8 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4348189307115284}
-  - component: {fileID: 114027020967562726}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +37,7 @@ GameObject:
   - component: {fileID: 212758175958151774}
   - component: {fileID: 95982604126773778}
   - component: {fileID: 114095177283267542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Goblin King Sprite Sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4601294441894130}
   - component: {fileID: 114498721273306976}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4661390340598158}
   - component: {fileID: 114802103229711746}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +87,7 @@ GameObject:
   - component: {fileID: 114206869388544706}
   - component: {fileID: 50806834258665302}
   - component: {fileID: 114480733934081092}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GoblinKing
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -105,7 +104,7 @@ GameObject:
   - component: {fileID: 4547362367030584}
   - component: {fileID: 70833276970797816}
   - component: {fileID: 114937782280761296}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollisionEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +119,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4659511547149716}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +134,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4722358260690238}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ActiveAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696153157612756}
   - component: {fileID: 114896904734859476}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageReceiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,25 +327,13 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a202f696c2f05cf408010e6857b0d222, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114027020967562726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1006933541379830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46cd6a231b38c184583a7d9fb6705e9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectCtrl: {fileID: 114480733934081092}
 --- !u!114 &114095177283267542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,7 +402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a213f131fb312444b61538d44f70c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 114027020967562726}
   delayAbility: 2
   timerAbility: 10
   isReady: 0

@@ -39,23 +39,23 @@ public class GetEnhancementPlayer : NddBehaviour,IEvenetEnhancementSelection{
 		switch (select) 
 		{
 		case EnhancementCode.BoostHp:
-			abilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 			break;
 
 		case EnhancementCode.BoostSpeed:
-			abilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 			break;
 
 		case EnhancementCode.BoostSpeedAttack:
-			abilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 			break;
 
 		case EnhancementCode.BoostDamage:
-			abilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 			break;
 
 		case EnhancementCode.BoostRangePickUp:
-			abilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
+			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
 			break;
 		default:
 			Debug.LogWarning("Dont event select Parameters "+select.ToString(),gameObject);

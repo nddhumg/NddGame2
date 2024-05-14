@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212245543078018126}
   - component: {fileID: 95580601947130554}
   - component: {fileID: 114086188898973430}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ORK_02_IDLE_000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4015558687868076}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4133730455464286}
   - component: {fileID: 114960848765762346}
   - component: {fileID: 70407070181686726}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageSender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 114980322961409840}
   - component: {fileID: 50633197911863876}
   - component: {fileID: 114418996429966314}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ork2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4816541132820302}
   - component: {fileID: 114173917650012184}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageReceiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4425889425743644}
   - component: {fileID: 114482687865670138}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4314665913570912}
   - component: {fileID: 70272729733233610}
   - component: {fileID: 114888259644658402}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollisionEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4737120521451186}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

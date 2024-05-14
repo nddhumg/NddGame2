@@ -2,88 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityPlayerCtrl : AbilityObjShotCtrl {
-	[SerializeField] protected AbilityShootingRateCustomization abilityFireRateCustomization;
-	[SerializeField] protected AbilityShootingDamageCustomization abilityFireDamageCustomization;
-	[SerializeField] protected AbilityHpMaxCustomization abilityHpMaxCustomization;
-	[SerializeField] protected AbilitySpeedCustomization abilitySpeedCustomization;
-	[SerializeField] protected AbilityRangePickUpCustomization abilityRangePickUpCustomization;
-	[SerializeField] protected AbilityDamageCustomization abilityDamageCustomization;
-
-	public AbilityDamageCustomization AbilityDamageCustomization{
+public class AbilityPlayerCtrl : NddBehaviour {
+	[SerializeField] protected PassiveAbilityPlayerCtrl passiveAbilityPlayerCtrl;
+	[SerializeField] protected UnlockAbilityPlayer abilityUnlock;
+	public UnlockAbilityPlayer AbilityUnlock{
 		get{
-			return abilityDamageCustomization;
+			return abilityUnlock;
 		}
 	}
-	public AbilityHpMaxCustomization AbilityHpMaxCustomization{
+	public PassiveAbilityPlayerCtrl PassiveAbilityPlayerCtrl{
 		get{
-			return abilityHpMaxCustomization;
-		}
-	}
-	public AbilityRangePickUpCustomization AbilityRangePickUpCustomization{
-		get{
-			return abilityRangePickUpCustomization;
-		}
-	}
-	public AbilitySpeedCustomization AbilitySpeedCustomization{
-		get{
-			return abilitySpeedCustomization;
-		}
-	}
-	public AbilityShootingRateCustomization AbilityFireRateCustomization{
-		get{
-			return abilityFireRateCustomization;
-		}
-	}
-	public AbilityShootingDamageCustomization AbilityFireDamageCustomization{
-		get{
-			return abilityFireDamageCustomization;
+			return passiveAbilityPlayerCtrl;
 		}
 	}
 	protected override void LoadComponent ()
 	{
 		base.LoadComponent ();
-		this.LoadAbilityFireRateCustomization ();
-		this.LoadAbilityFireDamageCustomization ();
-		this.LoadAbilitySpeedCustomization ();
-		this.LoadAbilityHpMaxCustomization ();
-		this.LoadAbilityRangePickUpCustomization ();
-		this.LoadAbilityDamageCustomization ();
+		LoadUnlockAbilityPlayer ();
+		LoadPassiveAbilityPlayerCtrl ();
 	}
-	protected virtual void LoadAbilityDamageCustomization(){
-		if (this.abilityDamageCustomization != null)
+	protected virtual void LoadUnlockAbilityPlayer(){
+		if (this.abilityUnlock != null)
 			return;
-		this.abilityDamageCustomization = GetComponentInChildren<AbilityDamageCustomization> ();
-		Debug.LogWarning ("Add AbilityDamageCustomization", gameObject);
+		this.abilityUnlock = GetComponentInChildren<UnlockAbilityPlayer> ();
+		Debug.LogWarning ("Add UnlockAbilityPlayer", gameObject);
 	}
-	protected virtual void LoadAbilityRangePickUpCustomization(){
-		if (this.abilityRangePickUpCustomization != null)
+	protected virtual void LoadPassiveAbilityPlayerCtrl(){
+		if (this.passiveAbilityPlayerCtrl != null)
 			return;
-		this.abilityRangePickUpCustomization = GetComponentInChildren<AbilityRangePickUpCustomization> ();
-		Debug.LogWarning ("Add AbilityRangePickUpCustomization", gameObject);
-	}
-	protected virtual void LoadAbilityHpMaxCustomization(){
-		if (this.abilityHpMaxCustomization != null)
-			return;
-		this.abilityHpMaxCustomization = GetComponentInChildren<AbilityHpMaxCustomization> ();
-		Debug.LogWarning ("Add AbilityHpMaxCustomization", gameObject);
-	}
-	protected virtual void LoadAbilitySpeedCustomization(){
-		if (this.abilitySpeedCustomization != null)
-			return;
-		this.abilitySpeedCustomization = GetComponentInChildren<AbilitySpeedCustomization> ();
-		Debug.LogWarning ("Add AbilitySpeedCustomization", gameObject);
-	}
-	protected virtual void LoadAbilityFireRateCustomization(){
-		if (this.abilityFireRateCustomization != null)
-			return;
-		this.abilityFireRateCustomization = GetComponentInChildren<AbilityShootingRateCustomization> ();
-		Debug.LogWarning ("Add AbilityFireRateCustomization", gameObject);
-	}
-	protected virtual void LoadAbilityFireDamageCustomization(){
-		if (this.abilityFireDamageCustomization != null)
-			return;
-		this.abilityFireDamageCustomization = GetComponentInChildren<AbilityShootingDamageCustomization> ();
-		Debug.LogWarning ("Add LoadAbilityFireDamageCustomization", gameObject);
+		this.passiveAbilityPlayerCtrl = GetComponentInChildren<PassiveAbilityPlayerCtrl> ();
+		Debug.LogWarning ("Add PassiveAbilityPlayerCtrl", gameObject);
 	}
 }

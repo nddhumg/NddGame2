@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4301974116706952}
   - component: {fileID: 114270620396674982}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageReceiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4786934138428022}
   - component: {fileID: 114758635567640118}
   - component: {fileID: 70178667612413800}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageSender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4743778366087202}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4421265050818642}
   - component: {fileID: 114593633281065890}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4363313309511038}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ActiveAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4116840734768522}
   - component: {fileID: 114924472424217028}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 212873210609902104}
   - component: {fileID: 95726444495543114}
   - component: {fileID: 114211474970905284}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Goblin King Sprite Sheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,8 +132,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4785950621908556}
-  - component: {fileID: 114910724560062662}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +149,7 @@ GameObject:
   - component: {fileID: 4085644084232956}
   - component: {fileID: 70570691702989136}
   - component: {fileID: 114630302850012238}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollisionEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,13 +167,13 @@ GameObject:
   - component: {fileID: 114931399559158622}
   - component: {fileID: 50333527497135056}
   - component: {fileID: 114961501905805116}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GoblinKingBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4085644084232956
 Transform:
   m_ObjectHideFlags: 1
@@ -462,18 +461,6 @@ MonoBehaviour:
   timer: 1
   timeDelayAttack: 1
   bossCtrl: {fileID: 114961501905805116}
---- !u!114 &114910724560062662
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1844387190567620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46cd6a231b38c184583a7d9fb6705e9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectCtrl: {fileID: 114961501905805116}
 --- !u!114 &114924472424217028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,7 +472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a213f131fb312444b61538d44f70c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 114910724560062662}
   delayAbility: 2
   timerAbility: 10
   isReady: 0

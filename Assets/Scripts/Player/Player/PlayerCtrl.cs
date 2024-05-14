@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCtrl : GameObjCtrl {
+	private static PlayerCtrl instance;
+	public static PlayerCtrl Instance{
+		get{
+			return instance;
+		}
+	}
+	protected override void LoadSingleton() {
+		if (PlayerCtrl.instance != null) {
+			Debug.LogError("Only 1 InputManager allow to exist");
+
+		}
+		PlayerCtrl.instance = this;
+	}
+
 	[SerializeField]protected PhysicsPlayer physicsPlayer;
 	[SerializeField]protected DamageReceiverPlayer damageReceiver;
 	[SerializeField]protected AnimationPlayer animationPlayer;
@@ -10,16 +24,22 @@ public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected PlayerSO playerSO;
 	[SerializeField]protected AbilityDashPlayer dashPlayer;
 	[SerializeField]protected AbilityShotPlayer shotPlayer;
-	[SerializeField]protected LevelPlayer levelPlayer;
-	[SerializeField]protected AttributesPlayer attributesPlayer;
+	[SerializeField]protected LevelPlayer level;
+	[SerializeField]protected AttributesPlayer attributes;
+	[SerializeField]protected AbilityPlayerCtrl abilityCtrl;
+	public AbilityPlayerCtrl AbilityCtrl{
+		get{
+			return abilityCtrl;
+		}
+	}
 	public LevelPlayer LevelPlayer{
 		get{
-			return levelPlayer;
+			return level;
 		}
 	}
 	public AttributesPlayer AttributesPlayer{
 		get{
-			return attributesPlayer;
+			return attributes;
 		}
 	}
 	public AbilityDashPlayer DashPlayer{
@@ -60,15 +80,16 @@ public class PlayerCtrl : GameObjCtrl {
 		
 	protected override void LoadComponent(){
 		base.LoadComponent ();
-		this.LoadPhysicsPlayer ();
-		this.LoadAnimationPlayer ();
-		this.LoadMovingPlayer ();
-		this.LoadPlayerSO ();
-		this.LoadDamageReceiver ();
-		this.LoadDashPlayer ();
-		this.LoadShotPlayer ();
-		this.LoadLevelPlayer ();
-		this.LoadAttributesPlayer ();
+		LoadPhysicsPlayer ();
+		LoadAnimationPlayer ();
+		LoadMovingPlayer ();
+		LoadPlayerSO ();
+		LoadDamageReceiver ();
+		LoadDashPlayer ();
+		LoadShotPlayer ();
+		LoadLevelPlayer ();
+		LoadAttributesPlayer ();
+		LoadAbilityPlayerCtrl ();
 	}
 	protected virtual void LoadPlayerSO(){
 		if (this.playerSO != null)
@@ -78,16 +99,22 @@ public class PlayerCtrl : GameObjCtrl {
 
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
 	}
-	protected virtual void LoadLevelPlayer(){
-		if (this.levelPlayer != null)
+	protected virtual void LoadAbilityPlayerCtrl(){
+		if (this.abilityCtrl != null)
 			return;
-		this.levelPlayer= GetComponentInChildren<LevelPlayer>();
+		this.abilityCtrl= GetComponentInChildren<AbilityPlayerCtrl>();
+		Debug.Log ("Add AbilityCtrl", gameObject);
+	}
+	protected virtual void LoadLevelPlayer(){
+		if (this.level != null)
+			return;
+		this.level= GetComponentInChildren<LevelPlayer>();
 		Debug.Log ("Add LevelPlayer", gameObject);
 	}
 	protected virtual void LoadAttributesPlayer(){
-		if (this.attributesPlayer != null)
+		if (this.attributes != null)
 			return;
-		this.attributesPlayer= GetComponentInChildren<AttributesPlayer>();
+		this.attributes= GetComponentInChildren<AttributesPlayer>();
 		Debug.Log ("Add AttributesPlayer", gameObject);
 	}
 	protected virtual void LoadPhysicsPlayer(){

@@ -12,7 +12,7 @@ public class AbilityDamageCustomization : AbilityCustomizableObject {
 	protected virtual void LoadAttributesPlayer(){
 		if (this.attributesPlayer != null)
 			return;
-		this.attributesPlayer = transform.parent.parent.parent.GetComponentInChildren<AttributesPlayer>();
+		this.attributesPlayer = transform.root.GetComponentInChildren<AttributesPlayer>();
 		Debug.LogWarning ("Add AttributesPlayer", gameObject);
 	}
 	protected override void GetParameter(){

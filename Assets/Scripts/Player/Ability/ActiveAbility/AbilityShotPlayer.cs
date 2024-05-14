@@ -23,7 +23,7 @@ public class AbilityShotPlayer : AbilityShot,ISetDamagePlayer{
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
-		this.playerCtrl=ability.ObjectCtrl as PlayerCtrl;
+		this.playerCtrl=transform.root.GetComponent<PlayerCtrl>();
 		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
 	protected override void ResetValueComponent(){
@@ -51,7 +51,7 @@ public class AbilityShotPlayer : AbilityShot,ISetDamagePlayer{
 			if (keyShot != 1)
 				return;
 		}
-		timerAbility = 0f;
+		ResetTiming ();
 		Vector3 PosSpawn = transform.position + new Vector3 (0, 0, 0);
 		ShootBullet(PosSpawn);
 	}
