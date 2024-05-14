@@ -46,12 +46,11 @@ public class MovingPlayer : NddBehaviour {
 			playerCtrl.PhysicsPlayer.Rig2d.velocity = Vector2.zero;
 			return;
 		}
-		keyMoving =  keyMoving.normalized;
 		playerCtrl.AnimationPlayer.SetAnimationRuning (true);
+		keyMoving =  keyMoving.normalized;
 		SwapScaleIsMoving ();
-		transform.root.Translate (keyMoving * speed * Time.deltaTime);
+		playerCtrl.PhysicsPlayer.Rig2d.velocity = new Vector2 (keyMoving.x * speed, keyMoving.y * speed);
 	}
-
 	protected virtual void SwapScaleIsMoving(){
 		int direction = keyMoving.x > 0 ? 1 : -1;
 		playerCtrl.Model.transform.localScale = new Vector3(direction ,transform.parent.localScale.y,transform.parent.localScale.z);	
