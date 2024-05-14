@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ActiveAbility : BaseAbility {
+public abstract class ActiveAbility : NddBehaviour {
 	[Header("Active Ability")]
 	[SerializeField] protected float delayAbility = 5f;
 	[SerializeField] protected float timerAbility = 10f;
@@ -24,9 +24,12 @@ public abstract class ActiveAbility : BaseAbility {
 	protected virtual void Timing(){
 		if (timerAbility < delayAbility) {
 			timerAbility += Time.deltaTime;
-			this.isReady = false;
 		}
 		else
 			this.isReady = true;	
+	}
+	protected virtual void ResetTiming(){
+		timerAbility = 0;
+		isReady = false;
 	}
 }

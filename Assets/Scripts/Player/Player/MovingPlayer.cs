@@ -3,100 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlayer : NddBehaviour {
-    [SerializeField]protected Vector4 keyTarget ;
-    [SerializeField]protected float speedMoving = 3f;
-	[SerializeField]protected Vector2 limitPos = new Vector2 (31.5f, 19.6f);
+	[SerializeField]protected Vector2 keyMoving ;
+    [SerializeField]protected float speed = 4.3f;
 	[SerializeField]protected PlayerCtrl playerCtrl;
 
 	public float SpeedMoving{
 		get{
-			return speedMoving;
+			return speed;
 		}
+	}
+	public Vector2 KeyMoving{
+		get{ 
+			return keyMoving;
+		}
+	}
+	public virtual void SetSpeedMoving(float setSpeed){
+		this.speed = setSpeed;
 	}
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
 	}
-	public virtual void SetSpeedMoving(float setSpeed){
-		this.speedMoving = setSpeed;
-	}
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)
 			return;
 		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
-		Debug.Log ("Add PlayerCtrl", gameObject);
-	}
-	public Vector2 LimitPos{
-		get{
-			return limitPos;
-		}
+		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
     void Update()
     {
-        this.Moving();
-		this.HandRunAnimation ();
+		Moving ();
     }
-	void FixedUpdate(){
-		this.SetPosByLimit ();
-	}
-    protected virtual void Moving() {
-        this.keyTarget = InputManager.Instance.KeyMoving;
-        float speed = this.speedMoving * Time.deltaTime;
-		this.MovementUnLimited (speed);
+    protected virtual void GetKeyMoving() {
+		keyMoving.x = InputManager.Instance.KeyHorizontal;
+		keyMoving.y = InputManager.Instance.KeyVertical;
     }
 
-	protected virtual void MovementUnLimited(float speed){
-		
-		if (this.keyTarget.x == 1 && transform.position.x < limitPos.x)
-		{
-			// RIGHT
-			this.SwapScaleIsMoving(1);
-			this.MovingAdditionPos(new Vector3(speed, 0, 0));
-		}
-		if (this.keyTarget.y == 1 && transform.position.x > -limitPos.x)
-		{
-			// LEFT
-			this.SwapScaleIsMoving(-1);
-			this.MovingAdditionPos(new Vector3(-speed, 0, 0));
-		}
-		if (this.keyTarget.z == 1 && transform.position.y > -limitPos.y)
-		{
-			// DOWN
-			this.MovingAdditionPos(new Vector3(0, -speed, 0));
-		}
-		if (this.keyTarget.w == 1 && transform.position.y < limitPos.y)
-		{
-			// UP
-			this.MovingAdditionPos(new Vector3(0, speed, 0));
-		}
-	}
-	protected virtual void SetPosByLimit(){
-		Vector3 posParent = transform.parent.position;
-		if(posParent.x >= limitPos.x){
-			transform.parent.position += new Vector3(-1f,0,0) *Time.fixedDeltaTime;
-		}
-		if(posParent.x <= -limitPos.x){
-			transform.parent.position += new Vector3(1f,0,0)*Time.fixedDeltaTime;
-		}
-		if(posParent.y <= -limitPos.y){
-			transform.parent.position += new Vector3(0,1f,0)*Time.fixedDeltaTime;
-		}
-		if(posParent.y >= limitPos.y){
-			transform.parent.position += new Vector3(0,-1f,0)*Time.fixedDeltaTime;
-		}
-	}
-	protected virtual void HandRunAnimation(){
-		if (this.keyTarget == Vector4.zero) {
+	protected virtual void Moving(){
+		GetKeyMoving ();
+		if (keyMoving == Vector2.zero) {
 			playerCtrl.AnimationPlayer.SetAnimationRuning (false);
-		} else {
-			playerCtrl.AnimationPlayer.SetAnimationRuning (true);
+			playerCtrl.PhysicsPlayer.Rig2d.velocity = Vector2.zero;
+			return;
 		}
+		keyMoving =  keyMoving.normalized;
+		playerCtrl.AnimationPlayer.SetAnimationRuning (true);
+		SwapScaleIsMoving ();
+		transform.root.Translate (keyMoving * speed * Time.deltaTime);
 	}
 
-    protected virtual void MovingAdditionPos(Vector3 direction) {
-        transform.parent.position += direction;
-    }
-	protected virtual void SwapScaleIsMoving(int direction){
+	protected virtual void SwapScaleIsMoving(){
+		int direction = keyMoving.x > 0 ? 1 : -1;
 		playerCtrl.Model.transform.localScale = new Vector3(direction ,transform.parent.localScale.y,transform.parent.localScale.z);	
 	}
 

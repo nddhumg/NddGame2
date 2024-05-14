@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassiveAbility : BaseAbility {
+public class PassiveAbility : NddBehaviour {
 	// Passive Ability
 }

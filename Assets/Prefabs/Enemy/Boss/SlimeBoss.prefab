@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4975937575586634}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PassiveAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066294700272516}
   - component: {fileID: 114138209047829028}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CloneEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4748281893870570}
   - component: {fileID: 114886570595111882}
   - component: {fileID: 70680931580134014}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageSender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,9 +67,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4908136533895988}
-  - component: {fileID: 114993813002920944}
   - component: {fileID: 114774892381081404}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +83,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4463805972330090}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +101,7 @@ GameObject:
   - component: {fileID: 212068151194380204}
   - component: {fileID: 95973145595963614}
   - component: {fileID: 114381261405071844}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4122013608448112}
   - component: {fileID: 114635753053710472}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +135,7 @@ GameObject:
   - component: {fileID: 114507894120542338}
   - component: {fileID: 50307206258389232}
   - component: {fileID: 114975095117408594}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SlimeBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -153,7 +152,7 @@ GameObject:
   - component: {fileID: 4203731150848796}
   - component: {fileID: 70661605735785826}
   - component: {fileID: 114235159555591766}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CollisionEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4589026736369234}
   - component: {fileID: 114659573273938112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DamageReceiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5333e69fa14a2d74e8a9ef39218481f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 114993813002920944}
   enemyClone: 101
   numberOfSpawnClone: 2
 --- !u!114 &114235159555591766
@@ -512,18 +510,6 @@ MonoBehaviour:
   bossSO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
   damageReceiverBoss: {fileID: 114659573273938112}
   slimeBossAbilityCtrl: {fileID: 114774892381081404}
---- !u!114 &114993813002920944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1527935167697748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46cd6a231b38c184583a7d9fb6705e9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectCtrl: {fileID: 114975095117408594}
 --- !u!212 &212068151194380204
 SpriteRenderer:
   m_ObjectHideFlags: 1

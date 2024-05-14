@@ -6,7 +6,11 @@ using System;
 public class UnlockAbilityPlayer : NddBehaviour {
 	[SerializeField] protected List<Transform> listAbilityLock = new List<Transform>();
 	[SerializeField] protected List<Transform> listAbilityUnLock = new List<Transform>();
-
+	public  List<Transform> ListAbilityUnLock{
+		get{ 
+			return listAbilityUnLock;
+		}
+	}
 
 	protected override void LoadComponent ()
 	{

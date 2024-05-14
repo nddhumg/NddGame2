@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   namePlayer: Player
   sizeCapsule:
-    offsetCollider: {x: 0, y: 0}
-    sizeCollider: {x: 0.7, y: 1}
+    offsetCollider: {x: 0, y: -0.12}
+    sizeCollider: {x: 0.7, y: 0.7}
   hpMax: 1000
+  damage: 100
   nameBullets:
   - BulletDragonPiercing
   - BulletDragonNormal

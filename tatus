@@ -1,0 +1,55 @@
+[33m085cbdf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Change logic move and dash of Player
+[33m39196b0[m add animator Button UI
+[33m842a26d[m fix tileMap (add wall)
+[33mba5bfe7[m Add holy sword ability for the player And modify the set damage of the ability, Fix a few minor bugs
+[33mfecd7c5[m Merge branch 'master' of github.com:nddhumg/Unity
+[33m61ff2ce[m change logic ability cirular and WaterTornado Player
+[33mb7b71e5[m change logic ability cirular
+[33mc4b570b[m add animation enhacement Selecet and change model enhacement Select
+[33m5bad10d[m start pj
+[33m10b4b68[m delete package dont use
+[33m1c55268[m fix ui, sound, music
+[33m07da126[m fix ui and spawn enenmy
+[33md4286d6[m clean code spawn enemy
+[33mae06602[m fix finish ui and sound
+[33m3e90670[m fix sound and music
+[33ma291e89[m fix ui and sound
+[33mcd82f43[m add item expMagnet
+[33m5ff2a2f[m add Bar Boss
+[33m324ebf7[m add dotwenn and create animation ui
+[33mf833039[m add ui exit game
+[33m2b82a26[m finish ui End Game
+[33m5666166[m spawn boss
+[33m13c8c3c[m finish state goblinKing Boss
+[33m2ecd830[m add fx red zone
+[33m20f8d9a[m Change to use the enemy state
+[33mac42894[m add ability water tornado
+[33ma04a1a9[m Merge pull request #1 from nddhumg/unlockskill
+[33mbb1ebd4[m done ability fireball skill player
+[33m2f1765a[m add fx damage popup
+[33m90e5b90[m add Level Ability fire ball
+[33mb2fc39c[m add fireball skill and alter dmgsend alway have colider
+[33m7a900e9[m add health bar enemy
+[33ma986d40[m add poitionHp and alter Exp -> not Item
+[33md23204a[m add ability boost rage pickup and alter icon enhancement
+[33m8b3726e[m add spawn Boss temporary(warrning)
+[33m3e373be[m update SO spawnEnemy to match
+[33m2834ee6[m add UI exp bar
+[33m271b45e[m alter spawnEnemy to be able to use SO,add SO spawnEnemyByLevel
+[33m14aae32[m alter text EnhacementSO (dont afect the game)
+[33m73b4afe[m fix and alter enhancement ,use ability customizationobj to upgrade parameters
+[33m6a7ca24[m alter dmgsender bullet into obj that deals damage
+[33mae47157[m[33m ([m[1;31morigin/main[m[33m)[m update Queue sound to delay play sound
+[33mf56c090[m fix error can press UILogicGame when opening UIGame ,add spawn conditions limit enemy arc
+[33m1d538e8[m save preafabs , add Enhancement not finished add damage
+[33m155fdd8[m finish ui seting , ui start game
+[33m32f414d[m add icon dash
+[33m002bfcf[m Fix damage sender enemy, fxlevelUp
+[33m696693d[m Add animation Enemy unfinished,add UI hpBar , alter scriptableoj add attack range
+[33m408b79f[m add exp and levelmap and level , aler spawn enemybylevel
+[33me978fa0[m more enemy and enemyAbilityShot ,alter shot and player
+[33mbcd3690[m Skill changed to Ability and alter Surf -> Dash (use rigitbody changed to += position )
+[33m981168b[m save Packed and alter bullet click left shot bulet1,2
+[33mf677254[m Add Fx and Fix bullet double destroy
+[33mf2f2708[m New project (update bullet)
+[33m16cf42a[m add gitignore
