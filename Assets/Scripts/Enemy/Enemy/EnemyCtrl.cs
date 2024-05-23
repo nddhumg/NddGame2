@@ -6,13 +6,18 @@ public class EnemyCtrl : GameObjCtrl {
 	[SerializeField] protected DestroyEnemy destroyEnemy;
 	[SerializeField] protected DamageReceiverEnemy damageReceiverEnemy;
 	[SerializeField] protected Animator ani;
-	[SerializeField] 
-	protected EnemySO enemySO;
+	[SerializeField] protected EnemySO enemySO;
+	[SerializeField] protected SOStat stats;
 	[SerializeField] protected string folderNameSO = "ScriptableObject/Enemy/";
 
 	public EnemySO EnemySO{
 		get{
 			return enemySO;
+		}
+	}
+	public SOStat Stats{
+		get{
+			return stats;
 		}
 	}
 	public Animator Animator{

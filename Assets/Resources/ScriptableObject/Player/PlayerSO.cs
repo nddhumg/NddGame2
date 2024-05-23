@@ -5,7 +5,5 @@ using UnityEngine;
 public class PlayerSO : ScriptableObject {
 	public string namePlayer = "Player";
 	public SizeCapsule sizeCapsule;
-	public float hpMax = 1000;
-	public float damage = 100;
 	public string[] nameBullets;
 }

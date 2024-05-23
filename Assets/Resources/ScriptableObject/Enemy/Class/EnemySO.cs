@@ -37,9 +37,6 @@ public class EnemySO : ScriptableObject {
 
 	[Header("Attributes")]
 	public SizeCapsule sizeCapsule;
-	public float attackRange ;
-	public float hpMax = 100;
-	public float damage = 10;
 
 	[Header("Drop")]
 	public List<DropExpRate> listDropExp;

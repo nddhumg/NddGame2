@@ -417,7 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 0
   hpMax: 50000
-  isDead: 1
+  isDead: 0
   enemyCtrl: {fileID: 114961501905805116}
 --- !u!114 &114593633281065890
 MonoBehaviour:
@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebae39de0ad1894693c4706a260ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 150
+  damage: 200
   capsuleCollider2D: {fileID: 70178667612413800}
   offsetCapsuleColliser: {x: 0, y: 0}
   sizeCapsuleColliser: {x: 1, y: 1}
@@ -477,7 +477,7 @@ MonoBehaviour:
   isReady: 0
   firingDirection: {x: 0, y: 0, z: 0}
   bulletRotation: {x: 0, y: 0, z: 0, w: 0}
-  damage: 150
+  damage: 200
   enemyCtrl: {fileID: 114961501905805116}
   nameBulletSO: {fileID: 11400000, guid: a8195fe119d067d4b826b90334c0d7ac, type: 2}
 --- !u!114 &114931399559158622
@@ -508,6 +508,7 @@ MonoBehaviour:
   damageReceiverEnemy: {fileID: 114270620396674982}
   ani: {fileID: 95726444495543114}
   enemySO: {fileID: 11400000, guid: 41ea7d858791ec64798572c37cb1768a, type: 2}
+  stats: {fileID: 11400000, guid: 823851e6ff0d1db4bb6a1cf15ae5bfba, type: 2}
   folderNameSO: ScriptableObject/Enemy/Boss/
   bossSO: {fileID: 11400000, guid: 41ea7d858791ec64798572c37cb1768a, type: 2}
   damageReceiverBoss: {fileID: 114270620396674982}

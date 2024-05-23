@@ -7,6 +7,11 @@ public class MovingPlayer : NddBehaviour {
     [SerializeField]protected float speed = 4.3f;
 	[SerializeField]protected PlayerCtrl playerCtrl;
 
+	void Update()
+	{
+		Moving ();
+	}
+
 	public float SpeedMoving{
 		get{
 			return speed;
@@ -16,6 +21,10 @@ public class MovingPlayer : NddBehaviour {
 		get{ 
 			return keyMoving;
 		}
+	}
+	protected override void ResetValueComponent ()
+	{
+		speed = playerCtrl.StatsSO.GetValueStat (StatsName.Speed);
 	}
 	public virtual void SetSpeedMoving(float setSpeed){
 		this.speed = setSpeed;
@@ -30,10 +39,6 @@ public class MovingPlayer : NddBehaviour {
 		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
 		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
-    void Update()
-    {
-		Moving ();
-    }
     protected virtual void GetKeyMoving() {
 		keyMoving.x = InputManager.Instance.KeyHorizontal;
 		keyMoving.y = InputManager.Instance.KeyVertical;

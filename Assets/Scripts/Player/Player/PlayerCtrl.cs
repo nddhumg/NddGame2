@@ -22,6 +22,7 @@ public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected AnimationPlayer animationPlayer;
 	[SerializeField]protected MovingPlayer movingPlayer;
 	[SerializeField]protected PlayerSO playerSO;
+	[SerializeField]protected SOStat statsSO;
 	[SerializeField]protected AbilityDashPlayer dashPlayer;
 	[SerializeField]protected AbilityShotPlayer shotPlayer;
 	[SerializeField]protected LevelPlayer level;
@@ -55,6 +56,11 @@ public class PlayerCtrl : GameObjCtrl {
 	public PlayerSO PlayerSO{
 		get{
 			return playerSO;
+		}
+	}
+	public SOStat StatsSO{
+		get{
+			return statsSO;
 		}
 	}
 	public DamageReceiverPlayer DamageReceiver{
@@ -96,7 +102,6 @@ public class PlayerCtrl : GameObjCtrl {
 			return;
 		string resPath = "ScriptableObject/Player/" +	transform.name;
 		this.playerSO = Resources.Load<PlayerSO> (resPath);
-
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
 	}
 	protected virtual void LoadAbilityPlayerCtrl(){

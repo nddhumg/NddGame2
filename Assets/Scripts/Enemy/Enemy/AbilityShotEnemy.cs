@@ -24,7 +24,7 @@ public class AbilityShotEnemy : AbilityShot {
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValueComponent ();
-		this.damage = enemyCtrl.EnemySO.damage;
+		this.damage = enemyCtrl.Stats.GetValueStat(StatsName.Damage);
 	}
 	protected override string GetNameBullet(){
 		if (nameBulletSO == null) {

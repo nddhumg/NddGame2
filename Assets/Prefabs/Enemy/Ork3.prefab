@@ -314,7 +314,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 120f3b1682cf15041a50ea1b6b143a66, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -420,6 +420,7 @@ MonoBehaviour:
   damageReceiverEnemy: {fileID: 114061810945744258}
   ani: {fileID: 95148970694700132}
   enemySO: {fileID: 11400000, guid: f2d848ad6d2e2384f931f4c0037fb826, type: 2}
+  stats: {fileID: 11400000, guid: 1291d3ce375c71f4db15ce5a9af1a3d9, type: 2}
   folderNameSO: ScriptableObject/Enemy/
   enemyWarriorSO: {fileID: 11400000, guid: f2d848ad6d2e2384f931f4c0037fb826, type: 2}
   damageSenderEnemy: {fileID: 114114085929175586}

@@ -13,7 +13,8 @@ public class DamageSenderEnemyWarrior : DamageSenderEnemy {
 	protected override void SetCapsuleCollider2D ()
 	{
 		capsuleCollider2D.offset = enemyWarriorCtrl.EnemyWarriorSO.offsetZoneAttack;
-		capsuleCollider2D.size = new Vector2 ( enemyWarriorCtrl.EnemyWarriorSO.attackRange,  enemyWarriorCtrl.EnemyWarriorSO.attackRange);
+		float attackRange = enemyWarriorCtrl.Stats.GetValueStat (StatsName.AttackRange);
+		capsuleCollider2D.size = new Vector2 (attackRange,attackRange);
 	}
 	protected virtual void LoadEnemyWarriorCtrl(){
 		if (this.enemyWarriorCtrl != null)
@@ -23,6 +24,6 @@ public class DamageSenderEnemyWarrior : DamageSenderEnemy {
 	}
 	protected override void SetDamageWhenReset ()
 	{
-		this.damage = enemyWarriorCtrl.EnemyWarriorSO.damage;
+		this.damage = enemyWarriorCtrl.Stats.GetValueStat(StatsName.Damage);
 	}
 }

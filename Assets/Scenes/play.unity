@@ -1359,11 +1359,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 95148970694700132, guid: cb111724cccdd2747931cf8cfe2649ab,
-        type: 2}
-      propertyPath: m_CullingMode
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb111724cccdd2747931cf8cfe2649ab, type: 2}
   m_IsPrefabParent: 0
@@ -3234,11 +3229,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 95537685270334780, guid: 9621cb85afc6efc4cb795183e47c001d,
-        type: 2}
-      propertyPath: m_CullingMode
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9621cb85afc6efc4cb795183e47c001d, type: 2}
   m_IsPrefabParent: 0
@@ -3918,6 +3908,7 @@ MonoBehaviour:
   animationPlayer: {fileID: 311708865}
   movingPlayer: {fileID: 1916858515}
   playerSO: {fileID: 11400000, guid: f2d8cd7c0ae820145a386969cd71ea0d, type: 2}
+  statsSO: {fileID: 11400000, guid: cfa6b0704d4234945b3e6646810519b0, type: 2}
   dashPlayer: {fileID: 1343917021}
   shotPlayer: {fileID: 1716136081}
   level: {fileID: 1166414915}
@@ -62367,11 +62358,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4984227649136522, guid: aa72831c2919c2a4a948998fc62afd23, type: 2}
       propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 95580601947130554, guid: aa72831c2919c2a4a948998fc62afd23,
-        type: 2}
-      propertyPath: m_CullingMode
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

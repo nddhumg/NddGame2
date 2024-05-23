@@ -18,7 +18,7 @@ public class DamageReceiverEnemy : DamageReceiver {
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValueComponent ();
-		this.hpMax = enemyCtrl.EnemySO.hpMax;	
+		this.hpMax = enemyCtrl.Stats.GetValueStat(StatsName.Hp);	
 	}
 	protected override void OnDead(){
 		this.DropItemWhenDead ();

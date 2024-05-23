@@ -28,7 +28,7 @@ public class AttributesPlayer : NddBehaviour{
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValueComponent ();
-		damage = playerCtrl.PlayerSO.damage;
+		damage = playerCtrl.StatsSO.GetValueStat(StatsName.Damage);
 	}
 	protected virtual void LoadPlayerCtrl(){
 		if (this.playerCtrl != null)

@@ -33,7 +33,7 @@ public class EnemyFollow : FollowPlayer {
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValueComponent ();
-		distanceStopFollow = enemyCtrl.EnemySO.attackRange ;
+		distanceStopFollow = enemyCtrl.Stats.GetValueStat(StatsName.AttackRange);
 	}
 	protected override void ChangeIsFollowing(){
 		distanceFromPlayer = Vector3.Distance (transform.position, target.position);

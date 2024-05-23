@@ -41,7 +41,7 @@ public class DamageReceiverPlayer : DamageReceiver {
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValueComponent ();
-		this.hpMax = playerCtrl.PlayerSO.hpMax;
+		this.hpMax = playerCtrl.StatsSO.GetValueStat(StatsName.Hp);
 		hp = hpMax;
 	}
 		

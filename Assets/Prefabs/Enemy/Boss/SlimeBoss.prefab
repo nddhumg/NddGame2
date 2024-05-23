@@ -362,7 +362,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.28}
-  m_Size: {x: 1.7, y: 0.83}
+  m_Size: {x: 1.7, y: 1.7}
   m_Direction: 0
 --- !u!95 &95973145595963614
 Animator:
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebae39de0ad1894693c4706a260ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 200
   capsuleCollider2D: {fileID: 70680931580134014}
   offsetCapsuleColliser: {x: 0, y: 0}
   sizeCapsuleColliser: {x: 1, y: 1}
@@ -506,6 +506,7 @@ MonoBehaviour:
   damageReceiverEnemy: {fileID: 114659573273938112}
   ani: {fileID: 95973145595963614}
   enemySO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
+  stats: {fileID: 11400000, guid: 9a8d35ef1153c0f4a92b966fe1cc5c54, type: 2}
   folderNameSO: ScriptableObject/Enemy/Boss/
   bossSO: {fileID: 11400000, guid: cf708175f04f0ed448230e9a20854216, type: 2}
   damageReceiverBoss: {fileID: 114659573273938112}
