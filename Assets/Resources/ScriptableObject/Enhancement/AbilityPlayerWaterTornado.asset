@@ -8,11 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5838f3c78cf2f48af0f2a18e9270c4, type: 3}
+  m_Script: {fileID: 11500000, guid: b23c2fdad973d3d499510214e7da0e86, type: 3}
   m_Name: AbilityPlayerWaterTornado
   m_EditorClassIdentifier: 
   nameCard: 101
-  typeCard: 2
-  image: {fileID: 21300010, guid: 573a01f17482e4d4da91d3ce6c28a3b0, type: 3}
-  explain: 
-  attribute: 0
+  image: {fileID: 21300000, guid: 313ce4f975d65c244a8c164ff64eb4cc, type: 3}
+  listExplain:
+  - Create a water tornado causing  100% damage in 8 seconds
+  - Water tornado causing 120% damage.
+  - Add Water Tornado
+  - Water tornado causing 150% damage and Reduce the cooldown by 1 second
+  - Water tornado causing 200% damage

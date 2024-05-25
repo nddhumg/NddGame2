@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: BoostSpeed
   m_EditorClassIdentifier: 
   nameCard: 3
-  typeCard: 1
-  image: {fileID: 21300000, guid: 4a59607811bc1f9459591856511467a5, type: 3}
-  explain: Add speed
-  attribute: 0.3
+  image: {fileID: 21300000, guid: 7212e84f7fabcf641bc7b84d37739f61, type: 3}
+  explain: Speed Boost
+  attribute: 0.1

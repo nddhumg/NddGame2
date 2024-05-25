@@ -8,11 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5838f3c78cf2f48af0f2a18e9270c4, type: 3}
+  m_Script: {fileID: 11500000, guid: b23c2fdad973d3d499510214e7da0e86, type: 3}
   m_Name: AbilityCircular
   m_EditorClassIdentifier: 
   nameCard: 100
-  typeCard: 2
   image: {fileID: 21300000, guid: 6e8e68d19da4a5646b52a4b1b5b1452f, type: 3}
-  explain: 
-  attribute: 0
+  listExplain:
+  - Sumon a fireball that flies around causing 100% damage.
+  - A fireball increase damage
+  - Summon an additional fireball
+  - Expand the radius and increase the speed of the fireball
+  - Summon an additional fireball, increase damage

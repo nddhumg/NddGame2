@@ -45,7 +45,7 @@ public class LevelPlayer : Level {
 	public override void LevelUp ()
 	{
 		base.LevelUp ();
-		EnhancementCreateManager.Instance.CreateCard ();
+		UpgradeManager.Instance.CreateUpgradeCard ();
 		SoundManager.Instance.OnPlaySound (SoundName.LevelUp);
 	}
 	protected virtual void IncreaseExpLevelup(){

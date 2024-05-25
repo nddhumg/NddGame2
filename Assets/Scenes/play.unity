@@ -477,7 +477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &116341474
 MonoBehaviour:
@@ -722,9 +722,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cd448a231c8ad4d8531e8b1a5f6f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enhancementSelectCtrl: {fileID: 380176098}
-  enhancementCard: {fileID: 0}
   nameEnhancementSelect: 0
+  enhancementSelectCtrl: {fileID: 380176098}
 --- !u!1 &149034093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1305,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c0ea4b6e528e7fe4aa6cdc94d38691a1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2012,48 +2011,6 @@ Transform:
   m_Father: {fileID: 1515278037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &372390785
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 372390786}
-  - component: {fileID: 372390787}
-  m_Layer: 0
-  m_Name: EnhancementCreate
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &372390786
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 372390785}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1855446811}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &372390787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 372390785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e8029179ac873b4489af31658f789b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valueEnhancementCreate: 3
-  unlockAbilityPlayer: {fileID: 1399449565}
 --- !u!1 &376703501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,10 +2049,10 @@ GameObject:
   - component: {fileID: 380176094}
   - component: {fileID: 380176097}
   - component: {fileID: 380176099}
-  - component: {fileID: 380176098}
   - component: {fileID: 380176100}
   - component: {fileID: 380176095}
   - component: {fileID: 380176096}
+  - component: {fileID: 380176098}
   m_Layer: 5
   m_Name: Select3
   m_TagString: Untagged
@@ -2208,7 +2165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 380176093}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a73bba3fee2274485a9fd6e00c80a1, type: 3}
+  m_Script: {fileID: 11500000, guid: d2d3119d40474554c8a5f5ca94d2bbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 1818977201}
@@ -2377,9 +2334,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cd448a231c8ad4d8531e8b1a5f6f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enhancementSelectCtrl: {fileID: 1659930871}
-  enhancementCard: {fileID: 0}
   nameEnhancementSelect: 0
+  enhancementSelectCtrl: {fileID: 1659930871}
 --- !u!1 &413126978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5443,7 +5399,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &816151634
 GameObject:
@@ -5936,46 +5892,6 @@ RectTransform:
   m_AnchoredPosition: {x: -1.44, y: -66.47}
   m_SizeDelta: {x: 122, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &907615773
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 907615774}
-  - component: {fileID: 907615775}
-  m_Layer: 0
-  m_Name: EnhancementOptionsEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &907615774
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 907615773}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1855446811}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &907615775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 907615773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d50a08fb727e86a4c9820b73b5784282, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &909596824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7069,9 +6985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81cd448a231c8ad4d8531e8b1a5f6f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enhancementSelectCtrl: {fileID: 1091700064}
-  enhancementCard: {fileID: 0}
   nameEnhancementSelect: 0
+  enhancementSelectCtrl: {fileID: 1091700064}
 --- !u!224 &1025871023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7335,7 +7250,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1070795855}
   - component: {fileID: 1070795856}
-  - component: {fileID: 1070795857}
   m_Layer: 5
   m_Name: UIEnhancementSelectManager
   m_TagString: Untagged
@@ -7370,7 +7284,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1070795854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d13fabf204213624992c1023c8c7d2b0, type: 3}
+  m_Script: {fileID: 11500000, guid: ab35dfea1c5f8f64f95507e80dc77a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   listEnhancementSelectCtrl:
@@ -7379,23 +7293,6 @@ MonoBehaviour:
   - {fileID: 380176098}
   enhancementSelect: {fileID: 719342025}
   unlockAbilityPlayer: {fileID: 1399449565}
---- !u!95 &1070795857
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1070795854}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3cae965e555835d4c940be03c7a71808, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1074663085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,10 +7530,10 @@ GameObject:
   - component: {fileID: 1091700063}
   - component: {fileID: 1091700065}
   - component: {fileID: 1091700068}
-  - component: {fileID: 1091700064}
   - component: {fileID: 1091700069}
   - component: {fileID: 1091700067}
   - component: {fileID: 1091700066}
+  - component: {fileID: 1091700064}
   m_Layer: 5
   m_Name: Select2
   m_TagString: Untagged
@@ -7675,7 +7572,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1091700062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a73bba3fee2274485a9fd6e00c80a1, type: 3}
+  m_Script: {fileID: 11500000, guid: d2d3119d40474554c8a5f5ca94d2bbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 1355004687}
@@ -9254,7 +9151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1315530474}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67664823da3459940a7910166920a676, type: 3}
+  m_Script: {fileID: 11500000, guid: 177ac9f8e60d7e943a7cd2d6d9c06694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityPlayerCtrl: {fileID: 1609267511}
@@ -12559,7 +12456,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435990445
 GameObject:
@@ -13886,8 +13783,8 @@ GameObject:
   - component: {fileID: 1659930868}
   - component: {fileID: 1659930872}
   - component: {fileID: 1659930870}
-  - component: {fileID: 1659930871}
   - component: {fileID: 1659930867}
+  - component: {fileID: 1659930871}
   - component: {fileID: 1659930869}
   m_Layer: 5
   m_Name: Select1
@@ -14014,7 +13911,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659930865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09a73bba3fee2274485a9fd6e00c80a1, type: 3}
+  m_Script: {fileID: 11500000, guid: d2d3119d40474554c8a5f5ca94d2bbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backGround: {fileID: 1473041039}
@@ -61740,36 +61637,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1855446810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1855446811}
-  m_Layer: 0
-  m_Name: Enhancement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1855446811
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1855446810}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 372390786}
-  - {fileID: 907615774}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1868931063
 GameObject:
   m_ObjectHideFlags: 0

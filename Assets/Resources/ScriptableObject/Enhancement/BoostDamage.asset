@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: BoostDamage
   m_EditorClassIdentifier: 
   nameCard: 1
-  typeCard: 1
-  image: {fileID: 21300000, guid: 1ff1175d56df9eb4f8cfa0ba429d9254, type: 3}
-  explain: Add Damage
-  attribute: 10
+  image: {fileID: 21300000, guid: 414e752863ad72f45a3e3d32968e47d9, type: 3}
+  explain: Damage Boost
+  attribute: 50

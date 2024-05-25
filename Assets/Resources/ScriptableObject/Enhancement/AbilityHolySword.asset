@@ -8,11 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5838f3c78cf2f48af0f2a18e9270c4, type: 3}
+  m_Script: {fileID: 11500000, guid: b23c2fdad973d3d499510214e7da0e86, type: 3}
   m_Name: AbilityHolySword
   m_EditorClassIdentifier: 
   nameCard: 102
-  typeCard: 2
   image: {fileID: 21300000, guid: c0ea4b6e528e7fe4aa6cdc94d38691a1, type: 3}
-  explain: 
-  attribute: 0
+  listExplain:
+  - Create a flying sword that deals damage in the surrounding area
+  - A sword that inflicts more damage
+  - Add one more sword created and make the flying swords faster.
+  - Make the swords inflict more damage and increase their flying speed
+  - Significantly increase the stats and create an additional sword

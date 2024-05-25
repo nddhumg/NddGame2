@@ -10,5 +10,8 @@ public abstract class LevelAbility : Level {
 		levelMax = 5;
 		levelCurrent = 0;
 	}
+	public bool IsLevelMax(){
+		return levelCurrent >= levelMax;
+	}
 	public abstract void LevelAbilityUp();
 }

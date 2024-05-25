@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: BoostRangePickUp
   m_EditorClassIdentifier: 
   nameCard: 5
-  typeCard: 1
-  image: {fileID: 21300000, guid: a889cb8ba677b3e418c33307c1336099, type: 3}
-  explain: Add range pick up
-  attribute: 0.3
+  image: {fileID: 21300000, guid: b5a427796d5be41439d1a5a7222ec5dc, type: 3}
+  explain: Pickup Range Boost
+  attribute: 0.2

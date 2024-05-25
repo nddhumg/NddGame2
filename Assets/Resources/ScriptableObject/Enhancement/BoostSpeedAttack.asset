@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: BoostSpeedAttack
   m_EditorClassIdentifier: 
   nameCard: 4
-  typeCard: 1
-  image: {fileID: 21300000, guid: 0c7f2b30efde63b4e85506baea6e3484, type: 3}
-  explain: Add speed attack
-  attribute: 0.1
+  image: {fileID: 21300000, guid: cf7d5b00efb8780469a94d87a6c472b0, type: 3}
+  explain: Attack Speed Boost
+  attribute: 0.05
