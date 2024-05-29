@@ -10,6 +10,21 @@ public class AbilityCircularPlayer : AbilityCircular  {
 		base.Start ();
 		ctrl.LevelAbility.LevelAbilityUp ();
 	}
+
+
+	public virtual void SetDamageObj(){
+		foreach (Transform child in holder) {
+			DamageSender damageSender = child.GetComponentInChildren<DamageSender> ();
+			damageSender.SetDamage (ctrl.DamagePlayerAbility.Damage);
+		}
+	}
+
+	public override GameObject InstantiatePrab ()
+	{
+		GameObject obj =  base.InstantiatePrab ();
+		SetDamageObj ();
+		return obj;
+	}
 	protected override void ResetValue ()
 	{
 		base.ResetValue ();
@@ -33,11 +48,5 @@ public class AbilityCircularPlayer : AbilityCircular  {
 			return;
 		ctrl = transform.GetComponent<AbilityCircularPlayerCtrl>();
 		Debug.LogWarning ("Add AbilityCircularPlayerCtrl", gameObject);
-	}
-	public virtual void SetDamageObj(){
-		foreach (Transform child in holder) {
-			DamageSender damageSender = child.GetComponentInChildren<DamageSender> ();
-			damageSender.SetDamage (ctrl.DamagePlayerAbility.Damage);
-		}
 	}
 }

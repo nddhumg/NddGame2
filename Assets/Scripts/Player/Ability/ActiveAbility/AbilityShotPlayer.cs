@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityShotPlayer : AbilityShot,ISetDamagePlayer{
+public class AbilityShotPlayer : AbilityShot{
 	[Header ("Shot Ability Player")]  
 	[SerializeField] protected bool shotByKey ;
 	[SerializeField] protected bool shotByAutoPosTarget = true;
@@ -15,9 +15,9 @@ public class AbilityShotPlayer : AbilityShot,ISetDamagePlayer{
 	}
 	protected override void Start(){
 		base.Start ();
-		playerCtrl.AttributesPlayer.AddObsever (this);
+		playerCtrl.AttributesPlayer.OnModificationDanageEvent += SetDamage;
 	}
-	public void OnSetDamage(float damage){
+	public override void SetDamage(float damage){
 		this.damage = damage;
 	}
 	protected virtual void LoadPlayerCtrl(){

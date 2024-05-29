@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagePlayerAbility : DamageAbility,ISetDamagePlayer {
+public class DamagePlayerAbility : DamageAbility {
 	[Header("Damage Player Ability")]
 	[SerializeField] protected PlayerCtrl playerCtrl;
 	void OnEnable(){
-		playerCtrl.AttributesPlayer.AddObsever (this);
+//		playerCtrl.AttributesPlayer.AddObsever (this);
+		playerCtrl.AttributesPlayer.OnModificationDanageEvent += OnSetDamage;
 		baseDamage = playerCtrl.AttributesPlayer.Damage;
 		damage = baseDamage;
 	}
@@ -21,7 +22,7 @@ public class DamagePlayerAbility : DamageAbility,ISetDamagePlayer {
 		playerCtrl = transform.root.GetComponent<PlayerCtrl>();
 		Debug.LogWarning ("Add PlayerCtrl",gameObject);
 	}
-	public virtual void OnSetDamage(float damagePlayer){
+	protected virtual void OnSetDamage(float damagePlayer){
 		baseDamage = damagePlayer;
 		damage = baseDamage * damageRatio;
 	}

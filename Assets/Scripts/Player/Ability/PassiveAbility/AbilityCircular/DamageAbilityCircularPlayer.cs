@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageAbilityCircularPlayer : DamagePlayerAbility {
 	[SerializeField] protected AbilityCircularPlayer abilityCircularPlayer;
-	public override void OnSetDamage (float damagePlayer)
+	protected override void OnSetDamage (float damagePlayer)
 	{
 		base.OnSetDamage (damagePlayer);
 		abilityCircularPlayer.SetDamageObj ();

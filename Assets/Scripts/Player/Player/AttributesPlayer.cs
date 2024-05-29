@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class AttributesPlayer : NddBehaviour{
 	[SerializeField] protected PlayerCtrl playerCtrl;
 	[SerializeField]protected float damage =1;
+	public event Action<float> OnModificationDanageEvent;
 	protected float minDamage =1;
 	public float Damage{
 		get{ 
@@ -18,7 +19,7 @@ public class AttributesPlayer : NddBehaviour{
 		if (IsLimitDamage (damage))
 			return;
 		this.damage = damage;
-		NotifyObsevers (damage);
+		OnModificationDanageEvent?.Invoke (damage);
 	}
 
 	protected override void LoadComponent(){
@@ -37,17 +38,4 @@ public class AttributesPlayer : NddBehaviour{
 		Debug.Log ("Add PlayerCtrl", gameObject);
 	}
 
-	[SerializeField]private List<ISetDamagePlayer> obsevers = new List<ISetDamagePlayer>();
-
-	public void AddObsever(ISetDamagePlayer obsever){
-		obsevers.Add (obsever);
-	}
-	public void RemoveObsever(ISetDamagePlayer obsever){
-		obsevers.Remove (obsever);
-	}
-	protected void NotifyObsevers(float damage){
-		foreach (ISetDamagePlayer obsever in obsevers) {
-			obsever.OnSetDamage (damage);
-		}
-	}
 }

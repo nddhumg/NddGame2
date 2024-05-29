@@ -7,7 +7,6 @@ using System.Linq;
 public class UpgradeManager : NddBehaviour {
 	[SerializeField] protected List<UpgradeSelectCtrl> listEnhancementSelectCtrl;
 	[SerializeField] protected Transform enhancementSelect;
-	[SerializeField] protected UnlockAbilityPlayer unlockAbilityPlayer;
 	protected UpgradeCode[] arrayEnhancementNameAll = (UpgradeCode[])Enum.GetValues (typeof(UpgradeCode));
 	private List<IEvenetUpgradeSelect> obsevers = new List<IEvenetUpgradeSelect>();
 
@@ -97,7 +96,7 @@ public class UpgradeManager : NddBehaviour {
 		return (int)enhancementCode >= 100;
 	}
 	private int GetLevelEnhancementAbility(UpgradeCode enhancementCode){
-		Transform abilityTransform = unlockAbilityPlayer.GetAbilityUnLock (enhancementCode.ToString ());
+		Transform abilityTransform = PlayerCtrl.Instance.AbilityCtrl.AbilityUnlock.GetAbilityUnLock (enhancementCode.ToString ());
 		if(abilityTransform == null)
 		{
 			return 0;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DmgAbilityHolySwordPlayer : DamagePlayerAbility {
 	[SerializeField] protected AbilityHolySwordPlayerCtrl ctrl;
-	public override void OnSetDamage (float damagePlayer)
+	protected override void OnSetDamage (float damagePlayer)
 	{
 		base.OnSetDamage (damagePlayer);
 		ctrl.Manager.SetDamageObj (damage);

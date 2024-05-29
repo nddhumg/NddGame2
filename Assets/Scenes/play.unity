@@ -7292,7 +7292,6 @@ MonoBehaviour:
   - {fileID: 1091700064}
   - {fileID: 380176098}
   enhancementSelect: {fileID: 719342025}
-  unlockAbilityPlayer: {fileID: 1399449565}
 --- !u!1 &1074663085
 GameObject:
   m_ObjectHideFlags: 0
@@ -9194,6 +9193,11 @@ Prefab:
     - target: {fileID: 4503996583394492, guid: a7c0b4b569a5d7545b7dcf1b49533087, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50721763414700122, guid: a7c0b4b569a5d7545b7dcf1b49533087,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7c0b4b569a5d7545b7dcf1b49533087, type: 2}
