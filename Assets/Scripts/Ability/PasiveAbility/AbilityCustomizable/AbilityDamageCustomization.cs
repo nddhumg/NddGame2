@@ -3,17 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityDamageCustomization : AbilityCustomizableObject {
-	[SerializeField] protected AttributesPlayer attributesPlayer;
-
-	protected override void LoadComponent(){
-		base.LoadComponent ();
-		this.LoadAttributesPlayer ();
-	}
-	protected virtual void LoadAttributesPlayer(){
-		if (this.attributesPlayer != null)
-			return;
-		this.attributesPlayer = transform.root.GetComponentInChildren<AttributesPlayer>();
-		Debug.LogWarning ("Add AttributesPlayer", gameObject);
+	protected AttributesPlayer attributesPlayer;
+	public AbilityDamageCustomization(AttributesPlayer attributesPlayer){
+		this.attributesPlayer = attributesPlayer;
 	}
 	protected override void GetParameter(){
 		this.parameter = attributesPlayer.Damage;

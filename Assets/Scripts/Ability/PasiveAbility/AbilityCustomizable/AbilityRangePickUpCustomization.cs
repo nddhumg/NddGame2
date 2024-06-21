@@ -3,17 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilityRangePickUpCustomization : AbilityCustomizableObject {
-	[SerializeField] protected PickUp pickUp;
-
-	protected override void LoadComponent(){
-		base.LoadComponent ();
-		this.LoadPickUpItem ();
-	}
-	protected virtual void LoadPickUpItem(){
-		if (this.pickUp != null)
-			return;
-		this.pickUp = transform.parent.parent.parent.GetComponentInChildren<PickUp>();
-		Debug.LogWarning ("Add PickUpItem", gameObject);
+	 protected PickUp pickUp;
+	public AbilityRangePickUpCustomization(PickUp pickUp){
+		this.pickUp = pickUp;
 	}
 	protected override void GetParameter(){
 		this.parameter = pickUp.CurrentRangePickUp;

@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GetUpgradePlayer : NddBehaviour,IEvenetUpgradeSelect{
 	[SerializeField] protected AbilityPlayerCtrl abilityPlayerCtrl;
 	[SerializeField] protected UnlockAbilityPlayer unlockAbilityPlayer;
+	[SerializeField] protected Dictionary<UpgradeCode,AbilityCustomizableObject> dictionaryCustomizableObject = new Dictionary<UpgradeCode,AbilityCustomizableObject>();
 
 	protected override void Start(){
 		UpgradeManager.Instance.AddObsever (this);
+		AddCustomizableObject ();
 	}
 	protected virtual void OnDisable(){
 		UpgradeManager.Instance.RemoveObsever (this);
@@ -27,40 +30,26 @@ public class GetUpgradePlayer : NddBehaviour,IEvenetUpgradeSelect{
 			OnSelectionEnhancementAbility(select);
 			OnSelectionEnhancementParameters(select);
 	}
+	protected void AddCustomizableObject(){
+		dictionaryCustomizableObject.Add (UpgradeCode.BoostDamage,new AbilityDamageCustomization(PlayerCtrl.Instance.AttributesPlayer));
+		dictionaryCustomizableObject.Add (UpgradeCode.BoostHp,new AbilityHpMaxCustomization(PlayerCtrl.Instance.DamageReceiver));
+		dictionaryCustomizableObject.Add (UpgradeCode.BoostRangePickUp,new AbilityRangePickUpCustomization(PlayerCtrl.Instance.PickUp));
+		dictionaryCustomizableObject.Add (UpgradeCode.BoostSpeed,new AbilitySpeedCustomization(PlayerCtrl.Instance.MovingPlayer));
+		dictionaryCustomizableObject.Add (UpgradeCode.BoostSpeedAttack,new AbilityShootingRateCustomization(PlayerCtrl.Instance.ShotPlayer));
+	}
+
 	protected void OnSelectionEnhancementParameters(UpgradeCode select){
 		if (!IsSelectionParameters (select))
 			return;
 		string resPath = "ScriptableObject/Enhancement/" +	select.ToString();;
-		UpgradeCardSO enhancementCard = Resources.Load<UpgradeCardSO> (resPath);
-		if (enhancementCard == null) {
+		UpgradeCardSO UpgradeCard = Resources.Load<UpgradeCardSO> (resPath);
+		if (UpgradeCard == null) {
 			Debug.LogError("Dont resources load: "+ resPath );
 			return;
 		}
-		switch (select) 
-		{
-		case UpgradeCode.BoostHp:
-			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityHpMaxCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-			break;
+		AbilityCustomizableObject custom = dictionaryCustomizableObject [select];
+		custom.ParamemterCustomization (UpgradeCard.attribute, true);
 
-		case UpgradeCode.BoostSpeed:
-			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilitySpeedCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-			break;
-
-		case UpgradeCode.BoostSpeedAttack:
-			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityFireRateCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-			break;
-
-		case UpgradeCode.BoostDamage:
-			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityDamageCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-			break;
-
-		case UpgradeCode.BoostRangePickUp:
-			abilityPlayerCtrl.PassiveAbilityPlayerCtrl.AbilityRangePickUpCustomization.ParamemterCustomization(enhancementCard.attribute,true);
-			break;
-		default:
-			Debug.LogWarning("Dont event select Parameters "+select.ToString(),gameObject);
-			break;
-		}
 	} 
 	protected void OnSelectionEnhancementAbility(UpgradeCode select){
 		if (!IsSelectionAbility (select))

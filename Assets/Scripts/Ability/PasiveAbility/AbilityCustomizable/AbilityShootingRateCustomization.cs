@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public  class AbilityShootingRateCustomization : AbilityCustomizeShooting {
-	
+	public AbilityShootingRateCustomization(AbilityShotPlayer shot) : base(shot){
+	}
 	protected override void GetParameter(){
 		parameter = this.abilityShot.DelayAbility;
 	}

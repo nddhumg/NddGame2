@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilitySpeedCustomization : AbilityCustomizableObject {
-	[SerializeField] protected MovingPlayer movingPlayer;
+	protected MovingPlayer movingPlayer;
 
-	protected override void LoadComponent(){
-		base.LoadComponent ();
-		this.LoadMovingPlayer ();
-	}
-	protected virtual void LoadMovingPlayer(){
-		if (this.movingPlayer != null)
-			return;
-		this.movingPlayer = transform.parent.parent.parent.GetComponentInChildren<MovingPlayer>();
-		Debug.LogWarning ("Add DamageReceiver", gameObject);
+	public AbilitySpeedCustomization(MovingPlayer move){
+		this.movingPlayer = move;
 	}
 	protected override void GetParameter(){
 		this.parameter = movingPlayer.SpeedMoving;

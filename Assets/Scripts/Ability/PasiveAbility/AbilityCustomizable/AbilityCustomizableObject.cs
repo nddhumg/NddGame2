@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AbilityCustomizableObject : PassiveAbility {
-	[Header("Ability Customizable Object")]
-	[SerializeField] protected float parameter;
-	[SerializeField] protected float parameterCompleted;
+public abstract class AbilityCustomizableObject  {
+ 	protected float parameter;
+ 	protected float parameterCompleted;
 
 	protected abstract void GetParameter ();
 	protected abstract void ParameterIcrease (float parameterModified);

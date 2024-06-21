@@ -28,6 +28,13 @@ public class PlayerCtrl : GameObjCtrl {
 	[SerializeField]protected LevelPlayer level;
 	[SerializeField]protected AttributesPlayer attributes;
 	[SerializeField]protected AbilityPlayerCtrl abilityCtrl;
+	[SerializeField] protected PickUpPlayer pickUp;
+
+	public PickUpPlayer PickUp{
+		get{ 
+			return pickUp;
+		}
+	}
 	public AbilityPlayerCtrl AbilityCtrl{
 		get{
 			return abilityCtrl;
@@ -96,6 +103,7 @@ public class PlayerCtrl : GameObjCtrl {
 		LoadLevelPlayer ();
 		LoadAttributesPlayer ();
 		LoadAbilityPlayerCtrl ();
+		LoadPickUp ();
 	}
 	protected virtual void LoadPlayerSO(){
 		if (this.playerSO != null)
@@ -104,23 +112,29 @@ public class PlayerCtrl : GameObjCtrl {
 		this.playerSO = Resources.Load<PlayerSO> (resPath);
 		Debug.LogWarning (transform.name + " LoadPlayerSO " + resPath, gameObject);
 	}
+	protected virtual void LoadPickUp(){
+		if (this.pickUp != null)
+			return;
+		this.pickUp= GetComponentInChildren<PickUpPlayer>();
+		Debug.LogWarning ("Add PickUp", gameObject);
+	}
 	protected virtual void LoadAbilityPlayerCtrl(){
 		if (this.abilityCtrl != null)
 			return;
 		this.abilityCtrl= GetComponentInChildren<AbilityPlayerCtrl>();
-		Debug.Log ("Add AbilityCtrl", gameObject);
+		Debug.LogWarning ("Add AbilityCtrl", gameObject);
 	}
 	protected virtual void LoadLevelPlayer(){
 		if (this.level != null)
 			return;
 		this.level= GetComponentInChildren<LevelPlayer>();
-		Debug.Log ("Add LevelPlayer", gameObject);
+		Debug.LogWarning ("Add LevelPlayer", gameObject);
 	}
 	protected virtual void LoadAttributesPlayer(){
 		if (this.attributes != null)
 			return;
 		this.attributes= GetComponentInChildren<AttributesPlayer>();
-		Debug.Log ("Add AttributesPlayer", gameObject);
+		Debug.LogWarning ("Add AttributesPlayer", gameObject);
 	}
 	protected virtual void LoadPhysicsPlayer(){
 		if (this.physicsPlayer != null)
