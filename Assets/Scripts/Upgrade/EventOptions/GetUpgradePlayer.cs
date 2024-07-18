@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class GetUpgradePlayer : NddBehaviour,IEvenetUpgradeSelect{
+public class GetUpgradePlayer : NddBehaviour	{
 	[SerializeField] protected AbilityPlayerCtrl abilityPlayerCtrl;
 	[SerializeField] protected UnlockAbilityPlayer unlockAbilityPlayer;
 	[SerializeField] protected Dictionary<UpgradeCode,AbilityCustomizableObject> dictionaryCustomizableObject = new Dictionary<UpgradeCode,AbilityCustomizableObject>();
 
 	protected override void Start(){
-		UpgradeManager.Instance.AddObsever (this);
+//		UpgradeManager.Instance.AddObsever (this);
+		UpgradeManager.Instance.OnUpgradeStat += OnSelectionEnhancementStats;
+		UpgradeManager.Instance.OnUpgradeAbility += OnSelectionEnhancementAbility;
 		AddCustomizableObject ();
 	}
 	protected virtual void OnDisable(){
-		UpgradeManager.Instance.RemoveObsever (this);
+//		UpgradeManager.Instance.RemoveObsever (this);
 	}
 	protected override void LoadComponent ()
 	{
@@ -26,10 +28,10 @@ public class GetUpgradePlayer : NddBehaviour,IEvenetUpgradeSelect{
 		this.abilityPlayerCtrl= transform.parent.GetComponentInChildren<AbilityPlayerCtrl>();;
 		Debug.LogWarning ("Add AbilityPlayerCtrl", gameObject);
 	}
-	public void OnSelectionEnhancement(UpgradeCode select){
-			OnSelectionEnhancementAbility(select);
-			OnSelectionEnhancementParameters(select);
-	}
+//	public void OnSelectionEnhancement(UpgradeCode select){
+//			OnSelectionEnhancementAbility(select);
+//			OnSelectionEnhancementStats(select);
+//	}
 	protected void AddCustomizableObject(){
 		dictionaryCustomizableObject.Add (UpgradeCode.BoostDamage,new AbilityDamageCustomization(PlayerCtrl.Instance.AttributesPlayer));
 		dictionaryCustomizableObject.Add (UpgradeCode.BoostHp,new AbilityHpMaxCustomization(PlayerCtrl.Instance.DamageReceiver));
@@ -37,12 +39,16 @@ public class GetUpgradePlayer : NddBehaviour,IEvenetUpgradeSelect{
 		dictionaryCustomizableObject.Add (UpgradeCode.BoostSpeed,new AbilitySpeedCustomization(PlayerCtrl.Instance.MovingPlayer));
 		dictionaryCustomizableObject.Add (UpgradeCode.BoostSpeedAttack,new AbilityShootingRateCustomization(PlayerCtrl.Instance.ShotPlayer));
 	}
+	protected void OnSelectionEnhancementStats(UpgradeStatSO select){
+		AbilityCustomizableObject custom = dictionaryCustomizableObject [select.nameCard];
+		custom.ParamemterCustomization (select.attribute, true);
 
-	protected void OnSelectionEnhancementParameters(UpgradeCode select){
+	} 
+	protected void OnSelectionEnhancementStats(UpgradeCode select){
 		if (!IsSelectionParameters (select))
 			return;
 		string resPath = "ScriptableObject/Enhancement/" +	select.ToString();;
-		UpgradeCardSO UpgradeCard = Resources.Load<UpgradeCardSO> (resPath);
+		UpgradeStatSO UpgradeCard = Resources.Load<UpgradeStatSO> (resPath);
 		if (UpgradeCard == null) {
 			Debug.LogError("Dont resources load: "+ resPath );
 			return;

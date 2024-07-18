@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(fileName = "EnhancementCard", menuName = "SO/EnhancementCard/Normal" +"")]
-public class UpgradeCardSO : CardSO {
+[CreateAssetMenu(fileName = "UpgradeStat", menuName = "SO/Upgrade/Stat" +"")]
+public class UpgradeStatSO : UpgradeSO {
 	public string explain; 
 	public float attribute = 0 ;
 }

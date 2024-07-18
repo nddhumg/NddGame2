@@ -484,9 +484,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6e8e68d19da4a5646b52a4b1b5b1452f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -676,11 +676,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 141736557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cd448a231c8ad4d8531e8b1a5f6f98, type: 3}
+  m_Script: {fileID: 11500000, guid: 39ea9e396f2ba804ba971e21c505d247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameEnhancementSelect: 0
   enhancementSelectCtrl: {fileID: 380176098}
+  resPathSO: ScriptableObject/Upgrade/
 --- !u!1 &149034093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,9 +1263,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6e8e68d19da4a5646b52a4b1b5b1452f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2127,8 +2128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backGround: {fileID: 1818977201}
   imgIcon: {fileID: 251206920}
-  textExplainEnhancementSelect: {fileID: 921489547}
-  textLevelEnhancementSelect: {fileID: 210846609}
+  textExplainUpgrade: {fileID: 921489547}
+  textLevelUpgrade: {fileID: 210846609}
   enhancementSelectProperties: {fileID: 141736559}
   enhacementSelectAnimation: {fileID: 380176100}
 --- !u!114 &380176099
@@ -2143,7 +2144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 380176095}
-  enhancementSelectCtrl: {fileID: 380176098}
+  upgradeSelectCtrl: {fileID: 380176098}
 --- !u!114 &380176100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,11 +2289,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 410337377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cd448a231c8ad4d8531e8b1a5f6f98, type: 3}
+  m_Script: {fileID: 11500000, guid: 39ea9e396f2ba804ba971e21c505d247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameEnhancementSelect: 0
   enhancementSelectCtrl: {fileID: 1659930871}
+  resPathSO: ScriptableObject/Upgrade/
 --- !u!1 &413126978
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,7 +4190,7 @@ GameObject:
   - component: {fileID: 719342025}
   - component: {fileID: 719342026}
   m_Layer: 5
-  m_Name: EnhancementSelect
+  m_Name: UpgradetSelect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4397,9 +4399,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6e8e68d19da4a5646b52a4b1b5b1452f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6940,11 +6942,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1025871021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cd448a231c8ad4d8531e8b1a5f6f98, type: 3}
+  m_Script: {fileID: 11500000, guid: 39ea9e396f2ba804ba971e21c505d247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nameEnhancementSelect: 0
   enhancementSelectCtrl: {fileID: 1091700064}
+  resPathSO: ScriptableObject/Upgrade/
 --- !u!224 &1025871023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7209,7 +7212,7 @@ GameObject:
   - component: {fileID: 1070795855}
   - component: {fileID: 1070795856}
   m_Layer: 5
-  m_Name: UIEnhancementSelectManager
+  m_Name: UIUpgradeSelectManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7534,8 +7537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backGround: {fileID: 1355004687}
   imgIcon: {fileID: 124080358}
-  textExplainEnhancementSelect: {fileID: 893548107}
-  textLevelEnhancementSelect: {fileID: 809327768}
+  textExplainUpgrade: {fileID: 893548107}
+  textLevelUpgrade: {fileID: 809327768}
   enhancementSelectProperties: {fileID: 1025871022}
   enhacementSelectAnimation: {fileID: 1091700069}
 --- !u!222 &1091700065
@@ -7624,7 +7627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1091700067}
-  enhancementSelectCtrl: {fileID: 1091700064}
+  upgradeSelectCtrl: {fileID: 1091700064}
 --- !u!114 &1091700069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8986,7 +8989,7 @@ GameObject:
   - component: {fileID: 1315530475}
   - component: {fileID: 1315530476}
   m_Layer: 8
-  m_Name: EnhancementPlayer
+  m_Name: UpgradePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13724,7 +13727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1659930869}
-  enhancementSelectCtrl: {fileID: 1659930871}
+  upgradeSelectCtrl: {fileID: 1659930871}
 --- !u!114 &1659930871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13738,8 +13741,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backGround: {fileID: 1473041039}
   imgIcon: {fileID: 726122485}
-  textExplainEnhancementSelect: {fileID: 322779891}
-  textLevelEnhancementSelect: {fileID: 707395881}
+  textExplainUpgrade: {fileID: 322779891}
+  textLevelUpgrade: {fileID: 707395881}
   enhancementSelectProperties: {fileID: 410337379}
   enhacementSelectAnimation: {fileID: 1659930872}
 --- !u!114 &1659930872

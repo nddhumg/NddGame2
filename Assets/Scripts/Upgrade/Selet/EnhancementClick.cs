@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnhancementClick :  ButtonBase {
-	[SerializeField] protected UpgradeSelectCtrl enhancementSelectCtrl;
+	[SerializeField] protected UpgradeSelectCtrl upgradeSelectCtrl;
 	void OnEnable(){
 	}
 	protected override void LoadComponent ()
@@ -13,9 +13,9 @@ public class EnhancementClick :  ButtonBase {
 	}
 
 	protected virtual void LoadEnhancementSelectCtrl(){
-		if (enhancementSelectCtrl != null)
+		if (upgradeSelectCtrl != null)
 			return;
-		enhancementSelectCtrl = transform.GetComponent<UpgradeSelectCtrl> ();
+		upgradeSelectCtrl = transform.GetComponent<UpgradeSelectCtrl> ();
 		Debug.LogWarning ("Add EnhancementSelectCtrl", gameObject);
 	}
 
@@ -28,8 +28,13 @@ public class EnhancementClick :  ButtonBase {
 			return;
 		if (UIManagerPlay.Instance.IsOpenUISetting)
 			return;
-		UpgradeCode nameEnhancementSelect = enhancementSelectCtrl.EnhancementSelectProperties.NameEnhancementSelect;
-		UpgradeManager.Instance.SelectEnhacement (nameEnhancementSelect);
+		UpgradeCode nameEnhancementSelect = upgradeSelectCtrl.EnhancementSelectProperties.NameEnhancementSelect;
+		if (UpgradeManager.Instance.IsUpgradeAbility (nameEnhancementSelect)) {
+			UpgradeManager.Instance.OnUpgradeAbility (nameEnhancementSelect);
+		}
+		else 
+			UpgradeManager.Instance.OnUpgradeStat(upgradeSelectCtrl.EnhancementSelectProperties.UpgradeStatSO);
+		
 		UpgradeManager.Instance.SelectClick ();
 	}	
 

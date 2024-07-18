@@ -8,10 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5838f3c78cf2f48af0f2a18e9270c4, type: 3}
-  m_Name: BoostDamage
+  m_Script: {fileID: 11500000, guid: 80dada263137d5d4285cca72783334d2, type: 3}
+  m_Name: BoostHp
   m_EditorClassIdentifier: 
-  nameCard: 1
-  image: {fileID: 21300000, guid: 414e752863ad72f45a3e3d32968e47d9, type: 3}
-  explain: Damage Boost
-  attribute: 50
+  nameCard: 2
+  image: {fileID: 21300000, guid: 4f61544908dd21c4b8398ba50b63a0d5, type: 3}
+  explain: Max Health Boost
+  attribute: 100

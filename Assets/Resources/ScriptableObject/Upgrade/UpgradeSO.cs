@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CardSO : ScriptableObject {
+public abstract class UpgradeSO : ScriptableObject {
 	public UpgradeCode nameCard = UpgradeCode.NoName;
 	public Sprite image ;
 }

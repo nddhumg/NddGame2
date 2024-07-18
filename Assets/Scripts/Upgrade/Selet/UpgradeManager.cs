@@ -8,7 +8,8 @@ public class UpgradeManager : NddBehaviour {
 	[SerializeField] protected List<UpgradeSelectCtrl> listEnhancementSelectCtrl;
 	[SerializeField] protected Transform enhancementSelect;
 	protected UpgradeCode[] arrayEnhancementNameAll = (UpgradeCode[])Enum.GetValues (typeof(UpgradeCode));
-	private List<IEvenetUpgradeSelect> obsevers = new List<IEvenetUpgradeSelect>();
+	public Action<UpgradeStatSO> OnUpgradeStat;
+	public Action<UpgradeCode> OnUpgradeAbility;
 
 	private static UpgradeManager instance;
 	public static UpgradeManager Instance{
@@ -33,7 +34,7 @@ public class UpgradeManager : NddBehaviour {
 				level = GetLevelEnhancementAbility (upGreade);
 				selectCtrl.EnhancementSelectProperties.LoadInfoUpgradeAbility (upGreade,level);
 			} else {
-				selectCtrl.EnhancementSelectProperties.LoadInfoUpgradeNormal (upGreade);
+				selectCtrl.EnhancementSelectProperties.LoadInfoUpgradeStat (upGreade);
 			}
 			upGrades.Remove (upGreade);
 		}
@@ -55,7 +56,6 @@ public class UpgradeManager : NddBehaviour {
 			ctrl.UpgradeSelectAnimation.StartAnimationDisable ();
 		}
 	}
-
 
 	protected override void LoadSingleton() {
 		if (UpgradeManager.instance != null) {
@@ -92,7 +92,7 @@ public class UpgradeManager : NddBehaviour {
 		}
 		Debug.LogWarning ("Add List Ctrl Enhancement Select");
 	}
-	private bool IsUpgradeAbility(UpgradeCode enhancementCode){
+	public bool IsUpgradeAbility(UpgradeCode enhancementCode){
 		return (int)enhancementCode >= 100;
 	}
 	private int GetLevelEnhancementAbility(UpgradeCode enhancementCode){
@@ -106,18 +106,5 @@ public class UpgradeManager : NddBehaviour {
 			return -1;
 		return (int)levelAbility.LevelCurrent;
 	}
-	public void AddObsever(IEvenetUpgradeSelect obsever){
-		obsevers.Add (obsever);
-	}
-	public void RemoveObsever(IEvenetUpgradeSelect obsever){
-		obsevers.Remove (obsever);
-	}
-	protected void NotifyObsevers(UpgradeCode dataEnhancementCode){
-		foreach (IEvenetUpgradeSelect obsever in obsevers) {
-			obsever.OnSelectionEnhancement (dataEnhancementCode);
-		}
-	}
-	public void SelectEnhacement(UpgradeCode selectEnhacementCode){
-		NotifyObsevers (selectEnhacementCode);
-	}
+
 }

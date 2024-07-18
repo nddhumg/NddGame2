@@ -8,10 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5838f3c78cf2f48af0f2a18e9270c4, type: 3}
-  m_Name: BoostHp
+  m_Script: {fileID: 11500000, guid: 80dada263137d5d4285cca72783334d2, type: 3}
+  m_Name: BoostRangePickUp
   m_EditorClassIdentifier: 
-  nameCard: 2
-  image: {fileID: 21300000, guid: fa58984723af7604b8431518ee799216, type: 3}
-  explain: Max Health Boost
-  attribute: 100
+  nameCard: 5
+  image: {fileID: 21300000, guid: e2cb3da7e4ee10b4eb1a8d77b88c5495, type: 3}
+  explain: Pickup Range Boost
+  attribute: 0.2
