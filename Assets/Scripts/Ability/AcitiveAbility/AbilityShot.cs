@@ -25,6 +25,7 @@ public abstract class AbilityShot : ActiveAbility {
 		BulletCtrl bulletCtrl= newBullet.GetComponent<BulletCtrl>();
 		bulletCtrl.FlyBullet.SetDirection(firingDirection);
 		bulletCtrl.DamageSender.SetDamage (damage);
+		ResetTiming ();
 		return newBullet;
 	}
 	public virtual void SetDelayShot(float delayShot){

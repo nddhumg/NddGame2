@@ -14,9 +14,14 @@ public  class MoveInTheDirection : NddBehaviour {
 
 	protected virtual void Moving(){
 		transform.parent.position += direction.normalized * Time.fixedDeltaTime * speed;
-	}	
-	protected virtual void SetDirection(){
-		//Abstract
+	}
+
+	public virtual void SetDirection(Vector3 direction){
+		this.direction = direction;
+	}
+
+	protected virtual void LoadDirection(){
+		
 	}
 }	
 	

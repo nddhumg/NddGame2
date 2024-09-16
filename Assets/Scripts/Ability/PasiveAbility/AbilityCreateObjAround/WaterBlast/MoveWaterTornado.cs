@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveWaterTornado : MoveInTheDirection {
 	void OnEnable(){
-		SetDirection ();
+		LoadDirection ();
 	}
 	protected override void ResetValue ()
 	{
@@ -14,9 +14,9 @@ public class MoveWaterTornado : MoveInTheDirection {
 	protected override void Moving(){
 		transform.parent.position += direction * Time.fixedDeltaTime;;
 	}
-	protected override void SetDirection ()
+	protected override void LoadDirection ()
 	{
-		base.SetDirection ();
+		base.LoadDirection ();
 		float directionX = Random.Range (-1f, 1f);
 		float directionY = Random.Range (-1f, 1f);
 		direction = new Vector3 (directionX * speed, directionY * speed, 0);

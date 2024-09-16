@@ -14,9 +14,7 @@ public class FlyBullet : MoveInTheDirection {
 		this.bulletCtrl= transform.parent.GetComponent<BulletCtrl>();
 		Debug.Log ("Add  BulletCtrl", gameObject);
 	}
-	public virtual void SetDirection(Vector3 direction){
-		this.direction = direction;
-	}
+
 	protected override void ResetValueComponent ()
 	{
 		base.ResetValue ();

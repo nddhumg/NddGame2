@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainPlay : NddBehaviour {
-	[SerializeField]protected float timeScalePlay = 1f;
-	[SerializeField]protected float timeScaleRunTime ;
+	[SerializeField] protected float timeScalePlay = 1f;
+	[SerializeField] protected float timeScaleRunTime ;
+	[SerializeField] protected bool isMobi = true;
 
+	public bool IsMobi{
+		get{ 
+			return isMobi;
+		}
+	}
 	
 	private static MainPlay instance;
 	public static MainPlay Instance{
@@ -25,6 +31,12 @@ public class MainPlay : NddBehaviour {
 		}
 	}
 
+
+	protected override void Awake(){
+		base.Awake ();
+//		CheckIsMobi ();
+	}
+		
 	protected override void Start ()
 	{
 		base.Start (); 
@@ -45,5 +57,12 @@ public class MainPlay : NddBehaviour {
 	public void ResumeLastGame()
 	{
 		Time.timeScale = timeScaleRunTime; 
+	}
+
+	private void CheckIsMobi(){
+		if (Application.platform == RuntimePlatform.Android)
+		{
+			isMobi = true;
+		}
 	}
 }
