@@ -7,6 +7,18 @@ public class AbilityDashPlayer : AbilityDashbyRigidbody2D {
 	[SerializeField] protected bool keyDash;
 	[SerializeField] protected PlayerCtrl playerCtrl;
 
+	public override void Dash ()
+	{
+		if (!isReady)
+			return;
+		dashDirection =  playerCtrl.MovingPlayer.Direction;
+		dashDirection = dashDirection.normalized;
+		if (dashDirection == Vector2.zero)
+			return;
+		base.Dash();
+		ResetTiming ();
+	}
+
 	protected override void LoadComponent(){
 		base.LoadComponent ();
 		this.LoadPlayerCtrl (); 
@@ -33,15 +45,10 @@ public class AbilityDashPlayer : AbilityDashbyRigidbody2D {
 		keyDash = InputManager.Instance.KeySpace;
 	}
 	protected virtual void CheckDash(){
-		if (!isReady)
-			return;
 		if (!this.keyDash)
 			return;
-		dashDirection =  playerCtrl.MovingPlayer.KeyMoving;
-		dashDirection = dashDirection.normalized;
-		if (dashDirection == Vector2.zero)
-			return;
-		Dash();
-		ResetTiming ();
+		Dash ();
 	}
+
+
 }

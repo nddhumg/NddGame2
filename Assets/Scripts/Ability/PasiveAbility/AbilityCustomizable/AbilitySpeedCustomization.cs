@@ -9,7 +9,7 @@ public class AbilitySpeedCustomization : AbilityCustomizableObject {
 		this.movingPlayer = move;
 	}
 	protected override void GetParameter(){
-		this.parameter = movingPlayer.SpeedMoving;
+		this.parameter = movingPlayer.Speed;
 	}
 	protected override void ParameterIcrease (float hpMaxModified){
 		this.parameterCompleted = parameter + hpMaxModified;

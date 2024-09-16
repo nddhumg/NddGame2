@@ -9,13 +9,9 @@ public class GetUpgradePlayer : NddBehaviour	{
 	[SerializeField] protected Dictionary<UpgradeCode,AbilityCustomizableObject> dictionaryCustomizableObject = new Dictionary<UpgradeCode,AbilityCustomizableObject>();
 
 	protected override void Start(){
-//		UpgradeManager.Instance.AddObsever (this);
 		UpgradeManager.Instance.OnUpgradeStat += OnSelectionEnhancementStats;
 		UpgradeManager.Instance.OnUpgradeAbility += OnSelectionEnhancementAbility;
 		AddCustomizableObject ();
-	}
-	protected virtual void OnDisable(){
-//		UpgradeManager.Instance.RemoveObsever (this);
 	}
 	protected override void LoadComponent ()
 	{
@@ -28,10 +24,6 @@ public class GetUpgradePlayer : NddBehaviour	{
 		this.abilityPlayerCtrl= transform.parent.GetComponentInChildren<AbilityPlayerCtrl>();;
 		Debug.LogWarning ("Add AbilityPlayerCtrl", gameObject);
 	}
-//	public void OnSelectionEnhancement(UpgradeCode select){
-//			OnSelectionEnhancementAbility(select);
-//			OnSelectionEnhancementStats(select);
-//	}
 	protected void AddCustomizableObject(){
 		dictionaryCustomizableObject.Add (UpgradeCode.BoostDamage,new AbilityDamageCustomization(PlayerCtrl.Instance.AttributesPlayer));
 		dictionaryCustomizableObject.Add (UpgradeCode.BoostHp,new AbilityHpMaxCustomization(PlayerCtrl.Instance.DamageReceiver));

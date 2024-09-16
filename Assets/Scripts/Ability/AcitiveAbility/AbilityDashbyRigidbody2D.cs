@@ -8,7 +8,7 @@ public class AbilityDashbyRigidbody2D : ActiveAbility {
 	[SerializeField] protected float dashDistance = 3f;
 	[SerializeField] protected LayerMask dashLayerMask;
 
-	protected virtual void Dash(){
+	public virtual void Dash(){ 
 		Vector3 dashPosition = new Vector3 (transform.position.x + dashDirection.x * dashDistance, transform.position.y + dashDirection.y * dashDistance, 0);
 		RaycastHit2D ray = Physics2D.Raycast (transform.position, dashDirection, dashDistance,dashLayerMask);
 		if (ray.collider != null) {

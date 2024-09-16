@@ -1,25 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MovingPlayer : NddBehaviour {
-	[SerializeField]protected Vector2 keyMoving ;
+	[SerializeField]protected Vector2 direction ;
     [SerializeField]protected float speed = 4.3f;
 	[SerializeField]protected PlayerCtrl playerCtrl;
-
+	private Action GetDirectionMove;
+	protected override void Start ()
+	{
+		base.Start ();
+		if(MainPlay.Instance.IsMobi){
+			GetDirectionMove += GetDirectionMobi;
+		}
+		else
+		{
+			GetDirectionMove += GetDirectionPc;
+		}
+	}
 	void Update()
 	{
 		Moving ();
 	}
 
-	public float SpeedMoving{
+	public float Speed{
 		get{
 			return speed;
 		}
 	}
-	public Vector2 KeyMoving{
+	public Vector2 Direction{
 		get{ 
-			return keyMoving;
+			return direction;
 		}
 	}
 	protected override void ResetValueComponent ()
@@ -39,25 +51,27 @@ public class MovingPlayer : NddBehaviour {
 		this.playerCtrl= transform.GetComponentInParent<PlayerCtrl>();
 		Debug.LogWarning ("Add PlayerCtrl", gameObject);
 	}
-    protected virtual void GetKeyMoving() {
-		keyMoving.x = InputManager.Instance.KeyHorizontal;
-		keyMoving.y = InputManager.Instance.KeyVertical;
-    }
-
+	protected void GetDirectionPc(){
+		direction.x = InputManager.Instance.KeyHorizontal;
+		direction.y = InputManager.Instance.KeyVertical;
+	}
+	protected void GetDirectionMobi (){
+		direction = JoyStickMove.Instance.Direction;
+	}
 	protected virtual void Moving(){
-		GetKeyMoving ();
-		if (keyMoving == Vector2.zero) {
+		GetDirectionMove?.Invoke ();
+		if (direction == Vector2.zero) {
 			playerCtrl.AnimationPlayer.SetAnimationRuning (false);
 			playerCtrl.PhysicsPlayer.Rig2d.velocity = Vector2.zero;
 			return;
 		}
 		playerCtrl.AnimationPlayer.SetAnimationRuning (true);
-		keyMoving =  keyMoving.normalized;
+		direction =  direction.normalized;
 		SwapScaleIsMoving ();
-		playerCtrl.PhysicsPlayer.Rig2d.velocity = new Vector2 (keyMoving.x * speed, keyMoving.y * speed);
+		playerCtrl.PhysicsPlayer.Rig2d.velocity = new Vector2 (direction.x * speed, direction.y * speed);
 	}
 	protected virtual void SwapScaleIsMoving(){
-		int direction = keyMoving.x > 0 ? 1 : -1;
+		int direction = this.direction.x > 0 ? 1 : -1;
 		playerCtrl.Model.transform.localScale = new Vector3(direction ,transform.parent.localScale.y,transform.parent.localScale.z);	
 	}
 
