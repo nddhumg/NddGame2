@@ -25,8 +25,8 @@ public class DamageReceiverEnemy : DamageReceiver {
 		ResetHp ();
 		enemyCtrl?.DestroyEnemy?.DestroyObject ();
 	}
-	protected virtual void DropItemWhenDead(){
-		this.DropExp ();
+	public virtual void DropItemWhenDead(){
+		DropExp ();
 		DropItem ();
 	}
 	protected virtual void DropExp(){

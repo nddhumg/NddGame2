@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BaseState  {
-	protected string animBoolName;
+	protected string animName;
 	protected bool isAnimationFinished;
 	protected float startTime;
 
 	protected StateMachine stateMachine;
 	public BaseState (StateMachine stateMachine,string animBoolName){
 		this.stateMachine = stateMachine;
-		this.animBoolName = animBoolName;
+		this.animName = animBoolName;
 	}
 
 	public virtual void Enter(){
 		startTime = Time.time;
 		isAnimationFinished = false;
+
 		DoChecks ();
+
 	}
 	public virtual void Exit(){
 		

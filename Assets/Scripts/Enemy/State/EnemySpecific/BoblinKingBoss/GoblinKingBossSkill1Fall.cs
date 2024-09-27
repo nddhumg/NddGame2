@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinKingBossSkill1Fall : EnemySkill {
+public class GoblinKingBossSkill1Fall : EnemyState {
 	GoblinKingBossStateManager enemy;
 	public GoblinKingBossSkill1Fall(EnemyStateManager stateManager,StateMachine stateMachine,string animBoolName,GoblinKingBossStateManager enemy): base(stateManager,stateMachine,animBoolName){
 		this.enemy = enemy;
@@ -51,7 +51,7 @@ public class GoblinKingBossSkill1Fall : EnemySkill {
 			groundingPosition = GetGroundingPosition ();
 			enemy.transform.parent.parent.position = new Vector3 (groundingPosition.x, enemy.transform.position.y, 0);
 		}
-		enemy.MoveTo (groundingPosition,10);
+		enemy.MoveTo (groundingPosition,20);
 		if (enemy.transform.position == groundingPosition) {
 			AttackAoeSkill ();
 			isFinishState = true;
@@ -63,8 +63,7 @@ public class GoblinKingBossSkill1Fall : EnemySkill {
 		DamageReceiver receiver = collider?.transform.parent?.GetComponentInChildren<DamageReceiver> ();
 		if (receiver == null)
 			return;
-		DamageSender damageSender = new DamageSender ();
-		damageSender.Send (receiver,100);
+		receiver.Receiver (100);
 	}
 
 }

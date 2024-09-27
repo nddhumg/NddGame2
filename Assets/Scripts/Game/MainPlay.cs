@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainPlay : NddBehaviour {
 	[SerializeField] protected float timeScalePlay = 1f;
 	[SerializeField] protected float timeScaleRunTime ;
-	[SerializeField] protected bool isMobi = true;
+	[SerializeField] protected bool isMobi ;
 
 	public bool IsMobi{
 		get{ 
@@ -34,7 +34,7 @@ public class MainPlay : NddBehaviour {
 
 	protected override void Awake(){
 		base.Awake ();
-//		CheckIsMobi ();
+		CheckIsMobi ();
 	}
 		
 	protected override void Start ()
@@ -60,9 +60,10 @@ public class MainPlay : NddBehaviour {
 	}
 
 	private void CheckIsMobi(){
-		if (Application.platform == RuntimePlatform.Android)
-		{
+		if (Application.platform == RuntimePlatform.Android) {
 			isMobi = true;
+		} else {
+			isMobi = false;
 		}
 	}
 }

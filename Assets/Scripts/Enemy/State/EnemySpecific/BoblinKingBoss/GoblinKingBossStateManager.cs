@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinKingBossStateManager : EnemyStateManager {
+public class GoblinKingBossStateManager : EnemyStateManager,IChangeStateDie {
 	
 	public GoblinKingBossIdle idleState;
 	public GoblinKingBossMove moveState;
 	public GoblinKingBossShot shotState;
+	public GoblingKingBossDead deadState;
 	public GoblinKingBossSkill1Jump skill1JumbState;
 	public GoblinKingBossSkill1Fall skill1FallState;
+	public GoblinKingBossSkillLastStandHeal skillLastStandHealState;
+
+	[SerializeField]private BossCtrl ctrl;
 
 	[Header("Idle")]
 	[SerializeField]private SOIdle dataIdle;
@@ -28,6 +32,11 @@ public class GoblinKingBossStateManager : EnemyStateManager {
 			return whatAreSendDamageSkill;
 		}
 	}
+	public BossCtrl Ctrl{
+		get{ 
+			return ctrl;
+		}
+	}
 	protected override void Start ()
 	{
 		base.Start ();
@@ -39,8 +48,11 @@ public class GoblinKingBossStateManager : EnemyStateManager {
 		idleState = new GoblinKingBossIdle (this,stateMachine,"Idle",this,dataIdle);
 		moveState = new GoblinKingBossMove (this,stateMachine,"Move",this);
 		shotState = new GoblinKingBossShot (this,stateMachine,"Shoot",this);
+		deadState = new GoblingKingBossDead (this,stateMachine,"Dead",this);
 		skill1JumbState = new GoblinKingBossSkill1Jump (this,stateMachine,"Skill1Jump",this);
 		skill1FallState = new GoblinKingBossSkill1Fall (this,stateMachine,"Skill1Fall",this);
+		skillLastStandHealState = new GoblinKingBossSkillLastStandHeal (this,stateMachine,"LastStandHeal",this,ctrl.DamageReceiverBoss,0.3f);
+
 	}
 	protected override void Update(){
 		base.Update ();
@@ -49,25 +61,36 @@ public class GoblinKingBossStateManager : EnemyStateManager {
 		if (timerSkill1 < dataSkill1.delaySkill)
 			timerSkill1 += Time.deltaTime;
 	}
+
+	public virtual void ChangeStateDead(){
+		stateMachine.ChangeState (deadState);
+	}
+
 	public virtual bool CheckReadyShot(){
 		return timerShot > dataShot.timeDelay;
 	}
+
 	public virtual bool CheckReadySkill1(){
 		return timerSkill1 > dataSkill1.delaySkill;
 	}
+
 	public void MoveTo(Vector3 positionNew,float speed){
 		transform.parent.parent.position = Vector3.MoveTowards(transform.position, positionNew, speed * Time.deltaTime);
 	}
+
 	public virtual void Shot(){
 		timerShot =0;
 		shot.ShootBullet (transform.position);
 	}
+
 	public virtual void StartJumbSkill1(){
 		skill1JumbState.StartJumb ();
 	}
+
 	public void ResetTimeSkill1(){
 		timerShot = 0;
 	}
+
 	public void SetIsTrigger(bool isTrigger){
 		collision.isTrigger = isTrigger;
 	}

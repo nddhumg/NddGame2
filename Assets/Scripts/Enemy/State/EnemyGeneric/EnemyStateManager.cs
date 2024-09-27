@@ -9,8 +9,7 @@ public class EnemyStateManager : StateManager {
 	public virtual void Flip(){
 		if (Player.Instance.GetPosition ().x > transform.position.x)
 			transform.parent.parent.localScale= new Vector3 (1f, 1f, 1f);
-		else
-			transform.parent.parent.localScale= new Vector3 (-1f, 1f, 1f);
+		else			transform.parent.parent.localScale= new Vector3 (-1f, 1f, 1f);
 	}
 	public virtual void FolowingPlayer(){
 		Flip ();

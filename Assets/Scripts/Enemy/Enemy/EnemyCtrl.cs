@@ -8,11 +8,17 @@ public class EnemyCtrl : GameObjCtrl {
 	[SerializeField] protected Animator ani;
 	[SerializeField] protected EnemySO enemySO;
 	[SerializeField] protected SOStat stats;
+	[SerializeField] protected EnemyStateManager stateManager;
 	[SerializeField] protected string folderNameSO = "ScriptableObject/Enemy/";
 
 	public EnemySO EnemySO{
 		get{
 			return enemySO;
+		}
+	}
+	public EnemyStateManager StateManager{
+		get{
+			return stateManager;
 		}
 	}
 	public SOStat Stats{
@@ -41,6 +47,7 @@ public class EnemyCtrl : GameObjCtrl {
 		this.LoadDestroyEnemy ();
 		this.LoadEnemySO ();
 		this.LoadDamageReceiverEnemy ();
+		LoadEnemyStateManager ();
 		LoadAnimator ();
 	}
 	protected virtual void LoadAnimator(){
@@ -61,6 +68,13 @@ public class EnemyCtrl : GameObjCtrl {
 			return;
 		this.destroyEnemy= GetComponentInChildren<DestroyEnemy>();
 		Debug.LogWarning ("Add DestroyEnemy", gameObject);
+	}
+
+	protected virtual void LoadEnemyStateManager(){
+		if (this.stateManager != null)
+			return;
+		this.stateManager= GetComponentInChildren<EnemyStateManager>();
+		Debug.LogWarning ("Add EnemyStateManager", gameObject);
 	}
 
 	protected virtual void LoadEnemySO(){

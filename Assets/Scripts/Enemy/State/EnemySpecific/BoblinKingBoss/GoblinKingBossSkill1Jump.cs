@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinKingBossSkill1Jump : EnemySkill {
+public class GoblinKingBossSkill1Jump : EnemyState {
 	GoblinKingBossStateManager enemy;
 	public GoblinKingBossSkill1Jump(EnemyStateManager stateManager,StateMachine stateMachine,string animBoolName,GoblinKingBossStateManager enemy): base(stateManager,stateMachine,animBoolName){
 		this.enemy = enemy;
