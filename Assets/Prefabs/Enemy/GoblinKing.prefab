@@ -93,7 +93,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1395460850266720
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.5
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -348,6 +348,9 @@ MonoBehaviour:
   anim: {fileID: 95982604126773778}
   dataMove: {fileID: 11400000, guid: b17bb41c7ee439541a2462b29d2bbf6b, type: 2}
   dataEnemy: {fileID: 11400000, guid: 13fddf42855cd3a46b1bed31724073e8, type: 2}
+  rig: {fileID: 50806834258665302}
+  temp: {x: 0, y: 0, z: 0}
+  temp2: 0
   shot: {fileID: 114802103229711746}
   dataShot: {fileID: 11400000, guid: 89143a9e0d2651846aea8defa3561792, type: 2}
   timerShot: 0
@@ -380,7 +383,7 @@ MonoBehaviour:
   ani: {fileID: 95982604126773778}
   enemySO: {fileID: 11400000, guid: bdc62f82d5fe9bc4c97977d5f926964b, type: 2}
   stats: {fileID: 11400000, guid: bd49587e7ba86744e91dcb031018f25c, type: 2}
-  stateManager: {fileID: 0}
+  stateManager: {fileID: 114095177283267542}
   folderNameSO: ScriptableObject/Enemy/
 --- !u!114 &114498721273306976
 MonoBehaviour:

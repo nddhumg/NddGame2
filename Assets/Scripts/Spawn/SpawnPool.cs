@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPool : NddBehaviour{
+	public class SpawnPool : NddBehaviour{
 	[System.Serializable]
 	public class Pool{
 		public string tag;

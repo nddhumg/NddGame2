@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1144448047372936
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1069786885581560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 2.06, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4089158785161164}
@@ -286,7 +286,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.06}
   m_Size: {x: 0.7, y: 0.6}
   m_Direction: 0
 --- !u!70 &70249659304446178
@@ -356,7 +356,7 @@ MonoBehaviour:
   ani: {fileID: 95006864337068158}
   enemySO: {fileID: 11400000, guid: afc494d0380f787468c31ee01172a778, type: 2}
   stats: {fileID: 11400000, guid: 42e19d1f5a1a6964faf6f8130385b16e, type: 2}
-  stateManager: {fileID: 0}
+  stateManager: {fileID: 114628606472528764}
   folderNameSO: ScriptableObject/Enemy/
   enemyWarriorSO: {fileID: 11400000, guid: afc494d0380f787468c31ee01172a778, type: 2}
   damageSenderEnemy: {fileID: 114010053237343386}
@@ -398,6 +398,7 @@ MonoBehaviour:
   anim: {fileID: 95006864337068158}
   dataMove: {fileID: 11400000, guid: 4d2561bae12515b43a581973df058915, type: 2}
   dataEnemy: {fileID: 11400000, guid: 4a40b80391167c147ac7cd0b80274b96, type: 2}
+  rig: {fileID: 50721763414700122}
 --- !u!114 &114734304221797414
 MonoBehaviour:
   m_ObjectHideFlags: 1

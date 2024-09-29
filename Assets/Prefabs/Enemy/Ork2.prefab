@@ -29,21 +29,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1292031815373768
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4015558687868076}
-  m_Layer: 12
-  m_Name: Ability
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1314121761896580
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,19 +128,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4015558687868076
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1292031815373768}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4984227649136522}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4074548091460330
 Transform:
   m_ObjectHideFlags: 1
@@ -250,7 +222,6 @@ Transform:
   - {fileID: 4816541132820302}
   - {fileID: 4314665913570912}
   - {fileID: 4425889425743644}
-  - {fileID: 4015558687868076}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -335,6 +306,9 @@ MonoBehaviour:
   anim: {fileID: 95580601947130554}
   dataMove: {fileID: 11400000, guid: 4d2561bae12515b43a581973df058915, type: 2}
   dataEnemy: {fileID: 11400000, guid: f64c415b170de794ab34fc9dab4d6a99, type: 2}
+  rig: {fileID: 0}
+  temp: {x: 0, y: 0, z: 0}
+  temp2: 0
 --- !u!114 &114173917650012184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,7 +341,7 @@ MonoBehaviour:
   ani: {fileID: 95580601947130554}
   enemySO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
   stats: {fileID: 11400000, guid: 9c3985011f9306e46a42ba66d8333dae, type: 2}
-  stateManager: {fileID: 0}
+  stateManager: {fileID: 114086188898973430}
   folderNameSO: ScriptableObject/Enemy/
   enemyWarriorSO: {fileID: 11400000, guid: 14ea427380db0aa4cb5e9bf50d6bfc10, type: 2}
   damageSenderEnemy: {fileID: 114960848765762346}
