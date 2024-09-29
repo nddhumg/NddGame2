@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnFx : SpawnsPoolOgj {
+public class SpawnFx : SpawnPool {
 	
 	private static SpawnFx instance;
 	public static SpawnFx Instance{

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnItem : SpawnsPoolOgj {
+public class SpawnItem : SpawnPool {
 	private static SpawnItem instance;
 	public static SpawnItem Instance{
 		get{

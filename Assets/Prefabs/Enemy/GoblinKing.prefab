@@ -380,6 +380,7 @@ MonoBehaviour:
   ani: {fileID: 95982604126773778}
   enemySO: {fileID: 11400000, guid: bdc62f82d5fe9bc4c97977d5f926964b, type: 2}
   stats: {fileID: 11400000, guid: bd49587e7ba86744e91dcb031018f25c, type: 2}
+  stateManager: {fileID: 0}
   folderNameSO: ScriptableObject/Enemy/
 --- !u!114 &114498721273306976
 MonoBehaviour:

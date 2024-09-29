@@ -7,6 +7,4 @@ public enum FxName  {
 	FxLevelUp = 1,
 	FxDamagePopUp = 2,
 	RedZone = 3,
-
-	WaterTornado = 100,
 }

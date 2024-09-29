@@ -5,6 +5,6 @@ using UnityEngine;
 public class DestroyExp : DestroyObj {
 
 	public override void DestroyObject (){
-		SpawnExp.Instance.DesTroyPrefabs (transform.parent);
+		SpawnItem.Instance.DesTroyPrefabs (transform.parent);
 	}
 }

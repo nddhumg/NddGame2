@@ -34,7 +34,7 @@ public class DamageReceiverEnemy : DamageReceiver {
 		string nameExpDrop = GetNameDrop (listExpDrop);
 		if (nameExpDrop == null)
 			return;
-		SpawnExp.Instance.Spawn (nameExpDrop, transform.position, Quaternion.identity);
+		SpawnItem.Instance.Spawn (nameExpDrop, transform.position, Quaternion.identity);
 	}
 	protected virtual void DropItem(){
 		List<DropItemRate> listItemDrop = enemyCtrl.EnemySO.ListDropItem;

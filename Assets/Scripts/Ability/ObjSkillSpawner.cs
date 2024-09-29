@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjSkillSpawner : SpawnsPoolOgj {
+public class ObjSkillSpawner : SpawnPool {
 	public enum ObjSkillName{
 		NoName = 0,
 		WaterTornado = 1

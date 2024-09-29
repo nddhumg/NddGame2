@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : SpawnsPoolOgj {
+public class SpawnEnemy : SpawnPool {
 	private static SpawnEnemy instance;
 	public static SpawnEnemy Instance{
 		get{
@@ -26,12 +26,13 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	[SerializeField] private int numberSpawn = 10;
 	[SerializeField] private float delaySpawn = 3f;
 	[SerializeField] private LevelSpawnEnemy levelSpawnEnemy;
-	[SerializeField] private  EnemySpawnRate[] arrEnemySpawn; 
+	[SerializeField] private  EnemySpawnRate[] arrayEnemySpawn; 
 	private float overallSpawnRate = 0;
 
 	protected override void Start ()
 	{
 		base.Start ();
+		TakeArrayEnemyByLevel ((int)levelSpawnEnemy.LevelCurrent);
 		StartCoroutine (DelaySpawn());
 	}
 	protected override void LoadComponent ()
@@ -43,8 +44,6 @@ public class SpawnEnemy : SpawnsPoolOgj {
 		if (levelSpawnEnemy != null)
 			return;
 		levelSpawnEnemy = transform.GetComponentInChildren<LevelSpawnEnemy> ();
-		if (levelSpawnEnemy != null)
-			TakeArrayEnemyByLevel ((int)levelSpawnEnemy.LevelCurrent);
 
 	}
 	IEnumerator  DelaySpawn(){
@@ -86,7 +85,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 		float ran = Random.Range (0f, 1f);
 		float temp = 0;
 
-		foreach (EnemySpawnRate enemySpawn in arrEnemySpawn) {
+		foreach (EnemySpawnRate enemySpawn in arrayEnemySpawn) {
 			temp += (enemySpawn.percentage / overallSpawnRate);
 			if (ran <= temp) {
 				return enemySpawn.nameEnemyPrefab.ToString ();
@@ -96,10 +95,10 @@ public class SpawnEnemy : SpawnsPoolOgj {
 	}
 	private void TakeOverallSpawnRate(){
 		overallSpawnRate = 0;
-		if (arrEnemySpawn.Length <= 0) {
+		if (arrayEnemySpawn.Length <= 0) {
 			return;
 		}
-		foreach (EnemySpawnRate enemySpawn in arrEnemySpawn) {
+		foreach (EnemySpawnRate enemySpawn in arrayEnemySpawn) {
 			this.overallSpawnRate += enemySpawn.percentage;
 		}
 	}
@@ -110,7 +109,7 @@ public class SpawnEnemy : SpawnsPoolOgj {
 			Debug.LogWarning ("Dont take spawn enemy so", gameObject);
 			return;
 		}
-		arrEnemySpawn = spawnEnemyByLevelSO.ArrEnemySpawn;
+		arrayEnemySpawn = spawnEnemyByLevelSO.ArrEnemySpawn;
 		TakeOverallSpawnRate();
 	}
 	public  void ReductTheNumberofEnemyArc(){

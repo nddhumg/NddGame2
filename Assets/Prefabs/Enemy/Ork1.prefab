@@ -364,6 +364,7 @@ MonoBehaviour:
   ani: {fileID: 95537685270334780}
   enemySO: {fileID: 11400000, guid: 41b71d06605b5e947be3911e19103a78, type: 2}
   stats: {fileID: 11400000, guid: b5aa1bc4020779b42870ad0554fe1e78, type: 2}
+  stateManager: {fileID: 0}
   folderNameSO: ScriptableObject/Enemy/
   enemyWarriorSO: {fileID: 11400000, guid: 41b71d06605b5e947be3911e19103a78, type: 2}
   damageSenderEnemy: {fileID: 114720506773172308}
